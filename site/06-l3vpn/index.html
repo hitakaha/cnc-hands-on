@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>6. L3VPN provisioning - Crosswork CNC Hands-on</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "6. L3VPN provisioning";
+        var mkdocs_page_input_path = "06-l3vpn.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Crosswork CNC Hands-on
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../01-preparation/">1. Preparation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../02-cnc-management/">2. CNC management</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../03-active-topology/">3. Active Topology</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../04-element-management/">4. Element management</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../05-sr-te/">5. SR-TE and SRv6</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">6. L3VPN provisioning</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#61-what-you-are-about-to-commit">6.1 What you are about to commit</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#62-create-the-service">6.2 Create the service</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#63-see-it-on-the-map">6.3 See it on the map</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#64-read-the-effect-on-the-pe">6.4 Read the effect on the PE</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#65-templates-stated-once">6.5 Templates, stated once</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#66-clean-up-rule">6.6 Clean-up rule</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#done-when">Done when</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../07-lcm/">7. Congestion mitigation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../08-ztp/">8. Lifecycle and ZTP</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../09-assurance-mcp/">9. Assurance and MCP</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../10-checkpoints/">Checkpoints</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Crosswork CNC Hands-on</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">6. L3VPN provisioning</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="6-intent-based-l3vpn-provisioning">6. Intent-based L3VPN provisioning<a class="headerlink" href="#6-intent-based-l3vpn-provisioning" title="Permanent link">&para;</a></h1>
+<p><strong>Time:</strong> 75 minutes.</p>
+<p><strong>Objective:</strong> Create one L3VPN from CNC. NSO renders the device configuration from the service model and the function-pack template. Steer the VPN onto the PCE-initiated policy from chapter 5.</p>
+<p>The UI path is <strong>Services &amp; Traffic Engineering &gt; Provisioning (NSO)</strong>. CNC 7.1 provisions IETF L3VPN network models through NSO. You fill in the service intent. You do not paste CLI, and you do not edit the XML template on the NSO server.</p>
+<h2 id="61-what-you-are-about-to-commit">6.1 What you are about to commit<a class="headerlink" href="#61-what-you-are-about-to-commit" title="Permanent link">&para;</a></h2>
+<p>Each seat creates a different service:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service name</td>
+<td><code>PTA-L3-SEAT-&lt;seat&gt;</code></td>
+</tr>
+<tr>
+<td>Endpoints</td>
+<td>the two PEs on your lab-values sheet, using the attachment points the instructor assigns</td>
+</tr>
+<tr>
+<td>Route distinguisher and route targets</td>
+<td>the pair on the whiteboard for your seat</td>
+</tr>
+<tr>
+<td>Steering</td>
+<td>preferred path, bound to color <code>200 + seat</code></td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>the same SRv6 or SR-MPLS type you used in chapter 5</td>
+</tr>
+</tbody>
+</table>
+<p>Preferred path is the steering method for this lab because the map can show the VPN sitting on the policy you just created. On-demand next hop (ODN) is the other method: the headend builds a path when it receives a route with that color. Read the ODN choice in the form so you recognize it, then select preferred path.</p>
+<p>If the PTA service profile on this controller exposes only one steering knob, use the one the instructor names. Record which one you used.</p>
+<h2 id="62-create-the-service">6.2 Create the service<a class="headerlink" href="#62-create-the-service" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Go to <strong>Services &amp; Traffic Engineering &gt; Provisioning (NSO)</strong>.</li>
+<li>Open the L3VPN service type.</li>
+<li>Create a service named <code>PTA-L3-SEAT-&lt;seat&gt;</code>.</li>
+<li>Select the instance profile or VPN profile the instructor named. That profile points at the NSO L3VPN template. You are choosing it, not editing it.</li>
+<li>Enter the route distinguisher and route targets for your seat.</li>
+<li>Add the two endpoints. For each endpoint set the device, the attachment circuit or interface, and the PE-CE routing the instructor specified. A lab that uses a static route on one side and BGP on the other is still one L3VPN. Follow the whiteboard.</li>
+<li>Set the underlay transport to the policy type from chapter 5.</li>
+<li>Set steering to preferred path and select color <code>200 + seat</code>, or select the policy <code>pta-pce-seat-&lt;seat&gt;</code> if the form asks for a policy name.</li>
+<li>Run <strong>Dry run</strong> before <strong>Commit</strong>. Read the preview far enough to see your service name, your two endpoints, and the color. A preview that names another seat's VPN is the wrong form. Close it and start again from your own service name.</li>
+<li>Commit.</li>
+<li>Open the service and read the sync state. In sync means NSO and the devices agree. Out of sync belongs on the checkpoint page before you troubleshoot the VPN itself.</li>
+</ol>
+<p><strong>Result:</strong> <code>PTA-L3-SEAT-&lt;seat&gt;</code> is committed and in sync.</p>
+<h2 id="63-see-it-on-the-map">6.3 See it on the map<a class="headerlink" href="#63-see-it-on-the-map" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Open <strong>Services &amp; Traffic Engineering &gt; VPN Services</strong>, or the service overlay the provisioning page links to.</li>
+<li>Select your VPN.</li>
+<li>Show the service path and the underlay policy together.</li>
+<li>Confirm the underlay is <code>pta-pce-seat-&lt;seat&gt;</code>, or a path whose color is <code>200 + seat</code>.</li>
+</ol>
+<p><strong>Result:</strong> You can show a neighbour the service and the SR policy it rides.</p>
+<h2 id="64-read-the-effect-on-the-pe">6.4 Read the effect on the PE<a class="headerlink" href="#64-read-the-effect-on-the-pe" title="Permanent link">&para;</a></h2>
+<p>On the headend, with the instructor's console:</p>
+<pre><code class="language-text">show bgp vpnv4 unicast summary
+show bgp vpnv6 unicast summary
+</code></pre>
+<p>Use the address family this lab actually runs. PTA's IPv6 core still may carry an IPv4 VPN, an IPv6 VPN, or both. The whiteboard says which summary command should show your VRF.</p>
+<p>Then:</p>
+<pre><code class="language-text">show vrf
+show segment-routing traffic-eng policy
+</code></pre>
+<p>You want the VRF for <code>PTA-L3-SEAT-&lt;seat&gt;</code> and the same PCE-initiated policy as chapter 5. Leave configuration mode.</p>
+<h2 id="65-templates-stated-once">6.5 Templates, stated once<a class="headerlink" href="#65-templates-stated-once" title="Permanent link">&para;</a></h2>
+<p>The XML templates in the NSO L3VPN function pack are what turned your form into CLI. Device Management templates from chapter 4 did not. If a dry run fails with a template or profile error, the profile name is the thing to check. Editing the package on the NSO server is an instructor action outside this class.</p>
+<h2 id="66-clean-up-rule">6.6 Clean-up rule<a class="headerlink" href="#66-clean-up-rule" title="Permanent link">&para;</a></h2>
+<p>Keep your VPN until you have shown it on the map. At the end of the day, delete <code>PTA-L3-SEAT-&lt;seat&gt;</code> from the provisioning page, then delete your PCE-initiated policy. Deleting the policy first, while the VPN still prefers it, leaves the service with nowhere to steer. Order is VPN, then policy.</p>
+<h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Dry run showed your service name, your endpoints, and your color.</li>
+<li>The service is in sync.</li>
+<li>The VPN overlay draws your service on your PCE-initiated policy.</li>
+<li>You can say which template store rendered the CLI.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../05-sr-te/" class="btn btn-neutral float-left" title="5. SR-TE and SRv6"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../07-lcm/" class="btn btn-neutral float-right" title="7. Congestion mitigation">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../05-sr-te/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../07-lcm/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

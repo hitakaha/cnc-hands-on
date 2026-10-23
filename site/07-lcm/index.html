@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>7. Congestion mitigation - Crosswork CNC Hands-on</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "7. Congestion mitigation";
+        var mkdocs_page_input_path = "07-lcm.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Crosswork CNC Hands-on
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../01-preparation/">1. Preparation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../02-cnc-management/">2. CNC management</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../03-active-topology/">3. Active Topology</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../04-element-management/">4. Element management</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../05-sr-te/">5. SR-TE and SRv6</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../06-l3vpn/">6. L3VPN provisioning</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">7. Congestion mitigation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#71-lab-decision">7.1 Lab decision</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#72-open-the-domain">7.2 Open the domain</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#73-read-the-thresholds-and-the-loop">7.3 Read the thresholds and the loop</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#74-recommendations">7.4 Recommendations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#75-what-you-leave-alone">7.5 What you leave alone</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#done-when">Done when</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../08-ztp/">8. Lifecycle and ZTP</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../09-assurance-mcp/">9. Assurance and MCP</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../10-checkpoints/">Checkpoints</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Crosswork CNC Hands-on</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">7. Congestion mitigation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="7-closed-loop-congestion-mitigation">7. Closed-loop congestion mitigation<a class="headerlink" href="#7-closed-loop-congestion-mitigation" title="Permanent link">&para;</a></h1>
+<p><strong>Time:</strong> 45 minutes.</p>
+<p><strong>Objective:</strong> Read Local Congestion Mitigation (LCM) on CNC 7.1, explain the closed loop, and leave the shared network in Manual mode.</p>
+<h2 id="71-lab-decision">7.1 Lab decision<a class="headerlink" href="#71-lab-decision" title="Permanent link">&para;</a></h2>
+<p>LCM is a real Optimization Engine feature in CNC 7.1, and it is the right exercise for this chapter. It looks for congestion on a timer, estimates traffic that can be moved off a hot interface, and recommends tactical traffic-engineering (TTE) SR policies around that interface. In Manual mode an operator previews the recommendation and then commits it. SR-PCE deploys the tactical policies. When the interface cools, LCM recommends removal.</p>
+<p>LCM sees congestion through SNMP interface counters collected by the Data Gateway. It also needs a discovered IGP domain (the BGP-LS <code>link-state instance-id</code>), an alternate local path, and a tactical color that no other policy uses.</p>
+<p>A CML topology often reports <strong>0% utilization</strong>, because the links carry no traffic. LCM then has nothing to mitigate. That outcome still completes this chapter. Record the utilization and the threshold, and explain why the operational dashboard has no recommendation.</p>
+<div class="admonition note">
+<p class="admonition-title">Instructor</p>
+<p>Keep the domain in <strong>Manual</strong> mode. Automated mode deploys tactical policies without a human commit, and in later releases it also requires a fully gRPC-compliant domain. Students do not change the mode.</p>
+<p>Commit a recommendation only when one domain shows a real recommendation and you want the room to see a single deploy. Use the reserved tactical color. Students do not click <strong>Commit all</strong>.</p>
+<p>If you want a live PCE action and every interface is idle, use Bandwidth on Demand as a demonstration. BWoD asks for a path with a bandwidth number. It does not need a hot link. It is a different feature. Show it from the instructor console, and keep the student exercise on the LCM screens.</p>
+</div>
+<h2 id="72-open-the-domain">7.2 Open the domain<a class="headerlink" href="#72-open-the-domain" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Go to <strong>Services &amp; Traffic Engineering &gt; Local Congestion Mitigation</strong>.</li>
+<li>Read the domain card. The domain id comes from the IGP <code>link-state instance-id</code> advertised in BGP-LS.</li>
+<li>Record:<ul>
+<li>LCM status (enabled or not)</li>
+<li>Operation mode</li>
+<li>Urgency</li>
+<li>The description, which defaults to "LCM Startup Config" on a fresh configuration</li>
+</ul>
+</li>
+<li>If the card says the domain is not configured, stop and let the instructor open <strong>Configure</strong>. The room uses one LCM configuration.</li>
+</ol>
+<p><strong>Result:</strong> You know the domain id and the operation mode. The mode you want to see is Manual.</p>
+<h2 id="73-read-the-thresholds-and-the-loop">7.3 Read the thresholds and the loop<a class="headerlink" href="#73-read-the-thresholds-and-the-loop" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Open <strong>Interface Thresholds</strong>. Find one core interface you recorded in chapter 3. Read its utilization threshold.</li>
+<li>Compare that threshold with the utilization you wrote down from the topology map. Say which side of the threshold the interface is on.</li>
+<li>Open <strong>Configuration</strong>. Read the congestion check interval, the optimization objective, and the operation mode. Leave every field as you found it.</li>
+<li>Walk the loop in your own words:<ul>
+<li>CDG polls interface counters with SNMP.</li>
+<li>LCM compares utilization with the interface threshold on the check interval.</li>
+<li>A hot interface produces a TTE SR policy recommendation that stays local to that hop.</li>
+<li>In Manual mode the recommendation waits on the operational dashboard.</li>
+<li>Commit sends the tactical policy through SR-PCE.</li>
+<li>A later check recommends deletion when the interface is under the threshold again.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Result:</strong> You can teach the loop from the screens, with your own utilization number in the story.</p>
+<h2 id="74-recommendations">7.4 Recommendations<a class="headerlink" href="#74-recommendations" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Open the <strong>Operational Dashboard</strong> for the domain. Use the "Recommendations available" link when the card shows it.</li>
+<li>If a recommendation is listed, read urgency and the interfaces it would bypass. Preview it on the map. Then stop. The instructor commits, or nobody commits.</li>
+<li>If the dashboard is empty, write the sentence: "No recommendation, utilization is below the threshold." Include the two numbers.</li>
+<li>Open <strong>Operational History</strong> if it has rows from an earlier demo, and read one commit or one removal. History is part of the product even when this hour adds no new row.</li>
+</ol>
+<p><strong>Result:</strong> You have either previewed one recommendation or recorded why none exists.</p>
+<h2 id="75-what-you-leave-alone">7.5 What you leave alone<a class="headerlink" href="#75-what-you-leave-alone" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The operation-mode control stays on Manual.</li>
+<li><strong>Commit all</strong> stays with the instructor.</li>
+<li>The tactical color stays the reserved color, and it stays off your chapter 5 policy.</li>
+<li>Per-interface threshold edits are an instructor tool for a demo. A room full of lowered thresholds creates a pile of recommendations against empty CML links.</li>
+</ul>
+<h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
+<ul>
+<li>You can open the LCM domain, the thresholds, and the configuration.</li>
+<li>You compared one interface's utilization with its threshold.</li>
+<li>You can describe what a commit would deploy, and you did not deploy it yourself.</li>
+<li>You know BWoD is the instructor's fallback when the lab has no congestion to show.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../06-l3vpn/" class="btn btn-neutral float-left" title="6. L3VPN provisioning"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../08-ztp/" class="btn btn-neutral float-right" title="8. Lifecycle and ZTP">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../06-l3vpn/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../08-ztp/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

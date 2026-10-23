@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Checkpoints - Crosswork CNC Hands-on</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Checkpoints";
+        var mkdocs_page_input_path = "10-checkpoints.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Crosswork CNC Hands-on
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../01-preparation/">1. Preparation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../02-cnc-management/">2. CNC management</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../03-active-topology/">3. Active Topology</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../04-element-management/">4. Element management</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../05-sr-te/">5. SR-TE and SRv6</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../06-l3vpn/">6. L3VPN provisioning</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../07-lcm/">7. Congestion mitigation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../08-ztp/">8. Lifecycle and ZTP</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../09-assurance-mcp/">9. Assurance and MCP</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Checkpoints</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#maintenance-and-login">Maintenance and login</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cml-and-reachability">CML and reachability</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#providers-and-collection">Providers and collection</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sr-policy">SR policy</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#l3vpn">L3VPN</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lcm">LCM</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#assistant">Assistant</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#end-of-day">End of day</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Crosswork CNC Hands-on</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Checkpoints</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="checkpoints">Checkpoints<a class="headerlink" href="#checkpoints" title="Permanent link">&para;</a></h1>
+<p>Use this page when a chapter's expected result does not appear. Fix the first row that matches, then return to the chapter. One person applies a shared fix. Everyone else waits.</p>
+<h2 id="maintenance-and-login">Maintenance and login<a class="headerlink" href="#maintenance-and-login" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The UI never finishes loading after the slider moves</td>
+<td>Maintenance restart takes several minutes. Wait. If a popup asks to turn maintenance off, the instructor accepts it once.</td>
+</tr>
+<tr>
+<td>Applications stay down after maintenance is Off</td>
+<td>CNC 7.1: turn Maintenance On, wait until the mode is fully on, then turn it Off. Path: <strong>Administration &gt; Settings &gt; System Settings &gt; Maintenance Mode</strong>.</td>
+</tr>
+<tr>
+<td>Certificate warning</td>
+<td>Confirm the hostname is the whiteboard URL, then use the lab exception the instructor shows.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cml-and-reachability">CML and reachability<a class="headerlink" href="#cml-and-reachability" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topology stays empty</td>
+<td>CML nodes are booted. SR-PCE provider is reachable. BGP-LS from the IGP is up. Give a freshly started lab several minutes to advertise.</td>
+</tr>
+<tr>
+<td>A PE is unreachable in Network Devices</td>
+<td>The node is booted, the management address pings from the path CNC uses, and the credential profile name on the device is the lab profile.</td>
+</tr>
+<tr>
+<td>Inventory is thin or old</td>
+<td>The device has a Data Gateway mapping, and the gateway is enrolled.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="providers-and-collection">Providers and collection<a class="headerlink" href="#providers-and-collection" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SR-PCE provider down</td>
+<td>Provider reachability in <strong>Administration &gt; Manage Provider Access</strong>, then the PCE process on the CML node the instructor names.</td>
+</tr>
+<tr>
+<td>NSO provider down</td>
+<td>The same provider page. Chapter 6 waits until NSO is reachable.</td>
+</tr>
+<tr>
+<td>Link utilization is blank</td>
+<td>Data Gateway collection and SNMP credentials. LCM cannot see congestion without those counters.</td>
+</tr>
+<tr>
+<td>Link utilization is 0%</td>
+<td>Expected on an idle CML lab. Chapter 7 accepts that number.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sr-policy">SR policy<a class="headerlink" href="#sr-policy" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No PCC-initiated row</td>
+<td>The instructor's prepared policy is missing. Continue with the PCE-initiated create.</td>
+</tr>
+<tr>
+<td>Path preview is empty</td>
+<td>SR-PCE has no path in that policy type (SRv6 versus SR-MPLS). Confirm you are on the whiteboard's tab, then confirm SIDs on the topology layer.</td>
+</tr>
+<tr>
+<td>Policy is down on the headend</td>
+<td>PCEP session on the headend (<code>show segment-routing traffic-eng pcc ipv4 peer</code> or the IPv6 form). Color collision with another seat.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="l3vpn">L3VPN<a class="headerlink" href="#l3vpn" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dry run names another seat</td>
+<td>Close it. Reopen <code>PTA-L3-SEAT-&lt;seat&gt;</code> only.</td>
+</tr>
+<tr>
+<td>Commit fails on the profile or template</td>
+<td>The instance profile name on the whiteboard. The NSO L3VPN function pack is an instructor concern.</td>
+</tr>
+<tr>
+<td>Service out of sync</td>
+<td>NSO provider reachability, then the device sync state for your two PEs. Read sync before you debug the VRF.</td>
+</tr>
+<tr>
+<td>Overlay does not show your policy</td>
+<td>Steering color is <code>200 + seat</code>, and <code>pta-pce-seat-&lt;seat&gt;</code> is still up.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lcm">LCM<a class="headerlink" href="#lcm" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No domain card</td>
+<td>SR-PCE topology and BGP-LS <code>link-state instance-id</code>. The instructor configures LCM once.</td>
+</tr>
+<tr>
+<td>No recommendation</td>
+<td>Compare interface utilization with the interface threshold. Below the threshold, an empty dashboard is the correct result.</td>
+</tr>
+<tr>
+<td>Many recommendations appear at once</td>
+<td>Thresholds were lowered on an idle lab. The instructor owns the dashboard. Students do not commit.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="assistant">Assistant<a class="headerlink" href="#assistant" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend offline</td>
+<td>The instructor restarts the assistant. Students wait.</td>
+</tr>
+<tr>
+<td>Inventory tool returns an error</td>
+<td>Reachability from the MCP server to the CNC URL, and the server's credential. That credential is not entered in chat.</td>
+</tr>
+<tr>
+<td>The count disagrees with Network Devices</td>
+<td>Write both numbers. Inventory counts modules as well as chassis on some views. Confirm you are comparing the same object type.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="end-of-day">End of day<a class="headerlink" href="#end-of-day" title="Permanent link">&para;</a></h2>
+<p>Delete in this order, and only your own objects:</p>
+<ol>
+<li>L3VPN <code>PTA-L3-SEAT-&lt;seat&gt;</code></li>
+<li>PCE-initiated policy <code>pta-pce-seat-&lt;seat&gt;</code></li>
+</ol>
+<p>Leave the PCC-initiated policy, the LCM configuration, ZTP objects, templates, and providers in place.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../09-assurance-mcp/" class="btn btn-neutral float-left" title="9. Assurance and MCP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../09-assurance-mcp/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

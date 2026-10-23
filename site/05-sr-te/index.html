@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>5. SR-TE and SRv6 - Crosswork CNC Hands-on</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "5. SR-TE and SRv6";
+        var mkdocs_page_input_path = "05-sr-te.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Crosswork CNC Hands-on
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../01-preparation/">1. Preparation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../02-cnc-management/">2. CNC management</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../03-active-topology/">3. Active Topology</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../04-element-management/">4. Element management</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">5. SR-TE and SRv6</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#51-words-you-need">5.1 Words you need</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#52-find-the-pcc-initiated-policy">5.2 Find the PCC-initiated policy</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#53-create-a-pce-initiated-policy">5.3 Create a PCE-initiated policy</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#54-confirm-on-the-headend">5.4 Confirm on the headend</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#55-clean-up-rule">5.5 Clean-up rule</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#done-when">Done when</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../06-l3vpn/">6. L3VPN provisioning</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../07-lcm/">7. Congestion mitigation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../08-ztp/">8. Lifecycle and ZTP</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../09-assurance-mcp/">9. Assurance and MCP</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../10-checkpoints/">Checkpoints</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Crosswork CNC Hands-on</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">5. SR-TE and SRv6</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="5-segment-routing-and-traffic-engineering">5. Segment Routing and Traffic Engineering<a class="headerlink" href="#5-segment-routing-and-traffic-engineering" title="Permanent link">&para;</a></h1>
+<p><strong>Time:</strong> 75 minutes.</p>
+<p><strong>Objective:</strong> Explain a PCC-initiated policy that the headend already owns, then create one PCE-initiated SR policy from CNC with your own name and color.</p>
+<p>Use the policy type on the whiteboard. For this PTA lab that type is <strong>SRv6</strong> when the core is SRv6, and <strong>SR-MPLS</strong> when the core is SR-MPLS. The CNC pages are the same shape. Pick the tab that matches the whiteboard and stay on it.</p>
+<h2 id="51-words-you-need">5.1 Words you need<a class="headerlink" href="#51-words-you-need" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning in this lab</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PCC</td>
+<td>The headend router. It may ask SR-PCE for a path, and it can own a policy that was configured on the router.</td>
+</tr>
+<tr>
+<td>PCE</td>
+<td>SR-PCE. It computes paths and can instantiate a policy on a headend through PCEP.</td>
+</tr>
+<tr>
+<td>PCC-initiated</td>
+<td>The policy configuration lives on the headend. CNC learns the policy from SR-PCE and draws it.</td>
+</tr>
+<tr>
+<td>PCE-initiated</td>
+<td>You create the policy in CNC. SR-PCE pushes it to the headend. The headend shows it as delegated to the PCE.</td>
+</tr>
+<tr>
+<td>Color</td>
+<td>A number that identifies the intent. Steering in chapter 6 binds a VPN to a color.</td>
+</tr>
+<tr>
+<td>Candidate path</td>
+<td>One way to reach the endpoint. Preference chooses among candidate paths.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="52-find-the-pcc-initiated-policy">5.2 Find the PCC-initiated policy<a class="headerlink" href="#52-find-the-pcc-initiated-policy" title="Permanent link">&para;</a></h2>
+<p>The instructor prepares one PCC-initiated policy before class, on the headend, with a color outside the <code>200 + seat</code> range. You do not type that router configuration.</p>
+<ol>
+<li>Go to <strong>Services &amp; Traffic Engineering &gt; Traffic Engineering</strong>.</li>
+<li>Open the <strong>SRv6</strong> or <strong>SR-MPLS</strong> tab named on the whiteboard.</li>
+<li>Filter or sort the policy table until you find the PCC-initiated policy. The initiation column says PCC.</li>
+<li>Record headend, endpoint, color, preference, and the active candidate path.</li>
+<li>Select the policy and show it on the map. Name two hops on the drawn path.</li>
+<li>If the table has no PCC row, say so. The rest of this chapter still works. The live create is the PCE-initiated policy. Tell the instructor the prepared PCC policy is missing.</li>
+</ol>
+<p><strong>Result:</strong> You can point at a policy the router owns, or you have recorded that the prepared policy is absent.</p>
+<p>On the headend console, if the instructor opens one, these commands support the same story. Read them. Leave configuration mode.</p>
+<pre><code class="language-text">show segment-routing traffic-eng policy
+show segment-routing traffic-eng pcc ipv4 peer
+</code></pre>
+<p>On an IPv6-only SRv6 headend the peer command may be the IPv6 form:</p>
+<pre><code class="language-text">show segment-routing traffic-eng pcc ipv6 peer
+</code></pre>
+<p>Use the form the instructor shows. In the output, find the color of the PCC policy and the PCE peer address.</p>
+<h2 id="53-create-a-pce-initiated-policy">5.3 Create a PCE-initiated policy<a class="headerlink" href="#53-create-a-pce-initiated-policy" title="Permanent link">&para;</a></h2>
+<p>Your policy name is <code>pta-pce-seat-&lt;seat&gt;</code>. Your color is <code>200 + seat</code>. Two seats that reuse a color will fight over steering in chapter 6.</p>
+<ol>
+<li>Stay on <strong>Services &amp; Traffic Engineering &gt; Traffic Engineering</strong>, on the same SRv6 or SR-MPLS tab.</li>
+<li>Start the create action and choose <strong>PCE-initiated</strong>.</li>
+<li>Set:<ul>
+<li>Name: <code>pta-pce-seat-&lt;seat&gt;</code></li>
+<li>Headend: the headend from your lab-values sheet</li>
+<li>Endpoint: the endpoint from your lab-values sheet</li>
+<li>Color: <code>200 + seat</code></li>
+<li>Optimization objective: IGP metric, unless the instructor writes a different objective</li>
+</ul>
+</li>
+<li>Leave bandwidth, affinity, and disjoint constraints empty unless the instructor adds one constraint for the whole room.</li>
+<li>Preview the path. You want a path that passes through the core, from your headend to your endpoint.</li>
+<li>If the preview is empty, stop. An empty preview means SR-PCE has no topology or no SID reachability. Use the checkpoint page. Committing an empty path teaches the wrong lesson.</li>
+<li>When the preview shows a path, provision the policy.</li>
+<li>Return to the policy table. Your row shows initiation <strong>PCE</strong>, your color, and an operational state that is up.</li>
+<li>Select the row and display the path on the map.</li>
+</ol>
+<p><strong>Result:</strong> A PCE-initiated policy exists for your seat, and the map draws it.</p>
+<h2 id="54-confirm-on-the-headend">5.4 Confirm on the headend<a class="headerlink" href="#54-confirm-on-the-headend" title="Permanent link">&para;</a></h2>
+<p>Ask the instructor for a console on the headend, or watch the instructor's console.</p>
+<pre><code class="language-text">show segment-routing traffic-eng policy
+</code></pre>
+<p>Find <code>pta-pce-seat-&lt;seat&gt;</code>. In the same output, the PCC-initiated policy is still present. The difference is ownership: one policy is configured on the router, and the other was instantiated by the PCE.</p>
+<p>If your policy is missing on the router and present in CNC as down, the usual causes are a PCEP session that is down, a color conflict, or a headend that cannot place the SIDs. Stay with the checkpoint page. Delete only your own down policy, and only when the instructor agrees.</p>
+<h2 id="55-clean-up-rule">5.5 Clean-up rule<a class="headerlink" href="#55-clean-up-rule" title="Permanent link">&para;</a></h2>
+<p>Keep this policy until chapter 6 has steered a VPN onto its color. At the end of the day, delete only <code>pta-pce-seat-&lt;seat&gt;</code>. Leave the PCC-initiated policy in place for the next session.</p>
+<h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
+<ul>
+<li>You can say who owns the PCC-initiated policy and who owns yours.</li>
+<li>Your PCE-initiated policy is up, with your color, and it is drawn on the map.</li>
+<li>You saw both policies in <code>show segment-routing traffic-eng policy</code>, or you have a written reason the headend console was unavailable.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../04-element-management/" class="btn btn-neutral float-left" title="4. Element management"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../06-l3vpn/" class="btn btn-neutral float-right" title="6. L3VPN provisioning">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../04-element-management/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../06-l3vpn/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

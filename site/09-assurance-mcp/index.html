@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>9. Assurance and MCP - Crosswork CNC Hands-on</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "9. Assurance and MCP";
+        var mkdocs_page_input_path = "09-assurance-mcp.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Crosswork CNC Hands-on
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../01-preparation/">1. Preparation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../02-cnc-management/">2. CNC management</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../03-active-topology/">3. Active Topology</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../04-element-management/">4. Element management</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../05-sr-te/">5. SR-TE and SRv6</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../06-l3vpn/">6. L3VPN provisioning</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../07-lcm/">7. Congestion mitigation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../08-ztp/">8. Lifecycle and ZTP</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">9. Assurance and MCP</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#91-assurance-on-the-controller">9.1 Assurance on the controller</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#92-the-assistant-and-mcp">9.2 The assistant and MCP</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#93-one-live-question">9.3 One live question</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#94-remediation-stays-with-you">9.4 Remediation stays with you</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#95-what-you-leave-out-of-the-chat">9.5 What you leave out of the chat</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#done-when">Done when</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../10-checkpoints/">Checkpoints</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Crosswork CNC Hands-on</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">9. Assurance and MCP</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="9-proactive-assurance-and-the-mcp-server">9. Proactive assurance and the MCP server<a class="headerlink" href="#9-proactive-assurance-and-the-mcp-server" title="Permanent link">&para;</a></h1>
+<p><strong>Time:</strong> 40 minutes.</p>
+<p><strong>Objective:</strong> See where CNC monitors service and device health, then ask the lab assistant one question that it can answer from a live Crosswork tool. You decide what to do with the answer.</p>
+<h2 id="91-assurance-on-the-controller">9.1 Assurance on the controller<a class="headerlink" href="#91-assurance-on-the-controller" title="Permanent link">&para;</a></h2>
+<p>You already used device alarms, events, and performance policies in chapter 4. Two more CNC 7.1 applications sit above that, when they are installed on this cluster:</p>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>What an operator uses it for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service Health</td>
+<td>A service-level view of the L2VPN and L3VPN you provisioned, with symptoms against the rules the operator enabled</td>
+</tr>
+<tr>
+<td>Health Insights</td>
+<td>KPI monitoring and alerts driven by logic the operator attached to devices</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>From the main menu or the application list, open <strong>Service Health</strong> if it is installed.</li>
+<li>Find <code>PTA-L3-SEAT-&lt;seat&gt;</code> if the service view has reached it. Read the health state and one symptom or rule name. If your service is absent, the collector has not scored it yet. Note the time and continue. Scoring can lag a new provision.</li>
+<li>Open <strong>Health Insights</strong> only if it is installed. Read one existing KPI profile. Enable no new KPI. A new profile on a shared cluster adds collection for every seat.</li>
+<li>If either application is missing from this single-VM lab, record "not installed" and continue with section 9.2. The MCP exercise is the required part of this chapter.</li>
+</ol>
+<p><strong>Result:</strong> You know whether service health is scoring your VPN, and you left KPI enablement unchanged.</p>
+<h2 id="92-the-assistant-and-mcp">9.2 The assistant and MCP<a class="headerlink" href="#92-the-assistant-and-mcp" title="Permanent link">&para;</a></h2>
+<p>The lab assistant is a chat page. When you ask a question, the assistant may call tools on an MCP server. That server is what talks to Crosswork. The tools listed in the assistant sidebar are the only live data the assistant can fetch. Anything else in the reply is explanation, and you treat it as explanation until you confirm it in the CNC UI.</p>
+<p>The instructor starts the assistant and the MCP server before this chapter. You receive the assistant URL on the whiteboard. You do not receive, and you do not type, the controller password, an API token, or a client secret. Those stay in the instructor's configuration outside this guide.</p>
+<ol>
+<li>Open the assistant URL.</li>
+<li>Read the backend status in the sidebar. Continue when it is online.</li>
+<li>Read the tool list. Find the tool whose description is the inventory node count. That is the live tool for this lab.</li>
+<li>If the sidebar also lists session or ticket tools, leave them unused. This chapter does not delete sessions and does not change the controller.</li>
+</ol>
+<p><strong>Result:</strong> The assistant is online and you can name the inventory tool.</p>
+<h2 id="93-one-live-question">9.3 One live question<a class="headerlink" href="#93-one-live-question" title="Permanent link">&para;</a></h2>
+<p>In the chat, ask:</p>
+<pre><code class="language-text">How many nodes are in the Crosswork inventory?
+</code></pre>
+<p>Wait for the reply. Open the tool-call detail the UI shows for that turn.</p>
+<p>Check all of the following:</p>
+<ul>
+<li>The assistant called the inventory count tool.</li>
+<li>The reply contains a number.</li>
+<li>You can find a matching count under <strong>Device Management &gt; Network Devices</strong> or <strong>Network Inventory</strong>. The two screens group equipment differently, so the numbers may differ by what each one counts. Write both numbers and one sentence on the difference you see. If they match, write that they match.</li>
+</ul>
+<p>If the tool call fails, the useful symptom is the error text, not a second guess from the model. A failure here usually means the assistant cannot authenticate to CNC or cannot reach the UI address. That is an instructor fix. Your earlier chapters already showed you the same inventory with your own login.</p>
+<p><strong>Result:</strong> A number from the tool, compared with the number you read in Device Management.</p>
+<h2 id="94-remediation-stays-with-you">9.4 Remediation stays with you<a class="headerlink" href="#94-remediation-stays-with-you" title="Permanent link">&para;</a></h2>
+<p>Ask a second question that does not require a write tool:</p>
+<pre><code class="language-text">The inventory count is &lt;the number you just verified&gt;.
+The CML lab should have &lt;the node count on the whiteboard&gt; routers.
+What should an operator check first in Crosswork?
+</code></pre>
+<p>A useful answer names checks you already know how to open:</p>
+<ul>
+<li>Reachability on <strong>Device Management &gt; Network Devices</strong></li>
+<li>The credential profile on that device</li>
+<li>Data Gateway mapping</li>
+<li>SR-PCE and NSO provider status</li>
+<li>Active alarms for that hostname</li>
+</ul>
+<p>Take one check the assistant named, open that CNC page, and confirm or contradict the suggestion with the screen. The screen wins. The assistant does not commit, delete, or provision.</p>
+<p>That is the remediation pattern for this lab: the assistant reads, the assistant suggests, the operator verifies, the operator changes the network only through the chapters that allow a commit.</p>
+<h2 id="95-what-you-leave-out-of-the-chat">9.5 What you leave out of the chat<a class="headerlink" href="#95-what-you-leave-out-of-the-chat" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Passwords, tokens, ticket ids, and certificate contents</li>
+<li>A request to delete a session, a policy, a VPN, or a device</li>
+<li>Configuration text copied from another seat's dry run</li>
+</ul>
+<h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
+<ul>
+<li>You know whether Service Health and Health Insights are installed.</li>
+<li>The assistant answered the inventory question with a tool call.</li>
+<li>You compared that number with Device Management.</li>
+<li>You verified one suggested check on a CNC screen.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../08-ztp/" class="btn btn-neutral float-left" title="8. Lifecycle and ZTP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../10-checkpoints/" class="btn btn-neutral float-right" title="Checkpoints">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../08-ztp/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../10-checkpoints/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

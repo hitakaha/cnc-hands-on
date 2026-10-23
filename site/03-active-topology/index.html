@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>3. Active Topology - Crosswork CNC Hands-on</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "3. Active Topology";
+        var mkdocs_page_input_path = "03-active-topology.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Crosswork CNC Hands-on
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../01-preparation/">1. Preparation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../02-cnc-management/">2. CNC management</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">3. Active Topology</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#31-open-the-map">3.1 Open the map</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#32-read-a-device-and-a-link">3.2 Read a device and a link</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#33-layers-and-filters">3.3 Layers and filters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#34-dashboard-tiles">3.4 Dashboard tiles</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#done-when">Done when</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../04-element-management/">4. Element management</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../05-sr-te/">5. SR-TE and SRv6</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../06-l3vpn/">6. L3VPN provisioning</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../07-lcm/">7. Congestion mitigation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../08-ztp/">8. Lifecycle and ZTP</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../09-assurance-mcp/">9. Assurance and MCP</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../10-checkpoints/">Checkpoints</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Crosswork CNC Hands-on</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">3. Active Topology</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="3-active-topology-cat">3. Active Topology (CAT)<a class="headerlink" href="#3-active-topology-cat" title="Permanent link">&para;</a></h1>
+<p><strong>Time:</strong> 45 minutes.</p>
+<p><strong>Objective:</strong> Use Crosswork Active Topology to answer where a device sits, how it is connected, and which layer you are looking at.</p>
+<p>Active Topology is the map. Optimization Engine supplies the traffic-engineering view on top of the same topology. You will switch between those views so the two products stay distinct in your notes.</p>
+<h2 id="31-open-the-map">3.1 Open the map<a class="headerlink" href="#31-open-the-map" title="Permanent link">&para;</a></h2>
+<ol>
+<li>From the main menu, open <strong>Topology</strong>.</li>
+<li>Wait for the devices from the CML lab to appear. A topology that stays empty usually means the SR-PCE provider is up and BGP-LS is down, or the CML nodes are still booting. Check chapter 2 and the checkpoint page.</li>
+<li>Switch between the logical map and the geographical map if both are offered. The logical map is the one you will use for the rest of the day.</li>
+<li>Zoom to the two provider edges named on your lab-values sheet. Those are the headend and the endpoint for chapters 5 and 6.</li>
+</ol>
+<p><strong>Result:</strong> You can find both PEs and at least one path between them.</p>
+<h2 id="32-read-a-device-and-a-link">3.2 Read a device and a link<a class="headerlink" href="#32-read-a-device-and-a-link" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Select the headend. Open the details panel.</li>
+<li>Record the hostname, the management address, and the reachability state.</li>
+<li>Select a core link that sits on a path between the headend and the endpoint.</li>
+<li>In the link details, record:<ul>
+<li>IGP metric</li>
+<li>TE metric, if one is shown</li>
+<li>Interface names on each side</li>
+<li>Utilization, if a value is shown</li>
+<li>Adjacency SID or SRv6 adjacency information, if the link shows it</li>
+</ul>
+</li>
+<li>Say out loud which value a PCE would minimize if the objective was IGP metric, and which value it would minimize if the objective was TE metric.</li>
+</ol>
+<p>Utilization on a CML link is often 0%. Write down the number you actually see. Chapter 7 uses it.</p>
+<p><strong>Result:</strong> One device record and one link record in your notes.</p>
+<h2 id="33-layers-and-filters">3.3 Layers and filters<a class="headerlink" href="#33-layers-and-filters" title="Permanent link">&para;</a></h2>
+<p>The map can show more than one underlay. PTA's core work is segment routing, with SRv6 as the policy type when the whiteboard says so.</p>
+<ol>
+<li>Open the layer or protocol selector.</li>
+<li>Turn on the IGP layer and confirm the links you care about are still there.</li>
+<li>Turn on the SR-MPLS or SRv6 layer that matches the whiteboard. Adjacency and prefix SID information belongs to this layer.</li>
+<li>If a Flex-Algo layer is present, note the algorithm id and leave it. Flex-Algo is a map fact in this lab, not a configuration task.</li>
+<li>Apply a filter or device group that shows only the lab core, if a group already exists. Creating a new group is optional and is an instructor choice on a shared map.</li>
+</ol>
+<p><strong>Result:</strong> You can turn the TE layer on and still recognize the same two PEs.</p>
+<h2 id="34-dashboard-tiles">3.4 Dashboard tiles<a class="headerlink" href="#34-dashboard-tiles" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Return to the home page or the topology dashboard.</li>
+<li>Read the tiles that summarize device reachability, link state, and policy count.</li>
+<li>If a tile shows zero SR policies, that is acceptable before chapter 5. Write the number down so you can compare it after you create a PCE-initiated policy.</li>
+</ol>
+<p><strong>Result:</strong> You have a baseline count of policies and of reachable devices.</p>
+<h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Both lab PEs are on the map and reachable.</li>
+<li>You recorded metric and utilization for one core link.</li>
+<li>You can show the IGP layer and the segment-routing layer.</li>
+<li>You know the baseline SR policy count.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../02-cnc-management/" class="btn btn-neutral float-left" title="2. CNC management"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../04-element-management/" class="btn btn-neutral float-right" title="4. Element management">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../02-cnc-management/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../04-element-management/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
