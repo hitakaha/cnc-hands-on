@@ -266,28 +266,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#lab-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lab values
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-read-this-guide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How to read this guide
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -603,28 +581,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#lab-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lab values
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-read-this-guide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How to read this guide
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -643,7 +599,7 @@
 
 
 <h1 id="crosswork-cnc-hands-on">Crosswork CNC Hands-on<a class="headerlink" href="#crosswork-cnc-hands-on" title="Permanent link">&para;</a></h1>
-<p>This is the operator lab for Cisco Crosswork Network Controller (CNC) 7.2.1-SP. You will use the dCloud session from chapter 1: one CNC, a five-node IOS-XR lab, and a dedicated SR-PCE lab.</p>
+<p>This is the operator lab for Cisco Crosswork Network Controller (CNC) 7.2.0. You will use the dCloud session from chapter 1: one CNC, a five-node IOS-XR lab, and a dedicated SR-PCE lab.</p>
 <p>Each chapter has an objective, the clicks or CLI, the result you should see, and a short <strong>Done when</strong> list. Router work in this lab is <code>show</code> output unless a chapter says otherwise. Configuration changes go through CNC.</p>
 <h2 id="lab-story">Lab story<a class="headerlink" href="#lab-story" title="Permanent link">&para;</a></h2>
 <ol>
@@ -658,64 +614,6 @@
 <li>Collect showtech, read collection jobs and alarms, and walk the patch screen.</li>
 <li>Optional: ask the CNC MCP assistant one inventory question.</li>
 </ol>
-<h2 id="lab-values">Lab values<a class="headerlink" href="#lab-values" title="Permanent link">&para;</a></h2>
-<p>Copy this table into your notes. Fill hostnames and interfaces from the CML labs and from the instructor. Keep passwords out of the guide, out of chat, and out of screenshots you share.</p>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Your value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CNC UI</td>
-<td><code>https://[2001:db8:134::200]:30603</code> (from chapter 1)</td>
-</tr>
-<tr>
-<td>XR CML lab</td>
-<td><code>5-nodes_L3VPN 8201-32FH 25.3.1-ipv6</code></td>
-</tr>
-<tr>
-<td>PCE CML lab</td>
-<td><code>xrv9k-25.4.1-pce-for-CNC7.2-ipv6</code></td>
-</tr>
-<tr>
-<td>Headend PE</td>
-<td></td>
-</tr>
-<tr>
-<td>Endpoint PE</td>
-<td></td>
-</tr>
-<tr>
-<td>Attachment interfaces</td>
-<td></td>
-</tr>
-<tr>
-<td>PCE-initiated policy name</td>
-<td><code>pta-pce-01</code></td>
-</tr>
-<tr>
-<td>Policy color</td>
-<td>assigned by the instructor</td>
-</tr>
-<tr>
-<td>L3VPN name</td>
-<td><code>pta-l3vpn-01</code></td>
-</tr>
-<tr>
-<td>VPWS name</td>
-<td><code>pta-vpws-01</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="how-to-read-this-guide">How to read this guide<a class="headerlink" href="#how-to-read-this-guide" title="Permanent link">&para;</a></h2>
-<p>From this folder, with the existing virtual environment:</p>
-<pre><code class="language-bash">source venv/bin/activate
-mkdocs serve
-</code></pre>
-<p>Open the local URL MkDocs prints. <code>mkdocs build</code> writes the static site under <code>site/</code>.</p>
 
 
 

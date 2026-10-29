@@ -296,10 +296,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#12-start-the-cml-lab" class="md-nav__link">
+  <a href="#12-confirm-cml-labs-are-running" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.2 Start the CML lab
+        1.2 Confirm CML labs are running
       
     </span>
   </a>
@@ -606,10 +606,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#12-start-the-cml-lab" class="md-nav__link">
+  <a href="#12-confirm-cml-labs-are-running" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.2 Start the CML lab
+        1.2 Confirm CML labs are running
       
     </span>
   </a>
@@ -655,11 +655,11 @@
 <p>Maintenance mode is how CNC stops itself cleanly for a reboot, a backup, or a restore. After a reboot that began in maintenance mode, the cluster comes back in maintenance mode and waits for the slider to be turned off.</p>
 <ol>
 <li>
-<p>Sign in to the dCloud.
+<p>Sign in to the dCloud and click "View" button (Note, the scenario name could be different).
 <img alt="dcloud" src="../img/01/01-dcloud.png" /></p>
 </li>
 <li>
-<p>Access Ubuntu2204-1T-Desktop, run Firefox on the Desktop and open CNC UI (username and password are shared in the session)</p>
+<p>Access Ubuntu2204-1T-Desktop, run Firefox on the Desktop and open CNC UI (username and password are shared in the session).</p>
 <p>https://[2001:db8:134::200]:30603</p>
 </li>
 <li>
@@ -667,7 +667,7 @@
 </li>
 <li>If a popup already offers to turn maintenance mode off, accept it.</li>
 <li>
-<p>If the Maintenance slider is On, drag it to Off and confirm.
+<p>If the Maintenance slider is On, drag it to Off.
 <img alt="dcloud" src="../img/01/02-turn-off-maintenance-mode.png" /></p>
 </li>
 <li>
@@ -675,13 +675,13 @@
 </li>
 </ol>
 <p><strong>Result:</strong> The maintenance slider stays Off, the UI loads the normal home page.</p>
-<h2 id="12-start-the-cml-lab">1.2 Start the CML lab<a class="headerlink" href="#12-start-the-cml-lab" title="Permanent link">&para;</a></h2>
+<h2 id="12-confirm-cml-labs-are-running">1.2 Confirm CML labs are running<a class="headerlink" href="#12-confirm-cml-labs-are-running" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Open another tab on Firefox and click "CML2 for XR" in the bookmark.</li>
-<li>Start "5-nodes_L3VPN 8201-32FH 25.3.1-ipv6" scenario
+<li>Confirm "5-nodes_L3VPN 8201-32FH 25.3.1-ipv6" scenario is running. If not, start the scenario.
 <img alt="dcloud" src="../img/01/03-run-xr.png" /></li>
 <li>Open another tab on Firefox and click "CML2 for PCE" in the bookmark.</li>
-<li>Start "xrv9k-25.4.1-pce-for-CNC7.2-ipv6" scenario
+<li>Confirm "xrv9k-25.4.1-pce-for-CNC7.2-ipv6" scenario is running. IF not, start the scenario.
 <img alt="dcloud" src="../img/01/04-run-pce.png" /></li>
 </ol>
 <p><strong>Result:</strong> The lab is booted. CNC can reach the devices after the providers and the Data Gateway are healthy. You confirm that reachability in the next chapter.</p>
