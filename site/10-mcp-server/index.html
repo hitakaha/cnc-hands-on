@@ -6,15 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.1 on the PTA network">
+        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.2.1-SP">
       
       
       
       
-        <link rel="prev" href="../06-l3vpn/">
+        <link rel="prev" href="../09-troubleshooting/">
       
-      
-        <link rel="next" href="../08-ztp/">
       
       
         
@@ -25,7 +23,7 @@
     
     
       
-        <title>7. Congestion mitigation - Crosswork CNC Hands-on</title>
+        <title>10. Optional CNC MCP server - Crosswork CNC Hands-on</title>
       
     
     
@@ -66,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#7-closed-loop-congestion-mitigation" class="md-skip">
+        <a href="#10-optional-cnc-mcp-server" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7. Congestion mitigation
+              10. Optional CNC MCP server
             
           </span>
         </div>
@@ -384,6 +382,87 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-l2vpn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. L2VPN provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-assurance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Assurance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -403,7 +482,7 @@
   <span class="md-ellipsis">
     
   
-    7. Congestion mitigation
+    10. Optional CNC MCP server
   
 
     
@@ -421,7 +500,7 @@
   <span class="md-ellipsis">
     
   
-    7. Congestion mitigation
+    10. Optional CNC MCP server
   
 
     
@@ -447,10 +526,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#71-lab-decision" class="md-nav__link">
+  <a href="#101-open-the-assistant" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.1 Lab decision
+        10.1 Open the assistant
       
     </span>
   </a>
@@ -458,10 +537,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#72-open-the-domain" class="md-nav__link">
+  <a href="#102-one-live-question" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.2 Open the domain
+        10.2 One live question
       
     </span>
   </a>
@@ -469,10 +548,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#73-read-the-thresholds-and-the-loop" class="md-nav__link">
+  <a href="#103-operator-check-not-a-write" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.3 Read the thresholds and the loop
+        10.3 Operator check, not a write
       
     </span>
   </a>
@@ -480,21 +559,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#74-recommendations" class="md-nav__link">
+  <a href="#104-what-you-leave-out-of-the-chat" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.4 Recommendations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#75-what-you-leave-alone" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.5 What you leave alone
+        10.4 What you leave out of the chat
       
     </span>
   </a>
@@ -516,87 +584,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../08-ztp/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    8. Lifecycle and ZTP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09-assurance-mcp/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    9. Assurance and MCP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10-checkpoints/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Checkpoints
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -628,10 +615,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#71-lab-decision" class="md-nav__link">
+  <a href="#101-open-the-assistant" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.1 Lab decision
+        10.1 Open the assistant
       
     </span>
   </a>
@@ -639,10 +626,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#72-open-the-domain" class="md-nav__link">
+  <a href="#102-one-live-question" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.2 Open the domain
+        10.2 One live question
       
     </span>
   </a>
@@ -650,10 +637,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#73-read-the-thresholds-and-the-loop" class="md-nav__link">
+  <a href="#103-operator-check-not-a-write" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.3 Read the thresholds and the loop
+        10.3 Operator check, not a write
       
     </span>
   </a>
@@ -661,21 +648,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#74-recommendations" class="md-nav__link">
+  <a href="#104-what-you-leave-out-of-the-chat" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.4 Recommendations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#75-what-you-leave-alone" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.5 What you leave alone
+        10.4 What you leave out of the chat
       
     </span>
   </a>
@@ -710,70 +686,58 @@
 
 
 
-<h1 id="7-closed-loop-congestion-mitigation">7. Closed-loop congestion mitigation<a class="headerlink" href="#7-closed-loop-congestion-mitigation" title="Permanent link">&para;</a></h1>
-<p><strong>Time:</strong> 45 minutes.</p>
-<p><strong>Objective:</strong> Read Local Congestion Mitigation (LCM) on CNC 7.1, explain the closed loop, and leave the shared network in Manual mode.</p>
-<h2 id="71-lab-decision">7.1 Lab decision<a class="headerlink" href="#71-lab-decision" title="Permanent link">&para;</a></h2>
-<p>LCM is a real Optimization Engine feature in CNC 7.1, and it is the right exercise for this chapter. It looks for congestion on a timer, estimates traffic that can be moved off a hot interface, and recommends tactical traffic-engineering (TTE) SR policies around that interface. In Manual mode an operator previews the recommendation and then commits it. SR-PCE deploys the tactical policies. When the interface cools, LCM recommends removal.</p>
-<p>LCM sees congestion through SNMP interface counters collected by the Data Gateway. It also needs a discovered IGP domain (the BGP-LS <code>link-state instance-id</code>), an alternate local path, and a tactical color that no other policy uses.</p>
-<p>A CML topology often reports <strong>0% utilization</strong>, because the links carry no traffic. LCM then has nothing to mitigate. That outcome still completes this chapter. Record the utilization and the threshold, and explain why the operational dashboard has no recommendation.</p>
-<div class="admonition note">
-<p class="admonition-title">Instructor</p>
-<p>Keep the domain in <strong>Manual</strong> mode. Automated mode deploys tactical policies without a human commit, and in later releases it also requires a fully gRPC-compliant domain. Students do not change the mode.</p>
-<p>Commit a recommendation only when one domain shows a real recommendation and you want the room to see a single deploy. Use the reserved tactical color. Students do not click <strong>Commit all</strong>.</p>
-<p>If you want a live PCE action and every interface is idle, use Bandwidth on Demand as a demonstration. BWoD asks for a path with a bandwidth number. It does not need a hot link. It is a different feature. Show it from the instructor console, and keep the student exercise on the LCM screens.</p>
-</div>
-<h2 id="72-open-the-domain">7.2 Open the domain<a class="headerlink" href="#72-open-the-domain" title="Permanent link">&para;</a></h2>
+<h1 id="10-optional-cnc-mcp-server">10. Optional: CNC MCP server<a class="headerlink" href="#10-optional-cnc-mcp-server" title="Permanent link">&para;</a></h1>
+<p><strong>Time:</strong> 20 minutes. Skip this chapter if the instructor does not start the assistant.</p>
+<p><strong>Objective:</strong> Ask the lab assistant one question that it can answer with a live Crosswork tool. Confirm the answer in the CNC UI. You decide what to do next.</p>
+<p>The assistant is a chat page. When you ask a question, it may call tools on an MCP server. That server is what talks to CNC. The tools listed in the assistant sidebar are the only live data the assistant can fetch. Anything else in the reply is explanation until you confirm it in the UI.</p>
+<h2 id="101-open-the-assistant">10.1 Open the assistant<a class="headerlink" href="#101-open-the-assistant" title="Permanent link">&para;</a></h2>
+<p>The instructor starts the assistant and the MCP server, then gives you the URL. You do not receive, and you do not type, the CNC password, an API token, or a client secret.</p>
 <ol>
-<li>Go to <strong>Services &amp; Traffic Engineering &gt; Local Congestion Mitigation</strong>.</li>
-<li>Read the domain card. The domain id comes from the IGP <code>link-state instance-id</code> advertised in BGP-LS.</li>
-<li>Record:<ul>
-<li>LCM status (enabled or not)</li>
-<li>Operation mode</li>
-<li>Urgency</li>
-<li>The description, which defaults to "LCM Startup Config" on a fresh configuration</li>
-</ul>
-</li>
-<li>If the card says the domain is not configured, stop and let the instructor open <strong>Configure</strong>. The room uses one LCM configuration.</li>
+<li>Open the assistant URL.</li>
+<li>Read the backend status in the sidebar. Continue when it is online.</li>
+<li>Read the tool list. Find the tool whose description is the inventory node count. That is the live tool for this lab.</li>
+<li>If the sidebar also lists session or ticket tools, leave them unused. This chapter does not delete sessions and does not change the controller.</li>
 </ol>
-<p><strong>Result:</strong> You know the domain id and the operation mode. The mode you want to see is Manual.</p>
-<h2 id="73-read-the-thresholds-and-the-loop">7.3 Read the thresholds and the loop<a class="headerlink" href="#73-read-the-thresholds-and-the-loop" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Open <strong>Interface Thresholds</strong>. Find one core interface you recorded in chapter 3. Read its utilization threshold.</li>
-<li>Compare that threshold with the utilization you wrote down from the topology map. Say which side of the threshold the interface is on.</li>
-<li>Open <strong>Configuration</strong>. Read the congestion check interval, the optimization objective, and the operation mode. Leave every field as you found it.</li>
-<li>Walk the loop in your own words:<ul>
-<li>CDG polls interface counters with SNMP.</li>
-<li>LCM compares utilization with the interface threshold on the check interval.</li>
-<li>A hot interface produces a TTE SR policy recommendation that stays local to that hop.</li>
-<li>In Manual mode the recommendation waits on the operational dashboard.</li>
-<li>Commit sends the tactical policy through SR-PCE.</li>
-<li>A later check recommends deletion when the interface is under the threshold again.</li>
-</ul>
-</li>
-</ol>
-<p><strong>Result:</strong> You can teach the loop from the screens, with your own utilization number in the story.</p>
-<h2 id="74-recommendations">7.4 Recommendations<a class="headerlink" href="#74-recommendations" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Open the <strong>Operational Dashboard</strong> for the domain. Use the "Recommendations available" link when the card shows it.</li>
-<li>If a recommendation is listed, read urgency and the interfaces it would bypass. Preview it on the map. Then stop. The instructor commits, or nobody commits.</li>
-<li>If the dashboard is empty, write the sentence: "No recommendation, utilization is below the threshold." Include the two numbers.</li>
-<li>Open <strong>Operational History</strong> if it has rows from an earlier demo, and read one commit or one removal. History is part of the product even when this hour adds no new row.</li>
-</ol>
-<p><strong>Result:</strong> You have either previewed one recommendation or recorded why none exists.</p>
-<h2 id="75-what-you-leave-alone">7.5 What you leave alone<a class="headerlink" href="#75-what-you-leave-alone" title="Permanent link">&para;</a></h2>
+<p><strong>Result:</strong> The assistant is online and you can name the inventory tool.</p>
+<h2 id="102-one-live-question">10.2 One live question<a class="headerlink" href="#102-one-live-question" title="Permanent link">&para;</a></h2>
+<p>In the chat, ask:</p>
+<pre><code class="language-text">How many nodes are in the Crosswork inventory?
+</code></pre>
+<p>Wait for the reply. Open the tool-call detail for that turn.</p>
+<p>Check all of the following:</p>
 <ul>
-<li>The operation-mode control stays on Manual.</li>
-<li><strong>Commit all</strong> stays with the instructor.</li>
-<li>The tactical color stays the reserved color, and it stays off your chapter 5 policy.</li>
-<li>Per-interface threshold edits are an instructor tool for a demo. A room full of lowered thresholds creates a pile of recommendations against empty CML links.</li>
+<li>The assistant called the inventory count tool.</li>
+<li>The reply contains a number.</li>
+<li>You can find a matching count under <strong>Device Management &gt; Network Devices</strong> or <strong>Network Inventory</strong>. The two screens group equipment differently, so the numbers may differ by what each one counts. Write both numbers and one sentence on the difference. If they match, write that they match.</li>
+</ul>
+<p>If the tool call fails, the useful symptom is the error text, not a second guess from the model. A failure here usually means the assistant cannot authenticate to CNC or cannot reach the UI address. That is an instructor fix. Chapters 2 and 4 already showed you the same inventory with your own login.</p>
+<p><strong>Result:</strong> A number from the tool, compared with Device Management.</p>
+<h2 id="103-operator-check-not-a-write">10.3 Operator check, not a write<a class="headerlink" href="#103-operator-check-not-a-write" title="Permanent link">&para;</a></h2>
+<p>Ask a second question that does not require a write tool:</p>
+<pre><code class="language-text">The inventory count is &lt;the number you just verified&gt;.
+The CML lab should have the routers from 5-nodes_L3VPN 8201-32FH 25.3.1-ipv6.
+What should an operator check first in Crosswork?
+</code></pre>
+<p>A useful answer names checks you already know how to open:</p>
+<ul>
+<li>Reachability on <strong>Device Management &gt; Network Devices</strong></li>
+<li>The credential profile on that device</li>
+<li>Data Gateway mapping</li>
+<li>Collection job status</li>
+<li>SR-PCE and NSO provider status</li>
+<li>Active alarms for that hostname</li>
+</ul>
+<p>Take one check the assistant named, open that CNC page, and confirm or contradict the suggestion with the screen. The screen wins.</p>
+<h2 id="104-what-you-leave-out-of-the-chat">10.4 What you leave out of the chat<a class="headerlink" href="#104-what-you-leave-out-of-the-chat" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Passwords, tokens, ticket ids, and certificate contents</li>
+<li>A request to delete a session, a policy, a VPN, or a device</li>
+<li>Configuration text from another service's dry run</li>
 </ul>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
 <ul>
-<li>You can open the LCM domain, the thresholds, and the configuration.</li>
-<li>You compared one interface's utilization with its threshold.</li>
-<li>You can describe what a commit would deploy, and you did not deploy it yourself.</li>
-<li>You know BWoD is the instructor's fallback when the lab has no congestion to show.</li>
+<li>You completed this chapter, or you skipped it because the assistant was not started.</li>
+<li>If you used it: the assistant answered the inventory question with a tool call, and you compared that number with Device Management.</li>
 </ul>
 
 

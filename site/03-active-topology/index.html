@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.1 on the PTA network">
+        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.2.1-SP">
       
       
       
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#3-active-topology-cat" class="md-skip">
+        <a href="#3-active-topology" class="md-skip">
           Skip to content
         </a>
       
@@ -350,10 +350,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#32-read-a-device-and-a-link" class="md-nav__link">
+  <a href="#32-read-a-device-and-a-link-in-cnc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 Read a device and a link
+        3.2 Read a device and a link in CNC
       
     </span>
   </a>
@@ -361,21 +361,71 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#33-layers-and-filters" class="md-nav__link">
+  <a href="#33-confirm-the-same-topology-from-xr-cli" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 Layers and filters
+        3.3 Confirm the same topology from XR CLI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Confirm the same topology from XR CLI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neighbors-and-igp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neighbors and IGP
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#34-dashboard-tiles" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#addressing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.4 Dashboard tiles
+        Addressing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#srv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SRv6
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-cnc-learned-this-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How CNC learned this topology
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-dashboard-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Dashboard baseline
       
     </span>
   </a>
@@ -489,14 +539,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-lcm/" class="md-nav__link">
+      <a href="../07-l2vpn/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    7. Congestion mitigation
+    7. L2VPN provisioning
   
 
     
@@ -516,14 +566,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-ztp/" class="md-nav__link">
+      <a href="../08-assurance/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    8. Lifecycle and ZTP
+    8. Assurance
   
 
     
@@ -543,14 +593,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-assurance-mcp/" class="md-nav__link">
+      <a href="../09-troubleshooting/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    9. Assurance and MCP
+    9. Troubleshooting
   
 
     
@@ -570,14 +620,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../10-checkpoints/" class="md-nav__link">
+      <a href="../10-mcp-server/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Checkpoints
+    10. Optional CNC MCP server
   
 
     
@@ -628,10 +678,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#32-read-a-device-and-a-link" class="md-nav__link">
+  <a href="#32-read-a-device-and-a-link-in-cnc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 Read a device and a link
+        3.2 Read a device and a link in CNC
       
     </span>
   </a>
@@ -639,21 +689,71 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#33-layers-and-filters" class="md-nav__link">
+  <a href="#33-confirm-the-same-topology-from-xr-cli" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 Layers and filters
+        3.3 Confirm the same topology from XR CLI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Confirm the same topology from XR CLI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neighbors-and-igp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neighbors and IGP
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#34-dashboard-tiles" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#addressing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.4 Dashboard tiles
+        Addressing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#srv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SRv6
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-cnc-learned-this-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How CNC learned this topology
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-dashboard-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Dashboard baseline
       
     </span>
   </a>
@@ -688,57 +788,80 @@
 
 
 
-<h1 id="3-active-topology-cat">3. Active Topology (CAT)<a class="headerlink" href="#3-active-topology-cat" title="Permanent link">&para;</a></h1>
+<h1 id="3-active-topology">3. Active Topology<a class="headerlink" href="#3-active-topology" title="Permanent link">&para;</a></h1>
 <p><strong>Time:</strong> 45 minutes.</p>
-<p><strong>Objective:</strong> Use Crosswork Active Topology to answer where a device sits, how it is connected, and which layer you are looking at.</p>
-<p>Active Topology is the map. Optimization Engine supplies the traffic-engineering view on top of the same topology. You will switch between those views so the two products stay distinct in your notes.</p>
+<p><strong>Objective:</strong> Use Crosswork Active Topology to answer where a device sits and how it is connected, then prove the same facts from IOS-XR CLI.</p>
+<p>Active Topology is the map. Optimization Engine draws traffic-engineering objects on top of the same topology. You will use both views, then open a PE console from CML.</p>
+<p>This lab is IPv6. IS-IS, BGP-LS, SRv6 locators, and PCEP should match what the map shows.</p>
 <h2 id="31-open-the-map">3.1 Open the map<a class="headerlink" href="#31-open-the-map" title="Permanent link">&para;</a></h2>
 <ol>
 <li>From the main menu, open <strong>Topology</strong>.</li>
-<li>Wait for the devices from the CML lab to appear. A topology that stays empty usually means the SR-PCE provider is up and BGP-LS is down, or the CML nodes are still booting. Check chapter 2 and the checkpoint page.</li>
-<li>Switch between the logical map and the geographical map if both are offered. The logical map is the one you will use for the rest of the day.</li>
-<li>Zoom to the two provider edges named on your lab-values sheet. Those are the headend and the endpoint for chapters 5 and 6.</li>
+<li>Wait for the devices from <code>5-nodes_L3VPN 8201-32FH 25.3.1-ipv6</code> to appear. An empty map usually means the SR-PCE provider is up and BGP-LS is still down, or the CML nodes are still booting. Recheck chapter 2.</li>
+<li>Use the logical map, not the geographical map.</li>
+<li>Identify two provider-edge routers. Those become the headend and the endpoint for chapters 5 through 8. Write the hostnames on your lab-values sheet.</li>
 </ol>
-<p><strong>Result:</strong> You can find both PEs and at least one path between them.</p>
-<h2 id="32-read-a-device-and-a-link">3.2 Read a device and a link<a class="headerlink" href="#32-read-a-device-and-a-link" title="Permanent link">&para;</a></h2>
+<p><strong>Result:</strong> You can find both PEs and at least one IGP path between them.</p>
+<h2 id="32-read-a-device-and-a-link-in-cnc">3.2 Read a device and a link in CNC<a class="headerlink" href="#32-read-a-device-and-a-link-in-cnc" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Select the headend. Open the details panel.</li>
-<li>Record the hostname, the management address, and the reachability state.</li>
-<li>Select a core link that sits on a path between the headend and the endpoint.</li>
+<li>Record hostname, management IPv6 address, reachability, and IGP router id if it is shown.</li>
+<li>Select a core link on a path between the two PEs.</li>
 <li>In the link details, record:<ul>
+<li>Interface names on each side</li>
 <li>IGP metric</li>
 <li>TE metric, if one is shown</li>
-<li>Interface names on each side</li>
 <li>Utilization, if a value is shown</li>
-<li>Adjacency SID or SRv6 adjacency information, if the link shows it</li>
+<li>SRv6 adjacency or locator information, if the link shows it</li>
 </ul>
 </li>
-<li>Say out loud which value a PCE would minimize if the objective was IGP metric, and which value it would minimize if the objective was TE metric.</li>
+<li>Open the layer or protocol selector. Turn on the IGP layer, then the SRv6 layer. Flex-Algo, if present, is a map fact in this lab, not a configuration task.</li>
 </ol>
-<p>Utilization on a CML link is often 0%. Write down the number you actually see. Chapter 7 uses it.</p>
+<p>Utilization on a CML link is often 0%. Write down the number you actually see.</p>
 <p><strong>Result:</strong> One device record and one link record in your notes.</p>
-<h2 id="33-layers-and-filters">3.3 Layers and filters<a class="headerlink" href="#33-layers-and-filters" title="Permanent link">&para;</a></h2>
-<p>The map can show more than one underlay. PTA's core work is segment routing, with SRv6 as the policy type when the whiteboard says so.</p>
-<ol>
-<li>Open the layer or protocol selector.</li>
-<li>Turn on the IGP layer and confirm the links you care about are still there.</li>
-<li>Turn on the SR-MPLS or SRv6 layer that matches the whiteboard. Adjacency and prefix SID information belongs to this layer.</li>
-<li>If a Flex-Algo layer is present, note the algorithm id and leave it. Flex-Algo is a map fact in this lab, not a configuration task.</li>
-<li>Apply a filter or device group that shows only the lab core, if a group already exists. Creating a new group is optional and is an instructor choice on a shared map.</li>
-</ol>
-<p><strong>Result:</strong> You can turn the TE layer on and still recognize the same two PEs.</p>
-<h2 id="34-dashboard-tiles">3.4 Dashboard tiles<a class="headerlink" href="#34-dashboard-tiles" title="Permanent link">&para;</a></h2>
+<h2 id="33-confirm-the-same-topology-from-xr-cli">3.3 Confirm the same topology from XR CLI<a class="headerlink" href="#33-confirm-the-same-topology-from-xr-cli" title="Permanent link">&para;</a></h2>
+<p>From CML, open a console on the headend PE. Stay in EXEC. Do not enter configuration mode.</p>
+<h3 id="neighbors-and-igp">Neighbors and IGP<a class="headerlink" href="#neighbors-and-igp" title="Permanent link">&para;</a></h3>
+<pre><code class="language-text">show isis neighbors
+show isis topology
+</code></pre>
+<p>If the lab uses a named IS-IS instance, the instructor will give you the instance name and you will use:</p>
+<pre><code class="language-text">show isis instance &lt;name&gt; neighbors
+show isis instance &lt;name&gt; topology
+</code></pre>
+<p>Match each IS-IS neighbor to a node on the CNC map. The neighbor count and the path you traced in section 3.2 should agree.</p>
+<h3 id="addressing">Addressing<a class="headerlink" href="#addressing" title="Permanent link">&para;</a></h3>
+<pre><code class="language-text">show ipv6 interface brief
+show interface &lt;core-interface&gt; brief
+</code></pre>
+<p>Confirm the core interface you clicked on the map is up/up and that the IPv6 address matches the link panel in CNC.</p>
+<h3 id="srv6">SRv6<a class="headerlink" href="#srv6" title="Permanent link">&para;</a></h3>
+<pre><code class="language-text">show segment-routing srv6 locator
+show segment-routing srv6 sid
+</code></pre>
+<p>The locator prefix on the PE should match the SRv6 layer on the map. If the map shows a locator and the CLI does not, the topology feed is stale. Wait and refresh; do not configure a locator.</p>
+<h3 id="how-cnc-learned-this-topology">How CNC learned this topology<a class="headerlink" href="#how-cnc-learned-this-topology" title="Permanent link">&para;</a></h3>
+<p>On the PE:</p>
+<pre><code class="language-text">show bgp link-state
+show bgp link-state summary
+</code></pre>
+<p>On the SR-PCE (the second CML lab), if the instructor opens that console:</p>
+<pre><code class="language-text">show pce ipv6 peer
+show pce ipv6 topology summary
+</code></pre>
+<p>PCE should list the PEs as BGP-LS and PCEP peers. That is the feed behind the CNC map.</p>
+<p><strong>Result:</strong> Hostname, neighbor, core interface, and SRv6 locator agree between CNC and CLI.</p>
+<h2 id="34-dashboard-baseline">3.4 Dashboard baseline<a class="headerlink" href="#34-dashboard-baseline" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Return to the home page or the topology dashboard.</li>
-<li>Read the tiles that summarize device reachability, link state, and policy count.</li>
-<li>If a tile shows zero SR policies, that is acceptable before chapter 5. Write the number down so you can compare it after you create a PCE-initiated policy.</li>
+<li>Record the reachable-device count and the SR policy count.</li>
+<li>Zero SR policies is acceptable before chapter 5. You will compare the policy count after you create a PCE-initiated policy.</li>
 </ol>
-<p><strong>Result:</strong> You have a baseline count of policies and of reachable devices.</p>
+<p><strong>Result:</strong> You have a baseline count of devices and policies.</p>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Both lab PEs are on the map and reachable.</li>
-<li>You recorded metric and utilization for one core link.</li>
-<li>You can show the IGP layer and the segment-routing layer.</li>
+<li><code>show isis neighbors</code> (or the named-instance form) matches the map.</li>
+<li>The core interface and SRv6 locator you recorded in CNC appear in XR CLI.</li>
 <li>You know the baseline SR policy count.</li>
 </ul>
 

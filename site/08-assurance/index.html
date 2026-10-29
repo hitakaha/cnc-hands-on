@@ -6,13 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.1 on the PTA network">
+        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.2.1-SP">
       
       
       
       
-        <link rel="prev" href="../09-assurance-mcp/">
+        <link rel="prev" href="../07-l2vpn/">
       
+      
+        <link rel="next" href="../09-troubleshooting/">
       
       
         
@@ -23,7 +25,7 @@
     
     
       
-        <title>Checkpoints - Crosswork CNC Hands-on</title>
+        <title>8. Assurance - Crosswork CNC Hands-on</title>
       
     
     
@@ -64,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#checkpoints" class="md-skip">
+        <a href="#8-assurance" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Checkpoints
+              8. Assurance
             
           </span>
         </div>
@@ -385,68 +387,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-lcm/" class="md-nav__link">
+      <a href="../07-l2vpn/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    7. Congestion mitigation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../08-ztp/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    8. Lifecycle and ZTP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09-assurance-mcp/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    9. Assurance and MCP
+    7. L2VPN provisioning
   
 
     
@@ -482,7 +430,7 @@
   <span class="md-ellipsis">
     
   
-    Checkpoints
+    8. Assurance
   
 
     
@@ -500,7 +448,7 @@
   <span class="md-ellipsis">
     
   
-    Checkpoints
+    8. Assurance
   
 
     
@@ -526,10 +474,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#maintenance-and-login" class="md-nav__link">
+  <a href="#81-find-the-vpws" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Maintenance and login
+        8.1 Find the VPWS
       
     </span>
   </a>
@@ -537,10 +485,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cml-and-reachability" class="md-nav__link">
+  <a href="#82-start-basic-monitoring" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CML and reachability
+        8.2 Start Basic monitoring
       
     </span>
   </a>
@@ -548,10 +496,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#providers-and-collection" class="md-nav__link">
+  <a href="#83-read-the-health-of-the-vpws" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Providers and collection
+        8.3 Read the health of the VPWS
       
     </span>
   </a>
@@ -559,10 +507,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sr-policy" class="md-nav__link">
+  <a href="#84-what-you-do-not-do-in-this-chapter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SR policy
+        8.4 What you do not do in this chapter
       
     </span>
   </a>
@@ -570,43 +518,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#l3vpn" class="md-nav__link">
+  <a href="#done-when" class="md-nav__link">
     <span class="md-ellipsis">
       
-        L3VPN
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lcm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        LCM
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assistant" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Assistant
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#end-of-day" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        End of day
+        Done when
       
     </span>
   </a>
@@ -617,6 +532,60 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-mcp-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Optional CNC MCP server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -648,10 +617,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#maintenance-and-login" class="md-nav__link">
+  <a href="#81-find-the-vpws" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Maintenance and login
+        8.1 Find the VPWS
       
     </span>
   </a>
@@ -659,10 +628,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cml-and-reachability" class="md-nav__link">
+  <a href="#82-start-basic-monitoring" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CML and reachability
+        8.2 Start Basic monitoring
       
     </span>
   </a>
@@ -670,10 +639,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#providers-and-collection" class="md-nav__link">
+  <a href="#83-read-the-health-of-the-vpws" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Providers and collection
+        8.3 Read the health of the VPWS
       
     </span>
   </a>
@@ -681,10 +650,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sr-policy" class="md-nav__link">
+  <a href="#84-what-you-do-not-do-in-this-chapter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SR policy
+        8.4 What you do not do in this chapter
       
     </span>
   </a>
@@ -692,43 +661,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#l3vpn" class="md-nav__link">
+  <a href="#done-when" class="md-nav__link">
     <span class="md-ellipsis">
       
-        L3VPN
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lcm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        LCM
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assistant" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Assistant
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#end-of-day" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        End of day
+        Done when
       
     </span>
   </a>
@@ -752,184 +688,62 @@
 
 
 
-<h1 id="checkpoints">Checkpoints<a class="headerlink" href="#checkpoints" title="Permanent link">&para;</a></h1>
-<p>Use this page when a chapter's expected result does not appear. Fix the first row that matches, then return to the chapter. One person applies a shared fix. Everyone else waits.</p>
-<h2 id="maintenance-and-login">Maintenance and login<a class="headerlink" href="#maintenance-and-login" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>What you see</th>
-<th>What to check</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>The UI never finishes loading after the slider moves</td>
-<td>Maintenance restart takes several minutes. Wait. If a popup asks to turn maintenance off, the instructor accepts it once.</td>
-</tr>
-<tr>
-<td>Applications stay down after maintenance is Off</td>
-<td>CNC 7.1: turn Maintenance On, wait until the mode is fully on, then turn it Off. Path: <strong>Administration &gt; Settings &gt; System Settings &gt; Maintenance Mode</strong>.</td>
-</tr>
-<tr>
-<td>Certificate warning</td>
-<td>Confirm the hostname is the whiteboard URL, then use the lab exception the instructor shows.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="cml-and-reachability">CML and reachability<a class="headerlink" href="#cml-and-reachability" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>What you see</th>
-<th>What to check</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Topology stays empty</td>
-<td>CML nodes are booted. SR-PCE provider is reachable. BGP-LS from the IGP is up. Give a freshly started lab several minutes to advertise.</td>
-</tr>
-<tr>
-<td>A PE is unreachable in Network Devices</td>
-<td>The node is booted, the management address pings from the path CNC uses, and the credential profile name on the device is the lab profile.</td>
-</tr>
-<tr>
-<td>Inventory is thin or old</td>
-<td>The device has a Data Gateway mapping, and the gateway is enrolled.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="providers-and-collection">Providers and collection<a class="headerlink" href="#providers-and-collection" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>What you see</th>
-<th>What to check</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SR-PCE provider down</td>
-<td>Provider reachability in <strong>Administration &gt; Manage Provider Access</strong>, then the PCE process on the CML node the instructor names.</td>
-</tr>
-<tr>
-<td>NSO provider down</td>
-<td>The same provider page. Chapter 6 waits until NSO is reachable.</td>
-</tr>
-<tr>
-<td>Link utilization is blank</td>
-<td>Data Gateway collection and SNMP credentials. LCM cannot see congestion without those counters.</td>
-</tr>
-<tr>
-<td>Link utilization is 0%</td>
-<td>Expected on an idle CML lab. Chapter 7 accepts that number.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="sr-policy">SR policy<a class="headerlink" href="#sr-policy" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>What you see</th>
-<th>What to check</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>No PCC-initiated row</td>
-<td>The instructor's prepared policy is missing. Continue with the PCE-initiated create.</td>
-</tr>
-<tr>
-<td>Path preview is empty</td>
-<td>SR-PCE has no path in that policy type (SRv6 versus SR-MPLS). Confirm you are on the whiteboard's tab, then confirm SIDs on the topology layer.</td>
-</tr>
-<tr>
-<td>Policy is down on the headend</td>
-<td>PCEP session on the headend (<code>show segment-routing traffic-eng pcc ipv4 peer</code> or the IPv6 form). Color collision with another seat.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="l3vpn">L3VPN<a class="headerlink" href="#l3vpn" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>What you see</th>
-<th>What to check</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Dry run names another seat</td>
-<td>Close it. Reopen <code>PTA-L3-SEAT-&lt;seat&gt;</code> only.</td>
-</tr>
-<tr>
-<td>Commit fails on the profile or template</td>
-<td>The instance profile name on the whiteboard. The NSO L3VPN function pack is an instructor concern.</td>
-</tr>
-<tr>
-<td>Service out of sync</td>
-<td>NSO provider reachability, then the device sync state for your two PEs. Read sync before you debug the VRF.</td>
-</tr>
-<tr>
-<td>Overlay does not show your policy</td>
-<td>Steering color is <code>200 + seat</code>, and <code>pta-pce-seat-&lt;seat&gt;</code> is still up.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="lcm">LCM<a class="headerlink" href="#lcm" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>What you see</th>
-<th>What to check</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>No domain card</td>
-<td>SR-PCE topology and BGP-LS <code>link-state instance-id</code>. The instructor configures LCM once.</td>
-</tr>
-<tr>
-<td>No recommendation</td>
-<td>Compare interface utilization with the interface threshold. Below the threshold, an empty dashboard is the correct result.</td>
-</tr>
-<tr>
-<td>Many recommendations appear at once</td>
-<td>Thresholds were lowered on an idle lab. The instructor owns the dashboard. Students do not commit.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="assistant">Assistant<a class="headerlink" href="#assistant" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>What you see</th>
-<th>What to check</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Backend offline</td>
-<td>The instructor restarts the assistant. Students wait.</td>
-</tr>
-<tr>
-<td>Inventory tool returns an error</td>
-<td>Reachability from the MCP server to the CNC URL, and the server's credential. That credential is not entered in chat.</td>
-</tr>
-<tr>
-<td>The count disagrees with Network Devices</td>
-<td>Write both numbers. Inventory counts modules as well as chassis on some views. Confirm you are comparing the same object type.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="end-of-day">End of day<a class="headerlink" href="#end-of-day" title="Permanent link">&para;</a></h2>
-<p>Delete in this order, and only your own objects:</p>
+<h1 id="8-assurance">8. Assurance<a class="headerlink" href="#8-assurance" title="Permanent link">&para;</a></h1>
+<p><strong>Time:</strong> 40 minutes.</p>
+<p><strong>Objective:</strong> Enable CNC Service Health on the VPWS from chapter 7 and read Basic monitoring until the health column has a real state. Do not monitor VPLS.</p>
+<p>Service Health scores a provisioned VPN against heuristic rules. For L2VPN it looks at VPWS xconnect state, device CPU and memory, and, in Advanced mode, interfaces, PCEP, SR policy, and path reachability. This lab uses <strong>Basic Monitoring</strong> on <code>pta-vpws-01</code> only.</p>
+<h2 id="81-find-the-vpws">8.1 Find the VPWS<a class="headerlink" href="#81-find-the-vpws" title="Permanent link">&para;</a></h2>
 <ol>
-<li>L3VPN <code>PTA-L3-SEAT-&lt;seat&gt;</code></li>
-<li>PCE-initiated policy <code>pta-pce-seat-&lt;seat&gt;</code></li>
+<li>Go to <strong>Services &amp; Traffic Engineering &gt; VPN Services</strong>.</li>
+<li>Select <code>pta-vpws-01</code>.</li>
+<li>Confirm vpn-type is point-to-point / VPWS. If you also created <code>pta-vpls-01</code> in chapter 7, leave it unmonitored.</li>
+<li>Confirm the service is in sync. Service Health on an out-of-sync service is not a useful baseline. Fix sync in chapter 7 before you start monitoring.</li>
 </ol>
-<p>Leave the PCC-initiated policy, the LCM configuration, ZTP objects, templates, and providers in place.</p>
+<p><strong>Result:</strong> You are looking at the VPWS, not the L3VPN and not a VPLS.</p>
+<h2 id="82-start-basic-monitoring">8.2 Start Basic monitoring<a class="headerlink" href="#82-start-basic-monitoring" title="Permanent link">&para;</a></h2>
+<ol>
+<li>In the Actions menu for <code>pta-vpws-01</code>, choose <strong>Start monitoring</strong>.</li>
+<li>Set monitoring level to <strong>Basic Monitoring</strong>. Do not choose Advanced unless the instructor wants the extra subservices and you have time to wait. Switching levels can take more than 15 minutes before symptoms appear.</li>
+<li>Select the configuration profile the instructor names (often a Gold or Silver heuristic profile that is already loaded).</li>
+<li>Start monitoring.</li>
+<li>Wait. The Health column moves from Initiated to Good, Degraded, Down, or Not Monitoring.</li>
+</ol>
+<p><strong>Result:</strong> Health is no longer empty.</p>
+<p>If Health stays on Initiated, collection for Service Health is still starting. Parameterized collection jobs of type service-based appear under <strong>Administration &gt; Collection Jobs</strong>. You will read those jobs in chapter 9. Give Basic monitoring several minutes on this lab.</p>
+<h2 id="83-read-the-health-of-the-vpws">8.3 Read the health of the VPWS<a class="headerlink" href="#83-read-the-health-of-the-vpws" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Open <code>pta-vpws-01</code>.</li>
+<li>Read the Health state and the list of subservices. For Basic L2VPN / VPWS, expect rules that cover:<ul>
+<li>VPWS xconnect / control-plane health</li>
+<li>Device health (CPU, memory)</li>
+<li>ODN or SR policy health, if the service is bound to a policy</li>
+</ul>
+</li>
+<li>Open one subservice. Read the metric that is Good or Degraded. Typical metrics are <code>xconnect.state</code>, attachment-circuit state, and pseudowire state.</li>
+<li>If Health is Degraded or Down, do not clear anything yet. Note the symptom, then confirm it on the PE:</li>
+</ol>
+<pre><code class="language-text">show l2vpn xconnect
+show l2vpn xconnect detail
+</code></pre>
+<p>A down attachment circuit on the router should match a down AC metric in Service Health. If CNC says Down and XR says Up, wait for the next collection cycle, then look at collection jobs in chapter 9.</p>
+<ol>
+<li>On the map, with the VPWS selected, confirm the overlay still terminates on the two PEs you provisioned.</li>
+</ol>
+<p><strong>Result:</strong> You can point at the heuristic result and at the matching XR xconnect state.</p>
+<h2 id="84-what-you-do-not-do-in-this-chapter">8.4 What you do not do in this chapter<a class="headerlink" href="#84-what-you-do-not-do-in-this-chapter" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Do not start monitoring on <code>pta-vpls-01</code> or on any multipoint L2VPN.</li>
+<li>Do not start monitoring on <code>pta-l3vpn-01</code> unless the instructor adds it as extra credit. The required assurance object is the VPWS.</li>
+<li>Do not switch this VPWS to Advanced Monitoring after Basic has already started, unless the instructor wants to show the delay.</li>
+<li>Do not stop monitoring until the instructor says the chapter is done. Stopping with "retain historical data" is available; use it only if you need to restart.</li>
+</ul>
+<h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Service Health is running on <code>pta-vpws-01</code> at Basic Monitoring.</li>
+<li>You can name the Health state and one subservice or metric.</li>
+<li>That metric agrees with <code>show l2vpn xconnect</code> (or you have recorded a collection lag).</li>
+<li>No VPLS is being monitored.</li>
+</ul>
 
 
 

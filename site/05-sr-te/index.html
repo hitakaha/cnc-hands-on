@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.1 on the PTA network">
+        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.2.1-SP">
       
       
       
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#5-segment-routing-and-traffic-engineering" class="md-skip">
+        <a href="#5-sr-te-and-srv6" class="md-skip">
           Skip to content
         </a>
       
@@ -500,14 +500,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-lcm/" class="md-nav__link">
+      <a href="../07-l2vpn/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    7. Congestion mitigation
+    7. L2VPN provisioning
   
 
     
@@ -527,14 +527,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-ztp/" class="md-nav__link">
+      <a href="../08-assurance/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    8. Lifecycle and ZTP
+    8. Assurance
   
 
     
@@ -554,14 +554,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-assurance-mcp/" class="md-nav__link">
+      <a href="../09-troubleshooting/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    9. Assurance and MCP
+    9. Troubleshooting
   
 
     
@@ -581,14 +581,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../10-checkpoints/" class="md-nav__link">
+      <a href="../10-mcp-server/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Checkpoints
+    10. Optional CNC MCP server
   
 
     
@@ -710,10 +710,10 @@
 
 
 
-<h1 id="5-segment-routing-and-traffic-engineering">5. Segment Routing and Traffic Engineering<a class="headerlink" href="#5-segment-routing-and-traffic-engineering" title="Permanent link">&para;</a></h1>
-<p><strong>Time:</strong> 75 minutes.</p>
-<p><strong>Objective:</strong> Explain a PCC-initiated policy that the headend already owns, then create one PCE-initiated SR policy from CNC with your own name and color.</p>
-<p>Use the policy type on the whiteboard. For this PTA lab that type is <strong>SRv6</strong> when the core is SRv6, and <strong>SR-MPLS</strong> when the core is SR-MPLS. The CNC pages are the same shape. Pick the tab that matches the whiteboard and stay on it.</p>
+<h1 id="5-sr-te-and-srv6">5. SR-TE and SRv6<a class="headerlink" href="#5-sr-te-and-srv6" title="Permanent link">&para;</a></h1>
+<p><strong>Time:</strong> 60 minutes.</p>
+<p><strong>Objective:</strong> Explain a PCC-initiated SRv6 policy that the headend already owns, then create one PCE-initiated SRv6 policy from CNC.</p>
+<p>This CML topology is IPv6. Stay on the <strong>SRv6</strong> tab in Traffic Engineering. Use SR-MPLS only if the instructor tells you the lab is not SRv6.</p>
 <h2 id="51-words-you-need">5.1 Words you need<a class="headerlink" href="#51-words-you-need" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -725,15 +725,15 @@
 <tbody>
 <tr>
 <td>PCC</td>
-<td>The headend router. It may ask SR-PCE for a path, and it can own a policy that was configured on the router.</td>
+<td>The headend router. It can own a locally configured policy, and it has a PCEP session to SR-PCE.</td>
 </tr>
 <tr>
 <td>PCE</td>
-<td>SR-PCE. It computes paths and can instantiate a policy on a headend through PCEP.</td>
+<td>SR-PCE in the second CML lab. It computes paths and can instantiate a policy on a headend through PCEP.</td>
 </tr>
 <tr>
 <td>PCC-initiated</td>
-<td>The policy configuration lives on the headend. CNC learns the policy from SR-PCE and draws it.</td>
+<td>The policy configuration lives on the headend. CNC learns it from SR-PCE and draws it.</td>
 </tr>
 <tr>
 <td>PCE-initiated</td>
@@ -741,7 +741,7 @@
 </tr>
 <tr>
 <td>Color</td>
-<td>A number that identifies the intent. Steering in chapter 6 binds a VPN to a color.</td>
+<td>A number that identifies the intent. Chapter 6 binds an L3VPN to this color.</td>
 </tr>
 <tr>
 <td>Candidate path</td>
@@ -750,58 +750,62 @@
 </tbody>
 </table>
 <h2 id="52-find-the-pcc-initiated-policy">5.2 Find the PCC-initiated policy<a class="headerlink" href="#52-find-the-pcc-initiated-policy" title="Permanent link">&para;</a></h2>
-<p>The instructor prepares one PCC-initiated policy before class, on the headend, with a color outside the <code>200 + seat</code> range. You do not type that router configuration.</p>
+<p>The instructor may prepare one PCC-initiated policy on the headend before class. You do not type that router configuration.</p>
 <ol>
 <li>Go to <strong>Services &amp; Traffic Engineering &gt; Traffic Engineering</strong>.</li>
-<li>Open the <strong>SRv6</strong> or <strong>SR-MPLS</strong> tab named on the whiteboard.</li>
-<li>Filter or sort the policy table until you find the PCC-initiated policy. The initiation column says PCC.</li>
+<li>Open the <strong>SRv6</strong> tab.</li>
+<li>Find a policy whose initiation column says PCC. If none exists, record that and continue. The live create in this chapter is the PCE-initiated policy.</li>
 <li>Record headend, endpoint, color, preference, and the active candidate path.</li>
 <li>Select the policy and show it on the map. Name two hops on the drawn path.</li>
-<li>If the table has no PCC row, say so. The rest of this chapter still works. The live create is the PCE-initiated policy. Tell the instructor the prepared PCC policy is missing.</li>
 </ol>
-<p><strong>Result:</strong> You can point at a policy the router owns, or you have recorded that the prepared policy is absent.</p>
-<p>On the headend console, if the instructor opens one, these commands support the same story. Read them. Leave configuration mode.</p>
+<p><strong>Result:</strong> You can point at a policy the router owns, or you have recorded that none was prepared.</p>
+<p>On the headend console:</p>
 <pre><code class="language-text">show segment-routing traffic-eng policy
-show segment-routing traffic-eng pcc ipv4 peer
+show segment-routing traffic-eng pcc ipv6 peer
 </code></pre>
-<p>On an IPv6-only SRv6 headend the peer command may be the IPv6 form:</p>
-<pre><code class="language-text">show segment-routing traffic-eng pcc ipv6 peer
+<p>Find the PCC policy color and the PCEP peer address. That peer should be the SR-PCE you checked in chapter 2.</p>
+<p>On the SR-PCE, if the instructor opens it:</p>
+<pre><code class="language-text">show pce ipv6 peer
+show pce ipv6 lsp
 </code></pre>
-<p>Use the form the instructor shows. In the output, find the color of the PCC policy and the PCE peer address.</p>
+<p>The PCC session should be up. The LSP list should include the PCC-initiated policy when one exists.</p>
 <h2 id="53-create-a-pce-initiated-policy">5.3 Create a PCE-initiated policy<a class="headerlink" href="#53-create-a-pce-initiated-policy" title="Permanent link">&para;</a></h2>
-<p>Your policy name is <code>pta-pce-seat-&lt;seat&gt;</code>. Your color is <code>200 + seat</code>. Two seats that reuse a color will fight over steering in chapter 6.</p>
+<p>Use name <code>pta-pce-01</code> and the color the instructor assigns. Do not reuse a color that already belongs to the PCC-initiated policy.</p>
 <ol>
-<li>Stay on <strong>Services &amp; Traffic Engineering &gt; Traffic Engineering</strong>, on the same SRv6 or SR-MPLS tab.</li>
+<li>Stay on <strong>Services &amp; Traffic Engineering &gt; Traffic Engineering</strong>, <strong>SRv6</strong> tab.</li>
 <li>Start the create action and choose <strong>PCE-initiated</strong>.</li>
 <li>Set:<ul>
-<li>Name: <code>pta-pce-seat-&lt;seat&gt;</code></li>
-<li>Headend: the headend from your lab-values sheet</li>
-<li>Endpoint: the endpoint from your lab-values sheet</li>
-<li>Color: <code>200 + seat</code></li>
+<li>Name: <code>pta-pce-01</code></li>
+<li>Headend: the headend from chapter 3</li>
+<li>Endpoint: the endpoint from chapter 3</li>
+<li>Color: the instructor's value</li>
 <li>Optimization objective: IGP metric, unless the instructor writes a different objective</li>
 </ul>
 </li>
-<li>Leave bandwidth, affinity, and disjoint constraints empty unless the instructor adds one constraint for the whole room.</li>
-<li>Preview the path. You want a path that passes through the core, from your headend to your endpoint.</li>
-<li>If the preview is empty, stop. An empty preview means SR-PCE has no topology or no SID reachability. Use the checkpoint page. Committing an empty path teaches the wrong lesson.</li>
+<li>Leave bandwidth, affinity, and disjoint constraints empty unless the instructor adds one constraint.</li>
+<li>Preview the path. You want a path through the five-node core, from headend to endpoint.</li>
+<li>If the preview is empty, stop. An empty preview means SR-PCE has no SRv6 topology or no SID reachability. Recheck chapter 2 and the CLI in section 5.2. Do not commit an empty path.</li>
 <li>When the preview shows a path, provision the policy.</li>
 <li>Return to the policy table. Your row shows initiation <strong>PCE</strong>, your color, and an operational state that is up.</li>
 <li>Select the row and display the path on the map.</li>
 </ol>
-<p><strong>Result:</strong> A PCE-initiated policy exists for your seat, and the map draws it.</p>
+<p><strong>Result:</strong> A PCE-initiated SRv6 policy exists and the map draws it.</p>
 <h2 id="54-confirm-on-the-headend">5.4 Confirm on the headend<a class="headerlink" href="#54-confirm-on-the-headend" title="Permanent link">&para;</a></h2>
-<p>Ask the instructor for a console on the headend, or watch the instructor's console.</p>
 <pre><code class="language-text">show segment-routing traffic-eng policy
+show segment-routing traffic-eng policy name pta-pce-01
 </code></pre>
-<p>Find <code>pta-pce-seat-&lt;seat&gt;</code>. In the same output, the PCC-initiated policy is still present. The difference is ownership: one policy is configured on the router, and the other was instantiated by the PCE.</p>
-<p>If your policy is missing on the router and present in CNC as down, the usual causes are a PCEP session that is down, a color conflict, or a headend that cannot place the SIDs. Stay with the checkpoint page. Delete only your own down policy, and only when the instructor agrees.</p>
+<p>Find <code>pta-pce-01</code>. If a PCC-initiated policy was prepared, it is still present. The difference is ownership: one policy is configured on the router, the other was instantiated by the PCE.</p>
+<p>If your policy is missing on the router and present in CNC as down, check:</p>
+<pre><code class="language-text">show segment-routing traffic-eng pcc ipv6 peer
+</code></pre>
+<p>A down PCEP session, a color conflict, or a headend that cannot place the SRv6 SIDs are the usual causes. Delete only <code>pta-pce-01</code>, and only if it is down and the instructor agrees.</p>
 <h2 id="55-clean-up-rule">5.5 Clean-up rule<a class="headerlink" href="#55-clean-up-rule" title="Permanent link">&para;</a></h2>
-<p>Keep this policy until chapter 6 has steered a VPN onto its color. At the end of the day, delete only <code>pta-pce-seat-&lt;seat&gt;</code>. Leave the PCC-initiated policy in place for the next session.</p>
+<p>Keep this policy until chapter 6 has steered an L3VPN onto its color. At the end of the day, delete the VPNs first, then delete <code>pta-pce-01</code>. Leave any PCC-initiated policy in place.</p>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
 <ul>
-<li>You can say who owns the PCC-initiated policy and who owns yours.</li>
-<li>Your PCE-initiated policy is up, with your color, and it is drawn on the map.</li>
-<li>You saw both policies in <code>show segment-routing traffic-eng policy</code>, or you have a written reason the headend console was unavailable.</li>
+<li>You can say who owns the PCC-initiated policy (if one exists) and who owns <code>pta-pce-01</code>.</li>
+<li><code>pta-pce-01</code> is up, with the assigned color, and it is drawn on the map.</li>
+<li><code>show segment-routing traffic-eng policy</code> on the headend lists your policy, and <code>show segment-routing traffic-eng pcc ipv6 peer</code> shows the PCE up.</li>
 </ul>
 
 

@@ -6,15 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.1 on the PTA network">
+        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.2.1-SP">
       
       
       
       
-        <link rel="prev" href="../07-lcm/">
+        <link rel="prev" href="../06-l3vpn/">
       
       
-        <link rel="next" href="../09-assurance-mcp/">
+        <link rel="next" href="../08-assurance/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>8. Lifecycle and ZTP - Crosswork CNC Hands-on</title>
+        <title>7. L2VPN provisioning - Crosswork CNC Hands-on</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#8-lifecycle-management-and-ztp" class="md-skip">
+        <a href="#7-l2vpn-provisioning" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              8. Lifecycle and ZTP
+              7. L2VPN provisioning
             
           </span>
         </div>
@@ -384,33 +384,6 @@
       
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../07-lcm/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    7. Congestion mitigation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -430,7 +403,7 @@
   <span class="md-ellipsis">
     
   
-    8. Lifecycle and ZTP
+    7. L2VPN provisioning
   
 
     
@@ -448,7 +421,7 @@
   <span class="md-ellipsis">
     
   
-    8. Lifecycle and ZTP
+    7. L2VPN provisioning
   
 
     
@@ -474,10 +447,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#81-tour" class="md-nav__link">
+  <a href="#71-vpws-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.1 Tour
+        7.1 VPWS (required)
       
     </span>
   </a>
@@ -485,10 +458,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#82-the-workflow-you-are-not-running" class="md-nav__link">
+  <a href="#72-visualize-and-confirm-from-cli" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.2 The workflow you are not running
+        7.2 Visualize and confirm from CLI
       
     </span>
   </a>
@@ -496,10 +469,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#83-why-this-stays-a-tour" class="md-nav__link">
+  <a href="#73-optional-vpls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.3 Why this stays a tour
+        7.3 Optional: VPLS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-optional-nso-custom-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Optional: NSO custom template
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-optional-sync-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 Optional: sync-from
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76-clean-up-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 Clean-up rule
       
     </span>
   </a>
@@ -532,14 +538,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-assurance-mcp/" class="md-nav__link">
+      <a href="../08-assurance/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    9. Assurance and MCP
+    8. Assurance
   
 
     
@@ -559,14 +565,41 @@
   
   
     <li class="md-nav__item">
-      <a href="../10-checkpoints/" class="md-nav__link">
+      <a href="../09-troubleshooting/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Checkpoints
+    9. Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-mcp-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Optional CNC MCP server
   
 
     
@@ -606,10 +639,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#81-tour" class="md-nav__link">
+  <a href="#71-vpws-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.1 Tour
+        7.1 VPWS (required)
       
     </span>
   </a>
@@ -617,10 +650,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#82-the-workflow-you-are-not-running" class="md-nav__link">
+  <a href="#72-visualize-and-confirm-from-cli" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.2 The workflow you are not running
+        7.2 Visualize and confirm from CLI
       
     </span>
   </a>
@@ -628,10 +661,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#83-why-this-stays-a-tour" class="md-nav__link">
+  <a href="#73-optional-vpls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.3 Why this stays a tour
+        7.3 Optional: VPLS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-optional-nso-custom-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Optional: NSO custom template
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-optional-sync-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 Optional: sync-from
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76-clean-up-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 Clean-up rule
       
     </span>
   </a>
@@ -666,41 +732,112 @@
 
 
 
-<h1 id="8-lifecycle-management-and-ztp">8. Lifecycle management and ZTP<a class="headerlink" href="#8-lifecycle-management-and-ztp" title="Permanent link">&para;</a></h1>
-<p><strong>Time:</strong> 20 minutes.</p>
-<p><strong>Objective:</strong> Walk the Zero Touch Provisioning screens so you can recognize images, configuration files, serial numbers, profiles, and devices. Leave every router in its current boot state.</p>
-<p>CNC 7.1 puts ZTP under element management: <strong>Device Management &gt; Zero Touch Provisioning</strong>. Classic ZTP uses DHCP and HTTP so a new router can pull an image and a configuration. Secure ZTP (RFC 8572) adds ownership vouchers and a signed exchange. This controller may show both. The PTA lab routers are already onboarded through the normal device inventory. They are the wrong devices to reload into ZTP during class.</p>
-<h2 id="81-tour">8.1 Tour<a class="headerlink" href="#81-tour" title="Permanent link">&para;</a></h2>
-<p>Work down this list. Open each page, read the columns, and close it.</p>
+<h1 id="7-l2vpn-provisioning">7. L2VPN provisioning<a class="headerlink" href="#7-l2vpn-provisioning" title="Permanent link">&para;</a></h1>
+<p><strong>Time:</strong> 60 minutes for VPWS. Optional sections add about 30 minutes.</p>
+<p><strong>Objective:</strong> Provision a point-to-point L2VPN (VPWS) from CNC. Optionally inspect VPLS, attach an NSO custom template, and run <code>sync-from</code>.</p>
+<p>CNC 7.2 provisions IETF L2VPN network models through NSO. VPWS is a wire between two attachment circuits. VPLS is a multipoint LAN. This lab's required service is VPWS. Chapter 8 monitors that VPWS only.</p>
+<h2 id="71-vpws-required">7.1 VPWS (required)<a class="headerlink" href="#71-vpws-required" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service name</td>
+<td><code>pta-vpws-01</code></td>
+</tr>
+<tr>
+<td>vpn-type</td>
+<td>point-to-point / VPWS (use the value the form offers for two endpoints)</td>
+</tr>
+<tr>
+<td>Endpoints</td>
+<td>the two PEs from chapter 3, on the L2 attachment interfaces the instructor assigns</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>SRv6, preferably the same color or policy as <code>pta-pce-01</code> if the form allows it</td>
+</tr>
+</tbody>
+</table>
+<p>Do not reuse the L3VPN attachment interfaces from chapter 6. VPWS needs its own attachment circuits.</p>
 <ol>
-<li><strong>Device Management &gt; Software Management</strong>. This is the image and SMU store. Read one image name and the platform family, if any file is present. Upload nothing.</li>
-<li><strong>Device Management &gt; Zero Touch Provisioning &gt; Configuration files</strong>. These are ZTP day-0 scripts, with replaceable parameters. They are a third store, different from Device Management templates and from NSO service templates. Open one file if it exists and find a single placeholder. Download the sample XR script only if the instructor wants the room to see the comments. Upload nothing.</li>
-<li><strong>Device Management &gt; Zero Touch Provisioning &gt; Serial Numbers &amp; Ownership</strong>. A device enters ZTP when its serial number is known here. Read the columns. Add no serial and import no CSV.</li>
-<li><strong>Device Management &gt; Credential Profiles</strong>. ZTP devices need a profile too. You already know this page from chapter 2. Confirm the lab profile is still the one you saw. Edit nothing.</li>
-<li><strong>Device Management &gt; Zero Touch Provisioning &gt; ZTP profiles</strong>. A profile binds an image, a configuration file, and a device family. Open one profile tile if the lab has one. Create none.</li>
-<li><strong>Device Management &gt; Zero Touch Provisioning &gt; Devices</strong>. This list is ZTP state, which is separate from <strong>Network Devices</strong>. If it is empty, the lab simply has no ZTP job in progress. That is the expected classroom state.</li>
+<li>Go to <strong>Services &amp; Traffic Engineering &gt; Provisioning (NSO)</strong>.</li>
+<li>Open the L2VPN service type.</li>
+<li>Create a service named <code>pta-vpws-01</code>.</li>
+<li>Set <strong>vpn-id</strong> to a unique value the instructor assigns.</li>
+<li>Set <strong>vpn-type</strong> to the point-to-point / VPWS choice. Do not choose a multipoint or VPLS type here. If the form only lists <code>mpls-evpn</code> when you add more than two vpn-nodes, you have the wrong number of endpoints. VPWS uses two.</li>
+<li>Add two vpn-nodes. For each node set the device and the attachment circuit (interface, VLAN if the instructor specified one).</li>
+<li>Set underlay transport to SRv6. If preferred-path or ODN is offered, bind it the way the instructor specified. Preferred path onto <code>pta-pce-01</code> is the consistent choice with chapter 6.</li>
+<li>Leave <strong>Custom-template</strong> empty for the required service. Optional section 7.3 uses that field on a copy, not on this one.</li>
+<li>Run <strong>Dry run</strong>. Confirm the service name, two endpoints, and vpn-type. Confirm it is not a VPLS.</li>
+<li>Commit.</li>
+<li>Open the service. Confirm it is in sync.</li>
 </ol>
-<p><strong>Result:</strong> You can name the six pages and say which object each one holds.</p>
-<h2 id="82-the-workflow-you-are-not-running">8.2 The workflow you are not running<a class="headerlink" href="#82-the-workflow-you-are-not-running" title="Permanent link">&para;</a></h2>
-<p>Say this sequence back to the instructor, from the screens you just opened:</p>
+<p><strong>Result:</strong> <code>pta-vpws-01</code> is committed and in sync.</p>
+<h2 id="72-visualize-and-confirm-from-cli">7.2 Visualize and confirm from CLI<a class="headerlink" href="#72-visualize-and-confirm-from-cli" title="Permanent link">&para;</a></h2>
 <ol>
-<li>The image is in Software Management.</li>
-<li>The day-0 configuration file is in the ZTP configuration store.</li>
-<li>The serial number is loaded, with an ownership voucher when the flow is Secure ZTP.</li>
-<li>A credential profile exists.</li>
-<li>A ZTP profile ties the image and the configuration to a device family.</li>
-<li>A device row tracks state from boot to onboarded.</li>
-<li>DHCP, or the secure ZTP bootstrap, points the hardware at this controller. After onboarding, the device also appears under <strong>Device Management &gt; Network Devices</strong>.</li>
+<li>Go to <strong>Services &amp; Traffic Engineering &gt; VPN Services</strong>.</li>
+<li>Select <code>pta-vpws-01</code>. Show it on the map. You should see a point-to-point overlay between the two PEs, not a multipoint LAN.</li>
+<li>On the headend:</li>
 </ol>
-<p>The home page dashboard can show a ZTP status tile while a job runs. You may look for the tile. An absent tile means no active job.</p>
-<h2 id="83-why-this-stays-a-tour">8.3 Why this stays a tour<a class="headerlink" href="#83-why-this-stays-a-tour" title="Permanent link">&para;</a></h2>
-<p>A real ZTP run reloads a device, depends on DHCP options or a secure bootstrap, and consumes a serial number. CML guests in this topology are already part of the IGP. Reloading one of them removes it from the map for every seat. Image upload and serial import are the same class of shared change.</p>
-<p>Software image management for an already-managed router (upgrade and SMU) lives next to ZTP under <strong>Device Management &gt; Software Management</strong>. Recognize the page. Start no upgrade.</p>
+<pre><code class="language-text">show l2vpn xconnect
+show l2vpn xconnect detail
+</code></pre>
+<p>Find the xconnect NSO created. Attachment circuit and pseudowire (or SRv6 EVPN VPWS equivalent) should be up. If the lab uses EVPN VPWS, the instructor may also ask for:</p>
+<pre><code class="language-text">show l2vpn evpn xconnect
+show bgp l2vpn evpn summary
+</code></pre>
+<p>Use the form that actually prints your service. Leave configuration mode.</p>
+<p><strong>Result:</strong> The map is point-to-point, and XR shows the xconnect up.</p>
+<h2 id="73-optional-vpls">7.3 Optional: VPLS<a class="headerlink" href="#73-optional-vpls" title="Permanent link">&para;</a></h2>
+<p>Do this section only if the instructor asks for it. Chapter 8 does <strong>not</strong> enable Service Health on a VPLS.</p>
+<ol>
+<li>In <strong>Provisioning (NSO)</strong>, create a second L2VPN named <code>pta-vpls-01</code>.</li>
+<li>Choose the VPLS or multipoint vpn-type the form offers. Add at least two vpn-nodes (three if the instructor wants a true multipoint picture).</li>
+<li>Dry run, then commit.</li>
+<li>In <strong>VPN Services</strong>, select <code>pta-vpls-01</code> and confirm the overlay is multipoint.</li>
+<li>On a PE:</li>
+</ol>
+<pre><code class="language-text">show l2vpn bridge-domain
+</code></pre>
+<p>Use this only to contrast with <code>show l2vpn xconnect</code> from the VPWS. Delete <code>pta-vpls-01</code> before the end of the day if you created it. Do not start Service Health on it.</p>
+<p><strong>Result:</strong> You can tell VPWS (xconnect) from VPLS (bridge-domain) in both CNC and CLI.</p>
+<h2 id="74-optional-nso-custom-template">7.4 Optional: NSO custom template<a class="headerlink" href="#74-optional-nso-custom-template" title="Permanent link">&para;</a></h2>
+<p>An NSO custom template adds CLI that the L2VPN function pack does not model (for example an extra QoS or interface command). Templates must already exist in NSO. CNC only displays parameterizable fields.</p>
+<ol>
+<li>Ask the instructor for the template name, if one is loaded.</li>
+<li>Open <code>pta-vpws-01</code> in edit, or clone it to <code>pta-vpws-template-01</code> if you should not change the monitored service.</li>
+<li>In <strong>Custom-template</strong>, select the template. Fill the variables CNC shows.</li>
+<li>Dry run. Read the extra CLI the template adds.</li>
+<li>Commit only if the instructor wants the extra CLI on the device.</li>
+<li>If you only needed to see the fields, cancel without commit.</li>
+</ol>
+<p>This is not a Device Management configuration template from chapter 4.</p>
+<p><strong>Result:</strong> You saw how a custom template attaches to a VPWS, and you know which store it lives in.</p>
+<h2 id="75-optional-sync-from">7.5 Optional: sync-from<a class="headerlink" href="#75-optional-sync-from" title="Permanent link">&para;</a></h2>
+<p>NSO keeps a copy of device configuration. <strong>Check sync</strong> compares that copy with the device. <strong>Sync from</strong> pulls the device configuration into NSO. <strong>Sync to</strong> pushes NSO to the device. <strong>Redeploy reconcile</strong> rebuilds the service while keeping non-service configuration.</p>
+<p>Use this on the VPWS only when the instructor wants the room to see out-of-sync handling. <code>sync-from</code> after a service commit can make the service look out of sync until you redeploy. That is the lesson, and it is easy to leave messy.</p>
+<ol>
+<li>On <code>pta-vpws-01</code>, open <strong>Actions</strong>.</li>
+<li>Run <strong>Check sync</strong>. Record in-sync or out-of-sync.</li>
+<li>Open <strong>Config view</strong> or <strong>View in NSO</strong> and read the service data.</li>
+<li>If the instructor has made a small out-of-band change on one PE, run <strong>Sync from</strong>.</li>
+<li>Run <strong>Check sync</strong> again. Expect out-of-sync if the device now differs from the service model.</li>
+<li>Run <strong>Redeploy dry run</strong>, then <strong>Redeploy reconcile</strong> only if the instructor wants the service model to win.</li>
+</ol>
+<p>Do not run <strong>Sync to</strong> unless the instructor says so. Sync to overwrites the device with NSO's copy.</p>
+<p><strong>Result:</strong> You can say what Check sync, Sync from, Sync to, and Redeploy reconcile each do, and you used only the actions the instructor approved.</p>
+<h2 id="76-clean-up-rule">7.6 Clean-up rule<a class="headerlink" href="#76-clean-up-rule" title="Permanent link">&para;</a></h2>
+<p>Keep <code>pta-vpws-01</code> through chapter 8. Delete optional VPLS and template clones first at the end of the day, then the VPWS, then the L3VPN, then the PCE-initiated policy.</p>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
 <ul>
-<li>You visited Software Management, ZTP configuration files, serial numbers, ZTP profiles, and ZTP devices.</li>
-<li>You can separate those objects from a Device Management template and from an NSO service template.</li>
-<li>No image, serial, profile, or device row was created by your seat.</li>
+<li><code>pta-vpws-01</code> is in sync and shown as point-to-point in VPN Services.</li>
+<li><code>show l2vpn xconnect</code> (or the EVPN form) lists the service.</li>
+<li>Optional sections are either completed or marked skipped.</li>
 </ul>
 
 

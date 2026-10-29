@@ -1,8 +1,8 @@
 site_name: Crosswork CNC Hands-on
-site_description: Operator lab for Cisco Crosswork Network Controller 7.1 on the PTA network
+site_description: Operator lab for Cisco Crosswork Network Controller 7.2.1-SP
 docs_dir: docs
 theme:
-  name: readthedocs
+  name: material
 nav:
   - Home: index.md
   - 1. Preparation: 01-preparation.md
@@ -11,14 +11,10 @@ nav:
   - 4. Element management: 04-element-management.md
   - 5. SR-TE and SRv6: 05-sr-te.md
   - 6. L3VPN provisioning: 06-l3vpn.md
-  - 7. Congestion mitigation: 07-lcm.md
-  - 8. Lifecycle and ZTP: 08-ztp.md
-  - 9. Assurance and MCP: 09-assurance-mcp.md
-  - Checkpoints: 10-checkpoints.md
-
-theme:
-  name: material
-
+  - 7. L2VPN provisioning: 07-l2vpn.md
+  - 8. Assurance: 08-assurance.md
+  - 9. Troubleshooting: 09-troubleshooting.md
+  - 10. Optional CNC MCP server: 10-mcp-server.md
 markdown_extensions:
   - admonition
   - toc:

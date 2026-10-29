@@ -1,79 +1,93 @@
-# 4. Element management (EMF)
+# 4. Element management
 
-**Time:** 60 minutes.
+**Time:** 50 minutes.
 
-**Objective:** Use the CNC 7.1 element-management functions to read inventory, archived configuration, a configuration template, alarms, events, and performance. Deploy nothing from this chapter.
+**Objective:** Use CNC Element Management Functions the way an operations team already uses SolarWinds: node status, hardware inventory, configuration archive, alarms, and interface performance. Deploy nothing from this chapter.
 
-Element Management Functions in CNC 7.1 cover device onboarding, inventory, faults, metrics, software images, configuration backup, and configuration templates. ZTP is part of the same lifecycle guide. You will tour ZTP in chapter 8 so this hour stays on "what is on the device today."
+Element Management Functions in CNC 7.2 cover device onboarding, inventory, faults, metrics, software images, configuration backup, and configuration templates. You will map each SolarWinds-style view to a CNC page, then open that page.
 
-## 4.1 Network devices and inventory
+## 4.1 SolarWinds to CNC
+
+PTA operations already watches the network in SolarWinds (NPM for status, inventory, and performance; NCM for configuration). CNC is not a replacement of every SolarWinds poller. It is the controller view of the same devices, with IGP and SR context that SolarWinds does not have.
+
+| What you do in SolarWinds | Where you do it in CNC | What is different |
+| --- | --- | --- |
+| Node list, ICMP/SNMP reachability | **Device Management > Network Devices** | CNC also shows the credential profile and the Data Gateway mapping that collection uses |
+| Hardware inventory (chassis, modules, serials) | **Device Management > Network Inventory** | Same idea: serial, product id, alarm badge on the part |
+| Network map | **Topology** (chapter 3) | CNC map is IGP/SRv6 from SR-PCE, not only Layer-3 discovery |
+| Alert console / trap viewer | **Alerts > Alarms and Events** | CNC splits system, network, and device alarms. An alarm stays until it clears; an event is a point in time |
+| Interface utilization and thresholds | **Device Management > Performance Policies**, plus link utilization on the topology map | CNC Optimization Engine colors links from collected counters. Performance Policies raise threshold-crossing alarms |
+| NCM config archive, compare, restore | **Device Management > Configuration Backup and Restore** | CNC can also backup on configuration change. Restore is out of scope for this lab |
+| NCM config change jobs / scripts | **Device Management > Configuration Templates** | Parameterized CLI (Apache Velocity). Different from NSO L2/L3VPN templates in chapters 6 and 7 |
+
+Use the table as a translation layer. The rest of this chapter is the CNC side.
+
+## 4.2 Network devices and inventory
 
 1. Go to **Device Management > Network Devices**.
-2. Find the headend. Read operational state, reachability, and the credential profile name.
-3. Confirm a Data Gateway is associated with the device. Chapter 2 introduced that mapping. This is where a missing mapping shows up as a device you cannot refresh.
+2. Find the headend from chapter 3. Record operational state, reachability, and the credential profile name.
+3. Confirm a Data Gateway (or embedded collector) is associated with the device. A missing mapping is why inventory and counters stay empty.
 4. Go to **Device Management > Network Inventory**.
-5. Filter to the headend hostname or product family.
+5. Filter to the headend hostname or product family (NCS 8200 / 8201).
 6. Open the chassis, one route processor or line card, and one pluggable if the inventory has them.
-7. Open the alarm summary on that inventory row. You will come back to the full alarm list in section 4.4.
+7. Read the alarm summary on that inventory row.
 
-**Result:** You can walk from a hostname to a chassis and a module, and you know whether the device is reachable.
+**Result:** You can walk from a hostname to a chassis and a module, the same way you would drill into a SolarWinds node.
 
-A device that stays unreachable for the whole session needs the checkpoint page: credentials, routing to the management address, and CML node state. Give it a few minutes after the lab boots before you call it failed.
+A device that stays unreachable needs credentials, IPv6 reachability to the management address, and a booted CML node. Give a freshly started lab several minutes before you call it failed.
 
-## 4.2 Configuration backup
+## 4.3 Configuration backup
 
-CNC can archive device configuration, compare two archives, and restore. This lab uses the archive as a reader.
+CNC archives device configuration, compares two archives, and can restore. This lab uses the archive as a reader, like NCM config view.
 
 1. Go to **Device Management > Configuration Backup and Restore**.
 2. Find the headend.
-3. Open the latest archived configuration and identify the hostname and the segment-routing or BGP section the instructor points out.
-4. If two archives exist, open the compare view and name one difference, or state that the two archives match.
+3. Open the latest archived configuration. Identify hostname and the segment-routing or IS-IS section.
+4. If two archives exist, open compare and name one difference, or state that they match.
 5. Leave **Schedule backup** and **Restore** unused.
 
-**Result:** You have seen a real archived configuration for the headend and you know where a later change would show up.
+**Result:** You have seen a real archived configuration for the headend.
 
-Automatic backup on configuration change, when it is enabled under **Device Management > Configuration Preferences**, is what makes this archive useful after chapter 6. Read the preference. Leave the values as you found them.
+Automatic backup on configuration change, when it is enabled under **Device Management > Configuration Preferences**, is what makes this archive useful after chapters 6 and 7. Read the preference. Leave the values as you found them.
 
-## 4.3 Configuration templates
+## 4.4 Configuration templates (read only)
 
-Device templates under Device Management are parameterized CLI (Apache Velocity template language). They are for repeating underlay or day-1 configuration across similar devices. They are a different store from the NSO L2VPN and L3VPN function-pack templates that chapter 6 uses.
+Device templates under Device Management are parameterized CLI. They are for repeating underlay or day-1 configuration. They are not the NSO L2VPN/L3VPN function-pack templates, and they are not the custom template you may attach to a VPWS in chapter 7.
 
 1. Go to **Device Management > Configuration Templates**.
-2. Open one existing template. Read the device types it targets and one variable it expects.
-3. Open **Jobs** only if a previous job is listed, and read its status.
-4. Close the template. Leave **Create Template** and every deploy action unused.
+2. Open one existing template, if any exist. Read the device types it targets and one variable it expects.
+3. Close it. Leave **Create Template** and every deploy action unused.
 
-**Result:** You can explain the difference between this template library and the service template NSO applies when you provision an L3VPN.
+**Result:** You can explain this store versus the NSO service template.
 
-Deploying a template from this screen writes CLI to live routers. That write is out of scope for a shared class.
-
-## 4.4 Alarms and events
+## 4.5 Alarms and events
 
 1. Go to **Alerts > Alarms and Events**.
 2. Stay on **Alarms**. Use the category list to see system, network, and device alarms as separate sets.
 3. Filter to the headend if the filter allows it.
 4. If an alarm is present, record severity, source, and whether it is acknowledged. Leave acknowledge, clear, and annotate unused unless the instructor gives you a lab alarm of your own.
 5. Switch **Show** from Alarms to **Events**.
-6. Read the newest event. An event is a moment in time. An alarm remains until it clears. Use one sentence to put the event you found into one of those two buckets.
+6. Read the newest event. An event is a moment in time. An alarm remains until it clears.
 
-**Result:** You can open both views and you did not clear someone else's alarm.
+**Result:** You can open both views. An empty alarm list is valid on a healthy CML lab. Write "no active device alarms" and move on.
 
-An empty alarm list is a valid result on a healthy CML lab. Write "no active device alarms" and move on.
+You will use this page again in chapter 9.
 
-## 4.5 Performance
+## 4.6 Performance
 
-Link colors on the topology map come from interface utilization collected for Optimization Engine. Element management adds polling policies and device-level metrics.
+Link colors on the topology map come from interface utilization collected for Optimization Engine. Element management adds polling policies, which is the CNC equivalent of a SolarWinds threshold on an interface.
 
-1. Go to **Device Management > Performance Policies**, or the performance page under Device Management on your build.
-2. Open one existing policy. Read which devices or groups it covers, how often it polls, and which threshold raises an alarm.
-3. Return to the headend in **Network Inventory** or **Network Devices** and open the metrics or interface view. Compare one interface counter with the utilization you wrote down in chapter 3.
-4. Leave the policy inactive/active switch as you found it. A new polling policy on every seat multiplies SNMP load on the lab.
+1. Go to **Device Management > Performance Policies**.
+2. Open one existing policy, if any exist. Read which devices it covers, how often it polls, and which threshold raises an alarm.
+3. Return to the headend in **Network Devices** or **Network Inventory** and open the metrics or interface view. Compare one interface counter with the utilization you wrote down in chapter 3.
+4. Leave the policy switch as you found it.
 
 **Result:** You can say where a threshold is defined, and you can point at one live counter.
 
 ## Done when
 
+- You can map node list, inventory, alerts, config archive, and utilization from SolarWinds to a CNC page.
 - The headend is in Network Devices and in Network Inventory.
-- You opened an archived configuration and a device template, and you deployed neither.
+- You opened an archived configuration and did not restore it.
 - You opened Alarms and Events.
-- You can point at the polling policy that would raise a threshold alarm.
+- You compared one interface counter with the topology utilization from chapter 3.

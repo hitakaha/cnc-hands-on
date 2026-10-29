@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.1 on the PTA network">
+        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.2.1-SP">
       
       
       
@@ -312,10 +312,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#21-application-health" class="md-nav__link">
+  <a href="#21-crosswork-summary-and-crosswork-health" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 Application health
+        2.1 Crosswork Summary and Crosswork Health
       
     </span>
   </a>
@@ -334,10 +334,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#23-data-gateway" class="md-nav__link">
+  <a href="#23-data-gateway-and-collection-at-a-glance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3 Data Gateway
+        2.3 Data Gateway and collection at a glance
       
     </span>
   </a>
@@ -489,14 +489,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-lcm/" class="md-nav__link">
+      <a href="../07-l2vpn/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    7. Congestion mitigation
+    7. L2VPN provisioning
   
 
     
@@ -516,14 +516,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-ztp/" class="md-nav__link">
+      <a href="../08-assurance/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    8. Lifecycle and ZTP
+    8. Assurance
   
 
     
@@ -543,14 +543,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-assurance-mcp/" class="md-nav__link">
+      <a href="../09-troubleshooting/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    9. Assurance and MCP
+    9. Troubleshooting
   
 
     
@@ -570,14 +570,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../10-checkpoints/" class="md-nav__link">
+      <a href="../10-mcp-server/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Checkpoints
+    10. Optional CNC MCP server
   
 
     
@@ -617,10 +617,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#21-application-health" class="md-nav__link">
+  <a href="#21-crosswork-summary-and-crosswork-health" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 Application health
+        2.1 Crosswork Summary and Crosswork Health
       
     </span>
   </a>
@@ -639,10 +639,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#23-data-gateway" class="md-nav__link">
+  <a href="#23-data-gateway-and-collection-at-a-glance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3 Data Gateway
+        2.3 Data Gateway and collection at a glance
       
     </span>
   </a>
@@ -689,9 +689,9 @@
 
 
 <h1 id="2-cnc-management">2. CNC management<a class="headerlink" href="#2-cnc-management" title="Permanent link">&para;</a></h1>
-<p><strong>Time:</strong> 40 minutes.</p>
-<p><strong>Objective:</strong> Decide whether the platform is healthy enough for topology, inventory, traffic engineering, and service provisioning. You are reading the system, not rebuilding it.</p>
-<p>The three dependencies for the rest of the lab:</p>
+<p><strong>Time:</strong> 30 minutes.</p>
+<p><strong>Objective:</strong> Confirm that CNC 7.2 is healthy enough for topology, inventory, traffic engineering, and service provisioning. You are reading the system, not rebuilding it.</p>
+<p>The rest of the lab depends on three things:</p>
 <table>
 <thead>
 <tr>
@@ -705,58 +705,64 @@
 <td>SR-PCE provider, BGP-LS and PCEP from the routers</td>
 </tr>
 <tr>
-<td>Inventory, alarms, interface utilization</td>
-<td>Crosswork Data Gateway collection</td>
+<td>Inventory, alarms, interface counters</td>
+<td>Data Gateway collection jobs</td>
 </tr>
 <tr>
-<td>L3VPN provisioning</td>
+<td>L3VPN and L2VPN provisioning</td>
 <td>NSO provider, devices in sync</td>
 </tr>
 </tbody>
 </table>
-<h2 id="21-application-health">2.1 Application health<a class="headerlink" href="#21-application-health" title="Permanent link">&para;</a></h2>
+<h2 id="21-crosswork-summary-and-crosswork-health">2.1 Crosswork Summary and Crosswork Health<a class="headerlink" href="#21-crosswork-summary-and-crosswork-health" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Go to <strong>Administration &gt; Crosswork Manager</strong>.</li>
-<li>Open the cluster or application view the page offers.</li>
-<li>Find these applications and read the state next to each one:<ul>
-<li>Platform infrastructure</li>
+<li>From the main menu, go to <strong>Administration &gt; Crosswork Manager</strong>.</li>
+<li>Stay on the <strong>Crosswork Summary</strong> tab. Read the tiles for the cluster (or single VM), Platform Infrastructure, and the installed applications.</li>
+<li>Open <strong>System summary</strong>. Confirm the VM is up and that CPU, memory, and disk are not in a warning state.</li>
+<li>Open the <strong>Crosswork Health</strong> tab.</li>
+<li>For each of the following applications, open the tile and confirm the application (and its microservices) are Healthy or Running:<ul>
+<li>Platform Infrastructure</li>
 <li>Optimization Engine</li>
 <li>Active Topology</li>
 <li>Element Management Functions / Device Lifecycle Management</li>
-<li>Data Gateway related services</li>
+<li>Service Health, if it is installed (chapter 8 uses it)</li>
 </ul>
 </li>
-<li>A state of Running or Healthy is what you want before chapter 3. Degraded and Down belong on the checkpoint page.</li>
+<li>Open <strong>Alarms</strong> or <strong>Events</strong> on an application tile only far enough to see whether anything is raised against the platform itself. Device alarms belong in chapter 4 and chapter 9.</li>
 </ol>
-<p><strong>Result:</strong> You can name the applications this lab uses and their states.</p>
-<p>Leave restart, node drain, and maintenance controls untouched. You already finished maintenance mode in chapter 1.</p>
+<p><strong>Result:</strong> You can name the applications this lab uses and their health state.</p>
+<p>Leave restart, drain, and maintenance controls untouched. You already left maintenance mode in chapter 1.</p>
 <h2 id="22-providers">2.2 Providers<a class="headerlink" href="#22-providers" title="Permanent link">&para;</a></h2>
 <p>CNC learns the routed topology from SR-PCE. CNC provisions services through NSO. Both are providers.</p>
 <ol>
 <li>Go to <strong>Administration &gt; Manage Provider Access</strong>.</li>
-<li>Find the SR-PCE provider. Read its reachability and the protocol state. You want the provider reachable, with the topology feed up.</li>
-<li>Find the NSO provider. Read its reachability. You want NSO reachable.</li>
-<li>Open the provider detail far enough to see the credential profile name. The profile is a pointer. The password stays in the profile store.</li>
+<li>Find the SR-PCE provider that points at the PCE CML lab (<code>xrv9k-25.4.1-pce-for-CNC7.2-ipv6</code>). Read reachability and the protocol state. You want the provider reachable, with the topology feed up.</li>
+<li>Find the NSO provider. Read reachability. You want NSO reachable.</li>
+<li>Open a provider only far enough to see the credential profile name. The profile is a pointer. The password stays in the profile store.</li>
 </ol>
-<p><strong>Result:</strong> SR-PCE and NSO are both reachable. If either is down, stop and use the checkpoint page before chapter 5 or chapter 6. Chapters 3 and 4 can still teach the screens.</p>
-<h2 id="23-data-gateway">2.3 Data Gateway<a class="headerlink" href="#23-data-gateway" title="Permanent link">&para;</a></h2>
-<p>Interface counters, inventory detail, syslog, and SNMP traps arrive through a Crosswork Data Gateway (CDG). LCM in chapter 7 reads interface utilization from this collection, through SNMP.</p>
+<p><strong>Result:</strong> SR-PCE and NSO are both reachable.</p>
+<p>If SR-PCE is down, stop before chapter 3. If NSO is down, you can still walk topology and element management; wait until NSO is reachable before chapters 6 and 7.</p>
+<h2 id="23-data-gateway-and-collection-at-a-glance">2.3 Data Gateway and collection at a glance<a class="headerlink" href="#23-data-gateway-and-collection-at-a-glance" title="Permanent link">&para;</a></h2>
+<p>Interface counters, inventory detail, syslog, and SNMP traps arrive through a Crosswork Data Gateway (CDG). This dCloud session may use a dedicated Data Gateway VM or the embedded collector on a single VM. Either way, devices must be attached and collection must be running.</p>
 <ol>
-<li>Go to <strong>Administration &gt; Data Gateway Management</strong>, or the Data Gateway page linked from Crosswork Manager.</li>
-<li>Confirm the gateway is enrolled and the pool is up.</li>
-<li>Open one attached device and confirm a data gateway is mapped to it. A device with no gateway mapping has no inventory refresh and no interface counters.</li>
-<li>If a collection job or destination is listed, read its status. Healthy collection is the bar.</li>
+<li>Go to <strong>Administration &gt; Data Gateway Management</strong>.</li>
+<li>Confirm the gateway (or pool) is enrolled and administratively Up.</li>
+<li>Open the gateway and confirm the XR lab devices are attached to it.</li>
+<li>Open <strong>Administration &gt; Collection Jobs</strong> (or <strong>Administration &gt; Data Gateway Management &gt; Collection Jobs</strong>, depending on the build).</li>
+<li>On <strong>Bulk jobs</strong>, confirm system jobs are READY or Successful, not Failed.</li>
+<li>On <strong>Parameterized jobs</strong>, confirm default reachability jobs exist. Policy-driven and service-based jobs appear later, after you use performance policies and Service Health.</li>
 </ol>
-<p><strong>Result:</strong> You can point at the gateway that will feed alarms, inventory, and utilization.</p>
+<p><strong>Result:</strong> You can point at the collector that feeds inventory, alarms, and utilization. You will read collection jobs in more detail in chapter 9.</p>
 <h2 id="24-what-you-leave-alone">2.4 What you leave alone<a class="headerlink" href="#24-what-you-leave-alone" title="Permanent link">&para;</a></h2>
-<p>Credential profiles, AAA, certificates, backup jobs, and licensing are visible from Administration and from <strong>Device Management &gt; Credential Profiles</strong>. Open a profile only if a device is unreachable and the instructor asks you to compare the profile name. Editing a profile on a shared controller locks every other seat out of that device.</p>
-<p>Backup and restore put the cluster into maintenance mode. They are out of scope for this session.</p>
+<p>Credential profiles, AAA, certificates, backup jobs, and licensing are visible from Administration and from <strong>Device Management &gt; Credential Profiles</strong>. Open a profile only if a device is unreachable and you need to compare the profile name.</p>
+<p>Backup, restore, and <strong>Add OS patch</strong> put the cluster into maintenance mode. Patching is a guided walk in chapter 9. Do not start it here.</p>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Optimization Engine, Active Topology, and element management are Running or Healthy.</li>
+<li>Platform Infrastructure, Optimization Engine, Active Topology, and element management are Healthy or Running.</li>
 <li>The SR-PCE provider is reachable.</li>
 <li>The NSO provider is reachable.</li>
-<li>A Data Gateway is enrolled and mapped to the lab devices.</li>
+<li>A Data Gateway (or embedded collector) is Up and the XR devices are attached.</li>
+<li>Collection jobs are not in a Failed state.</li>
 </ul>
 
 

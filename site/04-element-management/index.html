@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.1 on the PTA network">
+        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.2.1-SP">
       
       
       
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#4-element-management-emf" class="md-skip">
+        <a href="#4-element-management" class="md-skip">
           Skip to content
         </a>
       
@@ -366,10 +366,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#41-network-devices-and-inventory" class="md-nav__link">
+  <a href="#41-solarwinds-to-cnc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 Network devices and inventory
+        4.1 SolarWinds to CNC
       
     </span>
   </a>
@@ -377,10 +377,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#42-configuration-backup" class="md-nav__link">
+  <a href="#42-network-devices-and-inventory" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 Configuration backup
+        4.2 Network devices and inventory
       
     </span>
   </a>
@@ -388,10 +388,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#43-configuration-templates" class="md-nav__link">
+  <a href="#43-configuration-backup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3 Configuration templates
+        4.3 Configuration backup
       
     </span>
   </a>
@@ -399,10 +399,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#44-alarms-and-events" class="md-nav__link">
+  <a href="#44-configuration-templates-read-only" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.4 Alarms and events
+        4.4 Configuration templates (read only)
       
     </span>
   </a>
@@ -410,10 +410,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#45-performance" class="md-nav__link">
+  <a href="#45-alarms-and-events" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.5 Performance
+        4.5 Alarms and events
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Performance
       
     </span>
   </a>
@@ -500,14 +511,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-lcm/" class="md-nav__link">
+      <a href="../07-l2vpn/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    7. Congestion mitigation
+    7. L2VPN provisioning
   
 
     
@@ -527,14 +538,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-ztp/" class="md-nav__link">
+      <a href="../08-assurance/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    8. Lifecycle and ZTP
+    8. Assurance
   
 
     
@@ -554,14 +565,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-assurance-mcp/" class="md-nav__link">
+      <a href="../09-troubleshooting/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    9. Assurance and MCP
+    9. Troubleshooting
   
 
     
@@ -581,14 +592,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../10-checkpoints/" class="md-nav__link">
+      <a href="../10-mcp-server/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Checkpoints
+    10. Optional CNC MCP server
   
 
     
@@ -628,10 +639,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#41-network-devices-and-inventory" class="md-nav__link">
+  <a href="#41-solarwinds-to-cnc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 Network devices and inventory
+        4.1 SolarWinds to CNC
       
     </span>
   </a>
@@ -639,10 +650,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#42-configuration-backup" class="md-nav__link">
+  <a href="#42-network-devices-and-inventory" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 Configuration backup
+        4.2 Network devices and inventory
       
     </span>
   </a>
@@ -650,10 +661,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#43-configuration-templates" class="md-nav__link">
+  <a href="#43-configuration-backup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3 Configuration templates
+        4.3 Configuration backup
       
     </span>
   </a>
@@ -661,10 +672,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#44-alarms-and-events" class="md-nav__link">
+  <a href="#44-configuration-templates-read-only" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.4 Alarms and events
+        4.4 Configuration templates (read only)
       
     </span>
   </a>
@@ -672,10 +683,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#45-performance" class="md-nav__link">
+  <a href="#45-alarms-and-events" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.5 Performance
+        4.5 Alarms and events
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Performance
       
     </span>
   </a>
@@ -710,69 +732,117 @@
 
 
 
-<h1 id="4-element-management-emf">4. Element management (EMF)<a class="headerlink" href="#4-element-management-emf" title="Permanent link">&para;</a></h1>
-<p><strong>Time:</strong> 60 minutes.</p>
-<p><strong>Objective:</strong> Use the CNC 7.1 element-management functions to read inventory, archived configuration, a configuration template, alarms, events, and performance. Deploy nothing from this chapter.</p>
-<p>Element Management Functions in CNC 7.1 cover device onboarding, inventory, faults, metrics, software images, configuration backup, and configuration templates. ZTP is part of the same lifecycle guide. You will tour ZTP in chapter 8 so this hour stays on "what is on the device today."</p>
-<h2 id="41-network-devices-and-inventory">4.1 Network devices and inventory<a class="headerlink" href="#41-network-devices-and-inventory" title="Permanent link">&para;</a></h2>
+<h1 id="4-element-management">4. Element management<a class="headerlink" href="#4-element-management" title="Permanent link">&para;</a></h1>
+<p><strong>Time:</strong> 50 minutes.</p>
+<p><strong>Objective:</strong> Use CNC Element Management Functions the way an operations team already uses SolarWinds: node status, hardware inventory, configuration archive, alarms, and interface performance. Deploy nothing from this chapter.</p>
+<p>Element Management Functions in CNC 7.2 cover device onboarding, inventory, faults, metrics, software images, configuration backup, and configuration templates. You will map each SolarWinds-style view to a CNC page, then open that page.</p>
+<h2 id="41-solarwinds-to-cnc">4.1 SolarWinds to CNC<a class="headerlink" href="#41-solarwinds-to-cnc" title="Permanent link">&para;</a></h2>
+<p>PTA operations already watches the network in SolarWinds (NPM for status, inventory, and performance; NCM for configuration). CNC is not a replacement of every SolarWinds poller. It is the controller view of the same devices, with IGP and SR context that SolarWinds does not have.</p>
+<table>
+<thead>
+<tr>
+<th>What you do in SolarWinds</th>
+<th>Where you do it in CNC</th>
+<th>What is different</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node list, ICMP/SNMP reachability</td>
+<td><strong>Device Management &gt; Network Devices</strong></td>
+<td>CNC also shows the credential profile and the Data Gateway mapping that collection uses</td>
+</tr>
+<tr>
+<td>Hardware inventory (chassis, modules, serials)</td>
+<td><strong>Device Management &gt; Network Inventory</strong></td>
+<td>Same idea: serial, product id, alarm badge on the part</td>
+</tr>
+<tr>
+<td>Network map</td>
+<td><strong>Topology</strong> (chapter 3)</td>
+<td>CNC map is IGP/SRv6 from SR-PCE, not only Layer-3 discovery</td>
+</tr>
+<tr>
+<td>Alert console / trap viewer</td>
+<td><strong>Alerts &gt; Alarms and Events</strong></td>
+<td>CNC splits system, network, and device alarms. An alarm stays until it clears; an event is a point in time</td>
+</tr>
+<tr>
+<td>Interface utilization and thresholds</td>
+<td><strong>Device Management &gt; Performance Policies</strong>, plus link utilization on the topology map</td>
+<td>CNC Optimization Engine colors links from collected counters. Performance Policies raise threshold-crossing alarms</td>
+</tr>
+<tr>
+<td>NCM config archive, compare, restore</td>
+<td><strong>Device Management &gt; Configuration Backup and Restore</strong></td>
+<td>CNC can also backup on configuration change. Restore is out of scope for this lab</td>
+</tr>
+<tr>
+<td>NCM config change jobs / scripts</td>
+<td><strong>Device Management &gt; Configuration Templates</strong></td>
+<td>Parameterized CLI (Apache Velocity). Different from NSO L2/L3VPN templates in chapters 6 and 7</td>
+</tr>
+</tbody>
+</table>
+<p>Use the table as a translation layer. The rest of this chapter is the CNC side.</p>
+<h2 id="42-network-devices-and-inventory">4.2 Network devices and inventory<a class="headerlink" href="#42-network-devices-and-inventory" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Go to <strong>Device Management &gt; Network Devices</strong>.</li>
-<li>Find the headend. Read operational state, reachability, and the credential profile name.</li>
-<li>Confirm a Data Gateway is associated with the device. Chapter 2 introduced that mapping. This is where a missing mapping shows up as a device you cannot refresh.</li>
+<li>Find the headend from chapter 3. Record operational state, reachability, and the credential profile name.</li>
+<li>Confirm a Data Gateway (or embedded collector) is associated with the device. A missing mapping is why inventory and counters stay empty.</li>
 <li>Go to <strong>Device Management &gt; Network Inventory</strong>.</li>
-<li>Filter to the headend hostname or product family.</li>
+<li>Filter to the headend hostname or product family (NCS 8200 / 8201).</li>
 <li>Open the chassis, one route processor or line card, and one pluggable if the inventory has them.</li>
-<li>Open the alarm summary on that inventory row. You will come back to the full alarm list in section 4.4.</li>
+<li>Read the alarm summary on that inventory row.</li>
 </ol>
-<p><strong>Result:</strong> You can walk from a hostname to a chassis and a module, and you know whether the device is reachable.</p>
-<p>A device that stays unreachable for the whole session needs the checkpoint page: credentials, routing to the management address, and CML node state. Give it a few minutes after the lab boots before you call it failed.</p>
-<h2 id="42-configuration-backup">4.2 Configuration backup<a class="headerlink" href="#42-configuration-backup" title="Permanent link">&para;</a></h2>
-<p>CNC can archive device configuration, compare two archives, and restore. This lab uses the archive as a reader.</p>
+<p><strong>Result:</strong> You can walk from a hostname to a chassis and a module, the same way you would drill into a SolarWinds node.</p>
+<p>A device that stays unreachable needs credentials, IPv6 reachability to the management address, and a booted CML node. Give a freshly started lab several minutes before you call it failed.</p>
+<h2 id="43-configuration-backup">4.3 Configuration backup<a class="headerlink" href="#43-configuration-backup" title="Permanent link">&para;</a></h2>
+<p>CNC archives device configuration, compares two archives, and can restore. This lab uses the archive as a reader, like NCM config view.</p>
 <ol>
 <li>Go to <strong>Device Management &gt; Configuration Backup and Restore</strong>.</li>
 <li>Find the headend.</li>
-<li>Open the latest archived configuration and identify the hostname and the segment-routing or BGP section the instructor points out.</li>
-<li>If two archives exist, open the compare view and name one difference, or state that the two archives match.</li>
+<li>Open the latest archived configuration. Identify hostname and the segment-routing or IS-IS section.</li>
+<li>If two archives exist, open compare and name one difference, or state that they match.</li>
 <li>Leave <strong>Schedule backup</strong> and <strong>Restore</strong> unused.</li>
 </ol>
-<p><strong>Result:</strong> You have seen a real archived configuration for the headend and you know where a later change would show up.</p>
-<p>Automatic backup on configuration change, when it is enabled under <strong>Device Management &gt; Configuration Preferences</strong>, is what makes this archive useful after chapter 6. Read the preference. Leave the values as you found them.</p>
-<h2 id="43-configuration-templates">4.3 Configuration templates<a class="headerlink" href="#43-configuration-templates" title="Permanent link">&para;</a></h2>
-<p>Device templates under Device Management are parameterized CLI (Apache Velocity template language). They are for repeating underlay or day-1 configuration across similar devices. They are a different store from the NSO L2VPN and L3VPN function-pack templates that chapter 6 uses.</p>
+<p><strong>Result:</strong> You have seen a real archived configuration for the headend.</p>
+<p>Automatic backup on configuration change, when it is enabled under <strong>Device Management &gt; Configuration Preferences</strong>, is what makes this archive useful after chapters 6 and 7. Read the preference. Leave the values as you found them.</p>
+<h2 id="44-configuration-templates-read-only">4.4 Configuration templates (read only)<a class="headerlink" href="#44-configuration-templates-read-only" title="Permanent link">&para;</a></h2>
+<p>Device templates under Device Management are parameterized CLI. They are for repeating underlay or day-1 configuration. They are not the NSO L2VPN/L3VPN function-pack templates, and they are not the custom template you may attach to a VPWS in chapter 7.</p>
 <ol>
 <li>Go to <strong>Device Management &gt; Configuration Templates</strong>.</li>
-<li>Open one existing template. Read the device types it targets and one variable it expects.</li>
-<li>Open <strong>Jobs</strong> only if a previous job is listed, and read its status.</li>
-<li>Close the template. Leave <strong>Create Template</strong> and every deploy action unused.</li>
+<li>Open one existing template, if any exist. Read the device types it targets and one variable it expects.</li>
+<li>Close it. Leave <strong>Create Template</strong> and every deploy action unused.</li>
 </ol>
-<p><strong>Result:</strong> You can explain the difference between this template library and the service template NSO applies when you provision an L3VPN.</p>
-<p>Deploying a template from this screen writes CLI to live routers. That write is out of scope for a shared class.</p>
-<h2 id="44-alarms-and-events">4.4 Alarms and events<a class="headerlink" href="#44-alarms-and-events" title="Permanent link">&para;</a></h2>
+<p><strong>Result:</strong> You can explain this store versus the NSO service template.</p>
+<h2 id="45-alarms-and-events">4.5 Alarms and events<a class="headerlink" href="#45-alarms-and-events" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Go to <strong>Alerts &gt; Alarms and Events</strong>.</li>
 <li>Stay on <strong>Alarms</strong>. Use the category list to see system, network, and device alarms as separate sets.</li>
 <li>Filter to the headend if the filter allows it.</li>
 <li>If an alarm is present, record severity, source, and whether it is acknowledged. Leave acknowledge, clear, and annotate unused unless the instructor gives you a lab alarm of your own.</li>
 <li>Switch <strong>Show</strong> from Alarms to <strong>Events</strong>.</li>
-<li>Read the newest event. An event is a moment in time. An alarm remains until it clears. Use one sentence to put the event you found into one of those two buckets.</li>
+<li>Read the newest event. An event is a moment in time. An alarm remains until it clears.</li>
 </ol>
-<p><strong>Result:</strong> You can open both views and you did not clear someone else's alarm.</p>
-<p>An empty alarm list is a valid result on a healthy CML lab. Write "no active device alarms" and move on.</p>
-<h2 id="45-performance">4.5 Performance<a class="headerlink" href="#45-performance" title="Permanent link">&para;</a></h2>
-<p>Link colors on the topology map come from interface utilization collected for Optimization Engine. Element management adds polling policies and device-level metrics.</p>
+<p><strong>Result:</strong> You can open both views. An empty alarm list is valid on a healthy CML lab. Write "no active device alarms" and move on.</p>
+<p>You will use this page again in chapter 9.</p>
+<h2 id="46-performance">4.6 Performance<a class="headerlink" href="#46-performance" title="Permanent link">&para;</a></h2>
+<p>Link colors on the topology map come from interface utilization collected for Optimization Engine. Element management adds polling policies, which is the CNC equivalent of a SolarWinds threshold on an interface.</p>
 <ol>
-<li>Go to <strong>Device Management &gt; Performance Policies</strong>, or the performance page under Device Management on your build.</li>
-<li>Open one existing policy. Read which devices or groups it covers, how often it polls, and which threshold raises an alarm.</li>
-<li>Return to the headend in <strong>Network Inventory</strong> or <strong>Network Devices</strong> and open the metrics or interface view. Compare one interface counter with the utilization you wrote down in chapter 3.</li>
-<li>Leave the policy inactive/active switch as you found it. A new polling policy on every seat multiplies SNMP load on the lab.</li>
+<li>Go to <strong>Device Management &gt; Performance Policies</strong>.</li>
+<li>Open one existing policy, if any exist. Read which devices it covers, how often it polls, and which threshold raises an alarm.</li>
+<li>Return to the headend in <strong>Network Devices</strong> or <strong>Network Inventory</strong> and open the metrics or interface view. Compare one interface counter with the utilization you wrote down in chapter 3.</li>
+<li>Leave the policy switch as you found it.</li>
 </ol>
 <p><strong>Result:</strong> You can say where a threshold is defined, and you can point at one live counter.</p>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
 <ul>
+<li>You can map node list, inventory, alerts, config archive, and utilization from SolarWinds to a CNC page.</li>
 <li>The headend is in Network Devices and in Network Inventory.</li>
-<li>You opened an archived configuration and a device template, and you deployed neither.</li>
+<li>You opened an archived configuration and did not restore it.</li>
 <li>You opened Alarms and Events.</li>
-<li>You can point at the polling policy that would raise a threshold alarm.</li>
+<li>You compared one interface counter with the topology utilization from chapter 3.</li>
 </ul>
 
 

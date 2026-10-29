@@ -6,15 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.1 on the PTA network">
+        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.2.1-SP">
       
       
       
       
-        <link rel="prev" href="../08-ztp/">
+        <link rel="prev" href="../08-assurance/">
       
       
-        <link rel="next" href="../10-checkpoints/">
+        <link rel="next" href="../10-mcp-server/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>9. Assurance and MCP - Crosswork CNC Hands-on</title>
+        <title>9. Troubleshooting - Crosswork CNC Hands-on</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#9-proactive-assurance-and-the-mcp-server" class="md-skip">
+        <a href="#9-troubleshooting" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              9. Assurance and MCP
+              9. Troubleshooting
             
           </span>
         </div>
@@ -387,14 +387,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-lcm/" class="md-nav__link">
+      <a href="../07-l2vpn/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    7. Congestion mitigation
+    7. L2VPN provisioning
   
 
     
@@ -414,14 +414,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-ztp/" class="md-nav__link">
+      <a href="../08-assurance/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    8. Lifecycle and ZTP
+    8. Assurance
   
 
     
@@ -457,7 +457,7 @@
   <span class="md-ellipsis">
     
   
-    9. Assurance and MCP
+    9. Troubleshooting
   
 
     
@@ -475,7 +475,7 @@
   <span class="md-ellipsis">
     
   
-    9. Assurance and MCP
+    9. Troubleshooting
   
 
     
@@ -501,10 +501,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#91-assurance-on-the-controller" class="md-nav__link">
+  <a href="#91-alarms" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9.1 Assurance on the controller
+        9.1 Alarms
       
     </span>
   </a>
@@ -512,10 +512,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#92-the-assistant-and-mcp" class="md-nav__link">
+  <a href="#92-collection-jobs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9.2 The assistant and MCP
+        9.2 Collection jobs
       
     </span>
   </a>
@@ -523,32 +523,88 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#93-one-live-question" class="md-nav__link">
+  <a href="#93-showtech" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9.3 One live question
+        9.3 Showtech
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.3 Showtech">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cluster-and-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cluster and application
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#94-remediation-stays-with-you" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#data-gateway-read-only-unless-asked" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9.4 Remediation stays with you
+        Data Gateway (read only unless asked)
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#95-what-you-leave-out-of-the-chat" class="md-nav__link">
+  <a href="#94-add-patch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9.5 What you leave out of the chat
+        9.4 Add patch
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.4 Add patch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#os-patch-screens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OS patch screens
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application file
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#95-if-something-from-an-earlier-chapter-is-still-broken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 If something from an earlier chapter is still broken
       
     </span>
   </a>
@@ -581,14 +637,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../10-checkpoints/" class="md-nav__link">
+      <a href="../10-mcp-server/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Checkpoints
+    10. Optional CNC MCP server
   
 
     
@@ -628,10 +684,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#91-assurance-on-the-controller" class="md-nav__link">
+  <a href="#91-alarms" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9.1 Assurance on the controller
+        9.1 Alarms
       
     </span>
   </a>
@@ -639,10 +695,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#92-the-assistant-and-mcp" class="md-nav__link">
+  <a href="#92-collection-jobs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9.2 The assistant and MCP
+        9.2 Collection jobs
       
     </span>
   </a>
@@ -650,32 +706,88 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#93-one-live-question" class="md-nav__link">
+  <a href="#93-showtech" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9.3 One live question
+        9.3 Showtech
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.3 Showtech">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cluster-and-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cluster and application
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#94-remediation-stays-with-you" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#data-gateway-read-only-unless-asked" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9.4 Remediation stays with you
+        Data Gateway (read only unless asked)
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#95-what-you-leave-out-of-the-chat" class="md-nav__link">
+  <a href="#94-add-patch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9.5 What you leave out of the chat
+        9.4 Add patch
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.4 Add patch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#os-patch-screens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OS patch screens
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application file
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#95-if-something-from-an-earlier-chapter-is-still-broken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 If something from an earlier chapter is still broken
       
     </span>
   </a>
@@ -710,87 +822,133 @@
 
 
 
-<h1 id="9-proactive-assurance-and-the-mcp-server">9. Proactive assurance and the MCP server<a class="headerlink" href="#9-proactive-assurance-and-the-mcp-server" title="Permanent link">&para;</a></h1>
-<p><strong>Time:</strong> 40 minutes.</p>
-<p><strong>Objective:</strong> See where CNC monitors service and device health, then ask the lab assistant one question that it can answer from a live Crosswork tool. You decide what to do with the answer.</p>
-<h2 id="91-assurance-on-the-controller">9.1 Assurance on the controller<a class="headerlink" href="#91-assurance-on-the-controller" title="Permanent link">&para;</a></h2>
-<p>You already used device alarms, events, and performance policies in chapter 4. Two more CNC 7.1 applications sit above that, when they are installed on this cluster:</p>
+<h1 id="9-troubleshooting">9. Troubleshooting<a class="headerlink" href="#9-troubleshooting" title="Permanent link">&para;</a></h1>
+<p><strong>Time:</strong> 45 minutes.</p>
+<p><strong>Objective:</strong> Collect CNC showtech, read collection jobs, read alarms, and walk the add-patch workflow. Applying a patch is an instructor decision because CNC puts itself into maintenance mode to install it.</p>
+<p>This chapter is about the controller, not about rewriting router configuration.</p>
+<h2 id="91-alarms">9.1 Alarms<a class="headerlink" href="#91-alarms" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Go to <strong>Alerts &gt; Alarms and Events</strong>.</li>
+<li>Filter <strong>Alarms</strong> by category: system, network, and device.</li>
+<li>For each category, record whether anything is raised. System alarms belong to CNC itself (disk, application, collector). Device alarms belong to the XR nodes.</li>
+<li>Open one alarm if any exist. Record severity, source, time, and description. Leave acknowledge and clear unused unless the instructor assigns that alarm to you.</li>
+<li>Switch to <strong>Events</strong> and find the event that created the alarm, if one exists.</li>
+</ol>
+<p><strong>Result:</strong> You know whether the platform, the network, or a device is currently unhappy.</p>
+<p>Use alarms together with chapter 2 health tiles. A Healthy application tile and a system alarm can both be true; the alarm is the detail.</p>
+<h2 id="92-collection-jobs">9.2 Collection jobs<a class="headerlink" href="#92-collection-jobs" title="Permanent link">&para;</a></h2>
+<p>Empty inventory, blank utilization, and Service Health stuck on Initiated are usually collection problems, not VPN problems.</p>
+<ol>
+<li>Go to <strong>Administration &gt; Collection Jobs</strong>, or <strong>Administration &gt; Data Gateway Management &gt; Collection Jobs</strong>.</li>
+<li>Open <strong>Bulk jobs</strong>. These are created by the system, the UI, or the API. Record Status (READY, NOTREADY, FAILED) and collector type (SNMP, CLI, gNMI, syslog, trap).</li>
+<li>Open a Successful or READY job. Read the device list and the sensor path or CLI command.</li>
+<li>Open <strong>Parameterized jobs</strong>:<ul>
+<li><strong>Default jobs</strong> — reachability</li>
+<li><strong>Policy-driven jobs</strong> — Performance Policies from chapter 4</li>
+<li><strong>Service-based jobs</strong> — created when you started Service Health on the VPWS</li>
+</ul>
+</li>
+<li>Find a service-based job related to <code>pta-vpws-01</code> or to L2VPN monitoring. Confirm it is not Failed.</li>
+<li>If a job is Failed or Degraded, open the job details and read the error. Common causes:<ul>
+<li>Device not attached to a Data Gateway</li>
+<li>SNMP or CLI credentials wrong</li>
+<li>Device unreachable (chapter 3 CLI will already have shown this)</li>
+<li>Destination in Error, while collection still runs and increments an error count</li>
+</ul>
+</li>
+</ol>
+<p>Do not create a new bulk job in class. Do not delete a system job.</p>
+<p><strong>Result:</strong> You can point at the job that feeds Service Health, and you know whether it is READY.</p>
+<h2 id="93-showtech">9.3 Showtech<a class="headerlink" href="#93-showtech" title="Permanent link">&para;</a></h2>
+<p>Showtech is what you collect before you open a TAC case. CNC 7.2 collects cluster logs and metrics from <strong>Crosswork Manager</strong>. Application showtech is per application. Data Gateway showtech is a separate encrypted download.</p>
+<h3 id="cluster-and-application">Cluster and application<a class="headerlink" href="#cluster-and-application" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Go to <strong>Administration &gt; Crosswork Manager</strong>.</li>
+<li>Open <strong>Crosswork Summary &gt; System summary</strong>.</li>
+<li>Click <strong>Actions</strong> and note the showtech options:<ul>
+<li><strong>Request all</strong> — logs and metrics</li>
+<li><strong>Request metrics</strong></li>
+<li><strong>Collect logs</strong></li>
+</ul>
+</li>
+<li>If the instructor wants a file from this VM, collect <strong>logs</strong> (not Request all) so the bundle stays smaller. Otherwise, only open <strong>Actions &gt; View showtech jobs</strong> and read any previous job.</li>
+<li>To collect for one application, return to <strong>Crosswork Health</strong>, open the application tile (for example Service Health or Platform Infrastructure), and use that tile's showtech action. Application logs are collected separately from the cluster bundle.</li>
+<li>In <strong>View showtech jobs</strong>, read status. Publish or download only if the instructor will take the file. Delete nothing.</li>
+</ol>
+<p><strong>Result:</strong> You know where cluster showtech and application showtech are started, and you did not fill the disk unless the instructor asked for a collect.</p>
+<h3 id="data-gateway-read-only-unless-asked">Data Gateway (read only unless asked)<a class="headerlink" href="#data-gateway-read-only-unless-asked" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Go to <strong>Administration &gt; Data Gateway Management</strong>.</li>
+<li>Select the gateway.</li>
+<li>Open <strong>Actions</strong> and find <strong>Download Showtech</strong>.</li>
+<li>Do not download unless the instructor asks. The file is encrypted. The instructor keeps the passphrase and decrypts the file if TAC needs it. Do not put a passphrase in chat or in this guide.</li>
+</ol>
+<p><strong>Result:</strong> You can show where CDG showtech lives.</p>
+<h2 id="94-add-patch">9.4 Add patch<a class="headerlink" href="#94-add-patch" title="Permanent link">&para;</a></h2>
+<p>CNC 7.2 installs OS security patches (SPACK) from <strong>System management</strong>. Application bundles are added from <strong>Application Management</strong>. Both are maintenance operations. Adding an OS patch automatically turns maintenance mode on, applies the bundle node by node, and turns maintenance mode off. Rollback is not supported. A small lab VM still takes a long time.</p>
+<div class="admonition note">
+<p class="admonition-title">Instructor</p>
+<p>Walk the screens with the room. Apply a patch only if a lab SPACK or application file is staged and you have time for maintenance to bounce. Students do not click <strong>Add</strong> unless you say so.</p>
+</div>
+<h3 id="os-patch-screens">OS patch screens<a class="headerlink" href="#os-patch-screens" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Go to <strong>Administration &gt; Crosswork Manager</strong>.</li>
+<li>Open the <strong>System management</strong> tab.</li>
+<li>Find <strong>Add OS patch</strong>. Open the dialog far enough to see that the source is URL or SCP. Do not enter a server password into the guide or into a screenshot.</li>
+<li>Close the dialog unless the instructor is applying a staged patch.</li>
+<li>Open <strong>System updates</strong> (or the list of already installed patches). Record whether this dCloud image already shows 7.2.1-SP or another installed bundle.</li>
+<li>Open <strong>Job History</strong> on System management. This is where add-to-repository and per-VM apply jobs appear after someone adds a patch. Read any existing job. Do not retry a job unless the instructor is recovering a failed apply.</li>
+<li>After a successful apply (instructor only), verification is <strong>Administration &gt; Crosswork Manager &gt; System summary &gt; View details &gt; Package details</strong>.</li>
+</ol>
+<p>If the instructor does apply a patch, wait. Do not log in while maintenance mode is on. When the UI returns, repeat the health checks from chapter 2.</p>
+<h3 id="application-file">Application file<a class="headerlink" href="#application-file" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Go to <strong>Administration &gt; Crosswork Manager &gt; Application Management</strong>.</li>
+<li>Note <strong>Add new file</strong>. That is how an application CAPP or a patch bundle is uploaded.</li>
+<li>Do not upload a file unless the instructor provides one and asks you to.</li>
+</ol>
+<p><strong>Result:</strong> You can find Add OS patch, System updates, Job History, and Application Management. You did not start a patch on your own.</p>
+<h2 id="95-if-something-from-an-earlier-chapter-is-still-broken">9.5 If something from an earlier chapter is still broken<a class="headerlink" href="#95-if-something-from-an-earlier-chapter-is-still-broken" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Application</th>
-<th>What an operator uses it for</th>
+<th>Symptom</th>
+<th>First check</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Service Health</td>
-<td>A service-level view of the L2VPN and L3VPN you provisioned, with symptoms against the rules the operator enabled</td>
+<td>Empty topology</td>
+<td>SR-PCE provider, BGP-LS, <code>show pce ipv6 topology summary</code></td>
 </tr>
 <tr>
-<td>Health Insights</td>
-<td>KPI monitoring and alerts driven by logic the operator attached to devices</td>
+<td>Device unreachable in Network Devices</td>
+<td>CML node booted, management IPv6, credential profile</td>
+</tr>
+<tr>
+<td>Thin inventory / no utilization</td>
+<td>Data Gateway attachment, collection job status</td>
+</tr>
+<tr>
+<td>SR policy preview empty</td>
+<td>SRv6 tab, <code>show segment-routing srv6 locator</code>, PCEP peer</td>
+</tr>
+<tr>
+<td>VPN out of sync</td>
+<td>NSO provider, Check sync, then chapter 7 optional sync-from only if asked</td>
+</tr>
+<tr>
+<td>Service Health stuck on Initiated</td>
+<td>Parameterized service-based collection job</td>
 </tr>
 </tbody>
 </table>
-<ol>
-<li>From the main menu or the application list, open <strong>Service Health</strong> if it is installed.</li>
-<li>Find <code>PTA-L3-SEAT-&lt;seat&gt;</code> if the service view has reached it. Read the health state and one symptom or rule name. If your service is absent, the collector has not scored it yet. Note the time and continue. Scoring can lag a new provision.</li>
-<li>Open <strong>Health Insights</strong> only if it is installed. Read one existing KPI profile. Enable no new KPI. A new profile on a shared cluster adds collection for every seat.</li>
-<li>If either application is missing from this single-VM lab, record "not installed" and continue with section 9.2. The MCP exercise is the required part of this chapter.</li>
-</ol>
-<p><strong>Result:</strong> You know whether service health is scoring your VPN, and you left KPI enablement unchanged.</p>
-<h2 id="92-the-assistant-and-mcp">9.2 The assistant and MCP<a class="headerlink" href="#92-the-assistant-and-mcp" title="Permanent link">&para;</a></h2>
-<p>The lab assistant is a chat page. When you ask a question, the assistant may call tools on an MCP server. That server is what talks to Crosswork. The tools listed in the assistant sidebar are the only live data the assistant can fetch. Anything else in the reply is explanation, and you treat it as explanation until you confirm it in the CNC UI.</p>
-<p>The instructor starts the assistant and the MCP server before this chapter. You receive the assistant URL on the whiteboard. You do not receive, and you do not type, the controller password, an API token, or a client secret. Those stay in the instructor's configuration outside this guide.</p>
-<ol>
-<li>Open the assistant URL.</li>
-<li>Read the backend status in the sidebar. Continue when it is online.</li>
-<li>Read the tool list. Find the tool whose description is the inventory node count. That is the live tool for this lab.</li>
-<li>If the sidebar also lists session or ticket tools, leave them unused. This chapter does not delete sessions and does not change the controller.</li>
-</ol>
-<p><strong>Result:</strong> The assistant is online and you can name the inventory tool.</p>
-<h2 id="93-one-live-question">9.3 One live question<a class="headerlink" href="#93-one-live-question" title="Permanent link">&para;</a></h2>
-<p>In the chat, ask:</p>
-<pre><code class="language-text">How many nodes are in the Crosswork inventory?
-</code></pre>
-<p>Wait for the reply. Open the tool-call detail the UI shows for that turn.</p>
-<p>Check all of the following:</p>
-<ul>
-<li>The assistant called the inventory count tool.</li>
-<li>The reply contains a number.</li>
-<li>You can find a matching count under <strong>Device Management &gt; Network Devices</strong> or <strong>Network Inventory</strong>. The two screens group equipment differently, so the numbers may differ by what each one counts. Write both numbers and one sentence on the difference you see. If they match, write that they match.</li>
-</ul>
-<p>If the tool call fails, the useful symptom is the error text, not a second guess from the model. A failure here usually means the assistant cannot authenticate to CNC or cannot reach the UI address. That is an instructor fix. Your earlier chapters already showed you the same inventory with your own login.</p>
-<p><strong>Result:</strong> A number from the tool, compared with the number you read in Device Management.</p>
-<h2 id="94-remediation-stays-with-you">9.4 Remediation stays with you<a class="headerlink" href="#94-remediation-stays-with-you" title="Permanent link">&para;</a></h2>
-<p>Ask a second question that does not require a write tool:</p>
-<pre><code class="language-text">The inventory count is &lt;the number you just verified&gt;.
-The CML lab should have &lt;the node count on the whiteboard&gt; routers.
-What should an operator check first in Crosswork?
-</code></pre>
-<p>A useful answer names checks you already know how to open:</p>
-<ul>
-<li>Reachability on <strong>Device Management &gt; Network Devices</strong></li>
-<li>The credential profile on that device</li>
-<li>Data Gateway mapping</li>
-<li>SR-PCE and NSO provider status</li>
-<li>Active alarms for that hostname</li>
-</ul>
-<p>Take one check the assistant named, open that CNC page, and confirm or contradict the suggestion with the screen. The screen wins. The assistant does not commit, delete, or provision.</p>
-<p>That is the remediation pattern for this lab: the assistant reads, the assistant suggests, the operator verifies, the operator changes the network only through the chapters that allow a commit.</p>
-<h2 id="95-what-you-leave-out-of-the-chat">9.5 What you leave out of the chat<a class="headerlink" href="#95-what-you-leave-out-of-the-chat" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Passwords, tokens, ticket ids, and certificate contents</li>
-<li>A request to delete a session, a policy, a VPN, or a device</li>
-<li>Configuration text copied from another seat's dry run</li>
-</ul>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
 <ul>
-<li>You know whether Service Health and Health Insights are installed.</li>
-<li>The assistant answered the inventory question with a tool call.</li>
-<li>You compared that number with Device Management.</li>
-<li>You verified one suggested check on a CNC screen.</li>
+<li>You opened Alarms and Events and recorded what is (or is not) raised.</li>
+<li>You found bulk and parameterized collection jobs, including a service-based job for the VPWS when monitoring is on.</li>
+<li>You can start cluster showtech from System summary and you know that application and CDG showtech are separate.</li>
+<li>You walked Add OS patch and Job History without starting an unplanned maintenance window.</li>
 </ul>
 
 

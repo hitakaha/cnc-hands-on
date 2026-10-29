@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.1 on the PTA network">
+        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.2.1-SP">
       
       
       
@@ -256,10 +256,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-read-each-chapter" class="md-nav__link">
+  <a href="#lab-story" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How to read each chapter
+        Lab story
       
     </span>
   </a>
@@ -267,10 +267,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#view-this-guide" class="md-nav__link">
+  <a href="#lab-values" class="md-nav__link">
     <span class="md-ellipsis">
       
-        View this guide
+        Lab values
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-read-this-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to read this guide
       
     </span>
   </a>
@@ -454,14 +465,14 @@
   
   
     <li class="md-nav__item">
-      <a href="07-lcm/" class="md-nav__link">
+      <a href="07-l2vpn/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    7. Congestion mitigation
+    7. L2VPN provisioning
   
 
     
@@ -481,14 +492,14 @@
   
   
     <li class="md-nav__item">
-      <a href="08-ztp/" class="md-nav__link">
+      <a href="08-assurance/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    8. Lifecycle and ZTP
+    8. Assurance
   
 
     
@@ -508,14 +519,14 @@
   
   
     <li class="md-nav__item">
-      <a href="09-assurance-mcp/" class="md-nav__link">
+      <a href="09-troubleshooting/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    9. Assurance and MCP
+    9. Troubleshooting
   
 
     
@@ -535,14 +546,14 @@
   
   
     <li class="md-nav__item">
-      <a href="10-checkpoints/" class="md-nav__link">
+      <a href="10-mcp-server/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Checkpoints
+    10. Optional CNC MCP server
   
 
     
@@ -582,10 +593,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-read-each-chapter" class="md-nav__link">
+  <a href="#lab-story" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How to read each chapter
+        Lab story
       
     </span>
   </a>
@@ -593,10 +604,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#view-this-guide" class="md-nav__link">
+  <a href="#lab-values" class="md-nav__link">
     <span class="md-ellipsis">
       
-        View this guide
+        Lab values
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-read-this-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to read this guide
       
     </span>
   </a>
@@ -621,10 +643,74 @@
 
 
 <h1 id="crosswork-cnc-hands-on">Crosswork CNC Hands-on<a class="headerlink" href="#crosswork-cnc-hands-on" title="Permanent link">&para;</a></h1>
-<p>This is the operator lab for Cisco Crosswork Network Controller (CNC) 7.2.1-SP. You will use a dedicated controller and a Cisco Modeling Labs (CML) topology.</p>
-<h2 id="how-to-read-each-chapter">How to read each chapter<a class="headerlink" href="#how-to-read-each-chapter" title="Permanent link">&para;</a></h2>
-<p>Each chapter has an objective, the clicks, the result you should see, and a short "done when" list. Router work in this lab is <code>show</code> output. Configuration changes go through CNC, and only in the chapters that say so.</p>
-<h2 id="view-this-guide">View this guide<a class="headerlink" href="#view-this-guide" title="Permanent link">&para;</a></h2>
+<p>This is the operator lab for Cisco Crosswork Network Controller (CNC) 7.2.1-SP. You will use the dCloud session from chapter 1: one CNC, a five-node IOS-XR lab, and a dedicated SR-PCE lab.</p>
+<p>Each chapter has an objective, the clicks or CLI, the result you should see, and a short <strong>Done when</strong> list. Router work in this lab is <code>show</code> output unless a chapter says otherwise. Configuration changes go through CNC.</p>
+<h2 id="lab-story">Lab story<a class="headerlink" href="#lab-story" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Bring CNC out of maintenance and start both CML labs.</li>
+<li>Confirm CNC, the providers, and collection are healthy.</li>
+<li>Read the topology in the UI and confirm it from XR CLI.</li>
+<li>Walk inventory, faults, configuration, and performance, mapped to the SolarWinds views operations already uses.</li>
+<li>Observe a PCC-initiated SR policy, then create a PCE-initiated SRv6 policy.</li>
+<li>Provision an L3VPN and steer it onto that policy.</li>
+<li>Provision a VPWS L2VPN. VPLS, an NSO custom template, and <code>sync-from</code> are optional.</li>
+<li>Enable Service Health on the VPWS you created.</li>
+<li>Collect showtech, read collection jobs and alarms, and walk the patch screen.</li>
+<li>Optional: ask the CNC MCP assistant one inventory question.</li>
+</ol>
+<h2 id="lab-values">Lab values<a class="headerlink" href="#lab-values" title="Permanent link">&para;</a></h2>
+<p>Copy this table into your notes. Fill hostnames and interfaces from the CML labs and from the instructor. Keep passwords out of the guide, out of chat, and out of screenshots you share.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Your value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNC UI</td>
+<td><code>https://[2001:db8:134::200]:30603</code> (from chapter 1)</td>
+</tr>
+<tr>
+<td>XR CML lab</td>
+<td><code>5-nodes_L3VPN 8201-32FH 25.3.1-ipv6</code></td>
+</tr>
+<tr>
+<td>PCE CML lab</td>
+<td><code>xrv9k-25.4.1-pce-for-CNC7.2-ipv6</code></td>
+</tr>
+<tr>
+<td>Headend PE</td>
+<td></td>
+</tr>
+<tr>
+<td>Endpoint PE</td>
+<td></td>
+</tr>
+<tr>
+<td>Attachment interfaces</td>
+<td></td>
+</tr>
+<tr>
+<td>PCE-initiated policy name</td>
+<td><code>pta-pce-01</code></td>
+</tr>
+<tr>
+<td>Policy color</td>
+<td>assigned by the instructor</td>
+</tr>
+<tr>
+<td>L3VPN name</td>
+<td><code>pta-l3vpn-01</code></td>
+</tr>
+<tr>
+<td>VPWS name</td>
+<td><code>pta-vpws-01</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-to-read-this-guide">How to read this guide<a class="headerlink" href="#how-to-read-this-guide" title="Permanent link">&para;</a></h2>
 <p>From this folder, with the existing virtual environment:</p>
 <pre><code class="language-bash">source venv/bin/activate
 mkdocs serve
