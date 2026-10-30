@@ -770,12 +770,12 @@ show pce ipv6 lsp
 </code></pre>
 <p>The PCC session should be up. The LSP list should include the PCC-initiated policy when one exists.</p>
 <h2 id="53-create-a-pce-initiated-policy">5.3 Create a PCE-initiated policy<a class="headerlink" href="#53-create-a-pce-initiated-policy" title="Permanent link">&para;</a></h2>
-<p>Use name <code>pta-pce-01</code> and the color the instructor assigns. Do not reuse a color that already belongs to the PCC-initiated policy.</p>
+<p>Use name <code>pce-01</code> and the color the instructor assigns. Do not reuse a color that already belongs to the PCC-initiated policy.</p>
 <ol>
 <li>Stay on <strong>Services &amp; Traffic Engineering &gt; Traffic Engineering</strong>, <strong>SRv6</strong> tab.</li>
 <li>Start the create action and choose <strong>PCE-initiated</strong>.</li>
 <li>Set:<ul>
-<li>Name: <code>pta-pce-01</code></li>
+<li>Name: <code>pce-01</code></li>
 <li>Headend: the headend from chapter 3</li>
 <li>Endpoint: the endpoint from chapter 3</li>
 <li>Color: the instructor's value</li>
@@ -792,19 +792,19 @@ show pce ipv6 lsp
 <p><strong>Result:</strong> A PCE-initiated SRv6 policy exists and the map draws it.</p>
 <h2 id="54-confirm-on-the-headend">5.4 Confirm on the headend<a class="headerlink" href="#54-confirm-on-the-headend" title="Permanent link">&para;</a></h2>
 <pre><code class="language-text">show segment-routing traffic-eng policy
-show segment-routing traffic-eng policy name pta-pce-01
+show segment-routing traffic-eng policy name pce-01
 </code></pre>
-<p>Find <code>pta-pce-01</code>. If a PCC-initiated policy was prepared, it is still present. The difference is ownership: one policy is configured on the router, the other was instantiated by the PCE.</p>
+<p>Find <code>pce-01</code>. If a PCC-initiated policy was prepared, it is still present. The difference is ownership: one policy is configured on the router, the other was instantiated by the PCE.</p>
 <p>If your policy is missing on the router and present in CNC as down, check:</p>
 <pre><code class="language-text">show segment-routing traffic-eng pcc ipv6 peer
 </code></pre>
-<p>A down PCEP session, a color conflict, or a headend that cannot place the SRv6 SIDs are the usual causes. Delete only <code>pta-pce-01</code>, and only if it is down and the instructor agrees.</p>
+<p>A down PCEP session, a color conflict, or a headend that cannot place the SRv6 SIDs are the usual causes. Delete only <code>pce-01</code>, and only if it is down and the instructor agrees.</p>
 <h2 id="55-clean-up-rule">5.5 Clean-up rule<a class="headerlink" href="#55-clean-up-rule" title="Permanent link">&para;</a></h2>
-<p>Keep this policy until chapter 6 has steered an L3VPN onto its color. At the end of the day, delete the VPNs first, then delete <code>pta-pce-01</code>. Leave any PCC-initiated policy in place.</p>
+<p>Keep this policy until chapter 6 has steered an L3VPN onto its color. At the end of the day, delete the VPNs first, then delete <code>pce-01</code>. Leave any PCC-initiated policy in place.</p>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
 <ul>
-<li>You can say who owns the PCC-initiated policy (if one exists) and who owns <code>pta-pce-01</code>.</li>
-<li><code>pta-pce-01</code> is up, with the assigned color, and it is drawn on the map.</li>
+<li>You can say who owns the PCC-initiated policy (if one exists) and who owns <code>pce-01</code>.</li>
+<li><code>pce-01</code> is up, with the assigned color, and it is drawn on the map.</li>
 <li><code>show segment-routing traffic-eng policy</code> on the headend lists your policy, and <code>show segment-routing traffic-eng pcc ipv6 peer</code> shows the PCE up.</li>
 </ul>
 

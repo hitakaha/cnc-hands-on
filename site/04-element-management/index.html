@@ -737,7 +737,7 @@
 <p><strong>Objective:</strong> Use CNC Element Management Functions the way an operations team already uses SolarWinds: node status, hardware inventory, configuration archive, alarms, and interface performance. Deploy nothing from this chapter.</p>
 <p>Element Management Functions in CNC 7.2 cover device onboarding, inventory, faults, metrics, software images, configuration backup, and configuration templates. You will map each SolarWinds-style view to a CNC page, then open that page.</p>
 <h2 id="41-solarwinds-to-cnc">4.1 SolarWinds to CNC<a class="headerlink" href="#41-solarwinds-to-cnc" title="Permanent link">&para;</a></h2>
-<p>PTA operations already watches the network in SolarWinds (NPM for status, inventory, and performance; NCM for configuration). CNC is not a replacement of every SolarWinds poller. It is the controller view of the same devices, with IGP and SR context that SolarWinds does not have.</p>
+<p>CNC is not a replacement of every SolarWinds poller. It is the controller view of the same devices, with IGP and SR context that SolarWinds does not have.</p>
 <table>
 <thead>
 <tr>
@@ -787,52 +787,73 @@
 <p>Use the table as a translation layer. The rest of this chapter is the CNC side.</p>
 <h2 id="42-network-devices-and-inventory">4.2 Network devices and inventory<a class="headerlink" href="#42-network-devices-and-inventory" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Go to <strong>Device Management &gt; Network Devices</strong>.</li>
+<li>Go to <strong>Device Management &gt; Network Devices</strong>.
+<img alt="dcloud" src="../img/04/01-network-devices.png" /></li>
 <li>Find the headend from chapter 3. Record operational state, reachability, and the credential profile name.</li>
-<li>Confirm a Data Gateway (or embedded collector) is associated with the device. A missing mapping is why inventory and counters stay empty.</li>
 <li>Go to <strong>Device Management &gt; Network Inventory</strong>.</li>
-<li>Filter to the headend hostname or product family (NCS 8200 / 8201).</li>
+<li>Filter to the headend hostname or product family (C8711-1-PE).
+<img alt="dcloud" src="../img/04/02-network-inventory.png" /></li>
 <li>Open the chassis, one route processor or line card, and one pluggable if the inventory has them.</li>
 <li>Read the alarm summary on that inventory row.</li>
 </ol>
 <p><strong>Result:</strong> You can walk from a hostname to a chassis and a module, the same way you would drill into a SolarWinds node.</p>
-<p>A device that stays unreachable needs credentials, IPv6 reachability to the management address, and a booted CML node. Give a freshly started lab several minutes before you call it failed.</p>
+<p>A device that stays unreachable needs credentials, IPv6 reachability to the management address, and a booted CML node.</p>
 <h2 id="43-configuration-backup">4.3 Configuration backup<a class="headerlink" href="#43-configuration-backup" title="Permanent link">&para;</a></h2>
 <p>CNC archives device configuration, compares two archives, and can restore. This lab uses the archive as a reader, like NCM config view.</p>
 <ol>
 <li>Go to <strong>Device Management &gt; Configuration Backup and Restore</strong>.</li>
 <li>Find the headend.</li>
-<li>Open the latest archived configuration. Identify hostname and the segment-routing or IS-IS section.</li>
+<li>Open the latest archived configuration. Identify hostname and the segment-routing or IS-IS section.
+<img alt="dcloud" src="../img/04/03-config.png" /></li>
 <li>If two archives exist, open compare and name one difference, or state that they match.</li>
 <li>Leave <strong>Schedule backup</strong> and <strong>Restore</strong> unused.</li>
 </ol>
 <p><strong>Result:</strong> You have seen a real archived configuration for the headend.</p>
-<p>Automatic backup on configuration change, when it is enabled under <strong>Device Management &gt; Configuration Preferences</strong>, is what makes this archive useful after chapters 6 and 7. Read the preference. Leave the values as you found them.</p>
+<p>Automatic backup on configuration change, when it is enabled under <strong>Device Management &gt; Configuration Preferences</strong>, is what makes this archive useful after chapters 6 and 7. Read the preference. Leave the values as you found them.
+<img alt="dcloud" src="../img/04/04-config-preference.png" /></p>
 <h2 id="44-configuration-templates-read-only">4.4 Configuration templates (read only)<a class="headerlink" href="#44-configuration-templates-read-only" title="Permanent link">&para;</a></h2>
 <p>Device templates under Device Management are parameterized CLI. They are for repeating underlay or day-1 configuration. They are not the NSO L2VPN/L3VPN function-pack templates, and they are not the custom template you may attach to a VPWS in chapter 7.</p>
 <ol>
 <li>Go to <strong>Device Management &gt; Configuration Templates</strong>.</li>
 <li>Open one existing template, if any exist. Read the device types it targets and one variable it expects.</li>
-<li>Close it. Leave <strong>Create Template</strong> and every deploy action unused.</li>
+<li>Configuration templates can be used to execute a set of commands. Create a new template and put following values.<ul>
+<li>Name: collect-outputs</li>
+<li>Enable "Read template for troubleshooting"</li>
+<li>Authorization: admin
+<img alt="dcloud" src="../img/04/05-template1.png" /></li>
+</ul>
+</li>
+<li>Select "Cisco 8711-32FH" as a device type.
+<img alt="dcloud" src="../img/04/06-template2.png" /></li>
+<li>No input for Define variable, just click Next
+<img alt="dcloud" src="../img/04/07-template3.png" /></li>
+<li>Put show commands in Configure template script
+<img alt="dcloud" src="../img/04/08-template4.png" /></li>
+<li>Deploy created template
+<img alt="dcloud" src="../img/04/09-template5.png" /></li>
+<li>Go to Jobs to see the progress.
+<img alt="dcloud" src="../img/04/10-template6.png" /></li>
 </ol>
-<p><strong>Result:</strong> You can explain this store versus the NSO service template.</p>
 <h2 id="45-alarms-and-events">4.5 Alarms and events<a class="headerlink" href="#45-alarms-and-events" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Go to <strong>Alerts &gt; Alarms and Events</strong>.</li>
 <li>Stay on <strong>Alarms</strong>. Use the category list to see system, network, and device alarms as separate sets.</li>
-<li>Filter to the headend if the filter allows it.</li>
+<li>Filter to the headend if the filter allows it.
+<img alt="dcloud" src="../img/04/11-alarms.png" /></li>
 <li>If an alarm is present, record severity, source, and whether it is acknowledged. Leave acknowledge, clear, and annotate unused unless the instructor gives you a lab alarm of your own.</li>
 <li>Switch <strong>Show</strong> from Alarms to <strong>Events</strong>.</li>
-<li>Read the newest event. An event is a moment in time. An alarm remains until it clears.</li>
+<li>Read the newest event. An event is a moment in time. An alarm remains until it clears.
+<img alt="dcloud" src="../img/04/12-events.png" /></li>
 </ol>
-<p><strong>Result:</strong> You can open both views. An empty alarm list is valid on a healthy CML lab. Write "no active device alarms" and move on.</p>
+<p><strong>Result:</strong> You can open both views. An empty alarm list is valid on a healthy CML lab.</p>
 <p>You will use this page again in chapter 9.</p>
 <h2 id="46-performance">4.6 Performance<a class="headerlink" href="#46-performance" title="Permanent link">&para;</a></h2>
 <p>Link colors on the topology map come from interface utilization collected for Optimization Engine. Element management adds polling policies, which is the CNC equivalent of a SolarWinds threshold on an interface.</p>
 <ol>
-<li>Go to <strong>Device Management &gt; Performance Policies</strong>.</li>
+<li>Go to <strong>Device Management &gt; Performance Policies</strong>.
+<img alt="dcloud" src="../img/04/13-performance-policies.png" /></li>
 <li>Open one existing policy, if any exist. Read which devices it covers, how often it polls, and which threshold raises an alarm.</li>
-<li>Return to the headend in <strong>Network Devices</strong> or <strong>Network Inventory</strong> and open the metrics or interface view. Compare one interface counter with the utilization you wrote down in chapter 3.</li>
+<li>Return to the <strong>Topology</strong> and click any link. Open <strong>History</strong> and confirm the utilization and traffic rate.</li>
 <li>Leave the policy switch as you found it.</li>
 </ol>
 <p><strong>Result:</strong> You can say where a threshold is defined, and you can point at one live counter.</p>

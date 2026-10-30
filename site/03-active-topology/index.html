@@ -796,37 +796,37 @@
 <h2 id="31-open-the-map">3.1 Open the map<a class="headerlink" href="#31-open-the-map" title="Permanent link">&para;</a></h2>
 <ol>
 <li>From the main menu, open <strong>Topology</strong>.</li>
-<li>Wait for the devices from <code>5-nodes_L3VPN 8201-32FH 25.3.1-ipv6</code> to appear. An empty map usually means the SR-PCE provider is up and BGP-LS is still down, or the CML nodes are still booting. Recheck chapter 2.</li>
-<li>Use the logical map, not the geographical map.</li>
-<li>Identify two provider-edge routers. Those become the headend and the endpoint for chapters 5 through 8. Write the hostnames on your lab-values sheet.</li>
+<li>Wait for the devices from <code>5-nodes_L3VPN 8201-32FH 25.3.1-ipv6</code> to appear. An empty map usually means the SR-PCE provider is up and BGP-LS is still down, or the CML nodes are still booting. Recheck chapter 2.
+<img alt="dcloud" src="../img/03/01-active-topology.png" /></li>
+<li>Routers are located on the geographic map based on the longitude/latitude configured in the Device Management.</li>
+<li>Identify three provider-edge routers. Those become the headend and the endpoint for chapters 5 through 8.</li>
 </ol>
 <p><strong>Result:</strong> You can find both PEs and at least one IGP path between them.</p>
 <h2 id="32-read-a-device-and-a-link-in-cnc">3.2 Read a device and a link in CNC<a class="headerlink" href="#32-read-a-device-and-a-link-in-cnc" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Select the headend. Open the details panel.</li>
-<li>Record hostname, management IPv6 address, reachability, and IGP router id if it is shown.</li>
-<li>Select a core link on a path between the two PEs.</li>
+<li>Select the headend. Open the Device details panel.</li>
+<li>Record hostname, management IPv6 address, reachability, and IGP router ID.
+<img alt="dcloud" src="../img/03/02-device-details.png" /></li>
+<li>Select a core link on a path between any router.</li>
 <li>In the link details, record:<ul>
 <li>Interface names on each side</li>
 <li>IGP metric</li>
-<li>TE metric, if one is shown</li>
-<li>Utilization, if a value is shown</li>
-<li>SRv6 adjacency or locator information, if the link shows it</li>
+<li>TE metric</li>
+<li>Utilization</li>
 </ul>
 </li>
-<li>Open the layer or protocol selector. Turn on the IGP layer, then the SRv6 layer. Flex-Algo, if present, is a map fact in this lab, not a configuration task.</li>
+<li>Switch the layer to Traffic Engineering and confirm SRv6 locators.
+<img alt="dcloud" src="../img/03/03-srv6-locators.png" /></li>
 </ol>
-<p>Utilization on a CML link is often 0%. Write down the number you actually see.</p>
-<p><strong>Result:</strong> One device record and one link record in your notes.</p>
 <h2 id="33-confirm-the-same-topology-from-xr-cli">3.3 Confirm the same topology from XR CLI<a class="headerlink" href="#33-confirm-the-same-topology-from-xr-cli" title="Permanent link">&para;</a></h2>
-<p>From CML, open a console on the headend PE. Stay in EXEC. Do not enter configuration mode.</p>
+<p>Open a new tab in Firefox and click "CML2 for XR" to access XR routers. Open a console on the headend PE. Stay in EXEC. Do not enter configuration mode.</p>
 <h3 id="neighbors-and-igp">Neighbors and IGP<a class="headerlink" href="#neighbors-and-igp" title="Permanent link">&para;</a></h3>
 <pre><code class="language-text">show isis neighbors
-show isis topology
+show isis ipv6 topology
 </code></pre>
 <p>If the lab uses a named IS-IS instance, the instructor will give you the instance name and you will use:</p>
 <pre><code class="language-text">show isis instance &lt;name&gt; neighbors
-show isis instance &lt;name&gt; topology
+show isis instance &lt;name&gt; ipv6 topology
 </code></pre>
 <p>Match each IS-IS neighbor to a node on the CNC map. The neighbor count and the path you traced in section 3.2 should agree.</p>
 <h3 id="addressing">Addressing<a class="headerlink" href="#addressing" title="Permanent link">&para;</a></h3>
@@ -841,8 +841,8 @@ show segment-routing srv6 sid
 <p>The locator prefix on the PE should match the SRv6 layer on the map. If the map shows a locator and the CLI does not, the topology feed is stale. Wait and refresh; do not configure a locator.</p>
 <h3 id="how-cnc-learned-this-topology">How CNC learned this topology<a class="headerlink" href="#how-cnc-learned-this-topology" title="Permanent link">&para;</a></h3>
 <p>On the PE:</p>
-<pre><code class="language-text">show bgp link-state
-show bgp link-state summary
+<pre><code class="language-text">show bgp link-state link-state
+show bgp link-state link-state summary
 </code></pre>
 <p>On the SR-PCE (the second CML lab), if the instructor opens that console:</p>
 <pre><code class="language-text">show pce ipv6 peer

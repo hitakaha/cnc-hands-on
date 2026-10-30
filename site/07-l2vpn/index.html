@@ -747,7 +747,7 @@
 <tbody>
 <tr>
 <td>Service name</td>
-<td><code>pta-vpws-01</code></td>
+<td><code>vpws-01</code></td>
 </tr>
 <tr>
 <td>vpn-type</td>
@@ -759,7 +759,7 @@
 </tr>
 <tr>
 <td>Transport</td>
-<td>SRv6, preferably the same color or policy as <code>pta-pce-01</code> if the form allows it</td>
+<td>SRv6, preferably the same color or policy as <code>pce-01</code> if the form allows it</td>
 </tr>
 </tbody>
 </table>
@@ -767,21 +767,21 @@
 <ol>
 <li>Go to <strong>Services &amp; Traffic Engineering &gt; Provisioning (NSO)</strong>.</li>
 <li>Open the L2VPN service type.</li>
-<li>Create a service named <code>pta-vpws-01</code>.</li>
+<li>Create a service named <code>vpws-01</code>.</li>
 <li>Set <strong>vpn-id</strong> to a unique value the instructor assigns.</li>
 <li>Set <strong>vpn-type</strong> to the point-to-point / VPWS choice. Do not choose a multipoint or VPLS type here. If the form only lists <code>mpls-evpn</code> when you add more than two vpn-nodes, you have the wrong number of endpoints. VPWS uses two.</li>
 <li>Add two vpn-nodes. For each node set the device and the attachment circuit (interface, VLAN if the instructor specified one).</li>
-<li>Set underlay transport to SRv6. If preferred-path or ODN is offered, bind it the way the instructor specified. Preferred path onto <code>pta-pce-01</code> is the consistent choice with chapter 6.</li>
+<li>Set underlay transport to SRv6. If preferred-path or ODN is offered, bind it the way the instructor specified. Preferred path onto <code>pce-01</code> is the consistent choice with chapter 6.</li>
 <li>Leave <strong>Custom-template</strong> empty for the required service. Optional section 7.3 uses that field on a copy, not on this one.</li>
 <li>Run <strong>Dry run</strong>. Confirm the service name, two endpoints, and vpn-type. Confirm it is not a VPLS.</li>
 <li>Commit.</li>
 <li>Open the service. Confirm it is in sync.</li>
 </ol>
-<p><strong>Result:</strong> <code>pta-vpws-01</code> is committed and in sync.</p>
+<p><strong>Result:</strong> <code>vpws-01</code> is committed and in sync.</p>
 <h2 id="72-visualize-and-confirm-from-cli">7.2 Visualize and confirm from CLI<a class="headerlink" href="#72-visualize-and-confirm-from-cli" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Go to <strong>Services &amp; Traffic Engineering &gt; VPN Services</strong>.</li>
-<li>Select <code>pta-vpws-01</code>. Show it on the map. You should see a point-to-point overlay between the two PEs, not a multipoint LAN.</li>
+<li>Select <code>vpws-01</code>. Show it on the map. You should see a point-to-point overlay between the two PEs, not a multipoint LAN.</li>
 <li>On the headend:</li>
 </ol>
 <pre><code class="language-text">show l2vpn xconnect
@@ -796,21 +796,21 @@ show bgp l2vpn evpn summary
 <h2 id="73-optional-vpls">7.3 Optional: VPLS<a class="headerlink" href="#73-optional-vpls" title="Permanent link">&para;</a></h2>
 <p>Do this section only if the instructor asks for it. Chapter 8 does <strong>not</strong> enable Service Health on a VPLS.</p>
 <ol>
-<li>In <strong>Provisioning (NSO)</strong>, create a second L2VPN named <code>pta-vpls-01</code>.</li>
+<li>In <strong>Provisioning (NSO)</strong>, create a second L2VPN named <code>vpls-01</code>.</li>
 <li>Choose the VPLS or multipoint vpn-type the form offers. Add at least two vpn-nodes (three if the instructor wants a true multipoint picture).</li>
 <li>Dry run, then commit.</li>
-<li>In <strong>VPN Services</strong>, select <code>pta-vpls-01</code> and confirm the overlay is multipoint.</li>
+<li>In <strong>VPN Services</strong>, select <code>vpls-01</code> and confirm the overlay is multipoint.</li>
 <li>On a PE:</li>
 </ol>
 <pre><code class="language-text">show l2vpn bridge-domain
 </code></pre>
-<p>Use this only to contrast with <code>show l2vpn xconnect</code> from the VPWS. Delete <code>pta-vpls-01</code> before the end of the day if you created it. Do not start Service Health on it.</p>
+<p>Use this only to contrast with <code>show l2vpn xconnect</code> from the VPWS. Delete <code>vpls-01</code> before the end of the day if you created it. Do not start Service Health on it.</p>
 <p><strong>Result:</strong> You can tell VPWS (xconnect) from VPLS (bridge-domain) in both CNC and CLI.</p>
 <h2 id="74-optional-nso-custom-template">7.4 Optional: NSO custom template<a class="headerlink" href="#74-optional-nso-custom-template" title="Permanent link">&para;</a></h2>
 <p>An NSO custom template adds CLI that the L2VPN function pack does not model (for example an extra QoS or interface command). Templates must already exist in NSO. CNC only displays parameterizable fields.</p>
 <ol>
 <li>Ask the instructor for the template name, if one is loaded.</li>
-<li>Open <code>pta-vpws-01</code> in edit, or clone it to <code>pta-vpws-template-01</code> if you should not change the monitored service.</li>
+<li>Open <code>vpws-01</code> in edit, or clone it to <code>vpws-template-01</code> if you should not change the monitored service.</li>
 <li>In <strong>Custom-template</strong>, select the template. Fill the variables CNC shows.</li>
 <li>Dry run. Read the extra CLI the template adds.</li>
 <li>Commit only if the instructor wants the extra CLI on the device.</li>
@@ -822,7 +822,7 @@ show bgp l2vpn evpn summary
 <p>NSO keeps a copy of device configuration. <strong>Check sync</strong> compares that copy with the device. <strong>Sync from</strong> pulls the device configuration into NSO. <strong>Sync to</strong> pushes NSO to the device. <strong>Redeploy reconcile</strong> rebuilds the service while keeping non-service configuration.</p>
 <p>Use this on the VPWS only when the instructor wants the room to see out-of-sync handling. <code>sync-from</code> after a service commit can make the service look out of sync until you redeploy. That is the lesson, and it is easy to leave messy.</p>
 <ol>
-<li>On <code>pta-vpws-01</code>, open <strong>Actions</strong>.</li>
+<li>On <code>vpws-01</code>, open <strong>Actions</strong>.</li>
 <li>Run <strong>Check sync</strong>. Record in-sync or out-of-sync.</li>
 <li>Open <strong>Config view</strong> or <strong>View in NSO</strong> and read the service data.</li>
 <li>If the instructor has made a small out-of-band change on one PE, run <strong>Sync from</strong>.</li>
@@ -832,10 +832,10 @@ show bgp l2vpn evpn summary
 <p>Do not run <strong>Sync to</strong> unless the instructor says so. Sync to overwrites the device with NSO's copy.</p>
 <p><strong>Result:</strong> You can say what Check sync, Sync from, Sync to, and Redeploy reconcile each do, and you used only the actions the instructor approved.</p>
 <h2 id="76-clean-up-rule">7.6 Clean-up rule<a class="headerlink" href="#76-clean-up-rule" title="Permanent link">&para;</a></h2>
-<p>Keep <code>pta-vpws-01</code> through chapter 8. Delete optional VPLS and template clones first at the end of the day, then the VPWS, then the L3VPN, then the PCE-initiated policy.</p>
+<p>Keep <code>vpws-01</code> through chapter 8. Delete optional VPLS and template clones first at the end of the day, then the VPWS, then the L3VPN, then the PCE-initiated policy.</p>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>pta-vpws-01</code> is in sync and shown as point-to-point in VPN Services.</li>
+<li><code>vpws-01</code> is in sync and shown as point-to-point in VPN Services.</li>
 <li><code>show l2vpn xconnect</code> (or the EVPN form) lists the service.</li>
 <li>Optional sections are either completed or marked skipped.</li>
 </ul>

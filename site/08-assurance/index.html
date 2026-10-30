@@ -691,18 +691,18 @@
 <h1 id="8-assurance">8. Assurance<a class="headerlink" href="#8-assurance" title="Permanent link">&para;</a></h1>
 <p><strong>Time:</strong> 40 minutes.</p>
 <p><strong>Objective:</strong> Enable CNC Service Health on the VPWS from chapter 7 and read Basic monitoring until the health column has a real state. Do not monitor VPLS.</p>
-<p>Service Health scores a provisioned VPN against heuristic rules. For L2VPN it looks at VPWS xconnect state, device CPU and memory, and, in Advanced mode, interfaces, PCEP, SR policy, and path reachability. This lab uses <strong>Basic Monitoring</strong> on <code>pta-vpws-01</code> only.</p>
+<p>Service Health scores a provisioned VPN against heuristic rules. For L2VPN it looks at VPWS xconnect state, device CPU and memory, and, in Advanced mode, interfaces, PCEP, SR policy, and path reachability. This lab uses <strong>Basic Monitoring</strong> on <code>vpws-01</code> only.</p>
 <h2 id="81-find-the-vpws">8.1 Find the VPWS<a class="headerlink" href="#81-find-the-vpws" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Go to <strong>Services &amp; Traffic Engineering &gt; VPN Services</strong>.</li>
-<li>Select <code>pta-vpws-01</code>.</li>
-<li>Confirm vpn-type is point-to-point / VPWS. If you also created <code>pta-vpls-01</code> in chapter 7, leave it unmonitored.</li>
+<li>Select <code>vpws-01</code>.</li>
+<li>Confirm vpn-type is point-to-point / VPWS. If you also created <code>vpls-01</code> in chapter 7, leave it unmonitored.</li>
 <li>Confirm the service is in sync. Service Health on an out-of-sync service is not a useful baseline. Fix sync in chapter 7 before you start monitoring.</li>
 </ol>
 <p><strong>Result:</strong> You are looking at the VPWS, not the L3VPN and not a VPLS.</p>
 <h2 id="82-start-basic-monitoring">8.2 Start Basic monitoring<a class="headerlink" href="#82-start-basic-monitoring" title="Permanent link">&para;</a></h2>
 <ol>
-<li>In the Actions menu for <code>pta-vpws-01</code>, choose <strong>Start monitoring</strong>.</li>
+<li>In the Actions menu for <code>vpws-01</code>, choose <strong>Start monitoring</strong>.</li>
 <li>Set monitoring level to <strong>Basic Monitoring</strong>. Do not choose Advanced unless the instructor wants the extra subservices and you have time to wait. Switching levels can take more than 15 minutes before symptoms appear.</li>
 <li>Select the configuration profile the instructor names (often a Gold or Silver heuristic profile that is already loaded).</li>
 <li>Start monitoring.</li>
@@ -712,7 +712,7 @@
 <p>If Health stays on Initiated, collection for Service Health is still starting. Parameterized collection jobs of type service-based appear under <strong>Administration &gt; Collection Jobs</strong>. You will read those jobs in chapter 9. Give Basic monitoring several minutes on this lab.</p>
 <h2 id="83-read-the-health-of-the-vpws">8.3 Read the health of the VPWS<a class="headerlink" href="#83-read-the-health-of-the-vpws" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Open <code>pta-vpws-01</code>.</li>
+<li>Open <code>vpws-01</code>.</li>
 <li>Read the Health state and the list of subservices. For Basic L2VPN / VPWS, expect rules that cover:<ul>
 <li>VPWS xconnect / control-plane health</li>
 <li>Device health (CPU, memory)</li>
@@ -732,14 +732,14 @@ show l2vpn xconnect detail
 <p><strong>Result:</strong> You can point at the heuristic result and at the matching XR xconnect state.</p>
 <h2 id="84-what-you-do-not-do-in-this-chapter">8.4 What you do not do in this chapter<a class="headerlink" href="#84-what-you-do-not-do-in-this-chapter" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Do not start monitoring on <code>pta-vpls-01</code> or on any multipoint L2VPN.</li>
-<li>Do not start monitoring on <code>pta-l3vpn-01</code> unless the instructor adds it as extra credit. The required assurance object is the VPWS.</li>
+<li>Do not start monitoring on <code>vpls-01</code> or on any multipoint L2VPN.</li>
+<li>Do not start monitoring on <code>l3vpn-01</code> unless the instructor adds it as extra credit. The required assurance object is the VPWS.</li>
 <li>Do not switch this VPWS to Advanced Monitoring after Basic has already started, unless the instructor wants to show the delay.</li>
 <li>Do not stop monitoring until the instructor says the chapter is done. Stopping with "retain historical data" is available; use it only if you need to restart.</li>
 </ul>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Service Health is running on <code>pta-vpws-01</code> at Basic Monitoring.</li>
+<li>Service Health is running on <code>vpws-01</code> at Basic Monitoring.</li>
 <li>You can name the Health state and one subservice or metric.</li>
 <li>That metric agrees with <code>show l2vpn xconnect</code> (or you have recorded a collection lag).</li>
 <li>No VPLS is being monitored.</li>
