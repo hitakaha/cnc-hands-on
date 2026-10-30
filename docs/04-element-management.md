@@ -25,16 +25,17 @@ Use the table as a translation layer. The rest of this chapter is the CNC side.
 ## 4.2 Network devices and inventory
 
 1. Go to **Device Management > Network Devices**.
+![dcloud](img/04/01-network-devices.png)
 2. Find the headend from chapter 3. Record operational state, reachability, and the credential profile name.
-3. Confirm a Data Gateway (or embedded collector) is associated with the device. A missing mapping is why inventory and counters stay empty.
-4. Go to **Device Management > Network Inventory**.
-5. Filter to the headend hostname or product family (NCS 8200 / 8201).
-6. Open the chassis, one route processor or line card, and one pluggable if the inventory has them.
-7. Read the alarm summary on that inventory row.
+3. Go to **Device Management > Network Inventory**.
+4. Filter to the headend hostname or product family (C8711-1-PE).
+![dcloud](img/04/02-network-inventory.png)
+5. Open the chassis, one route processor or line card, and one pluggable if the inventory has them.
+6. Read the alarm summary on that inventory row.
 
 **Result:** You can walk from a hostname to a chassis and a module, the same way you would drill into a SolarWinds node.
 
-A device that stays unreachable needs credentials, IPv6 reachability to the management address, and a booted CML node. Give a freshly started lab several minutes before you call it failed.
+A device that stays unreachable needs credentials, IPv6 reachability to the management address, and a booted CML node.
 
 ## 4.3 Configuration backup
 
@@ -43,12 +44,14 @@ CNC archives device configuration, compares two archives, and can restore. This 
 1. Go to **Device Management > Configuration Backup and Restore**.
 2. Find the headend.
 3. Open the latest archived configuration. Identify hostname and the segment-routing or IS-IS section.
+![dcloud](img/04/03-config.png)
 4. If two archives exist, open compare and name one difference, or state that they match.
 5. Leave **Schedule backup** and **Restore** unused.
 
 **Result:** You have seen a real archived configuration for the headend.
 
 Automatic backup on configuration change, when it is enabled under **Device Management > Configuration Preferences**, is what makes this archive useful after chapters 6 and 7. Read the preference. Leave the values as you found them.
+![dcloud](img/04/04-config-preference.png)
 
 ## 4.4 Configuration templates (read only)
 
@@ -56,20 +59,36 @@ Device templates under Device Management are parameterized CLI. They are for rep
 
 1. Go to **Device Management > Configuration Templates**.
 2. Open one existing template, if any exist. Read the device types it targets and one variable it expects.
-3. Close it. Leave **Create Template** and every deploy action unused.
+3. Configuration templates can be used to execute a set of commands. Create a new template and put following values.
+    - Name: collect-outputs
+    - Enable "Read template for troubleshooting"
+    - Authorization: admin
+![dcloud](img/04/05-template1.png)
+4. Select "Cisco 8711-32FH" as a device type.
+![dcloud](img/04/06-template2.png)
+5. No input for Define variable, just click Next
+![dcloud](img/04/07-template3.png)
+6. Put show commands in Configure template script
+![dcloud](img/04/08-template4.png)
+7. Deploy created template
+![dcloud](img/04/09-template5.png)
+8. Go to Jobs to see the progress.
+![dcloud](img/04/10-template6.png)
 
-**Result:** You can explain this store versus the NSO service template.
+
 
 ## 4.5 Alarms and events
 
 1. Go to **Alerts > Alarms and Events**.
 2. Stay on **Alarms**. Use the category list to see system, network, and device alarms as separate sets.
 3. Filter to the headend if the filter allows it.
+![dcloud](img/04/11-alarms.png)
 4. If an alarm is present, record severity, source, and whether it is acknowledged. Leave acknowledge, clear, and annotate unused unless the instructor gives you a lab alarm of your own.
 5. Switch **Show** from Alarms to **Events**.
 6. Read the newest event. An event is a moment in time. An alarm remains until it clears.
+![dcloud](img/04/12-events.png)
 
-**Result:** You can open both views. An empty alarm list is valid on a healthy CML lab. Write "no active device alarms" and move on.
+**Result:** You can open both views. An empty alarm list is valid on a healthy CML lab.
 
 You will use this page again in chapter 9.
 
@@ -78,8 +97,9 @@ You will use this page again in chapter 9.
 Link colors on the topology map come from interface utilization collected for Optimization Engine. Element management adds polling policies, which is the CNC equivalent of a SolarWinds threshold on an interface.
 
 1. Go to **Device Management > Performance Policies**.
+![dcloud](img/04/13-performance-policies.png)
 2. Open one existing policy, if any exist. Read which devices it covers, how often it polls, and which threshold raises an alarm.
-3. Return to the headend in **Network Devices** or **Network Inventory** and open the metrics or interface view. Compare one interface counter with the utilization you wrote down in chapter 3.
+3. Return to the **Topology** and click any link. Open **History** and confirm the utilization and traffic rate.
 4. Leave the policy switch as you found it.
 
 **Result:** You can say where a threshold is defined, and you can point at one live counter.
