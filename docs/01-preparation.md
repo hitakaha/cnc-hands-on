@@ -14,7 +14,7 @@ Maintenance mode is how CNC stops itself cleanly for a reboot, a backup, or a re
 1. Sign in to the dCloud and click "View" button (Note, the scenario name could be different).
 ![dcloud](img/01/01-dcloud.png)
 
-2. Access Ubuntu2204-1T-Desktop, run Firefox on the Desktop and open CNC UI (username and password are shared in the session).
+2. Access Ubuntu2204-1T-Desktop (use VM Consoel), run Firefox on the Desktop and open CNC UI (username and password will be shared in the session).
 
     https://[2001:db8:134::200]:30603
 

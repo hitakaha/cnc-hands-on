@@ -29,7 +29,7 @@ Empty inventory, blank utilization, and Service Health stuck on Initiated are us
     - **Default jobs** — reachability
     - **Policy-driven jobs** — Performance Policies from chapter 4
     - **Service-based jobs** — created when you started Service Health on the VPWS
-5. Find a service-based job related to `pta-vpws-01` or to L2VPN monitoring. Confirm it is not Failed.
+5. Find a service-based job related to `vpws-01` or to L2VPN monitoring. Confirm it is not Failed.
 6. If a job is Failed or Degraded, open the job details and read the error. Common causes:
     - Device not attached to a Data Gateway
     - SNMP or CLI credentials wrong

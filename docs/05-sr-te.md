@@ -49,12 +49,12 @@ The PCC session should be up. The LSP list should include the PCC-initiated poli
 
 ## 5.3 Create a PCE-initiated policy
 
-Use name `pta-pce-01` and the color the instructor assigns. Do not reuse a color that already belongs to the PCC-initiated policy.
+Use name `pce-01` and the color the instructor assigns. Do not reuse a color that already belongs to the PCC-initiated policy.
 
 1. Stay on **Services & Traffic Engineering > Traffic Engineering**, **SRv6** tab.
 2. Start the create action and choose **PCE-initiated**.
 3. Set:
-    - Name: `pta-pce-01`
+    - Name: `pce-01`
     - Headend: the headend from chapter 3
     - Endpoint: the endpoint from chapter 3
     - Color: the instructor's value
@@ -72,10 +72,10 @@ Use name `pta-pce-01` and the color the instructor assigns. Do not reuse a color
 
 ```text
 show segment-routing traffic-eng policy
-show segment-routing traffic-eng policy name pta-pce-01
+show segment-routing traffic-eng policy name pce-01
 ```
 
-Find `pta-pce-01`. If a PCC-initiated policy was prepared, it is still present. The difference is ownership: one policy is configured on the router, the other was instantiated by the PCE.
+Find `pce-01`. If a PCC-initiated policy was prepared, it is still present. The difference is ownership: one policy is configured on the router, the other was instantiated by the PCE.
 
 If your policy is missing on the router and present in CNC as down, check:
 
@@ -83,14 +83,14 @@ If your policy is missing on the router and present in CNC as down, check:
 show segment-routing traffic-eng pcc ipv6 peer
 ```
 
-A down PCEP session, a color conflict, or a headend that cannot place the SRv6 SIDs are the usual causes. Delete only `pta-pce-01`, and only if it is down and the instructor agrees.
+A down PCEP session, a color conflict, or a headend that cannot place the SRv6 SIDs are the usual causes. Delete only `pce-01`, and only if it is down and the instructor agrees.
 
 ## 5.5 Clean-up rule
 
-Keep this policy until chapter 6 has steered an L3VPN onto its color. At the end of the day, delete the VPNs first, then delete `pta-pce-01`. Leave any PCC-initiated policy in place.
+Keep this policy until chapter 6 has steered an L3VPN onto its color. At the end of the day, delete the VPNs first, then delete `pce-01`. Leave any PCC-initiated policy in place.
 
 ## Done when
 
-- You can say who owns the PCC-initiated policy (if one exists) and who owns `pta-pce-01`.
-- `pta-pce-01` is up, with the assigned color, and it is drawn on the map.
+- You can say who owns the PCC-initiated policy (if one exists) and who owns `pce-01`.
+- `pce-01` is up, with the assigned color, and it is drawn on the map.
 - `show segment-routing traffic-eng policy` on the headend lists your policy, and `show segment-routing traffic-eng pcc ipv6 peer` shows the PCE up.

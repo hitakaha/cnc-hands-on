@@ -8,7 +8,7 @@ Element Management Functions in CNC 7.2 cover device onboarding, inventory, faul
 
 ## 4.1 SolarWinds to CNC
 
-PTA operations already watches the network in SolarWinds (NPM for status, inventory, and performance; NCM for configuration). CNC is not a replacement of every SolarWinds poller. It is the controller view of the same devices, with IGP and SR context that SolarWinds does not have.
+CNC is not a replacement of every SolarWinds poller. It is the controller view of the same devices, with IGP and SR context that SolarWinds does not have.
 
 | What you do in SolarWinds | Where you do it in CNC | What is different |
 | --- | --- | --- |

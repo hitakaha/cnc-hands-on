@@ -12,44 +12,44 @@ This lab is IPv6. IS-IS, BGP-LS, SRv6 locators, and PCEP should match what the m
 
 1. From the main menu, open **Topology**.
 2. Wait for the devices from `5-nodes_L3VPN 8201-32FH 25.3.1-ipv6` to appear. An empty map usually means the SR-PCE provider is up and BGP-LS is still down, or the CML nodes are still booting. Recheck chapter 2.
-3. Use the logical map, not the geographical map.
-4. Identify two provider-edge routers. Those become the headend and the endpoint for chapters 5 through 8. Write the hostnames on your lab-values sheet.
+![dcloud](img/03/01-active-topology.png)
+3. Routers are located on the geographic map based on the longitude/latitude configured in the Device Management.
+4. Identify three provider-edge routers. Those become the headend and the endpoint for chapters 5 through 8.
 
 **Result:** You can find both PEs and at least one IGP path between them.
 
 ## 3.2 Read a device and a link in CNC
 
-1. Select the headend. Open the details panel.
-2. Record hostname, management IPv6 address, reachability, and IGP router id if it is shown.
-3. Select a core link on a path between the two PEs.
+1. Select the headend. Open the Device details panel.
+2. Record hostname, management IPv6 address, reachability, and IGP router ID.
+![dcloud](img/03/02-device-details.png)
+3. Select a core link on a path between any router.
 4. In the link details, record:
     - Interface names on each side
     - IGP metric
-    - TE metric, if one is shown
-    - Utilization, if a value is shown
-    - SRv6 adjacency or locator information, if the link shows it
-5. Open the layer or protocol selector. Turn on the IGP layer, then the SRv6 layer. Flex-Algo, if present, is a map fact in this lab, not a configuration task.
+    - TE metric
+    - Utilization
+5. Switch the layer to Traffic Engineering and confirm SRv6 locators.
+![dcloud](img/03/03-srv6-locators.png)
 
-Utilization on a CML link is often 0%. Write down the number you actually see.
 
-**Result:** One device record and one link record in your notes.
 
 ## 3.3 Confirm the same topology from XR CLI
 
-From CML, open a console on the headend PE. Stay in EXEC. Do not enter configuration mode.
+Open a new tab in Firefox and click "CML2 for XR" to access XR routers. Open a console on the headend PE. Stay in EXEC. Do not enter configuration mode.
 
 ### Neighbors and IGP
 
 ```text
 show isis neighbors
-show isis topology
+show isis ipv6 topology
 ```
 
 If the lab uses a named IS-IS instance, the instructor will give you the instance name and you will use:
 
 ```text
 show isis instance <name> neighbors
-show isis instance <name> topology
+show isis instance <name> ipv6 topology
 ```
 
 Match each IS-IS neighbor to a node on the CNC map. The neighbor count and the path you traced in section 3.2 should agree.
@@ -77,8 +77,8 @@ The locator prefix on the PE should match the SRv6 layer on the map. If the map 
 On the PE:
 
 ```text
-show bgp link-state
-show bgp link-state summary
+show bgp link-state link-state
+show bgp link-state link-state summary
 ```
 
 On the SR-PCE (the second CML lab), if the instructor opens that console:
