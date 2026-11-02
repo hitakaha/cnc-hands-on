@@ -1,28 +1,41 @@
-# 10. Optional: CNC MCP server
+# . Optional: CNC MCP server
 
-**Time:** 20 minutes. Skip this chapter if the instructor does not start the assistant.
+**Time:** 20 minutes
 
-**Objective:** Ask the lab assistant one question that it can answer with a live Crosswork tool. Confirm the answer in the CNC UI. You decide what to do next.
-
-The assistant is a chat page. When you ask a question, it may call tools on an MCP server. That server is what talks to CNC. The tools listed in the assistant sidebar are the only live data the assistant can fetch. Anything else in the reply is explanation until you confirm it in the UI.
+**Objective:** Ask the lab assistant one question that it can answer with a live Crosswork tool. Confirm the answer in the CNC UI.The assistant is a chat page. When you ask a question, it may call tools on an MCP server. That server is what talks to CNC. 
 
 ## 10.1 Open the assistant
 
-The instructor starts the assistant and the MCP server, then gives you the URL. You do not receive, and you do not type, the CNC password, an API token, or a client secret.
+Access **Ubuntu2504-Desktop**, open Terminal and execute following:
+```
+$ cd aiserver
+$ ./main
+```
+Close the browser tab.
 
-1. Open the assistant URL.
-2. Read the backend status in the sidebar. Continue when it is online.
-3. Read the tool list. Find the tool whose description is the inventory node count. That is the live tool for this lab.
-4. If the sidebar also lists session or ticket tools, leave them unused. This chapter does not delete sessions and does not change the controller.
+Access **Ubuntu2204-1T-Desktop**, open terminal and execute following:
+```
+$ cd cnc_mcp
+$ source venv/bin/activate
+$ python3 cnc_mcp_server2.py
+```
 
-**Result:** The assistant is online and you can name the inventory tool.
+Open another terminal in **Ubuntu2204-1T-Desktop** and execute following:
+```
+$ cd webui
+$ source venv/bin/actiate
+$ streamlit run frontend.py
+```
+![dcloud](img/10/01-ai-assistant.png)
+
+**Result:** The assistant is online and you can name the Tools.
 
 ## 10.2 One live question
 
 In the chat, ask:
 
 ```text
-How many nodes are in the Crosswork inventory?
+How many nodes are in the CNC?
 ```
 
 Wait for the reply. Open the tool-call detail for that turn.
@@ -43,7 +56,6 @@ Ask a second question that does not require a write tool:
 
 ```text
 The inventory count is <the number you just verified>.
-The CML lab should have the routers from 5-nodes_L3VPN 8201-32FH 25.3.1-ipv6.
 What should an operator check first in Crosswork?
 ```
 
@@ -58,13 +70,7 @@ A useful answer names checks you already know how to open:
 
 Take one check the assistant named, open that CNC page, and confirm or contradict the suggestion with the screen. The screen wins.
 
-## 10.4 What you leave out of the chat
-
-- Passwords, tokens, ticket ids, and certificate contents
-- A request to delete a session, a policy, a VPN, or a device
-- Configuration text from another service's dry run
 
 ## Done when
 
-- You completed this chapter, or you skipped it because the assistant was not started.
-- If you used it: the assistant answered the inventory question with a tool call, and you compared that number with Device Management.
+- The assistant answered the inventory question with a tool call, and you compared that number with Device Management.
