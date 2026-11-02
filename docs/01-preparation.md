@@ -41,6 +41,17 @@ Maintenance mode is how CNC stops itself cleanly for a reboot, a backup, or a re
 **Result:** The lab is booted. CNC can reach the devices after the providers and the Data Gateway are healthy. You confirm that reachability in the next chapter.
 
 
+## 1.3 Sync-from devices
+
+1. Access CNC and go to **Device Management > Network Devices**
+2. Select all devices and choose **Sync-from devices to NSO** from Actions
+![dcloud](img/01/05-device-to-sync.png)
+3. Go to **Inventory Jobs** and wait for the task to be completed
+![dcloud](img/01/06-inventory-jobs.png)
+
+
+**Result:** All devices are synec to CNC
+
 
 **Result:** You are in the UI as yourself, and the controller is in normal operating mode.
 
@@ -49,3 +60,4 @@ Maintenance mode is how CNC stops itself cleanly for a reboot, a backup, or a re
 - Maintenance mode is Off.
 - Log in to CNC
 - The CML labs are booted.
+- All devices are synced
