@@ -9,7 +9,7 @@ Each chapter has an objective, the clicks or CLI, the result you should see, and
 1. Bring CNC out of maintenance and start both CML labs.
 2. Confirm CNC, the providers, and collection are healthy.
 3. Read the topology in the UI and confirm it from XR CLI.
-4. Walk inventory, faults, configuration, and performance, mapped to the SolarWinds views operations already uses.
+4. Walk inventory, faults, configuration, and performance.
 5. Observe a PCC-initiated SR policy, then create a PCE-initiated SRv6 policy.
 6. Provision an L3VPN and steer it onto that policy.
 7. Provision a VPWS L2VPN. VPLS, an NSO custom template, and `sync-from` are optional.
