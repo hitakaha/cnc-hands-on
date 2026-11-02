@@ -2,15 +2,16 @@
 
 **Time:** 50 minutes.
 
-**Objective:** Use CNC Element Management Functions the way an operations team already uses SolarWinds: node status, hardware inventory, configuration archive, alarms, and interface performance. Deploy nothing from this chapter.
+**Objective:** Use CNC Element Management Functions to manage node status, hardware inventory, configuration archive, alarms, and interface performance. Deploy nothing from this chapter.
 
-Element Management Functions in CNC 7.2 cover device onboarding, inventory, faults, metrics, software images, configuration backup, and configuration templates. You will map each SolarWinds-style view to a CNC page, then open that page.
+Element Management Functions in CNC 7.2 cover device onboarding, inventory, faults, metrics, software images, configuration backup, and configuration templates.
 
-## 4.1 SolarWinds to CNC
 
-CNC is not a replacement of every SolarWinds poller. It is the controller view of the same devices, with IGP and SR context that SolarWinds does not have.
+## 4.1 Compare CNC to generic NMS (Network Management System)
 
-| What you do in SolarWinds | Where you do it in CNC | What is different |
+CNC is the controller view of the same devices, with IGP and SR context. The following is the comparison between CNC and generic NMS.
+
+| Generic NMS | CNC | What is different |
 | --- | --- | --- |
 | Node list, ICMP/SNMP reachability | **Device Management > Network Devices** | CNC also shows the credential profile and the Data Gateway mapping that collection uses |
 | Hardware inventory (chassis, modules, serials) | **Device Management > Network Inventory** | Same idea: serial, product id, alarm badge on the part |
@@ -33,7 +34,7 @@ Use the table as a translation layer. The rest of this chapter is the CNC side.
 5. Open the chassis, one route processor or line card, and one pluggable if the inventory has them.
 6. Read the alarm summary on that inventory row.
 
-**Result:** You can walk from a hostname to a chassis and a module, the same way you would drill into a SolarWinds node.
+**Result:** You can walk from a hostname to a chassis and a module.
 
 A device that stays unreachable needs credentials, IPv6 reachability to the management address, and a booted CML node.
 
@@ -94,7 +95,7 @@ You will use this page again in chapter 9.
 
 ## 4.6 Performance
 
-Link colors on the topology map come from interface utilization collected for Optimization Engine. Element management adds polling policies, which is the CNC equivalent of a SolarWinds threshold on an interface.
+Link colors on the topology map come from interface utilization collected for Optimization Engine. Element management adds polling policies.
 
 1. Go to **Device Management > Performance Policies**.
 ![dcloud](img/04/13-performance-policies.png)
@@ -106,7 +107,7 @@ Link colors on the topology map come from interface utilization collected for Op
 
 ## Done when
 
-- You can map node list, inventory, alerts, config archive, and utilization from SolarWinds to a CNC page.
+- You can map node list, inventory, alerts, config archive, and utilization.
 - The headend is in Network Devices and in Network Inventory.
 - You opened an archived configuration and did not restore it.
 - You opened Alarms and Events.
