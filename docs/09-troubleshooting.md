@@ -28,11 +28,18 @@ Empty inventory, blank utilization, and Service Health stuck on Initiated are us
 3. Open a successful job and read the device names.
 ![dcloud](img/09/02-collection-jobs.png)
 
-4. If a job is Degraded, open the job details and read the error. Common causes:
+4. Go through the details of Job Monitoring.
+![dcloud](img/09/02-1-job-monitoring.png)
+
+5. If a job is Degraded, open the job details and read the error. Common causes:
     - Device not attached to a Data Gateway
     - SNMP or CLI credentials wrong
     - Device unreachable (chapter 3 CLI will already have shown this)
     - Destination in Error, while collection still runs and increments an error count
+![dcloud](img/09/02-2-job-status.png)
+
+6. Explore the job distribution details, understand the difference between **Collection** and **Distribution**.
+![dcloud](img/09/02-3-job-distribution.png)
 
 
 **Result:** You can point at the jobs and their status.
