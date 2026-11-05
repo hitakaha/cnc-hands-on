@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -821,33 +821,33 @@
 <h2 id="33-confirm-the-same-topology-from-xr-cli">3.3 Confirm the same topology from XR CLI<a class="headerlink" href="#33-confirm-the-same-topology-from-xr-cli" title="Permanent link">&para;</a></h2>
 <p>Open a new tab in Firefox and click "CML2 for XR" to access XR routers. Open a console on the headend PE. Stay in EXEC. Do not enter configuration mode.</p>
 <h3 id="neighbors-and-igp">Neighbors and IGP<a class="headerlink" href="#neighbors-and-igp" title="Permanent link">&para;</a></h3>
-<pre><code class="language-text">show isis neighbors
+<div class="highlight"><pre><span></span><code>show isis neighbors
 show isis ipv6 topology
-</code></pre>
+</code></pre></div>
 <p>If the lab uses a named IS-IS instance, the instructor will give you the instance name and you will use:</p>
-<pre><code class="language-text">show isis instance &lt;name&gt; neighbors
+<div class="highlight"><pre><span></span><code>show isis instance &lt;name&gt; neighbors
 show isis instance &lt;name&gt; ipv6 topology
-</code></pre>
+</code></pre></div>
 <p>Match each IS-IS neighbor to a node on the CNC map. The neighbor count and the path you traced in section 3.2 should agree.</p>
 <h3 id="addressing">Addressing<a class="headerlink" href="#addressing" title="Permanent link">&para;</a></h3>
-<pre><code class="language-text">show ipv6 interface brief
+<div class="highlight"><pre><span></span><code>show ipv6 interface brief
 show interface &lt;core-interface&gt; brief
-</code></pre>
+</code></pre></div>
 <p>Confirm the core interface you clicked on the map is up/up and that the IPv6 address matches the link panel in CNC.</p>
 <h3 id="srv6">SRv6<a class="headerlink" href="#srv6" title="Permanent link">&para;</a></h3>
-<pre><code class="language-text">show segment-routing srv6 locator
+<div class="highlight"><pre><span></span><code>show segment-routing srv6 locator
 show segment-routing srv6 sid
-</code></pre>
+</code></pre></div>
 <p>The locator prefix on the PE should match the SRv6 layer on the map. If the map shows a locator and the CLI does not, the topology feed is stale. Wait and refresh; do not configure a locator.</p>
 <h3 id="how-cnc-learned-this-topology">How CNC learned this topology<a class="headerlink" href="#how-cnc-learned-this-topology" title="Permanent link">&para;</a></h3>
 <p>On the PE:</p>
-<pre><code class="language-text">show bgp link-state link-state
+<div class="highlight"><pre><span></span><code>show bgp link-state link-state
 show bgp link-state link-state summary
-</code></pre>
+</code></pre></div>
 <p>On the SR-PCE (the second CML lab), if the instructor opens that console:</p>
-<pre><code class="language-text">show pce ipv6 peer
+<div class="highlight"><pre><span></span><code>show pce ipv6 peer
 show pce ipv6 topology summary
-</code></pre>
+</code></pre></div>
 <p>PCE should list the PEs as BGP-LS and PCEP peers. That is the feed behind the CNC map.</p>
 <p><strong>Result:</strong> Hostname, neighbor, core interface, and SRv6 locator agree between CNC and CLI.</p>
 <h2 id="34-dashboard-baseline">3.4 Dashboard baseline<a class="headerlink" href="#34-dashboard-baseline" title="Permanent link">&para;</a></h2>
@@ -913,10 +913,10 @@ show pce ipv6 topology summary
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

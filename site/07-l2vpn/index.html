@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -447,13 +447,41 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#71-vpws-required" class="md-nav__link">
+  <a href="#71-vpws" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.1 VPWS (required)
+        7.1 VPWS
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="7.1 VPWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#711-pre-check-id-pools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.1 Pre-check (ID-Pools)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#712-pre-configuration-ces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.2 Pre-configuration (CEs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -639,13 +667,41 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#71-vpws-required" class="md-nav__link">
+  <a href="#71-vpws" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.1 VPWS (required)
+        7.1 VPWS
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="7.1 VPWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#711-pre-check-id-pools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.1 Pre-check (ID-Pools)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#712-pre-configuration-ces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.2 Pre-configuration (CEs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -734,9 +790,10 @@
 
 <h1 id="7-l2vpn-provisioning">7. L2VPN provisioning<a class="headerlink" href="#7-l2vpn-provisioning" title="Permanent link">&para;</a></h1>
 <p><strong>Time:</strong> 60 minutes for VPWS. Optional sections add about 30 minutes.</p>
-<p><strong>Objective:</strong> Provision a point-to-point L2VPN (VPWS) from CNC. Optionally inspect VPLS, attach an NSO custom template, and run <code>sync-from</code>.</p>
-<p>CNC 7.2 provisions IETF L2VPN network models through NSO. VPWS is a wire between two attachment circuits. VPLS is a multipoint LAN. This lab's required service is VPWS. Chapter 8 monitors that VPWS only.</p>
-<h2 id="71-vpws-required">7.1 VPWS (required)<a class="headerlink" href="#71-vpws-required" title="Permanent link">&para;</a></h2>
+<p><strong>Objective:</strong> Provision a point-to-point L2VPN (VPWS) and a multipoint LAN (VPLS) from CNC.</p>
+<h2 id="71-vpws">7.1 VPWS<a class="headerlink" href="#71-vpws" title="Permanent link">&para;</a></h2>
+<p>CNC 7.2 provisions IETF L2VPN network models through NSO. VPWS is a wire between two attachment circuits. </p>
+<p><img alt="dcloud" src="../img/07/01_vpws_topology.png" /></p>
 <table>
 <thead>
 <tr>
@@ -747,23 +804,47 @@
 <tbody>
 <tr>
 <td>Service name</td>
-<td><code>vpws-01</code></td>
+<td><code>CustD_vpws</code></td>
 </tr>
 <tr>
 <td>vpn-type</td>
-<td>point-to-point / VPWS (use the value the form offers for two endpoints)</td>
+<td>point-to-point (vpws-evpn)</td>
 </tr>
 <tr>
 <td>Endpoints</td>
-<td>the two PEs from chapter 3, on the L2 attachment interfaces the instructor assigns</td>
+<td>PE1, PE2</td>
 </tr>
 <tr>
 <td>Transport</td>
-<td>SRv6, preferably the same color or policy as <code>pce-01</code> if the form allows it</td>
+<td>SRv6, steering to SRv6 Policy with color 10</td>
 </tr>
 </tbody>
 </table>
-<p>Do not reuse the L3VPN attachment interfaces from chapter 6. VPWS needs its own attachment circuits.</p>
+<h3 id="711-pre-check-id-pools">7.1.1 Pre-check (ID-Pools)<a class="headerlink" href="#711-pre-check-id-pools" title="Permanent link">&para;</a></h3>
+<p>EVI IDs and Source/Target IDs can be automatically assigned from predefined pools. It is also possible to set fixed values.</p>
+<p>In this instance, we will confirm that those pools are already configured.</p>
+<ol>
+<li>
+<p>Resource Pools (the range of assignable values) are located under <strong>Global &gt; Resource Pool</strong>.</p>
+<ul>
+<li>evi-id-pool: Pool for EVI IDs</li>
+<li>evi-source-target-pool: Pool for Source/Target IDs</li>
+</ul>
+<p>By clicking Edit under Actions, you can see that the following values are set for each. Please close with Cancel after confirmation.</p>
+<ul>
+<li>evi-id-pool: 100-500</li>
+<li>evi-source-target-pool: 1-100</li>
+</ul>
+</li>
+<li>
+<p>Confirm that these pools are used in the L2VPN configuration under <strong>L2VPN &gt; ID-Pools</strong>.</p>
+<ul>
+<li>evi-id-pool-name: evi-id-pool</li>
+<li>evi-source-target-pool-name: evi-source-target-pool</li>
+</ul>
+</li>
+</ol>
+<h3 id="712-pre-configuration-ces">7.1.2 Pre-configuration (CEs)<a class="headerlink" href="#712-pre-configuration-ces" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Go to <strong>Services &amp; Traffic Engineering &gt; Provisioning (NSO)</strong>.</li>
 <li>Open the L2VPN service type.</li>
@@ -784,13 +865,13 @@
 <li>Select <code>vpws-01</code>. Show it on the map. You should see a point-to-point overlay between the two PEs, not a multipoint LAN.</li>
 <li>On the headend:</li>
 </ol>
-<pre><code class="language-text">show l2vpn xconnect
+<div class="highlight"><pre><span></span><code>show l2vpn xconnect
 show l2vpn xconnect detail
-</code></pre>
+</code></pre></div>
 <p>Find the xconnect NSO created. Attachment circuit and pseudowire (or SRv6 EVPN VPWS equivalent) should be up. If the lab uses EVPN VPWS, the instructor may also ask for:</p>
-<pre><code class="language-text">show l2vpn evpn xconnect
+<div class="highlight"><pre><span></span><code>show l2vpn evpn xconnect
 show bgp l2vpn evpn summary
-</code></pre>
+</code></pre></div>
 <p>Use the form that actually prints your service. Leave configuration mode.</p>
 <p><strong>Result:</strong> The map is point-to-point, and XR shows the xconnect up.</p>
 <h2 id="73-optional-vpls">7.3 Optional: VPLS<a class="headerlink" href="#73-optional-vpls" title="Permanent link">&para;</a></h2>
@@ -802,8 +883,8 @@ show bgp l2vpn evpn summary
 <li>In <strong>VPN Services</strong>, select <code>vpls-01</code> and confirm the overlay is multipoint.</li>
 <li>On a PE:</li>
 </ol>
-<pre><code class="language-text">show l2vpn bridge-domain
-</code></pre>
+<div class="highlight"><pre><span></span><code>show l2vpn bridge-domain
+</code></pre></div>
 <p>Use this only to contrast with <code>show l2vpn xconnect</code> from the VPWS. Delete <code>vpls-01</code> before the end of the day if you created it. Do not start Service Health on it.</p>
 <p><strong>Result:</strong> You can tell VPWS (xconnect) from VPLS (bridge-domain) in both CNC and CLI.</p>
 <h2 id="74-optional-nso-custom-template">7.4 Optional: NSO custom template<a class="headerlink" href="#74-optional-nso-custom-template" title="Permanent link">&para;</a></h2>
@@ -888,10 +969,10 @@ show bgp l2vpn evpn summary
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>
