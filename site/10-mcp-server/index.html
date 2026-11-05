@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -668,27 +668,27 @@
 <p><strong>Time:</strong> 20 minutes</p>
 <p><strong>Objective:</strong> Ask the lab assistant one question that it can answer with a live Crosswork tool. Confirm the answer in the CNC UI.The assistant is a chat page. When you ask a question, it may call tools on an MCP server. That server is what talks to CNC. </p>
 <h2 id="101-open-the-assistant">10.1 Open the assistant<a class="headerlink" href="#101-open-the-assistant" title="Permanent link">&para;</a></h2>
-<p>Access <strong>Ubuntu2504-Desktop</strong>, open Terminal and execute following:</p>
-<pre><code>$ cd aiserver
+<p>Access <strong>Ubuntu2504-Desktop</strong>, open Terminal and execute following:
+<div class="highlight"><pre><span></span><code>$ cd aiserver
 $ ./main
-</code></pre>
-<p>Close the browser tab.</p>
-<p>Access <strong>Ubuntu2204-1T-Desktop</strong>, open terminal and execute following:</p>
-<pre><code>$ cd cnc_mcp
+</code></pre></div>
+Close the browser tab.</p>
+<p>Access <strong>Ubuntu2204-1T-Desktop</strong>, open terminal and execute following:
+<div class="highlight"><pre><span></span><code>$ cd cnc_mcp
 $ source venv/bin/activate
 $ python3 cnc_mcp_server2.py
-</code></pre>
-<p>Open another terminal in <strong>Ubuntu2204-1T-Desktop</strong> and execute following:</p>
-<pre><code>$ cd webui
+</code></pre></div></p>
+<p>Open another terminal in <strong>Ubuntu2204-1T-Desktop</strong> and execute following:
+<div class="highlight"><pre><span></span><code>$ cd webui
 $ source venv/bin/actiate
 $ streamlit run frontend.py
-</code></pre>
-<p><img alt="dcloud" src="../img/10/01-ai-assistant.png" /></p>
+</code></pre></div>
+<img alt="dcloud" src="../img/10/01-ai-assistant.png" /></p>
 <p><strong>Result:</strong> The assistant is online and you can name the Tools.</p>
 <h2 id="102-one-live-question">10.2 One live question<a class="headerlink" href="#102-one-live-question" title="Permanent link">&para;</a></h2>
 <p>In the chat, ask:</p>
-<pre><code class="language-text">How many nodes are in the CNC?
-</code></pre>
+<div class="highlight"><pre><span></span><code>How many nodes are in the CNC?
+</code></pre></div>
 <p>Wait for the reply. Open the tool-call detail for that turn.</p>
 <p>Check all of the following:</p>
 <ul>
@@ -700,9 +700,9 @@ $ streamlit run frontend.py
 <p><strong>Result:</strong> A number from the tool, compared with Device Management.</p>
 <h2 id="103-operator-check-not-a-write">10.3 Operator check, not a write<a class="headerlink" href="#103-operator-check-not-a-write" title="Permanent link">&para;</a></h2>
 <p>Ask a second question that does not require a write tool:</p>
-<pre><code class="language-text">The inventory count is &lt;the number you just verified&gt;.
+<div class="highlight"><pre><span></span><code>The inventory count is &lt;the number you just verified&gt;.
 What should an operator check first in Crosswork?
-</code></pre>
+</code></pre></div>
 <p>A useful answer names checks you already know how to open:</p>
 <ul>
 <li>Reachability on <strong>Device Management &gt; Network Devices</strong></li>
@@ -766,10 +766,10 @@ What should an operator check first in Crosswork?
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>
