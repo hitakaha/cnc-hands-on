@@ -2,20 +2,46 @@
 
 **Time:** 60 minutes for VPWS. Optional sections add about 30 minutes.
 
-**Objective:** Provision a point-to-point L2VPN (VPWS) from CNC. Optionally inspect VPLS, attach an NSO custom template, and run `sync-from`.
+**Objective:** Provision a point-to-point L2VPN (VPWS) and a multipoint LAN (VPLS) from CNC.
 
-CNC 7.2 provisions IETF L2VPN network models through NSO. VPWS is a wire between two attachment circuits. VPLS is a multipoint LAN. This lab's required service is VPWS. Chapter 8 monitors that VPWS only.
 
-## 7.1 VPWS (required)
+## 7.1 VPWS 
+
+CNC 7.2 provisions IETF L2VPN network models through NSO. VPWS is a wire between two attachment circuits. 
+
+![dcloud](img/07/01_vpws_topology.png)
 
 | Field | Value |
 | --- | --- |
-| Service name | `vpws-01` |
-| vpn-type | point-to-point / VPWS (use the value the form offers for two endpoints) |
-| Endpoints | the two PEs from chapter 3, on the L2 attachment interfaces the instructor assigns |
-| Transport | SRv6, preferably the same color or policy as `pce-01` if the form allows it |
+| Service name | `CustD_vpws` |
+| vpn-type | point-to-point (vpws-evpn) |
+| Endpoints | PE1, PE2 |
+| Transport | SRv6, steering to SRv6 Policy with color 10 |
 
-Do not reuse the L3VPN attachment interfaces from chapter 6. VPWS needs its own attachment circuits.
+### 7.1.1 Pre-check (ID-Pools)
+
+EVI IDs and Source/Target IDs can be automatically assigned from predefined pools. It is also possible to set fixed values.
+
+In this instance, we will confirm that those pools are already configured.
+
+1.	Resource Pools (the range of assignable values) are located under **Global > Resource Pool**.
+
+    - evi-id-pool: Pool for EVI IDs
+    - evi-source-target-pool: Pool for Source/Target IDs
+
+    By clicking Edit under Actions, you can see that the following values are set for each. Please close with Cancel after confirmation.
+
+    - evi-id-pool: 100-500
+    - evi-source-target-pool: 1-100
+
+2. Confirm that these pools are used in the L2VPN configuration under **L2VPN > ID-Pools**.
+
+    - evi-id-pool-name: evi-id-pool
+    - evi-source-target-pool-name: evi-source-target-pool
+
+### 7.1.2 Pre-configuration (CEs)
+
+
 
 1. Go to **Services & Traffic Engineering > Provisioning (NSO)**.
 2. Open the L2VPN service type.

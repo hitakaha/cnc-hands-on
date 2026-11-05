@@ -21,3 +21,7 @@ markdown_extensions:
       permalink: true
   - tables
   - fenced_code
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.details
+  - pymdownx.superfences
