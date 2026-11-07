@@ -689,7 +689,7 @@
 
 
 <h1 id="2-cnc-management">2. CNC management<a class="headerlink" href="#2-cnc-management" title="Permanent link">&para;</a></h1>
-<p><strong>Time:</strong> 30 minutes.</p>
+<p><strong>Time:</strong> 50 minutes.</p>
 <p><strong>Objective:</strong> Confirm that CNC 7.2 is healthy enough for topology, inventory, traffic engineering, and service provisioning. You are reading the system, not rebuilding it.</p>
 <p>The rest of the lab depends on three things:</p>
 <table>
@@ -715,6 +715,8 @@
 </tbody>
 </table>
 <h2 id="21-crosswork-summary-and-crosswork-health">2.1 Crosswork Summary and Crosswork Health<a class="headerlink" href="#21-crosswork-summary-and-crosswork-health" title="Permanent link">&para;</a></h2>
+<p>The health state of CNC can be verified by viewing <strong>Crosswork Manager</strong>.
+In this scenario, go through the Crosswork state and packages.</p>
 <ol>
 <li>From the main menu, go to <strong>Administration &gt; Crosswork Manager</strong>.</li>
 <li>Stay on the <strong>Crosswork Summary</strong> tab. Read the tiles for the cluster (or single VM), Platform Infrastructure, and the installed applications.
@@ -736,7 +738,10 @@
 </ol>
 <p><strong>Result:</strong> You can name the applications this lab uses and their health state.</p>
 <h2 id="22-providers">2.2 Providers<a class="headerlink" href="#22-providers" title="Permanent link">&para;</a></h2>
-<p>CNC learns the routed topology from SR-PCE. CNC provisions services through NSO. Both are providers.</p>
+<p>Crosswork Network Controller components depend on external services, such as Cisco Crosswork Network Services Orchestrator (NSO) and Segment Routing Path Computation Element (SR-PCE), to perform operations like configuration modifications and segment routing path calculations. To manage access and facilitate information sharing among Crosswork Network Controller components, each external service must have a configured provider that belongs to a specific provider family (for example, NSO or SR-PCE).</p>
+<p>For more information, refer to following.</p>
+<p><a href="https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/crosswork-infrastructure/7-2/AdminGuide/b-cisco-crosswork-admin-guide-7-2/g-DLM/c-providers.html">https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/crosswork-infrastructure/7-2/AdminGuide/b-cisco-crosswork-admin-guide-7-2/g-DLM/c-providers.html</a></p>
+<p>Follow the steps below and confirm the provider.</p>
 <ol>
 <li>Go to <strong>Administration &gt; Manage Provider Access</strong>.</li>
 <li>Find the SR-PCE provider that points at the PCE CML lab (<code>xrv9k-25.4.1-pce-for-CNC7.2-ipv6</code>). Read reachability and the protocol state. You want the provider reachable, with the topology feed up.

@@ -1,6 +1,6 @@
 # 2. CNC management
 
-**Time:** 30 minutes.
+**Time:** 50 minutes.
 
 **Objective:** Confirm that CNC 7.2 is healthy enough for topology, inventory, traffic engineering, and service provisioning. You are reading the system, not rebuilding it.
 
@@ -13,6 +13,9 @@ The rest of the lab depends on three things:
 | L3VPN and L2VPN provisioning | NSO provider, devices in sync |
 
 ## 2.1 Crosswork Summary and Crosswork Health
+
+The health state of CNC can be verified by viewing **Crosswork Manager**.
+In this scenario, go through the Crosswork state and packages.
 
 1. From the main menu, go to **Administration > Crosswork Manager**.
 2. Stay on the **Crosswork Summary** tab. Read the tiles for the cluster (or single VM), Platform Infrastructure, and the installed applications.
@@ -35,7 +38,13 @@ The rest of the lab depends on three things:
 
 ## 2.2 Providers
 
-CNC learns the routed topology from SR-PCE. CNC provisions services through NSO. Both are providers.
+Crosswork Network Controller components depend on external services, such as Cisco Crosswork Network Services Orchestrator (NSO) and Segment Routing Path Computation Element (SR-PCE), to perform operations like configuration modifications and segment routing path calculations. To manage access and facilitate information sharing among Crosswork Network Controller components, each external service must have a configured provider that belongs to a specific provider family (for example, NSO or SR-PCE).
+
+For more information, refer to following.
+
+[https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/crosswork-infrastructure/7-2/AdminGuide/b-cisco-crosswork-admin-guide-7-2/g-DLM/c-providers.html](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/crosswork-infrastructure/7-2/AdminGuide/b-cisco-crosswork-admin-guide-7-2/g-DLM/c-providers.html)
+
+Follow the steps below and confirm the provider.
 
 1. Go to **Administration > Manage Provider Access**.
 2. Find the SR-PCE provider that points at the PCE CML lab (`xrv9k-25.4.1-pce-for-CNC7.2-ipv6`). Read reachability and the protocol state. You want the provider reachable, with the topology feed up.
