@@ -1,8 +1,8 @@
 # 1. Preparation
 
-**Time:** 20 minutes, most of it waiting.
+**Time:** 30 minutes
 
-**Objective:** Leave maintenance mode, start the CML lab, and log in to a controller that is ready for work.
+**Objective:** Access dCloud environment, leave maintenance mode, start the CML lab, and log in to a controller that is ready for work.
 
 !!! note "Instructor"
     Maintenance mode shuts the applications down gracefully, and bringing them back takes several minutes.
