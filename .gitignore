@@ -1,3 +1,6 @@
 __pycache__/
 .DS_Store
 venv
+site/search/search_index.json
+site/sitemap.xml.gz
+
