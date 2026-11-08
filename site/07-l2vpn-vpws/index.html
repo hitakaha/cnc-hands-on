@@ -14,18 +14,18 @@
         <link rel="prev" href="../06-l3vpn/">
       
       
-        <link rel="next" href="../08-assurance/">
+        <link rel="next" href="../08-l2vpn-vpls/">
       
       
         
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
-        <title>7. L2VPN provisioning - Crosswork CNC Hands-on</title>
+        <title>7. L2VPN (VPWS) provisioning - Crosswork CNC Hands-on</title>
       
     
     
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7. L2VPN provisioning
+              7. L2VPN (VPWS) provisioning
             
           </span>
         </div>
@@ -403,7 +403,7 @@
   <span class="md-ellipsis">
     
   
-    7. L2VPN provisioning
+    7. L2VPN (VPWS) provisioning
   
 
     
@@ -421,7 +421,7 @@
   <span class="md-ellipsis">
     
   
-    7. L2VPN provisioning
+    7. L2VPN (VPWS) provisioning
   
 
     
@@ -524,15 +524,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#76-confirmation-of-l3vpn" class="md-nav__link">
+  <a href="#76-confirmation-of-l2vpn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.6 Confirmation of L3VPN
+        7.6 Confirmation of L2VPN
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="7.6 Confirmation of L3VPN">
+    <nav class="md-nav" aria-label="7.6 Confirmation of L2VPN">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -671,14 +671,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-assurance/" class="md-nav__link">
+      <a href="../08-l2vpn-vpls/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    8. Assurance
+    8. L2VPN (VPLS) provisioning
   
 
     
@@ -849,15 +849,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#76-confirmation-of-l3vpn" class="md-nav__link">
+  <a href="#76-confirmation-of-l2vpn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.6 Confirmation of L3VPN
+        7.6 Confirmation of L2VPN
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="7.6 Confirmation of L3VPN">
+    <nav class="md-nav" aria-label="7.6 Confirmation of L2VPN">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1000,7 +1000,7 @@
 
 <h1 id="7-l2vpn-vpws-provisioning">7. L2VPN VPWS provisioning<a class="headerlink" href="#7-l2vpn-vpws-provisioning" title="Permanent link">&para;</a></h1>
 <p><strong>Time:</strong> 60 minutes</p>
-<p><strong>Objective:</strong> Provision a point-to-point L2VPN (VPWS) and a multipoint LAN (VPLS) from CNC.</p>
+<p><strong>Objective:</strong> Provision a point-to-point L2VPN (VPWS) from CNC.</p>
 <p>CNC 7.2 provisions IETF L2VPN network models through NSO. VPWS is a wire between two attachment circuits. </p>
 <p><img alt="dcloud" src="../img/07/01_vpws_topology.png" /></p>
 <table>
@@ -1206,7 +1206,7 @@ ce2#
 <p>Load <strong>Home &gt; cnc-payloads &gt; VPWS_CustB.json</strong>.</p>
 <p><img alt="dcloud" src="../img/07/16_load_CustB.png" /></p>
 <details class="note">
-<summary>L3VPN_CustA.json</summary>
+<summary>VPWS_CustB.json</summary>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"ietf-l2vpn-ntw:l2vpn-ntw"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">"vpn-services"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1349,7 +1349,7 @@ ce2#
 <p><img alt="dcloud" src="../img/07/26_L2VPN_commit.png" /></p>
 </li>
 </ol>
-<h2 id="76-confirmation-of-l3vpn">7.6 Confirmation of L3VPN<a class="headerlink" href="#76-confirmation-of-l3vpn" title="Permanent link">&para;</a></h2>
+<h2 id="76-confirmation-of-l2vpn">7.6 Confirmation of L2VPN<a class="headerlink" href="#76-confirmation-of-l2vpn" title="Permanent link">&para;</a></h2>
 <h3 id="via-cnc-gui">via CNC GUI<a class="headerlink" href="#via-cnc-gui" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Open <strong>Services &amp; Traffic Engineering &gt; VPN Services</strong>.</li>
@@ -1637,7 +1637,7 @@ end
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>
