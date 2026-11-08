@@ -1,0 +1,1644 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Operator lab for Cisco Crosswork Network Controller 7.2.1-SP">
+      
+      
+      
+      
+        <link rel="prev" href="../06-l3vpn/">
+      
+      
+        <link rel="next" href="../08-assurance/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>7. L2VPN provisioning - Crosswork CNC Hands-on</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7-l2vpn-vpws-provisioning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Crosswork CNC Hands-on" class="md-header__button md-logo" aria-label="Crosswork CNC Hands-on" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Crosswork CNC Hands-on
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7. L2VPN provisioning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Crosswork CNC Hands-on" class="md-nav__button md-logo" aria-label="Crosswork CNC Hands-on" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Crosswork CNC Hands-on
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-cnc-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. CNC management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-active-topology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Active Topology
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-element-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Element management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-sr-te/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. SR-TE and SRv6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-l3vpn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. L3VPN provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. L2VPN provisioning
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. L2VPN provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71-pre-check-id-pools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Pre-check (ID-Pools)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-pre-check-mp-bgp-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Pre-check (MP-BGP Configuration)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-pre-configuration-ces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Pre-configuration (CEs)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-pre-configuration-route-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Pre-configuration (Route-Policy)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#741-routing-policy-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4.1 Routing Policy Tag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#742-routing-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4.2 Routing Policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-vpws-provisioining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 VPWS Provisioining
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76-confirmation-of-l3vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 Confirmation of L3VPN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.6 Confirmation of L3VPN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#via-cnc-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        via CNC GUI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#via-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        via CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#77-automated-steering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 Automated Steering
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.7 Automated Steering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#771-enable-route-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7.1 Enable Route-Policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#772-confirmation-via-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7.2 Confirmation via GUI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#773-confirmation-via-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7.3 Confirmation via CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#78-packet-capture-option" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.8 Packet Capture (Option)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#79-service-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.9 Service Health
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#710-done-when" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.10 Done when
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#711-clean-up-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.11 Clean-up rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-assurance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Assurance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-mcp-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Optional CNC MCP server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71-pre-check-id-pools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Pre-check (ID-Pools)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-pre-check-mp-bgp-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Pre-check (MP-BGP Configuration)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-pre-configuration-ces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Pre-configuration (CEs)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-pre-configuration-route-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Pre-configuration (Route-Policy)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#741-routing-policy-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4.1 Routing Policy Tag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#742-routing-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4.2 Routing Policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-vpws-provisioining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 VPWS Provisioining
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76-confirmation-of-l3vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 Confirmation of L3VPN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.6 Confirmation of L3VPN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#via-cnc-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        via CNC GUI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#via-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        via CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#77-automated-steering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 Automated Steering
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.7 Automated Steering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#771-enable-route-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7.1 Enable Route-Policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#772-confirmation-via-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7.2 Confirmation via GUI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#773-confirmation-via-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7.3 Confirmation via CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#78-packet-capture-option" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.8 Packet Capture (Option)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#79-service-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.9 Service Health
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#710-done-when" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.10 Done when
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#711-clean-up-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.11 Clean-up rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="7-l2vpn-vpws-provisioning">7. L2VPN VPWS provisioning<a class="headerlink" href="#7-l2vpn-vpws-provisioning" title="Permanent link">&para;</a></h1>
+<p><strong>Time:</strong> 60 minutes</p>
+<p><strong>Objective:</strong> Provision a point-to-point L2VPN (VPWS) and a multipoint LAN (VPLS) from CNC.</p>
+<p>CNC 7.2 provisions IETF L2VPN network models through NSO. VPWS is a wire between two attachment circuits. </p>
+<p><img alt="dcloud" src="../img/07/01_vpws_topology.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service name</td>
+<td><code>CustD_vpws</code></td>
+</tr>
+<tr>
+<td>vpn-type</td>
+<td>point-to-point (vpws-evpn)</td>
+</tr>
+<tr>
+<td>Endpoints</td>
+<td>PE1, PE2</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>SRv6, steering to SRv6 Policy with color 10</td>
+</tr>
+</tbody>
+</table>
+<h3 id="71-pre-check-id-pools">7.1 Pre-check (ID-Pools)<a class="headerlink" href="#71-pre-check-id-pools" title="Permanent link">&para;</a></h3>
+<p>EVI IDs and Source/Target IDs can be automatically assigned from predefined pools. It is also possible to set fixed values.</p>
+<p>In this instance, we will confirm that those pools are already configured.</p>
+<ol>
+<li>
+<p>Resource Pools (the range of assignable values) are located under <strong>Service &amp; Traffic Engineering &gt; Provisioning (NSO) &gt; Global &gt; Resource Pool</strong>.</p>
+<ul>
+<li>evi-id-pool: Pool for EVI IDs</li>
+<li>evi-source-target-pool: Pool for Source/Target IDs</li>
+</ul>
+<p><img alt="dcloud" src="../img/07/02_resource-pool.png" /></p>
+<p>By clicking Edit under Actions, you can see that the following values are set for each. Please close with Cancel after confirmation.</p>
+<p><img alt="dcloud" src="../img/07/03_resource_edit.png" /></p>
+<ul>
+<li>evi-id-pool: 100-500</li>
+</ul>
+<p><img alt="dcloud" src="../img/07/04_evi-id-pool.png" /></p>
+<ul>
+<li>evi-source-target-pool: 1-100</li>
+</ul>
+<p><img alt="dcloud" src="../img/07/05_evi-source-target-pool.png" /></p>
+</li>
+<li>
+<p>Confirm that these pools are used in the L2VPN configuration under <strong>L2VPN &gt; ID-Pools</strong>.</p>
+<ul>
+<li>evi-id-pool-name: evi-id-pool</li>
+<li>evi-source-target-pool-name: evi-source-target-pool</li>
+</ul>
+<p><img alt="dcloud" src="../img/07/06_l2vpn_id-pool.png" /></p>
+</li>
+</ol>
+<h3 id="72-pre-check-mp-bgp-configuration">7.2 Pre-check (MP-BGP Configuration)<a class="headerlink" href="#72-pre-check-mp-bgp-configuration" title="Permanent link">&para;</a></h3>
+<p>MP-BGP configuration is not performed within the built-in L2VPN service model. Therefore, ensure that this configuration is set up in advance and that the BGP Neighbor is up.</p>
+<p><strong>PE1 (C8711-1-PE)</strong></p>
+<pre><code>
+RP/0/RP0/CPU0:C8711-1-PE#show run router bgp
+Fri Nov  6 06:20:18.478 UTC
+router bgp 65000
+ bgp router-id 1.1.1.1
+ address-family vpnv4 unicast
+ !
+ <mark>address-family l2vpn evpn</mark>
+ !
+ address-family link-state link-state
+ !
+ neighbor-group ibgp
+  remote-as 65000
+  update-source Loopback0
+  address-family vpnv4 unicast
+  !
+  <mark>address-family l2vpn evpn</mark>
+  !
+ !
+ neighbor 2001:db8::2
+  use neighbor-group ibgp
+ !
+ neighbor 2001:db8::3
+  use neighbor-group ibgp
+ !
+ neighbor 2001:db8:1::56
+  remote-as 65000
+  address-family link-state link-state
+  !
+ !
+!
+</code></pre>
+
+<pre><code>
+RP/0/RP0/CPU0:C8711-1-PE#show bgp l2vpn evpn neighbors brief
+Fri Nov  6 06:20:52.752 UTC
+
+Neighbor         Spk    AS  Description                         Up/Down  NBRState
+2001:db8::2       0 65000                                         6d20h <mark>Established</mark>
+2001:db8::3       0 65000                                         6d20h <mark>Established</mark>
+RP/0/RP0/CPU0:C8711-1-PE#
+</code></pre>
+
+<h3 id="73-pre-configuration-ces">7.3 Pre-configuration (CEs)<a class="headerlink" href="#73-pre-configuration-ces" title="Permanent link">&para;</a></h3>
+<p>The CEs exist in <code>CML for PCE</code> (a different CML instance from the P/PE routers).
+Please open <code>CML for PCE</code> from the Firefox Bookmark Bar. </p>
+<p><img alt="dcloud" src="../img/07/07_cml1.png" /></p>
+<p>Then, select the lab <code>xrv9k-25.4.1-pce-for-CNC7.2-ipv6</code>.</p>
+<p><img alt="dcloud" src="../img/07/08_cml2.png" /></p>
+<p>CE1 is named <code>csr1000v-ce1</code>, and CE2 is named <code>csr1000v-0</code> in the CML.</p>
+<p><img alt="dcloud" src="../img/07/09_cml3.png" /></p>
+<p><strong>CE1 (CSR1000V-CE1)</strong></p>
+<p>Confirm that <code>198.21.0.100</code> is already configured on interface <code>Gi1</code> facing PE1 on the CE1 side.</p>
+<pre><code>
+ce1>en
+ce1#show run int GigabitEthernet 1
+Building configuration...
+
+Current configuration : 121 bytes
+!
+interface GigabitEthernet1
+ <mark>ip address 198.21.0.100 255.255.255.0</mark>
+ negotiation auto
+ no mop enabled
+ no mop sysid
+end
+
+ce1#
+</code></pre>
+
+<p><strong>CE2 (CSR1000V-0)</strong></p>
+<p>Please clear the configuration of the interface <code>Gi1</code> on the CE2 side facing PE2, and reconfigure it with <code>198.21.0.200</code>.</p>
+<pre><code>
+ce2>en
+ce2#conf t
+ce2(config)#default interface Gi 1
+Interface GigabitEthernet1 set to default configuration
+ce2(config)#interface GigabitEthernet 1
+ce2(config-if)#ip address 198.21.0.<mark>200</mark> 255.255.255.0
+ce2(config-if)#end
+ce2#
+</code></pre>
+
+<h3 id="74-pre-configuration-route-policy">7.4 Pre-configuration (Route-Policy)<a class="headerlink" href="#74-pre-configuration-route-policy" title="Permanent link">&para;</a></h3>
+<p>Steer VPWS traffic to the SRv6 policy "PE1-PE2_Color10" created in Chapter 5. </p>
+<p>To do this, add a route-policy and configure MP-BGP to attach the extended community: color 10 to all EVPN advertisements.</p>
+<p>Since no Color 10 SR policy is currently configured on devices other than PE1, incoming customer packets on PE2 will be forwarded via the IGP shortest path.</p>
+<h3 id="741-routing-policy-tag">7.4.1 Routing Policy Tag<a class="headerlink" href="#741-routing-policy-tag" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Go to <strong>Services &amp; Traffic Engineering &gt; Provisioning (NSO)</strong>, then click <strong>L2VPN &gt; Routing Policy Tag</strong>.</p>
+</li>
+<li>
+<p>Add a routing policy tag with the following parameters.</p>
+<ul>
+<li>name: COLOR_10</li>
+<li>tag-value: 10</li>
+</ul>
+<p><img alt="dcloud" src="../img/07/10_L2VPN_tag1.png" />
+<img alt="dcloud" src="../img/07/11_L2VPN_tag2.png" />
+<img alt="dcloud" src="../img/07/12_L2VPN_tag3.png" /></p>
+</li>
+<li>
+<p>Commit changes</p>
+</li>
+</ol>
+<h3 id="742-routing-policy">7.4.2 Routing Policy<a class="headerlink" href="#742-routing-policy" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Go to <strong>L2VPN &gt; Routing Policy</strong>.</p>
+</li>
+<li>
+<p>Add a routing policy with the following parameters.</p>
+<ul>
+<li>name: POLICY1</li>
+<li>statement name: statement1</li>
+<li>actions<ul>
+<li>bgp-actions<ul>
+<li>enable <code>bgp-actions</code></li>
+<li>enable <code>set-ext-community</code></li>
+<li>ext-community-set-ref: COLOR_10</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="dcloud" src="../img/07/13_L2VPN_policy1.png" />
+<img alt="dcloud" src="../img/07/14_L2VPN_policy2.png" />
+<img alt="dcloud" src="../img/07/15_L2VPN_policy3.png" /></p>
+</li>
+<li>
+<p>Commit changes</p>
+</li>
+</ol>
+<h3 id="75-vpws-provisioining">7.5 VPWS Provisioining<a class="headerlink" href="#75-vpws-provisioining" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Go to <strong>Services &amp; Traffic Engineering &gt; Provisioning (NSO)</strong>, then click <strong>L2VPN-Service</strong>.</p>
+</li>
+<li>
+<p>Load <strong>Home &gt; cnc-payloads &gt; VPWS_CustB.json</strong>.</p>
+<p><img alt="dcloud" src="../img/07/16_load_CustB.png" /></p>
+<details class="note">
+<summary>L3VPN_CustA.json</summary>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"ietf-l2vpn-ntw:l2vpn-ntw"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"vpn-services"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"vpn-service"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"vpn-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CustB_vpws"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"vpn-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ietf-vpn-common:vpws-evpn"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"vpn-nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"vpn-node"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"vpn-node-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C8711-1-PE"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"vpn-network-accesses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"vpn-network-access"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">"interface-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FourHundredGigE0/0/0/2"</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">"connection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">"encapsulation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">"encap-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ietf-vpn-common:untagged-int"</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">"cisco-l2vpn-ntw:te-service-mapping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"srv6"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"locator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"srv6"</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">"te-mapping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"odn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"route-policy"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="s2">"POLICY1"</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"vpn-node-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C8711-2-PE"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"vpn-network-accesses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"vpn-network-access"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">"interface-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FourHundredGigE0/0/0/2"</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">"connection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">"encapsulation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">"encap-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ietf-vpn-common:untagged-int"</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">"cisco-l2vpn-ntw:te-service-mapping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"srv6"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"locator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"srv6"</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">"te-mapping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"odn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"route-policy"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="s2">"POLICY1"</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">"cisco-l2vpn-ntw:auto-evi-id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="kc">null</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"cisco-l2vpn-ntw:auto-evi-source"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="kc">null</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"cisco-l2vpn-ntw:auto-evi-target"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="kc">null</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"cisco-l2vpn-ntw:service-assurance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"monitoring-state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enable"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"profile-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gold_L2VPN_ConfigProfile system"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"rule-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rule-L2VPN-NM system"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Confirm that the following parameters are set.</p>
+<ul>
+<li>vpn-id: <code>CustB_vpws</code></li>
+<li>vpn-type: <code>vpws-evpn</code></li>
+</ul>
+<p><img alt="dcloud" src="../img/07/17_L2VPN_settings1.png" /></p>
+<ul>
+<li>auto-evi-id: enabled</li>
+<li>auto-evi-source: enabled</li>
+<li>auto-evi-target: enabled</li>
+</ul>
+<p>(With these settings, EVI IDs and Source/Target IDs are automatically assigned from predefined pools.)</p>
+<p><img alt="dcloud" src="../img/07/18_L2VPN_settings2.png" /></p>
+<ul>
+<li>vpn-node: <strong>C8711-1-PE</strong></li>
+<li>vpn-network-access: FourHundredGigE0/0/0/2</li>
+<li>encap-type: untagged-int</li>
+<li>srv6 locator: <code>srv6</code></li>
+<li>te-mapping: odn policy <code>POLICY1</code></li>
+</ul>
+<p><img alt="dcloud" src="../img/07/19_L2VPN_settings3.png" />
+<img alt="dcloud" src="../img/07/20_L2VPN_settings4.png" /></p>
+<ul>
+<li>vpn-node: <strong>C8711-2-PE</strong></li>
+<li>vpn-network-access: FourHundredGigE0/0/0/2</li>
+<li>encap-type: untagged-int</li>
+<li>srv6 locator: <code>srv6</code></li>
+<li>te-mapping: odn policy <code>POLICY1</code></li>
+</ul>
+<p><img alt="dcloud" src="../img/07/21_L2VPN_settings5.png" />
+<img alt="dcloud" src="../img/07/22_L2VPN_settings6.png" /></p>
+<p><strong>Service Assurance</strong> </p>
+<ul>
+<li>enable <code>service-assurance</code></li>
+<li>monitoring state: enable</li>
+<li>preservation: remove (delete all histrical data when stop monitoring)</li>
+<li>profile-name: <code>Gold_L2VPN_ConfigProfile system</code></li>
+<li>rule-name: <code>Rule-L2VPN-NM system</code></li>
+</ul>
+<p><img alt="dcloud" src="../img/07/23_L2VPN_settings7.png" /></p>
+</li>
+<li>
+<p><strong>Dry-run</strong> to confirm the configuration. </p>
+<p><img alt="dcloud" src="../img/07/24_L2VPN_dry-run1.png" /></p>
+<p>You can switch the display with <strong>Show changes</strong> on the upper right.
+<img alt="dcloud" src="../img/07/25_L2VPN_dry-run2.png" /></p>
+</li>
+<li>
+<p><strong>Commit changes</strong></p>
+<p><img alt="dcloud" src="../img/07/26_L2VPN_commit.png" /></p>
+</li>
+</ol>
+<h2 id="76-confirmation-of-l3vpn">7.6 Confirmation of L3VPN<a class="headerlink" href="#76-confirmation-of-l3vpn" title="Permanent link">&para;</a></h2>
+<h3 id="via-cnc-gui">via CNC GUI<a class="headerlink" href="#via-cnc-gui" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open <strong>Services &amp; Traffic Engineering &gt; VPN Services</strong>.</li>
+<li>
+<p>Select <code>CustB_vpws</code>.</p>
+<p><img alt="dcloud" src="../img/07/27_L2VPN_view1.png" /></p>
+</li>
+</ol>
+<h3 id="via-cli">via CLI<a class="headerlink" href="#via-cli" title="Permanent link">&para;</a></h3>
+<p>On the PE1/PE2:  </p>
+<p>The uDX2 SID is assigned to <code>CustB_vpws</code>.</p>
+<pre><code>
+RP/0/RP0/CPU0:C8711-1-PE#show segment-routing srv6 locator srv6 sid
+Fri Nov  6 08:20:24.085 UTC
+SID                         Behavior          Identification                    Owner               State  RW
+--------------------------  ----------------  --------------------------------  ------------------  -----  --
+fcbb:bb00:1::               uN (PSP/USD)      'default':1                       sidmgr              InUse  Y
+fcbb:bb00:1:e000::          uA (PSP/USD)      [FH0/0/0/0, Link-Local]:0         isis-1              InUse  Y
+fcbb:bb00:1:e001::          uA (PSP/USD)      [FH0/0/0/1, Link-Local]:0         isis-1              InUse  Y
+fcbb:bb00:1:e002::          uB6 (PSP/USD Insert.Red)  'srte_c_10_ep_2001:db8::2' (10, 2001:db8::2)  xtc_srv6            InUse  Y
+fcbb:bb00:1:e003::          uB6 (PSP/USD Insert.Red)  'srte_c_20_ep_2001:db8::3' (20, 2001:db8::3)  xtc_srv6            InUse  Y
+<mark>fcbb:bb00:1:e004::          uDX2              100:1                             l2vpn_srv6          InUse  Y</mark>
+RP/0/RP0/CPU0:C8711-1-PE#
+</code></pre>
+
+<p>The VPWS <code>CustB_vpws</code> is up.</p>
+<pre><code>
+RP/0/RP0/CPU0:C8711-1-PE#show l2vpn xconnect
+Fri Nov  6 08:21:20.013 UTC
+Legend: ST = State, UP = Up, DN = Down, AD = Admin Down, UR = Unresolved,
+        SB = Standby, SR = Standby Ready, (PP) = Partially Programmed,
+        LU = Local Up, RU = Remote Up, CO = Connected, (SI) = Seamless Inactive
+
+XConnect                   Segment 1                       Segment 2
+Group      Name       ST   Description            ST       Description            ST
+------------------------   -----------------------------   -----------------------------
+CustB_vpws CustB_vpws UP   FH0/0/0/2              UP       EVPN 100,1,1           UP
+----------------------------------------------------------------------------------------
+RP/0/RP0/CPU0:C8711-1-PE#
+</code></pre>
+
+<h2 id="77-automated-steering">7.7 Automated Steering<a class="headerlink" href="#77-automated-steering" title="Permanent link">&para;</a></h2>
+<h3 id="771-enable-route-policy">7.7.1 Enable Route-Policy<a class="headerlink" href="#771-enable-route-policy" title="Permanent link">&para;</a></h3>
+<p>In the built-in L2VPN service model, MP-BGP-related settings are not performed as described above. Therefore, please configure the following on PE1 and PE2 to enable the route-policy.</p>
+<p>On the PE1 and PE2:
+<div class="highlight"><pre><span></span><code>conf t
+router bgp 65000
+ neighbor-group ibgp
+ address-family l2vpn evpn
+   route-policy POLICY1 out
+  !
+ !
+ end
+</code></pre></div></p>
+<p>Go to <strong>Device Management &gt; Network Devices</strong>, then check PE1 &amp; PE2 and select <code>Sync-from device to NSO</code> from the Actions.</p>
+<p><img alt="dcloud" src="../img/07/30_sync-from.png" /></p>
+<h3 id="772-confirmation-via-gui">7.7.2 Confirmation via GUI<a class="headerlink" href="#772-confirmation-via-gui" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open <strong>Services &amp; Traffic Engineering &gt; VPN Services</strong>.</li>
+<li>
+<p>Select <code>CustB_vpws</code>.</p>
+<p><img alt="dcloud" src="../img/07/27_L2VPN_view1.png" /></p>
+</li>
+<li>
+<p>Click <strong>Actions &gt; View details</strong></p>
+<p><img alt="dcloud" src="../img/07/28_L2VPN_view2.png" /></p>
+</li>
+<li>
+<p>Go to <strong>Transport &gt; SRv6</strong>, then confirm SRv6 Policy <code>PE1-PE2_Color10</code> is steering the VPWS traffic from PE1 to PE2. Since the SR policy for Color 10 is not configured on the PE2 side, traffic from PE2 to PE1 is forwarded via the IGP shortest path.</p>
+<p><img alt="dcloud" src="../img/07/29_L2VPN_view3.png" /></p>
+</li>
+</ol>
+<h3 id="773-confirmation-via-cli">7.7.3 Confirmation via CLI<a class="headerlink" href="#773-confirmation-via-cli" title="Permanent link">&para;</a></h3>
+<p>When checking the EVPN route information exchanged with the peer PE via BGP, you can see Route Type 1: Ethernet Auto-Discovery (EAD) routes. You can also find that Color10 is assigned to them.</p>
+<p>On the PE1/PE2: </p>
+<pre><code>
+RP/0/RP0/CPU0:C8711-1-PE#show bgp l2vpn evpn
+Fri Nov  6 08:58:50.399 UTC
+BGP router identifier 1.1.1.1, local AS number 65000
+BGP generic scan interval 60 secs
+Non-stop routing is enabled
+BGP table state: Active
+Table ID: 0x0
+BGP main routing table version 22
+BGP NSR Initial initsync version 1 (Reached)
+BGP NSR/ISSU Sync-Group versions 0/0
+BGP scan interval 60 secs
+
+Status codes: s suppressed, d damped, h history, * valid, > best
+              i - internal, r RIB-failure, S stale, N Nexthop-discard
+Origin codes: i - IGP, e - EGP, ? - incomplete
+   Network            Next Hop            Metric LocPrf Weight Path
+Route Distinguisher: 1.1.1.1:100 (default for vrf VPWS:100)
+Route Distinguisher Version: 22
+*> [1][0000.0000.0000.0000.0000][1]/120
+                      0.0.0.0                                0 i
+* i                   2001:db8::2 <mark>C:10</mark>
+                                                    100      0 i
+Route Distinguisher: 2.2.2.2:100
+Route Distinguisher Version: 21
+*>i[1][0000.0000.0000.0000.0000][1]/120
+                      2001:db8::2 <mark>C:10</mark>
+                                                    100      0 i
+
+Processed 2 prefixes, 3 paths
+RP/0/RP0/CPU0:C8711-1-PE#
+</code></pre>
+
+<p>Perform a connectivity check between the CEs.</p>
+<p>On CE1(csr1000v-CE1):
+<div class="highlight"><pre><span></span><code>ce1#ping 198.21.0.200
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 198.21.0.200, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 3/13/50 ms
+ce1#
+</code></pre></div></p>
+<h2 id="78-packet-capture-option">7.8 Packet Capture (Option)<a class="headerlink" href="#78-packet-capture-option" title="Permanent link">&para;</a></h2>
+<p>We will use the packet capture feature of CML to observe the encapsulation in an IPv6 header.</p>
+<p><strong>CE1 to CE2</strong></p>
+<ol>
+<li>
+<p>Start ping from <code>CE1</code> to <code>CE2</code></p>
+<p>On CE1(csr1000v-CE1):
+<div class="highlight"><pre><span></span><code>ce1#ping 198.21.0.200 repeat 10000
+</code></pre></div></p>
+</li>
+<li>
+<p>Right click the link between <code>P5</code> and <code>PE3</code></p>
+</li>
+<li>
+<p>Start a packet capture.</p>
+</li>
+<li>
+<p>Click the ICMP echo request from 198.21.0.100 to 198.21.0.200.</p>
+</li>
+<li>
+<p>Find the IPv6 header. The destination address should be the PE3 uDN (fcbb:bb00:3) and the SR header contains the PE2 uDX2 (ex. fcbb:bb00:2:e002::). </p>
+<p><img alt="dcloud" src="../img/07/31_L2VPN_capture1.png" />
+<img alt="dcloud" src="../img/07/32_L2VPN_capture2.png" /></p>
+</li>
+</ol>
+<p>With the ub6-insert-reduced (Binding-SID insert reduced behavior), an SRH (Segment Routing Header) is inserted directly between the existing IPv6 header and the payload, instead of attaching a new IPv6 header to the outside. </p>
+<p>Therefore, an SR header containing the uDX2 SID is inserted into the IPv6 header in this way, and the Outer IPv6 Address contains the PE3 uN SID from the SR policy used for steering.</p>
+<p><strong>CE2 to CE1</strong></p>
+<ol>
+<li>
+<p>Start ping from <code>CE2</code> to <code>CE2</code></p>
+<p>On CE2(csr1000v-0):
+<div class="highlight"><pre><span></span><code>ce2#ping 198.21.0.100 repeat 10000
+</code></pre></div></p>
+</li>
+<li>
+<p>Right click the link between <code>P4</code> and <code>PE2</code></p>
+</li>
+<li>
+<p>Start a packet capture.</p>
+</li>
+<li>
+<p>Click the ICMP echo request from 198.21.0.200 to 198.21.0.100.</p>
+</li>
+<li>
+<p>Find the IPv6 header. The destination address should be the PE1 uDX2 (ex. fcbb:bb00:1:e004::). Currently, no Color 10 policy is configured on PE2, so traffic from PE2 to PE1 follows the IGP shortest path: PE2-&gt;P4-&gt;PE1.</p>
+<p><img alt="dcloud" src="../img/07/33_L2VPN_capture3.png" /></p>
+</li>
+</ol>
+<h2 id="79-service-health">7.9 Service Health<a class="headerlink" href="#79-service-health" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Open <strong>Services &amp; Traffic Engineering &gt; VPN Services</strong>.</li>
+<li>You can confirm the helth of <code>CustB_vpws</code> is <strong>degraded</strong>.</li>
+<li>
+<p>Click <strong>Actions &gt; Assurance graph</strong></p>
+<p><img alt="dcloud" src="../img/07/34_L2VPN_health1.png" /></p>
+</li>
+<li>
+<p>Drilling down into this graph leads to three symptoms.</p>
+<p><img alt="dcloud" src="../img/07/35_L2VPN_health2.png" /></p>
+<ul>
+<li><strong>Fallback LSP path from Device: C8711-2-PE to C8711-1-PE:1.1.1.1 doesn't exist.</strong></li>
+<li><strong>Fallback LSP path from Device: C8711-1-PE to C8711-2-PE:2.2.2.2 doesn't exist.</strong> </li>
+</ul>
+<p>These two are monitoring items that check reachability to the BGP Router-id of the opposite PE. In this case, this alert is occurring because the Loopback IF IPv4 address has not been learned unlike other PEs.</p>
+<div class="highlight"><pre><span></span><code>RP/0/RP0/CPU0:C8711-1-PE#show ip route
+Fri Nov  6 05:06:12.166 UTC
+
+% No matching routes found
+
+RP/0/RP0/CPU0:C8711-1-PE#
+</code></pre></div>
+<p>You can check which metrics are being collected by searching for the metric name in <strong>Administration &gt; Heuristic Packages</strong>.</p>
+<p><img alt="dcloud" src="../img/07/36_L2VPN_health3.png" />
+<img alt="dcloud" src="../img/07/37_L2VPN_health4.png" /></p>
+<ul>
+<li><strong>L2VPN traffic originated from this node is configured to go over SR transport, but zero eligible SR policies are detected. VpnServiceId: CustB_vpws Device: C8711-2-PE</strong></li>
+</ul>
+<p>This symptom occurs because the Color10 policy is not configured on PE2.</p>
+</li>
+</ol>
+<h2 id="710-done-when">7.10 Done when<a class="headerlink" href="#710-done-when" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>CustB_vpws</code> is up and shown as point-to-point in VPN Services.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The ping between CEs is succeeed.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The SR policy is steering the traffic from PE1 to PE2.</li>
+</ul>
+<h2 id="711-clean-up-rule">7.11 Clean-up rule<a class="headerlink" href="#711-clean-up-rule" title="Permanent link">&para;</a></h2>
+<p>First, delete the configuration set via the CLI, and then delete the VPWS service on the CNC side.</p>
+<ol>
+<li>
+<p>Delete the following configuration on the PE1/PE2.</p>
+<div class="highlight"><pre><span></span><code>conf t
+router bgp 65000
+ neighbor-group ibgp
+  address-family l2vpn evpn
+   no route-policy POLICY1 out
+  !
+ !
+end
+</code></pre></div>
+</li>
+<li>
+<p>Go to <strong>Device Management &gt; Network Devices</strong>, then check PE1 &amp; PE2 and select <code>Sync-from device to NSO</code> from the Actions.</p>
+<p><img alt="dcloud" src="../img/07/30_sync-from.png" /></p>
+</li>
+<li>
+<p>Go to <strong>Services &amp; Traffic Engineering &gt; Provisioning (NSO)</strong>, then click <strong>L2VPN-Service</strong>. </p>
+</li>
+<li>
+<p>Select <strong>Delete dry run</strong> from the Actions.</p>
+<p><img alt="dcloud" src="../img/07/38_L2VPN_delete1.png" /></p>
+</li>
+<li>
+<p>Check the config diff and click <code>Delete</code>.</p>
+<p><img alt="dcloud" src="../img/07/39_L2VPN_delete2.png" /></p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>
