@@ -7,7 +7,7 @@
 Element Management Functions in CNC 7.2 cover device onboarding, inventory, faults, metrics, software images, configuration backup, and configuration templates.
 
 
-## 4.1 Compare CNC with a generic NMS (Network Management System)
+## Compare CNC with a generic NMS (Network Management System)
 
 CNC is the controller view of the same devices, with IGP and SR context. The following table compares CNC with a generic NMS.
 
@@ -22,6 +22,12 @@ CNC is the controller view of the same devices, with IGP and SR context. The fol
 | NCM config change jobs / scripts | **Device Management > Configuration Templates** | Parameterized CLI (Apache Velocity). These are different from the NSO L2/L3VPN templates in chapters 6 and 7 |
 
 Use the table to map generic NMS functions to CNC. The rest of this chapter covers the CNC side.
+
+## 4.1 Detailed inventory
+1. In Topology, click any node, for example **C8711-4-P**, then click **Detailed inventory** button.
+![dcloud](img/04/01-1-detailed-inventory.png)
+2. You will see the hierarchical view of the inventory. Explore the graph and see how easy it is to grasp the relationship between the inventory. 
+![dcloud](img/04/01-2-hierarchy.png)
 
 ## 4.2 Network devices and inventory
 
