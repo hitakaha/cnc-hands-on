@@ -53,7 +53,7 @@ After you log in, the dashboard is displayed.
 5. If the Maintenance slider is On, drag it to Off.
 ![dcloud](img/01/02-turn-off-maintenance-mode.png)
 
-6. Wait several minutes for the applications to restart.
+6. Wait for about 20 to 30 minutes for the applications to restart.
 
 **Result:** The maintenance slider stays Off, and the UI loads the normal home page.
 
@@ -67,7 +67,7 @@ Review the network topology and familiarize yourself with the connections.
 Follow the steps below to confirm that both CML instances are up and running.
 
 1. Open another tab in Firefox and click the "CML2 for XR" bookmark.
-2. Confirm that the "5-nodes_L3VPN 8201-32FH 25.3.1-ipv6" scenario is running. If not, start the scenario.
+2. Confirm that the "5-nodes_L3VPN 8711-32FH 25.4.2-ipv6" scenario is running. If not, start the scenario.
 ![dcloud](img/01/03-run-xr.png)
 3. Open another tab in Firefox and click the "CML2 for PCE" bookmark.
 4. Confirm that the "xrv9k-25.4.1-pce-for-CNC7.2-ipv6" scenario is running. If not, start the scenario.

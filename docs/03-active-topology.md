@@ -10,11 +10,27 @@ This lab uses IPv6. The IS-IS, BGP-LS, SRv6 locator, and PCEP information on the
 
 ## 3.1 Open the map
 
+There are many ways for CNC to onboard devices. In this lab, devices are onboarded via PCE (Path Computation Element). The benefit of onboarding devices via PCE is that the topology is also automatically discovered by using link-state information.
+
+![dcloud](img/03/01-1-five-ways.png)
+
+For more information about onboarding devices, please refer to following:
+
+[https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/crosswork-infrastructure/7-2/AdminGuide/b-cisco-crosswork-admin-guide-7-2/g-add-and-configure-devices/c-device-onboarding-methods.html](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/crosswork-infrastructure/7-2/AdminGuide/b-cisco-crosswork-admin-guide-7-2/g-add-and-configure-devices/c-device-onboarding-methods.html)
+
+Follow the steps below to confirm the onboarded devices and topology.
+
 1. From the main menu, open **Topology**.
-2. Wait for the devices from `5-nodes_L3VPN 8201-32FH 25.3.1-ipv6` to appear. An empty map usually means that the SR-PCE provider is up but BGP-LS is still down, or that the CML nodes are still booting. Recheck chapter 2.
+2. Wait for the devices from `5-nodes_L3VPN 8711-32FH 25.4.2-ipv6` to appear. An empty map usually means that the SR-PCE provider is up but BGP-LS is still down, or that the CML nodes are still booting. Recheck chapter 2.
 ![dcloud](img/03/01-active-topology.png)
 3. Routers are placed on the geographic map based on the longitude and latitude configured in Device Management.
 4. Identify the three provider-edge (PE) routers. They serve as the headend and the endpoints in chapters 5 through 8.
+5. Each line color indicates the utilization of the link. The threshold for the color can be customized by going to **Administration > Settings > Topology > Metric thresholds**.
+![dcloud](img/03/01-2-thresholds.png)
+Try 0.0000001 (six zeros after the dot) and see if the link color changes.
+![dcloud](img/03/01-3-yellow-links.png)
+
+
 
 **Result:** You can find all three PEs and at least one IGP path between them.
 
