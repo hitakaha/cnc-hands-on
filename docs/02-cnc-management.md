@@ -14,8 +14,8 @@ The rest of the lab depends on three things:
 
 ## 2.1 Crosswork Summary and Crosswork Health
 
-The health state of CNC can be verified by viewing **Crosswork Manager**.
-In this scenario, go through the Crosswork state and packages.
+You can verify the health of CNC in **Crosswork Manager**.
+In this section, review the Crosswork status and packages.
 
 1. From the main menu, go to **Administration > Crosswork Manager**.
 2. Stay on the **Crosswork Summary** tab. Read the tiles for the cluster (or single VM), Platform Infrastructure, and the installed applications.
@@ -24,39 +24,39 @@ In this scenario, go through the Crosswork state and packages.
 ![dcloud](img/02/02-system-summary.png)
 4. Open the **Crosswork Health** tab.
 ![dcloud](img/02/03-crosswork-health.png)
-5. For each of the following applications, open the tile and confirm the application (and its microservices) are Healthy or Running:
+5. For each of the following applications, open the tile and confirm that the application (and its microservices) is Healthy or Running:
     - Platform Infrastructure
     - Optimization Engine
     - Service Health, if it is installed (chapter 8 uses it)
     - Element Management Functions
     - Active Topology
-6. Open **Alarms** or **Events** on an application tile only far enough to see whether anything is raised against the platform itself. Device alarms belong in chapter 4 and chapter 9.
+6. Open **Alarms** or **Events** on an application tile only to check whether any alarm is raised against the platform itself. Device alarms are covered in chapter 4 and chapter 9.
 ![dcloud](img/02/04-alarms-events.png)
 
-**Result:** You can name the applications this lab uses and their health state.
+**Result:** You can name the applications this lab uses and their health states.
 
 
 ## 2.2 Providers
 
 Crosswork Network Controller components depend on external services, such as Cisco Crosswork Network Services Orchestrator (NSO) and Segment Routing Path Computation Element (SR-PCE), to perform operations like configuration modifications and segment routing path calculations. To manage access and facilitate information sharing among Crosswork Network Controller components, each external service must have a configured provider that belongs to a specific provider family (for example, NSO or SR-PCE).
 
-For more information, refer to following.
+For more information, refer to the following.
 
 [https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/crosswork-infrastructure/7-2/AdminGuide/b-cisco-crosswork-admin-guide-7-2/g-DLM/c-providers.html](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/crosswork-infrastructure/7-2/AdminGuide/b-cisco-crosswork-admin-guide-7-2/g-DLM/c-providers.html)
 
-Follow the steps below and confirm the provider.
+Follow the steps below to confirm the providers.
 
 1. Go to **Administration > Manage Provider Access**.
-2. Find the SR-PCE provider that points at the PCE CML lab (`xrv9k-25.4.1-pce-for-CNC7.2-ipv6`). Read reachability and the protocol state. You want the provider reachable, with the topology feed up.
+2. Find the SR-PCE provider that points at the PCE CML lab (`xrv9k-25.4.1-pce-for-CNC7.2-ipv6`). Check its reachability and protocol state. The provider should be reachable, with the topology feed up.
 ![dcloud](img/02/05-pce.png)
-3. Find the NSO provider. NSO can be reachable from the top right menu.
+3. Find the NSO provider. You can also open NSO from the top-right menu.
 ![dcloud](img/02/06-nso.png)
-4. Open a provider only far enough to see the credential profile name. The profile is a pointer. The password stays in the profile store.
+4. Open a provider only to see its credential profile name. The profile is a reference; the password stays in the profile store.
 ![dcloud](img/02/07-credential.png)
 
 **Result:** SR-PCE and NSO are both reachable.
 
-If SR-PCE is down, stop before chapter 3. If NSO is down, you can still walk topology and element management; wait until NSO is reachable before chapters 6 and 7.
+If SR-PCE is down, do not proceed to chapter 3. If NSO is down, you can still go through topology and element management, but wait until NSO is reachable before starting chapters 6 and 7.
 
 ## 2.3 Data Gateway and collection at a glance
 
@@ -66,21 +66,21 @@ Interface counters, inventory detail, syslog, and SNMP traps arrive through a Cr
 2. Confirm the gateway (or pool) is enrolled and administratively Up. (cluster only)
 3. Open the gateway and confirm the XR lab devices are attached to it. (cluster only)
 4. Open **Administration > Collection Jobs** (or **Administration > Data Gateway Management > Collection Jobs**, depending on the build).
-5. On **Bulk jobs**, confirm system jobs are READY or Successful, not Failed.
+5. On **Bulk jobs**, confirm that system jobs are in the READY or Successful state, not Failed.
 ![dcloud](img/02/08-collection.png)
 
-**Result:** You can point at the collector that feeds inventory, alarms, and utilization. You will read collection jobs in more detail in chapter 9.
+**Result:** You can identify the collector that feeds inventory, alarms, and utilization. You will read collection jobs in more detail in chapter 9.
 
-## 2.4 What you leave alone
+## 2.4 What you should not change
 
-Credential profiles, AAA, certificates, backup jobs, and licensing are visible from Administration and from **Device Management > Credential Profiles**. Open a profile only if a device is unreachable and you need to compare the profile name.
+Credential profiles, AAA, certificates, backup jobs, and licensing are visible from **Administration** and from **Device Management > Credential Profiles**. Open a profile only if a device is unreachable and you need to check the profile name.
 ![dcloud](img/02/09-credential.png)
 
-Backup, restore, and **Add OS patch** put the cluster into maintenance mode. Patching is a guided walk in chapter 9. Do not start it here.
+Backup, restore, and **Add OS patch** put the cluster into maintenance mode. Patching is a guided walkthrough in chapter 9. Do not start it here.
 
 ## Done when
 
-- Platform Infrastructure, Optimization Engine, Active Topology, and element management are Healthy or Running.
+- Platform Infrastructure, Optimization Engine, Active Topology, and Element Management Functions are Healthy or Running.
 - The SR-PCE provider is reachable.
 - The NSO provider is reachable.
 - A Data Gateway (or embedded collector) is Up and the XR devices are attached.
