@@ -2,6 +2,7 @@
 
 **Time:** 50 minutes.
 
+
 **Objective:** Use CNC Element Management Functions to check node status, hardware inventory, configuration archive, alarms, and interface performance. Do not change any device configuration in this chapter.
 
 Element Management Functions in CNC 7.2 cover device onboarding, inventory, faults, metrics, software images, configuration backup, and configuration templates.
