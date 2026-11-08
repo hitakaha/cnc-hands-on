@@ -1,6 +1,6 @@
 # 8. Assurance
 
-**Time:** 40 minutes.
+**Time:** 60 minutes.
 
 **Objective:** Enable CNC Service Health on the VPWS from chapter 7 and read Basic monitoring until the health column has a real state. Do not monitor VPLS.
 

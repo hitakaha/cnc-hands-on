@@ -473,6 +473,12 @@ We will use the packet capture feature of CML to observe the encapsulation in an
     ![dcloud](img/06/16_L3VPN_capture.png)
 
 
+## Done when
+
+- [ ] The `CustA` service provisioning is completed.
+- [ ] The vrf ping between PEs is succeeed.
+
+
 ## Clean up
 
 Before going to the chapter 7, please delete all L3VPN services because we use the same CE-facing interfaces for L2VPN provisionings.
@@ -488,7 +494,4 @@ Before going to the chapter 7, please delete all L3VPN services because we use t
     ![dcloud](img/06/18_L3VPN_delete2.png)
 
 
-## Done when
 
-- [ ] The `CustA` service provisioning is completed.
-- [ ] The vrf ping between PEs is succeeed.
