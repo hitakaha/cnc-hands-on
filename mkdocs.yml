@@ -12,7 +12,7 @@ nav:
   - 5. SR-TE and SRv6: 05-sr-te.md
   - 6. L3VPN provisioning: 06-l3vpn.md
   - 7. L2VPN (VPWS) provisioning: 07-l2vpn-vpws.md
-  - 8. Assurance: 08-assurance.md
+  - 8. L2VPN (VPLS) provisioning: 08-l2vpn-vpls.md
   - 9. Troubleshooting: 09-troubleshooting.md
   - 10. Optional CNC MCP server: 10-mcp-server.md
 markdown_extensions:

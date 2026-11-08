@@ -12,8 +12,8 @@ Each chapter has an objective, the clicks or CLI, the result you should see, and
 4. Walk inventory, faults, configuration, and performance.
 5. Observe a PCC-initiated SR policy, then create a PCE-initiated SRv6 policy.
 6. Provision an L3VPN and steer it onto that policy.
-7. Provision a VPWS L2VPN. VPLS, an NSO custom template, and `sync-from` are optional.
-8. Enable Service Health on the VPWS you created.
+7. Provision a VPWS L2VPN and check its Service Health. An NSO custom template and `sync-from` are optional.
+8. Provision a VPLS L2VPN with multi-homing, steer it onto an SRv6 ODN policy, and check its Service Health.
 9. Collect showtech, read collection jobs and alarms, and walk the patch screen.
 10. Optional: ask the CNC MCP assistant one inventory question.
 

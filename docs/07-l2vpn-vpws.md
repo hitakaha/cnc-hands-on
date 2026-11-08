@@ -2,7 +2,7 @@
 
 **Time:** 60 minutes
 
-**Objective:** Provision a point-to-point L2VPN (VPWS) and a multipoint LAN (VPLS) from CNC.
+**Objective:** Provision a point-to-point L2VPN (VPWS) from CNC.
 
 
 CNC 7.2 provisions IETF L2VPN network models through NSO. VPWS is a wire between two attachment circuits. 
@@ -204,7 +204,7 @@ Since no Color 10 SR policy is currently configured on devices other than PE1, i
 
     ![dcloud](img/07/16_load_CustB.png)
 
-    ??? note "L3VPN_CustA.json"
+    ??? note "VPWS_CustB.json"
         ```json
             {
             "ietf-l2vpn-ntw:l2vpn-ntw": {
@@ -348,7 +348,7 @@ Since no Color 10 SR policy is currently configured on devices other than PE1, i
     ![dcloud](img/07/26_L2VPN_commit.png)
 
 
-## 7.6 Confirmation of L3VPN
+## 7.6 Confirmation of L2VPN
 
 ### via CNC GUI
 1. Open **Services & Traffic Engineering > VPN Services**.

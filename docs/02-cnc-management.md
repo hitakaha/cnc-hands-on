@@ -24,7 +24,7 @@ The rest of the lab depends on three things:
 5. For each of the following applications, open the tile and confirm the application (and its microservices) are Healthy or Running:
     - Platform Infrastructure
     - Optimization Engine
-    - Service Health, if it is installed (chapter 8 uses it)
+    - Service Health, if it is installed (chapters 7 and 8 use it)
     - Element Management Functions
     - Active Topology
 6. Open **Alarms** or **Events** on an application tile only far enough to see whether anything is raised against the platform itself. Device alarms belong in chapter 4 and chapter 9.
