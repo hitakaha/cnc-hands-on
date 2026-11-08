@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -518,6 +518,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#832-configure-odn-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3.2 Configure ODN Policy
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -844,6 +855,17 @@
     <span class="md-ellipsis">
       
         8.3.1 Configure Delay Metric
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#832-configure-odn-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3.2 Configure ODN Policy
       
     </span>
   </a>
@@ -1200,7 +1222,7 @@ performance-measurement
 <p><img alt="dcloud" src="../img/08/03_sync-from.png" /></p>
 <p>Click the link between <code>PE1</code> and <code>P4</code> or the link between <code>P5</code> and <code>PE3</code> on the topology, then confirm the delay metric is set to <code>500</code>.</p>
 <p><img alt="dcloud" src="../img/08/04_delay_metric.png" /></p>
-<p>### 8.3.2 Configure ODN Policy</p>
+<h3 id="832-configure-odn-policy">8.3.2 Configure ODN Policy<a class="headerlink" href="#832-configure-odn-policy" title="Permanent link">&para;</a></h3>
 <p>Unlike the policy configured in Chapter 5, an ODN policy does not require an Endpoint to be configured. When a BGP route with that Color is received, an SR policy is instantiated using the route's NextHop as the Endpoint. In other words, it has the advantage of not needing to establish a full mesh of policies between PEs.</p>
 <p>In this lab, you will configure an ODN policy for Color 30 with latency specified as the optimization condition on all PEs.</p>
 <ol>
@@ -1211,42 +1233,42 @@ performance-measurement
 <p><img alt="dcloud" src="../img/08/05_load_odn.png" /></p>
 <details class="note">
 <summary>ODN_color30.json</summary>
-</details>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"cisco-sr-te-cfp:sr-te"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"cisco-sr-te-cfp-sr-odn:odn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"odn-template"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="nt">"cisco-sr-te-cfp:sr-te"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"cisco-sr-te-cfp-sr-odn:odn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"odn-template"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ODN_color30"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"srv6"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"locator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"locator-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"srv6"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"behavior"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ub6-insert-reduced"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"binding-sid-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"srv6-dynamic"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"head-end"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ODN_color30"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"srv6"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">"locator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">"locator-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"srv6"</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">"behavior"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ub6-insert-reduced"</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">"binding-sid-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"srv6-dynamic"</span>
-<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C8711-1-PE"</span>
 <span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">"head-end"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C8711-1-PE"</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C8711-2-PE"</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C8711-3-PE"</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">"color"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"dynamic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">"pce"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
-<span class="w">                </span><span class="nt">"metric-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"latency"</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C8711-2-PE"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C8711-3-PE"</span>
 <span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">]</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"color"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"dynamic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"pce"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">            </span><span class="nt">"metric-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"latency"</span>
 <span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
+</details>
 </li>
 <li>
 <p>Confirm the following parameters.</p>
@@ -1531,7 +1553,7 @@ RP/0/RP0/CPU0:C8711-1-PE#`
 <img alt="dcloud" src="../img/08/18_VPLS_settings5.png" />
 <img alt="dcloud" src="../img/08/19_VPLS_settings6.png" /></p>
 <ul>
-<li>vpn-node: <strong>C8711-2-PE</strong></li>
+<li>vpn-node: <strong>C8711-3-PE</strong></li>
 <li>mac-learning-mode: control-plane</li>
 <li>vpn-network-access: Bundle-Ether1</li>
 <li>encap-type: untagged-int</li>
@@ -1807,11 +1829,9 @@ RP/0/RP0/CPU0:C8711-1-PE#
 <p>Find the IPv6 header. The destination address contains the P4 uN and PE2 uN (fcbb:bb00:4:2::), and the SR header contains the PE3 uDT2U (ex. fcbb:bb00:3:e002::). </p>
 <p><img alt="dcloud" src="../img/08/28_VPLS_capture1.png" />
 <img alt="dcloud" src="../img/08/29_VPLS_capture2.png" /></p>
-</li>
-</ol>
 <p>With the ub6-insert-reduced (Binding-SID insert reduced behavior), an SRH (Segment Routing Header) is inserted directly between the existing IPv6 header and the payload, instead of attaching a new IPv6 header to the outside. </p>
 <p>Therefore, an SR header containing the uDT2U SID is inserted into the IPv6 header in this way, and the Outer IPv6 Address contains the P4 and PE2 uN SID from the SR policy used for steering.</p>
-<ol>
+</li>
 <li>
 <p>Right click the link between <code>P4</code> and <code>PE2</code> and start a packet capture.</p>
 </li>
@@ -1836,7 +1856,7 @@ RP/0/RP0/CPU0:C8711-1-PE#
 <h2 id="810-service-health">8.10 Service Health<a class="headerlink" href="#810-service-health" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Open <strong>Services &amp; Traffic Engineering &gt; VPN Services</strong>.</li>
-<li>You can confirm the helth of <code>CustC_vpls</code> is <strong>degraded</strong>.</li>
+<li>You can confirm the helth of <code>CustC_vpls</code> is <strong>Good</strong>.</li>
 <li>
 <p>Click <strong>Actions &gt; Assurance graph</strong></p>
 <p><img alt="dcloud" src="../img/08/32_VPLS_health1.png" /></p>
@@ -1936,10 +1956,10 @@ commit
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
