@@ -27,7 +27,7 @@ In this section, review the Crosswork status and packages.
 5. For each of the following applications, open the tile and confirm that the application (and its microservices) is Healthy or Running:
     - Platform Infrastructure
     - Optimization Engine
-    - Service Health, if it is installed (chapter 8 uses it)
+    - Service Health, if it is installed (chapters 7 and 8 use it)
     - Element Management Functions
     - Active Topology
 6. Open **Alarms** or **Events** on an application tile only to check whether any alarm is raised against the platform itself. Device alarms are covered in chapter 4 and chapter 9.
