@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#optional-cnc-mcp-server" class="md-skip">
+        <a href="#10-optional-cnc-mcp-server" class="md-skip">
           Skip to content
         </a>
       
@@ -548,10 +548,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#103-operator-check-not-a-write" class="md-nav__link">
+  <a href="#103-operator-check-no-write-operations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10.3 Operator check, not a write
+        10.3 Operator check (no write operations)
       
     </span>
   </a>
@@ -626,10 +626,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#103-operator-check-not-a-write" class="md-nav__link">
+  <a href="#103-operator-check-no-write-operations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10.3 Operator check, not a write
+        10.3 Operator check (no write operations)
       
     </span>
   </a>
@@ -664,46 +664,47 @@
 
 
 
-<h1 id="optional-cnc-mcp-server">. Optional: CNC MCP server<a class="headerlink" href="#optional-cnc-mcp-server" title="Permanent link">&para;</a></h1>
+<h1 id="10-optional-cnc-mcp-server">10. Optional: CNC MCP server<a class="headerlink" href="#10-optional-cnc-mcp-server" title="Permanent link">&para;</a></h1>
 <p><strong>Time:</strong> 20 minutes</p>
-<p><strong>Objective:</strong> Ask the lab assistant one question that it can answer with a live Crosswork tool. Confirm the answer in the CNC UI.The assistant is a chat page. When you ask a question, it may call tools on an MCP server. That server is what talks to CNC. </p>
+<p><strong>Objective:</strong> Ask the lab assistant one question that it can answer with a live Crosswork tool. Confirm the answer in the CNC UI.</p>
+<p>The assistant is a chat page. When you ask a question, it may call tools on an MCP server. The MCP server communicates with CNC. </p>
 <h2 id="101-open-the-assistant">10.1 Open the assistant<a class="headerlink" href="#101-open-the-assistant" title="Permanent link">&para;</a></h2>
-<p>Access <strong>Ubuntu2504-Desktop</strong>, open Terminal and execute following:
+<p>Access <strong>Ubuntu2504-Desktop</strong>, open a terminal, and run the following:
 <div class="highlight"><pre><span></span><code>$ cd aiserver
 $ ./main
 </code></pre></div>
 Close the browser tab.</p>
-<p>Access <strong>Ubuntu2204-1T-Desktop</strong>, open terminal and execute following:
+<p>Access <strong>Ubuntu2204-1T-Desktop</strong>, open a terminal, and run the following:
 <div class="highlight"><pre><span></span><code>$ cd cnc_mcp
 $ source venv/bin/activate
 $ python3 cnc_mcp_server2.py
 </code></pre></div></p>
-<p>Open another terminal in <strong>Ubuntu2204-1T-Desktop</strong> and execute following:
+<p>Open another terminal in <strong>Ubuntu2204-1T-Desktop</strong> and run the following:
 <div class="highlight"><pre><span></span><code>$ cd webui
-$ source venv/bin/actiate
+$ source venv/bin/activate
 $ streamlit run frontend.py
 </code></pre></div>
 <img alt="dcloud" src="../img/10/01-ai-assistant.png" /></p>
-<p><strong>Result:</strong> The assistant is online and you can name the Tools.</p>
+<p><strong>Result:</strong> The assistant is online and you can name the available tools.</p>
 <h2 id="102-one-live-question">10.2 One live question<a class="headerlink" href="#102-one-live-question" title="Permanent link">&para;</a></h2>
 <p>In the chat, ask:</p>
 <div class="highlight"><pre><span></span><code>How many nodes are in the CNC?
 </code></pre></div>
 <p>Wait for the reply. Open the tool-call detail for that turn.</p>
-<p>Check all of the following:</p>
+<p>Confirm all of the following:</p>
 <ul>
 <li>The assistant called the inventory count tool.</li>
 <li>The reply contains a number.</li>
-<li>You can find a matching count under <strong>Device Management &gt; Network Devices</strong> or <strong>Network Inventory</strong>. The two screens group equipment differently, so the numbers may differ by what each one counts. Write both numbers and one sentence on the difference. If they match, write that they match.</li>
+<li>You can find a matching count under <strong>Device Management &gt; Network Devices</strong> or <strong>Network Inventory</strong>. The two screens group equipment differently, so the numbers may differ depending on what each one counts. Record both numbers and write one sentence explaining the difference. If they match, note that they match.</li>
 </ul>
-<p>If the tool call fails, the useful symptom is the error text, not a second guess from the model. A failure here usually means the assistant cannot authenticate to CNC or cannot reach the UI address. That is an instructor fix. Chapters 2 and 4 already showed you the same inventory with your own login.</p>
-<p><strong>Result:</strong> A number from the tool, compared with Device Management.</p>
-<h2 id="103-operator-check-not-a-write">10.3 Operator check, not a write<a class="headerlink" href="#103-operator-check-not-a-write" title="Permanent link">&para;</a></h2>
+<p>If the tool call fails, note the error text instead of relying on the model's guesses. A failure here usually means that the assistant cannot authenticate to CNC or cannot reach the UI address. In that case, ask the instructor to fix it. Chapters 2 and 4 already showed you the same inventory with your own login.</p>
+<p><strong>Result:</strong> You have a number from the tool and have compared it with Device Management.</p>
+<h2 id="103-operator-check-no-write-operations">10.3 Operator check (no write operations)<a class="headerlink" href="#103-operator-check-no-write-operations" title="Permanent link">&para;</a></h2>
 <p>Ask a second question that does not require a write tool:</p>
 <div class="highlight"><pre><span></span><code>The inventory count is &lt;the number you just verified&gt;.
 What should an operator check first in Crosswork?
 </code></pre></div>
-<p>A useful answer names checks you already know how to open:</p>
+<p>A useful answer lists checks that you already know how to perform:</p>
 <ul>
 <li>Reachability on <strong>Device Management &gt; Network Devices</strong></li>
 <li>The credential profile on that device</li>
@@ -712,7 +713,7 @@ What should an operator check first in Crosswork?
 <li>SR-PCE and NSO provider status</li>
 <li>Active alarms for that hostname</li>
 </ul>
-<p>Take one check the assistant named, open that CNC page, and confirm or contradict the suggestion with the screen. The screen wins.</p>
+<p>Pick one check the assistant suggested, open the corresponding CNC page, and verify whether the suggestion is correct. If the UI contradicts the assistant, trust the UI.</p>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The assistant answered the inventory question with a tool call, and you compared that number with Device Management.</li>

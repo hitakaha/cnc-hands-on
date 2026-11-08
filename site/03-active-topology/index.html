@@ -790,24 +790,33 @@
 
 <h1 id="3-active-topology">3. Active Topology<a class="headerlink" href="#3-active-topology" title="Permanent link">&para;</a></h1>
 <p><strong>Time:</strong> 45 minutes.</p>
-<p><strong>Objective:</strong> Use Crosswork Active Topology to answer where a device sits and how it is connected, then prove the same facts from IOS-XR CLI.</p>
+<p><strong>Objective:</strong> Use Crosswork Active Topology to identify where a device is located and how it is connected, then verify the same facts from the IOS-XR CLI.</p>
 <p>Active Topology is the map. Optimization Engine draws traffic-engineering objects on top of the same topology. You will use both views, then open a PE console from CML.</p>
-<p>This lab is IPv6. IS-IS, BGP-LS, SRv6 locators, and PCEP should match what the map shows.</p>
+<p>This lab uses IPv6. The IS-IS, BGP-LS, SRv6 locator, and PCEP information on the routers should match what the map shows.</p>
 <h2 id="31-open-the-map">3.1 Open the map<a class="headerlink" href="#31-open-the-map" title="Permanent link">&para;</a></h2>
+<p>There are many ways for CNC to onboard devices. In this lab, devices are onboarded via PCE (Path Computation Element). The benefit of onboarding devices via PCE is that the topology is also automatically discovered by using link-state information.</p>
+<p><img alt="dcloud" src="../img/03/01-1-five-ways.png" /></p>
+<p>For more information about onboarding devices, please refer to following:</p>
+<p><a href="https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/crosswork-infrastructure/7-2/AdminGuide/b-cisco-crosswork-admin-guide-7-2/g-add-and-configure-devices/c-device-onboarding-methods.html">https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/crosswork-infrastructure/7-2/AdminGuide/b-cisco-crosswork-admin-guide-7-2/g-add-and-configure-devices/c-device-onboarding-methods.html</a></p>
+<p>Follow the steps below to confirm the onboarded devices and topology.</p>
 <ol>
 <li>From the main menu, open <strong>Topology</strong>.</li>
-<li>Wait for the devices from <code>5-nodes_L3VPN 8201-32FH 25.3.1-ipv6</code> to appear. An empty map usually means the SR-PCE provider is up and BGP-LS is still down, or the CML nodes are still booting. Recheck chapter 2.
+<li>Wait for the devices from <code>5-nodes_L3VPN 8711-32FH 25.4.2-ipv6</code> to appear. An empty map usually means that the SR-PCE provider is up but BGP-LS is still down, or that the CML nodes are still booting. Recheck chapter 2.
 <img alt="dcloud" src="../img/03/01-active-topology.png" /></li>
-<li>Routers are located on the geographic map based on the longitude/latitude configured in the Device Management.</li>
-<li>Identify three provider-edge routers. Those become the headend and the endpoint for chapters 5 through 8.</li>
+<li>Routers are placed on the geographic map based on the longitude and latitude configured in Device Management.</li>
+<li>Identify the three provider-edge (PE) routers. They serve as the headend and the endpoints in chapters 5 through 8.</li>
+<li>Each line color indicates the utilization of the link. The threshold for the color can be customized by going to <strong>Administration &gt; Settings &gt; Topology &gt; Metric thresholds</strong>.
+<img alt="dcloud" src="../img/03/01-2-thresholds.png" />
+Try 0.0000001 (six zeros after the dot) and see if the link color changes.
+<img alt="dcloud" src="../img/03/01-3-yellow-links.png" /></li>
 </ol>
-<p><strong>Result:</strong> You can find both PEs and at least one IGP path between them.</p>
+<p><strong>Result:</strong> You can find all three PEs and at least one IGP path between them.</p>
 <h2 id="32-read-a-device-and-a-link-in-cnc">3.2 Read a device and a link in CNC<a class="headerlink" href="#32-read-a-device-and-a-link-in-cnc" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Select the headend. Open the Device details panel.</li>
 <li>Record hostname, management IPv6 address, reachability, and IGP router ID.
 <img alt="dcloud" src="../img/03/02-device-details.png" /></li>
-<li>Select a core link on a path between any router.</li>
+<li>Select a core link on a path between any two routers.</li>
 <li>In the link details, record:<ul>
 <li>Interface names on each side</li>
 <li>IGP metric</li>
@@ -819,12 +828,12 @@
 <img alt="dcloud" src="../img/03/03-srv6-locators.png" /></li>
 </ol>
 <h2 id="33-confirm-the-same-topology-from-xr-cli">3.3 Confirm the same topology from XR CLI<a class="headerlink" href="#33-confirm-the-same-topology-from-xr-cli" title="Permanent link">&para;</a></h2>
-<p>Open a new tab in Firefox and click "CML2 for XR" to access XR routers. Open a console on the headend PE. Stay in EXEC. Do not enter configuration mode.</p>
+<p>Open a new tab in Firefox and click the "CML2 for XR" bookmark to access the XR routers. Open a console on the headend PE. Stay in EXEC mode. Do not enter configuration mode.</p>
 <h3 id="neighbors-and-igp">Neighbors and IGP<a class="headerlink" href="#neighbors-and-igp" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>show isis neighbors
 show isis ipv6 topology
 </code></pre></div>
-<p>If the lab uses a named IS-IS instance, the instructor will give you the instance name and you will use:</p>
+<p>If the lab uses a named IS-IS instance, the instructor will give you the instance name. In that case, use:</p>
 <div class="highlight"><pre><span></span><code>show isis instance &lt;name&gt; neighbors
 show isis instance &lt;name&gt; ipv6 topology
 </code></pre></div>
@@ -833,7 +842,7 @@ show isis instance &lt;name&gt; ipv6 topology
 <div class="highlight"><pre><span></span><code>show ipv6 interface brief
 show interface &lt;core-interface&gt; brief
 </code></pre></div>
-<p>Confirm the core interface you clicked on the map is up/up and that the IPv6 address matches the link panel in CNC.</p>
+<p>Confirm that the core interface you clicked on the map is up/up and that its IPv6 address matches the link details in CNC.</p>
 <h3 id="srv6">SRv6<a class="headerlink" href="#srv6" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>show segment-routing srv6 locator
 show segment-routing srv6 sid
@@ -844,22 +853,22 @@ show segment-routing srv6 sid
 <div class="highlight"><pre><span></span><code>show bgp link-state link-state
 show bgp link-state link-state summary
 </code></pre></div>
-<p>On the SR-PCE (the second CML lab), if the instructor opens that console:</p>
+<p>On the SR-PCE (in the second CML lab), if the instructor gives you access to that console:</p>
 <div class="highlight"><pre><span></span><code>show pce ipv6 peer
 show pce ipv6 topology summary
 </code></pre></div>
-<p>PCE should list the PEs as BGP-LS and PCEP peers. That is the feed behind the CNC map.</p>
+<p>The PCE should list the PEs as BGP-LS and PCEP peers. That is the feed behind the CNC map.</p>
 <p><strong>Result:</strong> Hostname, neighbor, core interface, and SRv6 locator agree between CNC and CLI.</p>
 <h2 id="34-dashboard-baseline">3.4 Dashboard baseline<a class="headerlink" href="#34-dashboard-baseline" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Return to the home page or the topology dashboard.</li>
 <li>Record the reachable-device count and the SR policy count.</li>
-<li>Zero SR policies is acceptable before chapter 5. You will compare the policy count after you create a PCE-initiated policy.</li>
+<li>Zero SR policies is acceptable before chapter 5. You will compare the policy count after you create the SR policies in chapter 5.</li>
 </ol>
 <p><strong>Result:</strong> You have a baseline count of devices and policies.</p>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Both lab PEs are on the map and reachable.</li>
+<li>All three lab PEs are on the map and reachable.</li>
 <li><code>show isis neighbors</code> (or the named-instance form) matches the map.</li>
 <li>The core interface and SRv6 locator you recorded in CNC appear in XR CLI.</li>
 <li>You know the baseline SR policy count.</li>

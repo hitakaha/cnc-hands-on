@@ -366,10 +366,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#41-compare-cnc-to-generic-nms-network-management-system" class="md-nav__link">
+  <a href="#41-compare-cnc-with-a-generic-nms-network-management-system" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 Compare CNC to generic NMS (Network Management System)
+        4.1 Compare CNC with a generic NMS (Network Management System)
       
     </span>
   </a>
@@ -639,10 +639,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#41-compare-cnc-to-generic-nms-network-management-system" class="md-nav__link">
+  <a href="#41-compare-cnc-with-a-generic-nms-network-management-system" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 Compare CNC to generic NMS (Network Management System)
+        4.1 Compare CNC with a generic NMS (Network Management System)
       
     </span>
   </a>
@@ -734,10 +734,10 @@
 
 <h1 id="4-element-management">4. Element management<a class="headerlink" href="#4-element-management" title="Permanent link">&para;</a></h1>
 <p><strong>Time:</strong> 50 minutes.</p>
-<p><strong>Objective:</strong> Use CNC Element Management Functions to manage node status, hardware inventory, configuration archive, alarms, and interface performance. Deploy nothing from this chapter.</p>
+<p><strong>Objective:</strong> Use CNC Element Management Functions to check node status, hardware inventory, configuration archive, alarms, and interface performance. Do not change any device configuration in this chapter.</p>
 <p>Element Management Functions in CNC 7.2 cover device onboarding, inventory, faults, metrics, software images, configuration backup, and configuration templates.</p>
-<h2 id="41-compare-cnc-to-generic-nms-network-management-system">4.1 Compare CNC to generic NMS (Network Management System)<a class="headerlink" href="#41-compare-cnc-to-generic-nms-network-management-system" title="Permanent link">&para;</a></h2>
-<p>CNC is the controller view of the same devices, with IGP and SR context. The following is the comparison between CNC and generic NMS.</p>
+<h2 id="41-compare-cnc-with-a-generic-nms-network-management-system">4.1 Compare CNC with a generic NMS (Network Management System)<a class="headerlink" href="#41-compare-cnc-with-a-generic-nms-network-management-system" title="Permanent link">&para;</a></h2>
+<p>CNC is the controller view of the same devices, with IGP and SR context. The following table compares CNC with a generic NMS.</p>
 <table>
 <thead>
 <tr>
@@ -755,12 +755,12 @@
 <tr>
 <td>Hardware inventory (chassis, modules, serials)</td>
 <td><strong>Device Management &gt; Network Inventory</strong></td>
-<td>Same idea: serial, product id, alarm badge on the part</td>
+<td>Same concept: serial number, product ID, and alarm badge on each part</td>
 </tr>
 <tr>
 <td>Network map</td>
 <td><strong>Topology</strong> (chapter 3)</td>
-<td>CNC map is IGP/SRv6 from SR-PCE, not only Layer-3 discovery</td>
+<td>The CNC map is built from IGP/SRv6 information from SR-PCE, not only from Layer 3 discovery</td>
 </tr>
 <tr>
 <td>Alert console / trap viewer</td>
@@ -775,63 +775,63 @@
 <tr>
 <td>NCM config archive, compare, restore</td>
 <td><strong>Device Management &gt; Configuration Backup and Restore</strong></td>
-<td>CNC can also backup on configuration change. Restore is out of scope for this lab</td>
+<td>CNC can also back up on configuration change. Restore is out of scope for this lab</td>
 </tr>
 <tr>
 <td>NCM config change jobs / scripts</td>
 <td><strong>Device Management &gt; Configuration Templates</strong></td>
-<td>Parameterized CLI (Apache Velocity). Different from NSO L2/L3VPN templates in chapters 6 and 7</td>
+<td>Parameterized CLI (Apache Velocity). These are different from the NSO L2/L3VPN templates in chapters 6 and 7</td>
 </tr>
 </tbody>
 </table>
-<p>Use the table as a translation layer. The rest of this chapter is the CNC side.</p>
+<p>Use the table to map generic NMS functions to CNC. The rest of this chapter covers the CNC side.</p>
 <h2 id="42-network-devices-and-inventory">4.2 Network devices and inventory<a class="headerlink" href="#42-network-devices-and-inventory" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Go to <strong>Device Management &gt; Network Devices</strong>.
 <img alt="dcloud" src="../img/04/01-network-devices.png" /></li>
 <li>Find the headend from chapter 3. Record operational state, reachability, and the credential profile name.</li>
 <li>Go to <strong>Device Management &gt; Network Inventory</strong>.</li>
-<li>Filter to the headend hostname or product family (C8711-1-PE).
+<li>Filter by the headend hostname (C8711-1-PE) or product family.
 <img alt="dcloud" src="../img/04/02-network-inventory.png" /></li>
-<li>Open the chassis, one route processor or line card, and one pluggable if the inventory has them.</li>
+<li>Open the chassis, one route processor or line card, and one pluggable if the inventory lists them.</li>
 <li>Read the alarm summary on that inventory row.</li>
 </ol>
-<p><strong>Result:</strong> You can walk from a hostname to a chassis and a module.</p>
-<p>A device that stays unreachable needs credentials, IPv6 reachability to the management address, and a booted CML node.</p>
+<p><strong>Result:</strong> You can navigate from a hostname to a chassis and a module.</p>
+<p>If a device stays unreachable, check its credentials, IPv6 reachability to the management address, and whether the CML node has booted.</p>
 <h2 id="43-configuration-backup">4.3 Configuration backup<a class="headerlink" href="#43-configuration-backup" title="Permanent link">&para;</a></h2>
-<p>CNC archives device configuration, compares two archives, and can restore. This lab uses the archive as a reader, like NCM config view.</p>
+<p>CNC archives device configurations, compares two archives, and can restore them. In this lab, you only view the archive, as in an NCM config view.</p>
 <ol>
 <li>Go to <strong>Device Management &gt; Configuration Backup and Restore</strong>.</li>
 <li>Find the headend.</li>
-<li>Open the latest archived configuration. Identify hostname and the segment-routing or IS-IS section.
+<li>Open the latest archived configuration. Identify the hostname and the segment-routing or IS-IS section.
 <img alt="dcloud" src="../img/04/03-config.png" /></li>
-<li>If two archives exist, open compare and name one difference, or state that they match.</li>
-<li>Leave <strong>Schedule backup</strong> and <strong>Restore</strong> unused.</li>
+<li>If two archives exist, open the comparison and note one difference, or confirm that they match.</li>
+<li>Do not use <strong>Schedule backup</strong> or <strong>Restore</strong>.</li>
 </ol>
-<p><strong>Result:</strong> You have seen a real archived configuration for the headend.</p>
-<p>Automatic backup on configuration change, when it is enabled under <strong>Device Management &gt; Configuration Preferences</strong>, is what makes this archive useful after chapters 6 and 7. Read the preference. Leave the values as you found them.
+<p><strong>Result:</strong> You have viewed an actual archived configuration for the headend.</p>
+<p>When automatic backup on configuration change is enabled under <strong>Device Management &gt; Configuration Preferences</strong>, the archive stays useful after chapters 6 and 7. Check the preference and leave the values unchanged.
 <img alt="dcloud" src="../img/04/04-config-preference.png" /></p>
 <h2 id="44-configuration-templates-read-only">4.4 Configuration templates (read only)<a class="headerlink" href="#44-configuration-templates-read-only" title="Permanent link">&para;</a></h2>
-<p>Device templates under Device Management are parameterized CLI. They are for repeating underlay or day-1 configuration. They are not the NSO L2VPN/L3VPN function-pack templates, and they are not the custom template you may attach to a VPWS in chapter 7.</p>
+<p>Device templates under Device Management are parameterized CLI scripts. They are intended for repeatable underlay or day-1 configuration. They are not the NSO L2VPN/L3VPN function-pack templates, and they are not the custom template you may attach to a VPWS in chapter 7.</p>
 <ol>
 <li>Go to <strong>Device Management &gt; Configuration Templates</strong>.</li>
 <li>Open one existing template, if any exist. Read the device types it targets and one variable it expects.</li>
-<li>Configuration templates can be used to execute a set of commands. Create a new template and put following values.<ul>
+<li>You can use configuration templates to run a set of commands. Create a new template with the following values:<ul>
 <li>Name: collect-outputs</li>
 <li>Enable "Read template for troubleshooting"</li>
 <li>Authorization: admin
 <img alt="dcloud" src="../img/04/05-template1.png" /></li>
 </ul>
 </li>
-<li>Select "Cisco 8711-32FH" as a device type.
+<li>Select "Cisco 8711-32FH" as the device type.
 <img alt="dcloud" src="../img/04/06-template2.png" /></li>
-<li>No input for Define variable, just click Next
+<li>Do not define any variables. Click <strong>Next</strong>.
 <img alt="dcloud" src="../img/04/07-template3.png" /></li>
-<li>Put show commands in Configure template script
+<li>Enter the show commands in <strong>Configure template script</strong>.
 <img alt="dcloud" src="../img/04/08-template4.png" /></li>
-<li>Deploy created template
+<li>Deploy the template you created.
 <img alt="dcloud" src="../img/04/09-template5.png" /></li>
-<li>Go to Jobs to see the progress.
+<li>Go to <strong>Jobs</strong> to check the progress.
 <img alt="dcloud" src="../img/04/10-template6.png" /></li>
 </ol>
 <h2 id="45-alarms-and-events">4.5 Alarms and events<a class="headerlink" href="#45-alarms-and-events" title="Permanent link">&para;</a></h2>
@@ -840,26 +840,26 @@
 <li>Stay on <strong>Alarms</strong>. Use the category list to see system, network, and device alarms as separate sets.</li>
 <li>Filter to the headend if the filter allows it.
 <img alt="dcloud" src="../img/04/11-alarms.png" /></li>
-<li>If an alarm is present, record severity, source, and whether it is acknowledged. Leave acknowledge, clear, and annotate unused unless the instructor gives you a lab alarm of your own.</li>
+<li>If an alarm is present, record severity, source, and whether it is acknowledged. Do not acknowledge, clear, or annotate alarms unless the instructor assigns a lab alarm to you.</li>
 <li>Switch <strong>Show</strong> from Alarms to <strong>Events</strong>.</li>
 <li>Read the newest event. An event is a moment in time. An alarm remains until it clears.
 <img alt="dcloud" src="../img/04/12-events.png" /></li>
 </ol>
-<p><strong>Result:</strong> You can open both views. An empty alarm list is valid on a healthy CML lab.</p>
+<p><strong>Result:</strong> You can open both views. An empty alarm list is normal on a healthy CML lab.</p>
 <p>You will use this page again in chapter 9.</p>
 <h2 id="46-performance">4.6 Performance<a class="headerlink" href="#46-performance" title="Permanent link">&para;</a></h2>
-<p>Link colors on the topology map come from interface utilization collected for Optimization Engine. Element management adds polling policies.</p>
+<p>Link colors on the topology map come from interface utilization collected for Optimization Engine. Element Management Functions add polling policies.</p>
 <ol>
 <li>Go to <strong>Device Management &gt; Performance Policies</strong>.
 <img alt="dcloud" src="../img/04/13-performance-policies.png" /></li>
 <li>Open one existing policy, if any exist. Read which devices it covers, how often it polls, and which threshold raises an alarm.</li>
 <li>Return to the <strong>Topology</strong> and click any link. Open <strong>History</strong> and confirm the utilization and traffic rate.</li>
-<li>Leave the policy switch as you found it.</li>
+<li>Leave the policy enable/disable switch unchanged.</li>
 </ol>
-<p><strong>Result:</strong> You can say where a threshold is defined, and you can point at one live counter.</p>
+<p><strong>Result:</strong> You know where a threshold is defined, and you can identify one live counter.</p>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
 <ul>
-<li>You can map node list, inventory, alerts, config archive, and utilization.</li>
+<li>You can map the generic NMS functions (node list, inventory, alerts, config archive, and utilization) to the corresponding CNC pages.</li>
 <li>The headend is in Network Devices and in Network Inventory.</li>
 <li>You opened an archived configuration and did not restore it.</li>
 <li>You opened Alarms and Events.</li>

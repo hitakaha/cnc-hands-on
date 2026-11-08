@@ -345,10 +345,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#24-what-you-leave-alone" class="md-nav__link">
+  <a href="#24-what-you-should-not-change" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.4 What you leave alone
+        2.4 What you should not change
       
     </span>
   </a>
@@ -650,10 +650,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#24-what-you-leave-alone" class="md-nav__link">
+  <a href="#24-what-you-should-not-change" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.4 What you leave alone
+        2.4 What you should not change
       
     </span>
   </a>
@@ -715,8 +715,8 @@
 </tbody>
 </table>
 <h2 id="21-crosswork-summary-and-crosswork-health">2.1 Crosswork Summary and Crosswork Health<a class="headerlink" href="#21-crosswork-summary-and-crosswork-health" title="Permanent link">&para;</a></h2>
-<p>The health state of CNC can be verified by viewing <strong>Crosswork Manager</strong>.
-In this scenario, go through the Crosswork state and packages.</p>
+<p>You can verify the health of CNC in <strong>Crosswork Manager</strong>.
+In this section, review the Crosswork status and packages.</p>
 <ol>
 <li>From the main menu, go to <strong>Administration &gt; Crosswork Manager</strong>.</li>
 <li>Stay on the <strong>Crosswork Summary</strong> tab. Read the tiles for the cluster (or single VM), Platform Infrastructure, and the installed applications.
@@ -725,7 +725,7 @@ In this scenario, go through the Crosswork state and packages.</p>
 <img alt="dcloud" src="../img/02/02-system-summary.png" /></li>
 <li>Open the <strong>Crosswork Health</strong> tab.
 <img alt="dcloud" src="../img/02/03-crosswork-health.png" /></li>
-<li>For each of the following applications, open the tile and confirm the application (and its microservices) are Healthy or Running:<ul>
+<li>For each of the following applications, open the tile and confirm that the application (and its microservices) is Healthy or Running:<ul>
 <li>Platform Infrastructure</li>
 <li>Optimization Engine</li>
 <li>Service Health, if it is installed (chapter 8 uses it)</li>
@@ -733,26 +733,26 @@ In this scenario, go through the Crosswork state and packages.</p>
 <li>Active Topology</li>
 </ul>
 </li>
-<li>Open <strong>Alarms</strong> or <strong>Events</strong> on an application tile only far enough to see whether anything is raised against the platform itself. Device alarms belong in chapter 4 and chapter 9.
+<li>Open <strong>Alarms</strong> or <strong>Events</strong> on an application tile only to check whether any alarm is raised against the platform itself. Device alarms are covered in chapter 4 and chapter 9.
 <img alt="dcloud" src="../img/02/04-alarms-events.png" /></li>
 </ol>
-<p><strong>Result:</strong> You can name the applications this lab uses and their health state.</p>
+<p><strong>Result:</strong> You can name the applications this lab uses and their health states.</p>
 <h2 id="22-providers">2.2 Providers<a class="headerlink" href="#22-providers" title="Permanent link">&para;</a></h2>
 <p>Crosswork Network Controller components depend on external services, such as Cisco Crosswork Network Services Orchestrator (NSO) and Segment Routing Path Computation Element (SR-PCE), to perform operations like configuration modifications and segment routing path calculations. To manage access and facilitate information sharing among Crosswork Network Controller components, each external service must have a configured provider that belongs to a specific provider family (for example, NSO or SR-PCE).</p>
-<p>For more information, refer to following.</p>
+<p>For more information, refer to the following.</p>
 <p><a href="https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/crosswork-infrastructure/7-2/AdminGuide/b-cisco-crosswork-admin-guide-7-2/g-DLM/c-providers.html">https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/crosswork-infrastructure/7-2/AdminGuide/b-cisco-crosswork-admin-guide-7-2/g-DLM/c-providers.html</a></p>
-<p>Follow the steps below and confirm the provider.</p>
+<p>Follow the steps below to confirm the providers.</p>
 <ol>
 <li>Go to <strong>Administration &gt; Manage Provider Access</strong>.</li>
-<li>Find the SR-PCE provider that points at the PCE CML lab (<code>xrv9k-25.4.1-pce-for-CNC7.2-ipv6</code>). Read reachability and the protocol state. You want the provider reachable, with the topology feed up.
+<li>Find the SR-PCE provider that points at the PCE CML lab (<code>xrv9k-25.4.1-pce-for-CNC7.2-ipv6</code>). Check its reachability and protocol state. The provider should be reachable, with the topology feed up.
 <img alt="dcloud" src="../img/02/05-pce.png" /></li>
-<li>Find the NSO provider. NSO can be reachable from the top right menu.
+<li>Find the NSO provider. You can also open NSO from the top-right menu.
 <img alt="dcloud" src="../img/02/06-nso.png" /></li>
-<li>Open a provider only far enough to see the credential profile name. The profile is a pointer. The password stays in the profile store.
+<li>Open a provider only to see its credential profile name. The profile is a reference; the password stays in the profile store.
 <img alt="dcloud" src="../img/02/07-credential.png" /></li>
 </ol>
 <p><strong>Result:</strong> SR-PCE and NSO are both reachable.</p>
-<p>If SR-PCE is down, stop before chapter 3. If NSO is down, you can still walk topology and element management; wait until NSO is reachable before chapters 6 and 7.</p>
+<p>If SR-PCE is down, do not proceed to chapter 3. If NSO is down, you can still go through topology and element management, but wait until NSO is reachable before starting chapters 6 and 7.</p>
 <h2 id="23-data-gateway-and-collection-at-a-glance">2.3 Data Gateway and collection at a glance<a class="headerlink" href="#23-data-gateway-and-collection-at-a-glance" title="Permanent link">&para;</a></h2>
 <p>Interface counters, inventory detail, syslog, and SNMP traps arrive through a Crosswork Data Gateway (CDG). This dCloud session may use a dedicated Data Gateway VM or the embedded collector on a single VM. Either way, devices must be attached and collection must be running.</p>
 <ol>
@@ -760,17 +760,17 @@ In this scenario, go through the Crosswork state and packages.</p>
 <li>Confirm the gateway (or pool) is enrolled and administratively Up. (cluster only)</li>
 <li>Open the gateway and confirm the XR lab devices are attached to it. (cluster only)</li>
 <li>Open <strong>Administration &gt; Collection Jobs</strong> (or <strong>Administration &gt; Data Gateway Management &gt; Collection Jobs</strong>, depending on the build).</li>
-<li>On <strong>Bulk jobs</strong>, confirm system jobs are READY or Successful, not Failed.
+<li>On <strong>Bulk jobs</strong>, confirm that system jobs are in the READY or Successful state, not Failed.
 <img alt="dcloud" src="../img/02/08-collection.png" /></li>
 </ol>
-<p><strong>Result:</strong> You can point at the collector that feeds inventory, alarms, and utilization. You will read collection jobs in more detail in chapter 9.</p>
-<h2 id="24-what-you-leave-alone">2.4 What you leave alone<a class="headerlink" href="#24-what-you-leave-alone" title="Permanent link">&para;</a></h2>
-<p>Credential profiles, AAA, certificates, backup jobs, and licensing are visible from Administration and from <strong>Device Management &gt; Credential Profiles</strong>. Open a profile only if a device is unreachable and you need to compare the profile name.
+<p><strong>Result:</strong> You can identify the collector that feeds inventory, alarms, and utilization. You will read collection jobs in more detail in chapter 9.</p>
+<h2 id="24-what-you-should-not-change">2.4 What you should not change<a class="headerlink" href="#24-what-you-should-not-change" title="Permanent link">&para;</a></h2>
+<p>Credential profiles, AAA, certificates, backup jobs, and licensing are visible from <strong>Administration</strong> and from <strong>Device Management &gt; Credential Profiles</strong>. Open a profile only if a device is unreachable and you need to check the profile name.
 <img alt="dcloud" src="../img/02/09-credential.png" /></p>
-<p>Backup, restore, and <strong>Add OS patch</strong> put the cluster into maintenance mode. Patching is a guided walk in chapter 9. Do not start it here.</p>
+<p>Backup, restore, and <strong>Add OS patch</strong> put the cluster into maintenance mode. Patching is a guided walkthrough in chapter 9. Do not start it here.</p>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Platform Infrastructure, Optimization Engine, Active Topology, and element management are Healthy or Running.</li>
+<li>Platform Infrastructure, Optimization Engine, Active Topology, and Element Management Functions are Healthy or Running.</li>
 <li>The SR-PCE provider is reachable.</li>
 <li>The NSO provider is reachable.</li>
 <li>A Data Gateway (or embedded collector) is Up and the XR devices are attached.</li>
