@@ -1005,7 +1005,8 @@ For details, see <a href="https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/
 </table>
 <h2 id="52-confirming-the-initial-state">5.2 Confirming the initial state<a class="headerlink" href="#52-confirming-the-initial-state" title="Permanent link">&para;</a></h2>
 <p>SR-PCE requires topology and SRv6 locator/SID information to compute paths. It acquires this information from the routers in the SRv6 topology via BGP-LS. In this scenario, BGP-LS sessions are established with the three PEs.</p>
-<p>On the SR-PCE console:</p>
+<p>Open Firefox in private browsing mode and click the "CML2 for PCE" bookmark.
+Then, on the SR-PCE console:</p>
 <div class="highlight"><pre><span></span><code>RP/0/RP0/CPU0:pce#show bgp link-state link-state neighbors brief
 Wed Nov  4 06:02:58.271 UTC
 
@@ -1075,7 +1076,8 @@ Peer address: 2001:db8::5
 RP/0/RP0/CPU0:pce#
 </code></pre></div>
 <p>PCEP sessions are established with both P routers, P4 and P5. However, this configuration is unnecessary unless P4 or P5 acts as a head-end.</p>
-<p>On the PCC routers (PE1, PE2, PE3):</p>
+<p>Open Firefox in private browsing mode and click the "CML2 for XR" bookmark.
+On the PCC routers (PE1, PE2, PE3):</p>
 <div class="highlight"><pre><span></span><code>RP/0/RP0/CPU0:C8711-1-PE#show segment-routing traffic-eng pcc ipv6 peer 
 Wed Nov  4 06:20:23.622 UTC
 
@@ -1132,7 +1134,7 @@ segment-routing
 <h3 id="option-5-3-1-manually-configure-parameters">Option 5-3-1: Manually configure parameters<a class="headerlink" href="#option-5-3-1-manually-configure-parameters" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Go to <strong>Services &amp; Traffic Engineering &gt; Traffic Engineering</strong>, <strong>SRv6</strong> tab, then click <strong>Create</strong>.
+<p>Go to <strong>Services &amp; Traffic Engineering &gt; Traffic Engineering</strong>, <strong>SRv6</strong> tab, then click <strong>Create</strong> &gt; <strong>PCC-init</strong>.
     <img alt="dcloud" src="../img/05/03_create_pcc-init.png" /></p>
 </li>
 <li>
@@ -1144,7 +1146,7 @@ segment-routing
 <ul>
 <li>name: <code>PE1-PE2_color10</code></li>
 <li>headend: C8711-1-PE</li>
-<li>endpoint: 2001:db8::2</li>
+<li>tail-end: 2001:db8::2</li>
 <li>color: 10</li>
 <li>preference: 100</li>
 <li>st-te-path-choice: dynamic-path (enable <code>dynamic</code> and select <code>pce</code>)</li>
@@ -1452,7 +1454,7 @@ RP/0/RP0/CPU0:C8711-3-PE#
 <h3 id="option-5-5-1-manually-configure-parameters">Option 5-5-1: Manually configure parameters<a class="headerlink" href="#option-5-5-1-manually-configure-parameters" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Go to <strong>Services &amp; Traffic Engineering &gt; Traffic Engineering</strong>, <strong>SRv6</strong> tab, then click <strong>Create</strong>.
+<p>Go to <strong>Services &amp; Traffic Engineering &gt; Traffic Engineering</strong>, <strong>SRv6</strong> tab, then click <strong>Create</strong> &gt; <strong>PCC-init</strong>.
     <img alt="dcloud" src="../img/05/03_create_pcc-init.png" /></p>
 </li>
 <li>
@@ -1464,7 +1466,7 @@ RP/0/RP0/CPU0:C8711-3-PE#
 <ul>
 <li>name: <code>PE1-PE3_color20</code></li>
 <li>headend: C8711-1-PE</li>
-<li>endpoint: 2001:db8::3</li>
+<li>tail-end: 2001:db8::3</li>
 <li>color: 20</li>
 <li>preference: 100</li>
 <li>st-te-path-choice: dynamic-path (enable <code>dynamic</code> and select <code>pce</code>)</li>
