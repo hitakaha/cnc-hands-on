@@ -8,7 +8,7 @@ Configure VPLS with a **Single-homing** configuration on the CE1 side (connected
 
 Then, use an **ODN policy** to steer VPLS traffic along the path that optimizes the latency metric. 
 
-In this lab, set the latency to `500` between PE1 and P4 and between P5 and PE3, so that traffic between PE1 and PE2 follows the blue path and traffic between PE1 and PE3 follows the orange path.
+In this lab, set the latency to `500` between PE1 and P4, and between P5 and PE3, so that traffic between PE1 and PE2 follows the blue path and traffic between PE1 and PE3 follows the orange path.
 
 ![dcloud](img/08/01_vpls_topology.png)
 
@@ -23,7 +23,7 @@ In this lab, set the latency to `500` between PE1 and P4 and between P5 and PE3,
 ## 8.1 CE Interface Settings
 
 The CEs are located in `CML for PCE` (a different CML instance from the one for the P/PE routers).
-Open `CML for PCE` from the Firefox bookmarks bar. 
+Open `CML for PCE` from the Firefox bookmarks bar (use private window). 
 
 ![dcloud](img/07/07_cml1.png)
 
