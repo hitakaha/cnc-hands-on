@@ -100,7 +100,7 @@ RP/0/RP0/CPU0:C8711-1-PE#
 ### 7.3 Pre-configuration (CEs)
 
 The CEs are located in `CML for PCE` (a different CML instance from the one for the P/PE routers).
-Open `CML for PCE` from the Firefox bookmarks bar. 
+Open `CML for PCE` from the Firefox bookmarks bar (use private window). 
 
 ![dcloud](img/07/07_cml1.png)
 
