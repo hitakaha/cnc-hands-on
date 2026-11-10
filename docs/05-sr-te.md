@@ -24,7 +24,8 @@
 
 SR-PCE requires topology and SRv6 locator/SID information to compute paths. It acquires this information from the routers in the SRv6 topology via BGP-LS. In this scenario, BGP-LS sessions are established with the three PEs.
 
-On the SR-PCE console:
+Open Firefox in private browsing mode and click the "CML2 for PCE" bookmark.
+Then, on the SR-PCE console:
 
 ```text
 RP/0/RP0/CPU0:pce#show bgp link-state link-state neighbors brief
@@ -107,6 +108,7 @@ RP/0/RP0/CPU0:pce#
 
 PCEP sessions are established with both P routers, P4 and P5. However, this configuration is unnecessary unless P4 or P5 acts as a head-end.
 
+Open Firefox in private browsing mode and click the "CML2 for XR" bookmark.
 On the PCC routers (PE1, PE2, PE3):
 
 ```
@@ -177,7 +179,7 @@ You can configure the policy using either of the following two methods.
 
 ### Option 5-3-1: Manually configure parameters
 
-1. Go to **Services & Traffic Engineering > Traffic Engineering**, **SRv6** tab, then click **Create**.
+1. Go to **Services & Traffic Engineering > Traffic Engineering**, **SRv6** tab, then click **Create** > **PCC-init**.
     ![dcloud](img/05/03_create_pcc-init.png)
 
 2. Click the **+** button.
@@ -186,7 +188,7 @@ You can configure the policy using either of the following two methods.
 3. Set the following:
     - name: `PE1-PE2_color10`
     - headend: C8711-1-PE
-    - endpoint: 2001:db8::2
+    - tail-end: 2001:db8::2
     - color: 10
     - preference: 100
     - st-te-path-choice: dynamic-path (enable `dynamic` and select `pce`)
@@ -518,7 +520,7 @@ You can configure the policy using either of the following two methods.
 
 ### Option 5-5-1: Manually configure parameters
 
-1. Go to **Services & Traffic Engineering > Traffic Engineering**, **SRv6** tab, then click **Create**.
+1. Go to **Services & Traffic Engineering > Traffic Engineering**, **SRv6** tab, then click **Create** > **PCC-init**.
     ![dcloud](img/05/03_create_pcc-init.png)
 
 2. Click the **+** button.
@@ -527,7 +529,7 @@ You can configure the policy using either of the following two methods.
 3. Set the following:
     - name: `PE1-PE3_color20`
     - headend: C8711-1-PE
-    - endpoint: 2001:db8::3
+    - tail-end: 2001:db8::3
     - color: 20
     - preference: 100
     - st-te-path-choice: dynamic-path (enable `dynamic` and select `pce`)
