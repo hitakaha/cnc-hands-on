@@ -16,8 +16,8 @@
 
 ## 6.2 Pre-check
 
-MP-BGP configration is not supported by the Built-in Function Pack in CNC 7.2.  
-Due to CML licensing constraints (limited to 5 devices), an RR is not used in this topology. Therefore, we will verify that MP-BGP is configured between full-mesh PEs.
+MP-BGP configuration is not supported by the built-in function pack in CNC 7.2.  
+Because of CML licensing constraints (limited to 5 devices), a route reflector (RR) is not used in this topology. Therefore, verify that MP-BGP is configured in a full mesh between the PEs.
 
 ![dcloud](img/06/01_mp-bgp.png)
 
@@ -65,7 +65,7 @@ router bgp 65000
 
 ## 6.3 Create L3VPN service
 
-Since there are many configuration parameters, we will load a JSON file to perform the L3VPN settings.
+Because there are many configuration parameters, load a JSON file to configure the L3VPN settings.
 
 1. Go to **Services & Traffic Engineering > Provisioning (NSO)**, then click **L3VPN-Service**.
 
@@ -256,14 +256,14 @@ Since there are many configuration parameters, we will load a JSON file to perfo
     - vpn-id: `CustA`
     - vpn-service-topology: `custom`
 
-    **vpn-instance-profile** (common configurations for all PEs)
+    **vpn-instance-profile** (common configuration for all PEs)
 
     - profile-id: default
     - rd: 0:100:100
     - address-family: ipv4
     - route-target: 0:100:100
     - route-target-type: both
-    - srv6: enable srv6 and set locator `srv6`
+    - srv6: enable srv6 and set the locator to `srv6`
 
     ![dcloud](img/06/03_L3VPN_settings1.png)  
     ![dcloud](img/06/04_L3VPN_settings2.png)
@@ -311,25 +311,25 @@ Since there are many configuration parameters, we will load a JSON file to perfo
 
     - enable `service-assurance`
     - monitoring state: enable
-    - preservation: remove (delete all histrical data when stop monitoring)
+    - preservation: remove (delete all historical data when monitoring stops)
     - profile-name: `Gold_L3VPN_ConfigProfile system`
     - rule-name: `Rule-L3VPN-NM system`
 
     ![dcloud](img/06/11_L3VPN_settings9.png)
 
-4. **Dry-run** to confirm the configuration. 
+4. Click **Dry-run** to confirm the configuration. 
 
     ![dcloud](img/06/12_L3VPN_dry-run1.png)
 
-    You can switch the display with **Show changes** on the upper right.
+    You can switch the display by using **Show changes** in the upper right.
     ![dcloud](img/06/13_L3VPN_dry-run2.png)
 
-5. **Commit changes**
+5. Click **Commit changes**.
 
     ![dcloud](img/06/14_L3VPN_commit.png)
 
 
-## 6.4 Confirmation of L3VPN
+## 6.4 Confirm the L3VPN
 
 ### via CNC GUI
 1. Open **Services & Traffic Engineering > VPN Services**.
@@ -340,7 +340,7 @@ Since there are many configuration parameters, we will load a JSON file to perfo
 ### via CLI
 
 On the PEs:  
-The uDT4 SID is assigned to `CustA`.
+Confirm that a uDT4 SID is assigned to `CustA`.
 <pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show segment-routing srv6 locator srv6 sid
 Wed Nov  4 14:47:40.914 UTC
@@ -355,7 +355,7 @@ fcbb:bb00:1:e003::          uB6 (PSP/USD Insert.Red)  'srte_c_20_ep_2001:db8::3'
 RP/0/RP0/CPU0:C8711-1-PE#
 </code></pre>
 
-The customer routes for the remote PEs are being learned via MP-BGP.
+The customer routes of the remote PEs are learned via MP-BGP.
 ```
 RP/0/RP0/CPU0:C8711-1-PE#show  ip route vrf CustA
 Wed Nov  4 14:48:09.301 UTC
@@ -371,7 +371,7 @@ B    192.168.3.0/24 [200/0] via 2001:db8::3 (nexthop in vrf default), 00:11:13
 RP/0/RP0/CPU0:C8711-1-PE#
 ```
 
-Looking at the CEF table from PE1 to the CE-facing interface address of PE2, it can be seen that customer packets are encapsulated with PE2's uDT4 SID.
+The CEF table on PE1 for the CE-facing interface address of PE2 shows that customer packets are encapsulated with the uDT4 SID of PE2.
 
 <pre><code>RP/0/RP0/CPU0:C8711-1-PE#show cef vrf CustA 192.168.2.1
 Wed Nov  4 14:48:53.148 UTC
@@ -402,7 +402,7 @@ Wed Nov  4 14:48:53.148 UTC
 RP/0/RP0/CPU0:C8711-1-PE#
 </code></pre>
 
-Looking at the CEF table from PE1 to the CE-facing interface address of PE3, it can be seen that customer packets are encapsulated with PE3's uDT4 SID.
+The CEF table on PE1 for the CE-facing interface address of PE3 shows that customer packets are encapsulated with the uDT4 SID of PE3.
 
 <pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show cef vrf CustA 192.168.3.1
@@ -434,7 +434,7 @@ Wed Nov  4 14:49:04.777 UTC
 RP/0/RP0/CPU0:C8711-1-PE#
 </code></pre>
 
-Connectivity can also be checked via Ping.
+You can also check connectivity by using ping.
 
 ```
 RP/0/RP0/CPU0:C8711-1-PE#ping vrf CustA 192.168.2.1
@@ -453,43 +453,43 @@ Success rate is 100 percent (5/5), round-trip min/avg/max = 7/24/86 ms
 RP/0/RP0/CPU0:C8711-1-PE#
 ```
 
-## 6.5 Packet Capture (Option)
+## 6.5 Packet Capture (Optional)
 
-We will use the packet capture feature of CML to observe the encapsulation in an IPv6 header.
+Use the packet capture feature of CML to observe the encapsulation in the IPv6 header.
 
-1. Start ping to the CE-facing interface address of `PE2` at `PE1`.
+1. On `PE1`, start a ping to the CE-facing interface address of `PE2`.
     ```
     RP/0/RP0/CPU0:C8711-1-PE# ping vrf CustA 192.168.2.1 count 100000
     ```
 
-2. Right click the link between `P4` and `PE2`
+2. Right-click the link between `P4` and `PE2`.
 
 3. Start a packet capture.
 
-4. Click the ICMP echo from 192.168.1.1 to 192.168.2.1.
+4. Select the ICMP echo packet from 192.168.1.1 to 192.168.2.1.
 
-5. Find the IPv6 header. The destination address should be the PE2 uDT4 (ex. fcbb:bb00:2:e002::).
+5. Find the IPv6 header. The destination address should be the uDT4 SID of PE2 (for example, fcbb:bb00:2:e002::).
 
     ![dcloud](img/06/16_L3VPN_capture.png)
 
 
 ## Done when
 
-- [ ] The `CustA` service provisioning is completed.
-- [ ] The vrf ping between PEs is succeeed.
+- [ ] The `CustA` service is provisioned.
+- [ ] The VRF ping between the PEs succeeds.
 
 
 ## Clean up
 
-Before going to the chapter 7, please delete all L3VPN services because we use the same CE-facing interfaces for L2VPN provisionings.
+Before proceeding to chapter 7, delete all L3VPN services, because the same CE-facing interfaces are used for L2VPN provisioning.
 
-1. Go to **Service & Traffic Engineering > Provisioning(NSO) > L3VPN-Service**
+1. Go to **Services & Traffic Engineering > Provisioning (NSO) > L3VPN-Service**.
 
 2. Click **Actions > Delete dry run**
 
     ![dcloud](img/06/17_L3VPN_delete1.png)
 
-3. Confirm the dry-run result and click `Delete`
+3. Confirm the dry-run result and click **Delete**.
 
     ![dcloud](img/06/18_L3VPN_delete2.png)
 

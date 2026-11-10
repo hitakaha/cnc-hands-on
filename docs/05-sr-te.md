@@ -2,27 +2,27 @@
 
 **Time:** 60 minutes.
 
-**Objective:** Create valious PCE-initiated SRv6 policies from CNC.
+**Objective:** Create various PCC-initiated SRv6 policies with PCE-delegated dynamic paths from CNC.
 
 !!! warning "Note"
-    Cisco 8000 does not support SRv6 policies with head-end computed dynamic paths and PCE-initiated SRv6 policies. Also, the CNC 7.2 built-in function pack does not support explicit paths with IPv6 addresses/SRv6 SIDs. Therefore, this hands-on focuses on PCC-initiated SRv6 policies with PCE-delegated dynamic paths.  
-    For details, please visit [Cisco 8000 Configuration Guide: Segment Routing over IPv6 Traffic Engineering (SRv6-TE)](https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing-v6/srv6-config-guide-cisco8000/traffic-engineering-in-ipv6-networks-using-srv6-te/srv6-te-overview.html)
+    Cisco 8000 does not support SRv6 policies with head-end computed dynamic paths or PCE-initiated SRv6 policies. In addition, the CNC 7.2 built-in function pack does not support explicit paths that use IPv6 addresses or SRv6 SIDs. Therefore, this hands-on focuses on PCC-initiated SRv6 policies with PCE-delegated dynamic paths.  
+    For details, see [Cisco 8000 Configuration Guide: Segment Routing over IPv6 Traffic Engineering (SRv6-TE)](https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing-v6/srv6-config-guide-cisco8000/traffic-engineering-in-ipv6-networks-using-srv6-te/srv6-te-overview.html)
 
-## 5.1 Words you need
+## 5.1 Terminology
 
 | Term | Meaning in this lab |
 | --- | --- |
-| PCC | The headend router. It owns the policy configuration, and it has a PCEP session to SR-PCE. |
+| PCC | The headend router. It holds the policy configuration and has a PCEP session with SR-PCE. |
 | PCE | SR-PCE in the second CML lab. It learns the topology through BGP-LS, computes paths, and reports the policies to CNC. |
-| PCC-initiated | The policy configuration lives on the headend. In this lab, you create it in CNC, and CNC provisions the configuration on the headend through NSO. This is the type used in this chapter. |
+| PCC-initiated | The policy configuration resides on the headend. In this lab, you create it in CNC, and CNC provisions the configuration on the headend through NSO. This is the type used in this chapter. |
 | PCE-delegated dynamic path | A PCC-initiated candidate path with `dynamic` + `pce`. The headend delegates path computation to SR-PCE, and SR-PCE returns the SID list through PCEP. |
-| PCE-initiated | The policy is created on SR-PCE and pushed to the headend through PCEP, with no configuration on the headend. Not used in this lab because Cisco 8000 does not support it for SRv6. |
+| PCE-initiated | The policy is created on SR-PCE and pushed to the headend through PCEP, without any configuration on the headend. Not used in this lab because Cisco 8000 does not support it for SRv6. |
 | Color | A number that identifies the intent. Together with the endpoint, it identifies the policy. Chapter 6 binds an L3VPN to this color. |
-| Candidate path | One way to reach the endpoint. Preference chooses among candidate paths. |
+| Candidate path | One way to reach the endpoint. The preference value determines which candidate path is selected. |
 
-## 5.2 Confirmation of initial state
+## 5.2 Confirming the initial state
 
-SR-PCE requires topology and SRv6 Locator/SID information to perform path calculation. it acquires this information via BGP-LS from routers within the SRv6 topology. In this scenario, BGP-LS sessions are established with three PEs.
+SR-PCE requires topology and SRv6 locator/SID information to compute paths. It acquires this information from the routers in the SRv6 topology via BGP-LS. In this scenario, BGP-LS sessions are established with the three PEs.
 
 On the SR-PCE console:
 
@@ -37,7 +37,7 @@ Neighbor         Spk    AS  Description                         Up/Down  NBRStat
 RP/0/RP0/CPU0:pce#
 ```
 
-The TEDB (Topology Database) built from BGP-LS within the PCE itself can be checked using the following command.
+You can check the TEDB (Topology Database) that the PCE builds from BGP-LS by using the following command.
 
 On the SR-PCE:
 
@@ -70,9 +70,9 @@ Node 1
 < --- omitted --->
 ```
 
-PCEP (Path Computation Element Communication Protocol) is a signaling protocol for exchanging SRv6-TE path information between an SR-PCE that performs path computation and head-end routers (PCCs) in the network (RFC 5440).
+PCEP (Path Computation Element Communication Protocol) is a signaling protocol for exchanging SRv6-TE path information between an SR-PCE, which performs path computation, and the head-end routers (PCCs) in the network (RFC 5440).
 
-PCEP handles bidirectional communication between routers and PCEs, including path computation requests (Request), instructions for computation results (Report/Update), and delegation of control (Delegation).
+PCEP handles bidirectional communication between routers and PCEs, including path computation requests (Request), reporting and updating of computed paths (Report/Update), and delegation of control (Delegation).
 
 On the SR-PCE:
 
@@ -105,7 +105,7 @@ Peer address: 2001:db8::5
 RP/0/RP0/CPU0:pce#
 ```
 
-PCEP sessions are established with both P-routers P4 and P5; however, this configuration is unnecessary unless P4 or P5 acts as a head-end.
+PCEP sessions are established with both P routers, P4 and P5. However, this configuration is unnecessary unless P4 or P5 acts as a head-end.
 
 On the PCC routers (PE1, PE2, PE3):
 
@@ -124,7 +124,7 @@ Peer address: 2001:db8::6,
 RP/0/RP0/CPU0:C8711-1-PE#
 ```
 
-Also, Color RED (bit-position 3) is set on the link between P4 and PE2.
+In addition, the affinity color RED (bit-position 3) is set on the link between P4 and PE2.
 
 On the P4 and PE2 routers:
 
@@ -152,26 +152,26 @@ segment-routing
 !
 ```
 
-You can also check the Affinity-Bit in the Admin groups field by clicking on the link between P4 and PE2 on the CNC GUI.
+You can also check the affinity bit in the Admin groups field by clicking the link between P4 and PE2 in the CNC GUI.
 
 ![dcloud](img/05/01_p4-pe2_link.png)
 
 
-## 5.3 Create a PCE-initiated policy 1 (Exclude RED link)
+## 5.3 Create PCC-initiated policy 1 (Exclude RED link)
 
 Configure an SRv6-TE policy with the following conditions:
 
-- Policy Name: PE1_PE2_color10
+- Policy Name: PE1-PE2_color10
 - Headend: PE1
 - Endpoint: PE2
 - Optimization: IGP
 - Constraint: exclude RED link
 
-Since all links in this topology use default costs, in this case, the path from PE1 to PE2 should be calculated as follows, avoiding the link between P4 and PE2.
+Since all links in this topology use the default cost, the path from PE1 to PE2 is computed as follows, avoiding the link between P4 and PE2.
 
 ![dcloud](img/05/02_pe1-pe2_color10.png)
 
-There are two methods available; please perform the configuration using either method.  
+You can configure the policy using either of the following two methods.  
 [Option 1: Manually configure parameters](#option-5-3-1-manually-configure-parameters)  
 [Option 2: Import JSON](#option-5-3-2-import-json)  
 
@@ -180,45 +180,45 @@ There are two methods available; please perform the configuration using either m
 1. Go to **Services & Traffic Engineering > Traffic Engineering**, **SRv6** tab, then click **Create**.
     ![dcloud](img/05/03_create_pcc-init.png)
 
-2. Click **+** button.
+2. Click the **+** button.
     ![dcloud](img/05/04_add_sr-policy.png)
 
-3. Set:
+3. Set the following:
     - name: `PE1-PE2_color10`
     - headend: C8711-1-PE
     - endpoint: 2001:db8::2
     - color: 10
     - preference: 100
-    - st-te-path-choice: dynamic-path (Enable `dynamic` and Check `pce`)
+    - st-te-path-choice: dynamic-path (enable `dynamic` and select `pce`)
     - metric-type: `igp`
-    - contraints: enable `affinity` and add a rule with an action `exclude-any` color `RED`.
+    - constraints: enable `affinity` and add a rule with an action `exclude-any` color `RED`.
     - srv6: enable `locator` (locator-name: `srv6`, behavior: `ub6-insert-reduced`, and binding-sid-type: `srv6-dynamic`).
 
     ![dcloud](img/05/05_sr-policy1_name.png)
     ![dcloud](img/05/06_sr-policy1_settings1.png)
     ![dcloud](img/05/07_sr-policy1_settings2.png)
 
-4. **Dry-run** to confirm the configuration.
+4. Click **Dry-run** to confirm the configuration.
 
     ![dcloud](img/05/08_sr-policy1_dry-run1.png)
 
-    You can switch the display with **Show changes** on the upper right.
+    You can switch the display by using **Show changes** in the upper right.
     ![dcloud](img/05/09_sr-policy1_dry-run2.png)
 
-5. **Commit changes**
+5. Click **Commit changes**.
 
     ![dcloud](img/05/10_sr-policy1_commit.png)
 
 ### Option 5-3-2: Import JSON
 
-You can also configure it by loading a JSON file.
-The sample JSON files are exported from the following.
+You can also configure the policy by loading a JSON file.
+The sample JSON files were exported from the following screen.
 
 ![dcloud](img/05/11_export_samples.png)
 
-This time, we will load the JSON file prepared in advance using the procedure below.
+In this lab, load the JSON file prepared in advance by using the procedure below.
 
-1. Open the terminal and clone the JSON file repository from git.
+1. Open a terminal and clone the JSON file repository from Git.
 
     ```
     git clone https://github.com/mekawaba/cnc-payloads.git
@@ -286,28 +286,28 @@ This time, we will load the JSON file prepared in advance using the procedure be
     - endpoint: 2001:db8::2
     - color: 10
     - preference: 100
-    - st-te-path-choice: dynamic-path (Enable `dynamic` and Check `pce`)
+    - st-te-path-choice: dynamic-path (enable `dynamic` and select `pce`)
     - metric-type: `igp`
-    - contraints: enable `affinity` and add a rule with an action `exclude-any` color `RED`.
+    - constraints: enable `affinity` and add a rule with an action `exclude-any` color `RED`.
     - srv6: enable `locator` (locator-name: `srv6`, behavior: `ub6-insert-reduced`, and binding-sid-type: `srv6-dynamic`).
 
     ![dcloud](img/05/06_sr-policy1_settings1.png)
     ![dcloud](img/05/07_sr-policy1_settings2.png)
 
-4. **Dry-run** to confirm the configuration. 
+4. Click **Dry-run** to confirm the configuration. 
 
     ![dcloud](img/05/08_sr-policy1_dry-run1.png)
 
-    You can switch the display with **Show changes** on the upper right.
+    You can switch the display by using **Show changes** in the upper right.
     ![dcloud](img/05/09_sr-policy1_dry-run2.png)
 
-5. **Commit changes**
+5. Click **Commit changes**.
 
     ![dcloud](img/05/10_sr-policy1_commit.png)
 
 
 
-## 5.4 Confirmation of a PCE-initiated policy 1 (Exclude RED link)
+## 5.4 Confirm PCC-initiated policy 1 (Exclude RED link)
 
 ### via CNC GUI
 
@@ -315,20 +315,20 @@ This time, we will load the JSON file prepared in advance using the procedure be
 
     ![dcloud](img/05/14_sr-policy1_confirm.png)
 
-2. Confirm the details on the SR policy
+2. Confirm the details of the SR policy.
 
     As expected, the path avoids the RED link and goes through PE3.
     ![dcloud](img/05/15_sr-policy1_detail1.png)
 
-    By checking the IGP path, you can see that it goes through P5. Also, in the Summary on the right, you can confirm information such as the Admin state/Oper state being Up and the Binding SID.
+    In the IGP path, you can see that it goes through P5. In the Summary on the right, you can also confirm that the Admin state and Oper state are Up, and check the Binding SID.
     ![dcloud](img/05/16_sr-policy1_detail2.png)
 
-    Furthermore, regarding the Candidate path, you can see that PE3's uN and PE2's uN are included in the SID list.
+    In the Candidate path, you can see that the uN SIDs of PE3 and PE2 are included in the SID list.
     ![dcloud](img/05/17_sr-policy1_detail3.png)
 
 ### via CLI
 
-On the PE1:
+On PE1:
 
 ```text
 RP/0/RP0/CPU0:C8711-1-PE#show segment-routing traffic-eng policy name srte_c_10_ep_2001:db8::2
@@ -458,9 +458,9 @@ Interface Name: srte_c_10_ep_2001:db8::2
 RP/0/RP0/CPU0:pce#
 ```
 
-## 5.5 Create a PCE-initiated policy 2 (TE metric)
+## 5.5 Create PCC-initiated policy 2 (TE metric)
 
-First, configure TE metric to the link between P5 and PE3.
+First, configure a TE metric on the link between P5 and PE3.
 ```
 segment-routing
  traffic-eng
@@ -496,23 +496,23 @@ RP/0/RP0/CPU0:C8711-3-PE(config-sr-if)#end
 RP/0/RP0/CPU0:C8711-3-PE#
 ```
 
-Then, go to **Device Management > Network Devices**, check **P5** and **PE2** and select **sync-from device to NSO**.
+Then, go to **Device Management > Network Devices**, select **P5** and **PE3**, and choose **Sync-from devices to NSO**.
 
 ![dcloud](img/05/19_sync-from.png)
 
 Configure an SRv6-TE policy with the following conditions:  
 
-  - Policy Name: PE1_PE3_color20
+  - Policy Name: PE1-PE3_color20
   - Headend: PE1
   - Endpoint: PE3 
   - Optimization: TE
   - Constraint: None  
 
-Since all links except for the link between P5 and PE3 in this topology use default costs, in this case, the path from PE1 to PE3 should be calculated as follows, avoiding the link between P5 and PE3.
+Since all links except the link between P5 and PE3 use the default cost, the path from PE1 to PE3 is computed as follows, avoiding the link between P5 and PE3.
 
 ![dcloud](img/05/18_pe1-pe3_color20.png)
 
-There are two methods available; please perform the configuration using either method.  
+You can configure the policy using either of the following two methods.  
 [Option 1: Manually configure parameters](#option-5-5-1-manually-configure-parameters)  
 [Option 2: Import JSON](#option-5-5-2-import-json)  
 
@@ -521,16 +521,16 @@ There are two methods available; please perform the configuration using either m
 1. Go to **Services & Traffic Engineering > Traffic Engineering**, **SRv6** tab, then click **Create**.
     ![dcloud](img/05/03_create_pcc-init.png)
 
-2. Click **+** button.
+2. Click the **+** button.
     ![dcloud](img/05/04_add_sr-policy.png)
 
-3. Set:
+3. Set the following:
     - name: `PE1-PE3_color20`
     - headend: C8711-1-PE
     - endpoint: 2001:db8::3
     - color: 20
     - preference: 100
-    - st-te-path-choice: dynamic-path (Enable `dynamic` and Check `pce`)
+    - st-te-path-choice: dynamic-path (enable `dynamic` and select `pce`)
     - metric-type: `te`
     - srv6: enable `locator` (locator-name: `srv6`, behavior: `ub6-insert-reduced`, and binding-sid-type: `srv6-dynamic`).
 
@@ -538,14 +538,14 @@ There are two methods available; please perform the configuration using either m
     ![dcloud](img/05/21_sr-policy2_settings1.png)
     ![dcloud](img/05/22_sr-policy2_settings2.png)
 
-4. **Dry-run** to confirm the configuration. 
+4. Click **Dry-run** to confirm the configuration. 
 
     ![dcloud](img/05/23_sr-policy2_dry-run1.png)
 
-    You can switch the display with **Show changes** on the upper right.
+    You can switch the display by using **Show changes** in the upper right.
     ![dcloud](img/05/24_sr-policy2_dry-run2.png)
 
-5. **Commit changes**
+5. Click **Commit changes**.
 
     ![dcloud](img/05/25_sr-policy2_commit.png)
 
@@ -599,27 +599,27 @@ There are two methods available; please perform the configuration using either m
     - endpoint: 2001:db8::3
     - color: 20
     - preference: 100
-    - st-te-path-choice: dynamic-path (Enable `dynamic` and Check `pce`)
+    - st-te-path-choice: dynamic-path (enable `dynamic` and select `pce`)
     - metric-type: `te`
     - srv6: enable `locator` (locator-name: `srv6`, behavior: `ub6-insert-reduced`, and binding-sid-type: `srv6-dynamic`).
 
     ![dcloud](img/05/21_sr-policy2_settings1.png)
     ![dcloud](img/05/22_sr-policy2_settings2.png)
 
-3. **Dry-run** to confirm the configuration. 
+3. Click **Dry-run** to confirm the configuration. 
 
     ![dcloud](img/05/23_sr-policy2_dry-run1.png)
 
-    You can switch the display with **Show changes** on the upper right.
+    You can switch the display by using **Show changes** in the upper right.
     ![dcloud](img/05/24_sr-policy2_dry-run2.png)
 
-4. **Commit changes**
+4. Click **Commit changes**.
 
     ![dcloud](img/05/25_sr-policy2_commit.png)
 
 
 
-## 5.6 Confirmation of a PCE-initiated policy 2 (TE metric)
+## 5.6 Confirm PCC-initiated policy 2 (TE metric)
 
 ### via CNC GUI
 
@@ -627,20 +627,20 @@ There are two methods available; please perform the configuration using either m
 
     ![dcloud](img/05/27_sr-policy2_confirm.png)
 
-2. Confirm the details on the SR policy
+2. Confirm the details of the SR policy.
 
-    As expected, confirm that the path avoids the link between P5 and PE3 and goes through PE2.
+    As expected, the path avoids the link between P5 and PE3 and goes through PE2.
     ![dcloud](img/05/28_sr-policy2_detail1.png)
 
-    By checking the IGP path, you can see that it goes through P4. Also, in the Summary on the right, you can confirm information such as the Admin state/Oper state being Up and the Binding SID.
+    In the IGP path, you can see that it goes through P4. In the Summary on the right, you can also confirm that the Admin state and Oper state are Up, and check the Binding SID.
     ![dcloud](img/05/29_sr-policy2_detail2.png)
 
-    Furthermore, regarding the Candidate path, you can see that PE2's uN and PE3's uN are included in the SID list.
+    In the Candidate path, you can see that the uN SIDs of PE2 and PE3 are included in the SID list.
     ![dcloud](img/05/30_sr-policy2_detail3.png)
 
 ### via CLI
 
-On the PE1:
+On PE1:
 
 ```text
 RP/0/RP0/CPU0:C8711-1-PE#show segment-routing traffic-eng policy name srte_c_20_ep_2001:db8::3
@@ -778,5 +778,5 @@ RP/0/RP0/CPU0:pce#
 
 ## Done when
 
-- [ ] `PE1-PE2_color10` is up, with the assigned color 10, and it is drawn on the map.
-- [ ] `PE1-PE3_color20` is up, with the assigned color 20, and it is drawn on the map.
+- [ ] `PE1-PE2_color10` is up with color 10 and is displayed on the map.
+- [ ] `PE1-PE3_color20` is up with color 20 and is displayed on the map.

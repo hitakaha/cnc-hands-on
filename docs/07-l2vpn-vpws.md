@@ -5,31 +5,31 @@
 **Objective:** Provision a point-to-point L2VPN (VPWS) from CNC.
 
 
-CNC 7.2 provisions IETF L2VPN network models through NSO. VPWS is a wire between two attachment circuits. 
+CNC 7.2 provisions services based on the IETF L2VPN network model through NSO. VPWS is a point-to-point wire between two attachment circuits. 
 
 ![dcloud](img/07/01_vpws_topology.png)
 
 | Field | Value |
 | --- | --- |
-| Service name | `CustD_vpws` |
+| Service name | `CustB_vpws` |
 | vpn-type | point-to-point (vpws-evpn) |
 | Endpoints | PE1, PE2 |
-| Transport | SRv6, steering to SRv6 Policy with color 10 |
+| Transport | SRv6, steered to the SRv6 policy with color 10 |
 
 ### 7.1 Pre-check (ID-Pools)
 
 EVI IDs and Source/Target IDs can be automatically assigned from predefined pools. It is also possible to set fixed values.
 
-In this instance, we will confirm that those pools are already configured.
+In this lab, confirm that those pools are already configured.
 
-1.	Resource Pools (the range of assignable values) are located under **Service & Traffic Engineering > Provisioning (NSO) > Global > Resource Pool**.
+1.	Resource pools (ranges of assignable values) are located under **Service & Traffic Engineering > Provisioning (NSO) > Global > Resource Pool**.
 
     - evi-id-pool: Pool for EVI IDs
     - evi-source-target-pool: Pool for Source/Target IDs
 
     ![dcloud](img/07/02_resource-pool.png)
 
-    By clicking Edit under Actions, you can see that the following values are set for each. Please close with Cancel after confirmation.
+    By clicking **Edit** under **Actions**, you can see that the following values are set for each pool. After confirming the values, close the dialog with **Cancel**.
 
     ![dcloud](img/07/03_resource_edit.png)
 
@@ -41,7 +41,7 @@ In this instance, we will confirm that those pools are already configured.
 
     ![dcloud](img/07/05_evi-source-target-pool.png)
 
-2. Confirm that these pools are used in the L2VPN configuration under **L2VPN > ID-Pools**.
+2. Confirm that these pools are referenced in the L2VPN configuration under **L2VPN > ID-Pools**.
 
     - evi-id-pool-name: evi-id-pool
     - evi-source-target-pool-name: evi-source-target-pool
@@ -51,7 +51,7 @@ In this instance, we will confirm that those pools are already configured.
 
 ### 7.2 Pre-check (MP-BGP Configuration)
 
-MP-BGP configuration is not performed within the built-in L2VPN service model. Therefore, ensure that this configuration is set up in advance and that the BGP Neighbor is up.
+MP-BGP configuration is not performed by the built-in L2VPN service model. Therefore, make sure that this configuration is set up in advance and that the BGP neighbors are up.
 
 **PE1 (C8711-1-PE)**
 <pre><code>
@@ -99,12 +99,12 @@ RP/0/RP0/CPU0:C8711-1-PE#
 
 ### 7.3 Pre-configuration (CEs)
 
-The CEs exist in `CML for PCE` (a different CML instance from the P/PE routers).
-Please open `CML for PCE` from the Firefox Bookmark Bar. 
+The CEs are located in `CML for PCE` (a different CML instance from the one for the P/PE routers).
+Open `CML for PCE` from the Firefox bookmarks bar. 
 
 ![dcloud](img/07/07_cml1.png)
 
-Then, select the lab `xrv9k-25.4.1-pce-for-CNC7.2-ipv6`.
+Then select the lab `xrv9k-25.4.1-pce-for-CNC7.2-ipv6`.
 
 ![dcloud](img/07/08_cml2.png)
 
@@ -115,7 +115,7 @@ CE1 is named `csr1000v-ce1`, and CE2 is named `csr1000v-0` in the CML.
 
 **CE1 (CSR1000V-CE1)**
 
-Confirm that `198.21.0.100` is already configured on interface `Gi1` facing PE1 on the CE1 side.
+Confirm that `198.21.0.100` is already configured on interface `Gi1` of CE1, which faces PE1.
 
 <pre><code>
 ce1>en
@@ -136,7 +136,7 @@ ce1#
 
 **CE2 (CSR1000V-0)**
 
-Please clear the configuration of the interface `Gi1` on the CE2 side facing PE2, and reconfigure it with `198.21.0.200`.
+Clear the configuration of interface `Gi1` on CE2, which faces PE2, and reconfigure it with `198.21.0.200`.
 
 <pre><code>
 ce2>en
@@ -153,11 +153,11 @@ ce2#
 
 ### 7.4 Pre-configuration (Route-Policy)
 
-Steer VPWS traffic to the SRv6 policy "PE1-PE2_Color10" created in Chapter 5. 
+Steer VPWS traffic to the SRv6 policy "PE1-PE2_color10" created in chapter 5. 
 
-To do this, add a route-policy and configure MP-BGP to attach the extended community: color 10 to all EVPN advertisements.
+To do this, add a route policy and configure MP-BGP to attach the color 10 extended community to all EVPN advertisements.
 
-Since no Color 10 SR policy is currently configured on devices other than PE1, incoming customer packets on PE2 will be forwarded via the IGP shortest path.
+Because no color 10 SR policy is configured on any device other than PE1, customer packets arriving at PE2 are forwarded via the IGP shortest path.
 
 ### 7.4.1 Routing Policy Tag
 
@@ -172,7 +172,7 @@ Since no Color 10 SR policy is currently configured on devices other than PE1, i
     ![dcloud](img/07/11_L2VPN_tag2.png)
     ![dcloud](img/07/12_L2VPN_tag3.png)
 
-3. Commit changes
+3. Click **Commit changes**.
 
 
 ### 7.4.2 Routing Policy
@@ -193,10 +193,10 @@ Since no Color 10 SR policy is currently configured on devices other than PE1, i
     ![dcloud](img/07/14_L2VPN_policy2.png)
     ![dcloud](img/07/15_L2VPN_policy3.png)
 
-3. Commit changes
+3. Click **Commit changes**.
 
 
-### 7.5 VPWS Provisioining
+### 7.5 VPWS Provisioning
 
 1. Go to **Services & Traffic Engineering > Provisioning (NSO)**, then click **L2VPN-Service**.
 
@@ -330,25 +330,25 @@ Since no Color 10 SR policy is currently configured on devices other than PE1, i
 
     - enable `service-assurance`
     - monitoring state: enable
-    - preservation: remove (delete all histrical data when stop monitoring)
+    - preservation: remove (delete all historical data when monitoring stops)
     - profile-name: `Gold_L2VPN_ConfigProfile system`
     - rule-name: `Rule-L2VPN-NM system`
 
     ![dcloud](img/07/23_L2VPN_settings7.png)
 
-4. **Dry-run** to confirm the configuration. 
+4. Click **Dry-run** to confirm the configuration. 
 
     ![dcloud](img/07/24_L2VPN_dry-run1.png)
 
-    You can switch the display with **Show changes** on the upper right.
+    You can switch the display by using **Show changes** in the upper right.
     ![dcloud](img/07/25_L2VPN_dry-run2.png)
 
-5. **Commit changes**
+5. Click **Commit changes**.
 
     ![dcloud](img/07/26_L2VPN_commit.png)
 
 
-## 7.6 Confirmation of L2VPN
+## 7.6 Confirm the L2VPN
 
 ### via CNC GUI
 1. Open **Services & Traffic Engineering > VPN Services**.
@@ -359,9 +359,9 @@ Since no Color 10 SR policy is currently configured on devices other than PE1, i
 
 ### via CLI
 
-On the PE1/PE2:  
+On PE1/PE2:  
 
-The uDX2 SID is assigned to `CustB_vpws`.
+Confirm that a uDX2 SID is assigned to `CustB_vpws`.
 
 <pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show segment-routing srv6 locator srv6 sid
@@ -378,7 +378,7 @@ RP/0/RP0/CPU0:C8711-1-PE#
 </code></pre>
 
 
-The VPWS `CustB_vpws` is up.
+Confirm that the VPWS `CustB_vpws` is up.
 
 <pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show l2vpn xconnect
@@ -400,9 +400,9 @@ RP/0/RP0/CPU0:C8711-1-PE#
 
 ### 7.7.1 Enable Route-Policy
 
-In the built-in L2VPN service model, MP-BGP-related settings are not performed as described above. Therefore, please configure the following on PE1 and PE2 to enable the route-policy.
+The built-in L2VPN service model does not configure MP-BGP-related settings, as described above. Therefore, configure the following on PE1 and PE2 to enable the route policy.
 
-On the PE1 and PE2:
+On PE1 and PE2:
 ```
 conf t
 router bgp 65000
@@ -414,7 +414,7 @@ router bgp 65000
  end
 ```
 
- Go to **Device Management > Network Devices**, then check PE1 & PE2 and select `Sync-from device to NSO` from the Actions.
+ Go to **Device Management > Network Devices**, select PE1 and PE2, and choose **Sync-from devices to NSO** from **Actions**.
  
  ![dcloud](img/07/30_sync-from.png)
 
@@ -430,16 +430,16 @@ router bgp 65000
 
     ![dcloud](img/07/28_L2VPN_view2.png)
 
-4. Go to **Transport > SRv6**, then confirm SRv6 Policy `PE1-PE2_Color10` is steering the VPWS traffic from PE1 to PE2. Since the SR policy for Color 10 is not configured on the PE2 side, traffic from PE2 to PE1 is forwarded via the IGP shortest path.
+4. Go to **Transport > SRv6**, then confirm that SRv6 policy `PE1-PE2_color10` is steering the VPWS traffic from PE1 to PE2. Because no color 10 SR policy is configured on PE2, traffic from PE2 to PE1 is forwarded via the IGP shortest path.
 
     ![dcloud](img/07/29_L2VPN_view3.png)
 
 
 ### 7.7.3 Confirmation via CLI
 
-When checking the EVPN route information exchanged with the peer PE via BGP, you can see Route Type 1: Ethernet Auto-Discovery (EAD) routes. You can also find that Color10 is assigned to them.
+In the EVPN route information exchanged with the peer PE via BGP, you can see Route Type 1 (Ethernet Auto-Discovery, EAD) routes. You can also see that color 10 is assigned to them.
 
-On the PE1/PE2: 
+On PE1/PE2: 
 <pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show bgp l2vpn evpn
 Fri Nov  6 08:58:50.399 UTC
@@ -473,7 +473,7 @@ Processed 2 prefixes, 3 paths
 RP/0/RP0/CPU0:C8711-1-PE#
 </code></pre>
 
-Perform a connectivity check between the CEs.
+Check connectivity between the CEs.
 
 On CE1(csr1000v-CE1):
 ```
@@ -485,50 +485,50 @@ Success rate is 100 percent (5/5), round-trip min/avg/max = 3/13/50 ms
 ce1#
 ```
 
-## 7.8 Packet Capture (Option)
+## 7.8 Packet Capture (Optional)
 
-We will use the packet capture feature of CML to observe the encapsulation in an IPv6 header.
+Use the packet capture feature of CML to observe the encapsulation in the IPv6 header.
 
 **CE1 to CE2**
 
-1. Start ping from `CE1` to `CE2`
+1. Start a ping from `CE1` to `CE2`.
 
     On CE1(csr1000v-CE1):
     ```
     ce1#ping 198.21.0.200 repeat 10000
     ```
 
-2. Right click the link between `P5` and `PE3`
+2. Right-click the link between `P5` and `PE3`.
 
 3. Start a packet capture.
 
-4. Click the ICMP echo request from 198.21.0.100 to 198.21.0.200.
+4. Select the ICMP echo request packet from 198.21.0.100 to 198.21.0.200.
 
-5. Find the IPv6 header. The destination address should be the PE3 uDN (fcbb:bb00:3) and the SR header contains the PE2 uDX2 (ex. fcbb:bb00:2:e002::). 
+5. Find the IPv6 header. The destination address should be the uN SID of PE3 (fcbb:bb00:3), and the SR header should contain the uDX2 SID of PE2 (for example, fcbb:bb00:2:e002::). 
 
     ![dcloud](img/07/31_L2VPN_capture1.png)
     ![dcloud](img/07/32_L2VPN_capture2.png)
 
-With the ub6-insert-reduced (Binding-SID insert reduced behavior), an SRH (Segment Routing Header) is inserted directly between the existing IPv6 header and the payload, instead of attaching a new IPv6 header to the outside. 
+With the ub6-insert-reduced behavior (Binding SID insert reduced), an SRH (Segment Routing Header) is inserted directly between the existing IPv6 header and the payload, instead of encapsulating the packet in a new outer IPv6 header. 
 
-Therefore, an SR header containing the uDX2 SID is inserted into the IPv6 header in this way, and the Outer IPv6 Address contains the PE3 uN SID from the SR policy used for steering.
+As a result, an SRH containing the uDX2 SID is inserted after the IPv6 header, and the destination address of the IPv6 header contains the PE3 uN SID from the SR policy used for steering.
 
 **CE2 to CE1**
 
-1. Start ping from `CE2` to `CE2`
+1. Start a ping from `CE2` to `CE1`.
 
     On CE2(csr1000v-0):
     ```
     ce2#ping 198.21.0.100 repeat 10000
     ```
 
-2. Right click the link between `P4` and `PE2`
+2. Right-click the link between `P4` and `PE2`.
 
 3. Start a packet capture.
 
-4. Click the ICMP echo request from 198.21.0.200 to 198.21.0.100.
+4. Select the ICMP echo request packet from 198.21.0.200 to 198.21.0.100.
 
-5. Find the IPv6 header. The destination address should be the PE1 uDX2 (ex. fcbb:bb00:1:e004::). Currently, no Color 10 policy is configured on PE2, so traffic from PE2 to PE1 follows the IGP shortest path: PE2->P4->PE1.
+5. Find the IPv6 header. The destination address should be the uDX2 SID of PE1 (for example, fcbb:bb00:1:e004::). Because no color 10 policy is configured on PE2, traffic from PE2 to PE1 follows the IGP shortest path: PE2->P4->PE1.
 
     ![dcloud](img/07/33_L2VPN_capture3.png)
 
@@ -537,19 +537,19 @@ Therefore, an SR header containing the uDX2 SID is inserted into the IPv6 header
 ## 7.9 Service Health
 
 1. Open **Services & Traffic Engineering > VPN Services**.
-2. You can confirm the helth of `CustB_vpws` is **degraded**.
+2. Confirm that the health of `CustB_vpws` is **Degraded**.
 3. Click **Actions > Assurance graph**
 
     ![dcloud](img/07/34_L2VPN_health1.png)
 
-4. Drilling down into this graph leads to three symptoms.
+4. Drill down into this graph to see three symptoms.
 
     ![dcloud](img/07/35_L2VPN_health2.png)
 
     - **Fallback LSP path from Device: C8711-2-PE to C8711-1-PE:1.1.1.1 doesn't exist.**
     - **Fallback LSP path from Device: C8711-1-PE to C8711-2-PE:2.2.2.2 doesn't exist.** 
 
-    These two are monitoring items that check reachability to the BGP Router-id of the opposite PE. In this case, this alert is occurring because the Loopback IF IPv4 address has not been learned unlike other PEs.
+    These two are monitoring items that check reachability to the BGP router ID of the remote PE. In this case, these alerts occur because the IPv4 address of the loopback interface of the remote PE has not been learned.
 
     ```
     RP/0/RP0/CPU0:C8711-1-PE#show ip route
@@ -567,21 +567,21 @@ Therefore, an SR header containing the uDX2 SID is inserted into the IPv6 header
 
     - **L2VPN traffic originated from this node is configured to go over SR transport, but zero eligible SR policies are detected. VpnServiceId: CustB_vpws Device: C8711-2-PE**
 
-    This symptom occurs because the Color10 policy is not configured on PE2.
+    This symptom occurs because the color 10 policy is not configured on PE2.
 
 
 ## 7.10 Done when
 
 - [ ] `CustB_vpws` is up and shown as point-to-point in VPN Services.
-- [ ] The ping between CEs is succeeed.
+- [ ] The ping between the CEs succeeds.
 - [ ] The SR policy is steering the traffic from PE1 to PE2.
 
 
 ## 7.11 Clean-up rule
 
-First, delete the configuration set via the CLI, and then delete the VPWS service on the CNC side.
+First, delete the configuration that you applied via the CLI, and then delete the VPWS service in CNC.
 
-1. Delete the following configuration on the PE1/PE2.
+1. Delete the following configuration on PE1 and PE2.
 
     ```
     conf t
@@ -594,17 +594,17 @@ First, delete the configuration set via the CLI, and then delete the VPWS servic
     end
     ```
 
-2.  Go to **Device Management > Network Devices**, then check PE1 & PE2 and select `Sync-from device to NSO` from the Actions.
+2. Go to **Device Management > Network Devices**, select PE1 and PE2, and choose **Sync-from devices to NSO** from **Actions**.
  
     ![dcloud](img/07/30_sync-from.png)
 
 3. Go to **Services & Traffic Engineering > Provisioning (NSO)**, then click **L2VPN-Service**. 
 
-4. Select **Delete dry run** from the Actions.
+4. Select **Delete dry run** from **Actions**.
 
     ![dcloud](img/07/38_L2VPN_delete1.png)
 
-5. Check the config diff and click `Delete`.
+5. Check the configuration diff and click **Delete**.
 
     ![dcloud](img/07/39_L2VPN_delete2.png)
 
