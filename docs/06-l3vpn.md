@@ -357,7 +357,7 @@ RP/0/RP0/CPU0:C8711-1-PE#
 
 The customer routes of the remote PEs are learned via MP-BGP.
 ```
-RP/0/RP0/CPU0:C8711-1-PE#show  ip route vrf CustA
+RP/0/RP0/CPU0:C8711-1-PE#show ip route vrf CustA
 Wed Nov  4 14:48:09.301 UTC
 
 <--- omitted --->
