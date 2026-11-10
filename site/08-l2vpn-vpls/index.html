@@ -574,10 +574,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#85-vpls-provisioining" class="md-nav__link">
+  <a href="#85-vpls-provisioning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.5 VPLS Provisioining
+        8.5 VPLS Provisioning
       
     </span>
   </a>
@@ -585,15 +585,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#86-confirmation-of-vpls" class="md-nav__link">
+  <a href="#86-confirm-the-vpls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.6 Confirmation of VPLS
+        8.6 Confirm the VPLS
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="8.6 Confirmation of VPLS">
+    <nav class="md-nav" aria-label="8.6 Confirm the VPLS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -685,10 +685,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#89-packet-capture-option" class="md-nav__link">
+  <a href="#89-packet-capture-optional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.9 Packet Capture (Option)
+        8.9 Packet Capture (Optional)
       
     </span>
   </a>
@@ -917,10 +917,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#85-vpls-provisioining" class="md-nav__link">
+  <a href="#85-vpls-provisioning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.5 VPLS Provisioining
+        8.5 VPLS Provisioning
       
     </span>
   </a>
@@ -928,15 +928,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#86-confirmation-of-vpls" class="md-nav__link">
+  <a href="#86-confirm-the-vpls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.6 Confirmation of VPLS
+        8.6 Confirm the VPLS
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="8.6 Confirmation of VPLS">
+    <nav class="md-nav" aria-label="8.6 Confirm the VPLS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1028,10 +1028,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#89-packet-capture-option" class="md-nav__link">
+  <a href="#89-packet-capture-optional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.9 Packet Capture (Option)
+        8.9 Packet Capture (Optional)
       
     </span>
   </a>
@@ -1092,8 +1092,8 @@
 <p><strong>Time:</strong> 60 minutes</p>
 <p><strong>Objective:</strong> Provision a multipoint LAN (VPLS) from CNC.</p>
 <p>Configure VPLS with a <strong>Single-homing</strong> configuration on the CE1 side (connected only to PE1) and an <strong>All-Active Multi-homing</strong> configuration on the CE2 side (connected to both PE2 and PE3). </p>
-<p>Then, use an <strong>ODN policy</strong> to steer VPLS traffic to the path that optimizes the Latency Metric. </p>
-<p>In this lab, set Latency: <code>500</code> between PE1 and P4, and Latency: <code>500</code> between P5 and PE3, so that traffic between PE1 and PE2 follows the blue path, and traffic between PE1 and PE3 follows the orange path.</p>
+<p>Then, use an <strong>ODN policy</strong> to steer VPLS traffic along the path that optimizes the latency metric. </p>
+<p>In this lab, set the latency to <code>500</code> between PE1 and P4 and between P5 and PE3, so that traffic between PE1 and PE2 follows the blue path and traffic between PE1 and PE3 follows the orange path.</p>
 <p><img alt="dcloud" src="../img/08/01_vpls_topology.png" /></p>
 <table>
 <thead>
@@ -1121,20 +1121,20 @@
 </tr>
 <tr>
 <td>Transport</td>
-<td>SRv6, steering to SRv6 ODN Policy with color 30</td>
+<td>SRv6, steered to the SRv6 ODN policy with color 30</td>
 </tr>
 </tbody>
 </table>
 <h2 id="81-ce-interface-settings">8.1 CE Interface Settings<a class="headerlink" href="#81-ce-interface-settings" title="Permanent link">&para;</a></h2>
-<p>The CEs exist in <code>CML for PCE</code> (a different CML instance from the P/PE routers).
-Please open <code>CML for PCE</code> from the Firefox Bookmark Bar. </p>
+<p>The CEs are located in <code>CML for PCE</code> (a different CML instance from the one for the P/PE routers).
+Open <code>CML for PCE</code> from the Firefox bookmarks bar. </p>
 <p><img alt="dcloud" src="../img/07/07_cml1.png" /></p>
-<p>Then, select the lab <code>xrv9k-25.4.1-pce-for-CNC7.2-ipv6</code>.</p>
+<p>Then select the lab <code>xrv9k-25.4.1-pce-for-CNC7.2-ipv6</code>.</p>
 <p><img alt="dcloud" src="../img/07/08_cml2.png" /></p>
 <p>CE1 is named <code>csr1000v-ce1</code>, and CE2 is named <code>csr1000v-0</code> in the CML.</p>
 <p><img alt="dcloud" src="../img/07/09_cml3.png" /></p>
 <p><strong>CE1 (CSR1000V-CE1)</strong></p>
-<p>Confirm that <code>198.21.0.100</code> is already configured on interface <code>Gi1</code> facing PE1 on the CE1 side.</p>
+<p>Confirm that <code>198.21.0.100</code> is already configured on interface <code>Gi1</code> of CE1, which faces PE1.</p>
 <pre><code>
 ce1>en
 ce1#show run int GigabitEthernet 1
@@ -1153,7 +1153,7 @@ ce1#
 </code></pre>
 
 <p><strong>CE2 (CSR1000V-0)</strong></p>
-<p>Please clear the configuration of the interface <code>Gi1</code> and <code>Gi2</code> on the CE2 side facing PE2 and PE3, and reconfigure them as member ports of a <code>Port-channel 1</code>.</p>
+<p>Clear the configuration of interfaces <code>Gi1</code> and <code>Gi2</code> on CE2, which face PE2 and PE3, and reconfigure them as member ports of <code>Port-channel 1</code>.</p>
 <pre><code>
 conf t
 default interface Gi 1
@@ -1169,7 +1169,7 @@ end
 </code></pre>
 
 <h2 id="82-configure-bundle-ether-on-pe2pe3">8.2 Configure Bundle-Ether on PE2/PE3<a class="headerlink" href="#82-configure-bundle-ether-on-pe2pe3" title="Permanent link">&para;</a></h2>
-<p>In this lab, there is an External Connector between the PEs and CE, and since LACP negotiation could not be performed, we will force it to UP using mode on.</p>
+<p>In this lab, the PEs and CEs are connected through an external connector, so LACP negotiation cannot be performed. Therefore, force the bundle member to come up by using <code>mode on</code>.</p>
 <p><strong>PE2 and PE3</strong>
 <div class="highlight"><pre><span></span><code>interface FourHundredGigE0/0/0/2
  bundle id 1 mode on
@@ -1179,10 +1179,10 @@ interface Bundle-Ether1
  lacp system mac 2323.2323.2323
 !
 </code></pre></div></p>
-<p>Go to <strong>Device Management &gt; Network Devices</strong>, then check PE2 &amp; PE3 and select <code>Sync-from device to NSO</code> from the Actions.</p>
+<p>Go to <strong>Device Management &gt; Network Devices</strong>, select PE2 and PE3, and choose <strong>Sync-from devices to NSO</strong> from <strong>Actions</strong>.</p>
 <p><img alt="dcloud" src="../img/08/02_sync-from.png" /></p>
 <h2 id="83-odn-policy">8.3 ODN Policy<a class="headerlink" href="#83-odn-policy" title="Permanent link">&para;</a></h2>
-<p>First, set a delay metric <code>500</code> between <strong>PE1</strong> and <strong>P4</strong>, and between <strong>P5</strong> and <strong>PE3</strong>, so that traffic between PE1 and PE2 follows the blue path, and traffic between PE1 and PE3 follows the orange path.</p>
+<p>First, set a delay metric of <code>500</code> between <strong>PE1</strong> and <strong>P4</strong>, and between <strong>P5</strong> and <strong>PE3</strong>, so that traffic between PE1 and PE2 follows the blue path and traffic between PE1 and PE3 follows the orange path.</p>
 <p><img alt="dcloud" src="../img/08/01_vpls_topology.png" /></p>
 <h3 id="831-configure-delay-metric">8.3.1 Configure Delay Metric<a class="headerlink" href="#831-configure-delay-metric" title="Permanent link">&para;</a></h3>
 <p><strong>PE1</strong></p>
@@ -1218,13 +1218,13 @@ performance-measurement
 !
 </code></pre>
 
-<p>Go to <strong>Device Management &gt; Network Devices</strong>, then check PE1, PE3, P4, P5 and select <code>Sync-from device to NSO</code> from the Actions.</p>
+<p>Go to <strong>Device Management &gt; Network Devices</strong>, select PE1, PE3, P4, and P5, and choose <strong>Sync-from devices to NSO</strong> from <strong>Actions</strong>.</p>
 <p><img alt="dcloud" src="../img/08/03_sync-from.png" /></p>
-<p>Click the link between <code>PE1</code> and <code>P4</code> or the link between <code>P5</code> and <code>PE3</code> on the topology, then confirm the delay metric is set to <code>500</code>.</p>
+<p>Click the link between <code>PE1</code> and <code>P4</code>, or the link between <code>P5</code> and <code>PE3</code>, on the topology, and then confirm that the delay metric is set to <code>500</code>.</p>
 <p><img alt="dcloud" src="../img/08/04_delay_metric.png" /></p>
 <h3 id="832-configure-odn-policy">8.3.2 Configure ODN Policy<a class="headerlink" href="#832-configure-odn-policy" title="Permanent link">&para;</a></h3>
-<p>Unlike the policy configured in Chapter 5, an ODN policy does not require an Endpoint to be configured. When a BGP route with that Color is received, an SR policy is instantiated using the route's NextHop as the Endpoint. In other words, it has the advantage of not needing to establish a full mesh of policies between PEs.</p>
-<p>In this lab, you will configure an ODN policy for Color 30 with latency specified as the optimization condition on all PEs.</p>
+<p>Unlike the policy configured in chapter 5, an ODN policy does not require an endpoint to be configured. When a BGP route with that color is received, an SR policy is instantiated using the route's next hop as the endpoint. This has the advantage of not requiring a full mesh of policies between the PEs.</p>
+<p>In this lab, configure an ODN policy for color 30, with latency as the optimization objective, on all PEs.</p>
 <ol>
 <li>Go to <strong>Services &amp; Traffic Engineering &gt; Provisioning (NSO)</strong></li>
 <li>Go to <strong>SR-TE &gt; ODN-Template</strong></li>
@@ -1278,7 +1278,7 @@ performance-measurement
 </ul>
 <p><img alt="dcloud" src="../img/08/06_odn_settings1.png" /></p>
 <ul>
-<li>srv6 : enable</li>
+<li>srv6: enable</li>
 <li>locator-name: srv6</li>
 <li>behavior: ub6-insert-reduced</li>
 <li>binding-sid-type: srv6-dynamic</li>
@@ -1286,17 +1286,17 @@ performance-measurement
 <p><img alt="dcloud" src="../img/08/07_odn_settings2.png" /></p>
 <ul>
 <li>dynamic: enable</li>
-<li>check pce</li>
+<li>select <code>pce</code></li>
 <li>metric-type: latency</li>
 </ul>
 <p><img alt="dcloud" src="../img/08/08_odn_settings3.png" /></p>
 </li>
 <li>
-<p>Dry-run &amp; Commit changes</p>
+<p>Click <strong>Dry-run</strong>, and then click <strong>Commit changes</strong>.</p>
 </li>
 <li>
-<p>(Option) Confirm via CLI</p>
-<p>The ODN policy is instantiated when a BGP route with Color30 is received, so while the configuration has been applied, the policy is not yet activated.</p>
+<p>(Optional) Confirm via the CLI.</p>
+<p>The ODN policy is instantiated when a BGP route with color 30 is received. Therefore, although the configuration has been applied, the policy is not active yet.</p>
 <p><strong>PE1</strong>
 <div class="highlight"><pre><span></span><code>RP/0/RP0/CPU0:C8711-1-PE#show run segment-routing traffic-eng on-demand color 30
 Sat Nov  7 14:48:00.616 UTC
@@ -1333,7 +1333,7 @@ RP/0/RP0/CPU0:C8711-1-PE#`
 </li>
 </ol>
 <h2 id="84-route-policy">8.4 Route-Policy<a class="headerlink" href="#84-route-policy" title="Permanent link">&para;</a></h2>
-<p>For steering VPLS traffic to the odn policy, need a route-policy to attach the extended community: color 30 to all EVPN advertisements.</p>
+<p>To steer VPLS traffic to the ODN policy, a route policy is required that attaches the color 30 extended community to all EVPN advertisements.</p>
 <h3 id="841-routing-policy-tag">8.4.1 Routing Policy Tag<a class="headerlink" href="#841-routing-policy-tag" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
@@ -1355,7 +1355,7 @@ RP/0/RP0/CPU0:C8711-1-PE#`
 <p>Go to <strong>L2VPN &gt; Routing Policy</strong>.</p>
 </li>
 <li>
-<p>Confirm that the routing policy <code>POLICY1</code> exists.</p>
+<p>Confirm that the routing policy <code>POLICY3</code> exists.</p>
 <ul>
 <li>name: POLICY3</li>
 <li>statement name: statement1</li>
@@ -1373,7 +1373,7 @@ RP/0/RP0/CPU0:C8711-1-PE#`
 <img alt="dcloud" src="../img/08/12_L2VPN_policy2.png" /></p>
 </li>
 </ol>
-<h2 id="85-vpls-provisioining">8.5 VPLS Provisioining<a class="headerlink" href="#85-vpls-provisioining" title="Permanent link">&para;</a></h2>
+<h2 id="85-vpls-provisioning">8.5 VPLS Provisioning<a class="headerlink" href="#85-vpls-provisioning" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>Go to <strong>Services &amp; Traffic Engineering &gt; Provisioning (NSO)</strong>, then click <strong>L2VPN-Service</strong>.</p>
@@ -1571,17 +1571,17 @@ RP/0/RP0/CPU0:C8711-1-PE#`
 <ul>
 <li>enable <code>service-assurance</code></li>
 <li>monitoring state: enable</li>
-<li>preservation: remove (delete all histrical data when stop monitoring)</li>
+<li>preservation: remove (delete all historical data when monitoring stops)</li>
 <li>profile-name: <code>Gold_L2VPN_ConfigProfile system</code></li>
 <li>rule-name: <code>Rule-L2VPN-MP system</code></li>
 </ul>
 <p><img alt="dcloud" src="../img/08/23_VPLS_settings10.png" /></p>
 </li>
 <li>
-<p><strong>Dry-run</strong> and <strong>Commit changes</strong></p>
+<p>Click <strong>Dry-run</strong>, and then click <strong>Commit changes</strong>.</p>
 </li>
 </ol>
-<h2 id="86-confirmation-of-vpls">8.6 Confirmation of VPLS<a class="headerlink" href="#86-confirmation-of-vpls" title="Permanent link">&para;</a></h2>
+<h2 id="86-confirm-the-vpls">8.6 Confirm the VPLS<a class="headerlink" href="#86-confirm-the-vpls" title="Permanent link">&para;</a></h2>
 <h3 id="via-cnc-gui">via CNC GUI<a class="headerlink" href="#via-cnc-gui" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Open <strong>Services &amp; Traffic Engineering &gt; VPN Services</strong>.</li>
@@ -1591,8 +1591,8 @@ RP/0/RP0/CPU0:C8711-1-PE#`
 </li>
 </ol>
 <h3 id="via-cli">via CLI<a class="headerlink" href="#via-cli" title="Permanent link">&para;</a></h3>
-<p>On the PE1/PE2/PE3:  </p>
-<p>The uDT2U/uDT2M SIDs are assigned to <code>CustC_vpls</code>.</p>
+<p>On PE1/PE2/PE3:  </p>
+<p>Confirm that uDT2U/uDT2M SIDs are assigned to <code>CustC_vpls</code>.</p>
 <pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show segment-routing srv6 locator srv6 sid
 Sat Nov  7 15:47:22.551 UTC
@@ -1608,7 +1608,7 @@ fcbb:bb00:1:e003::          uB6 (PSP/USD Insert.Red)  'srte_c_20_ep_2001:db8::3'
 RP/0/RP0/CPU0:C8711-1-PE#
 </code></pre>
 
-<p>Confirm a mac-learning between PEs.</p>
+<p>Confirm that MAC addresses are learned between the PEs.</p>
 <pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show evpn evi vpn-id 100 mac
 Sat Nov  7 15:51:19.199 UTC
@@ -1622,7 +1622,7 @@ VPN-ID     Encap      MAC address    IP address                               Ne
 RP/0/RP0/CPU0:C8711-1-PE#
 </code></pre>
 
-<p>You can confirm that PE2 and PE3 are operating in All-Active Multi-homing with the following command.</p>
+<p>You can confirm that PE2 and PE3 are operating in all-active multi-homing mode by using the following command.</p>
 <p>On <strong>PE2/PE3</strong>:</p>
 <pre><code>
 RP/0/RP0/CPU0:C8711-2-PE#show evpn ethernet-segment esi 0023.2300.0000.0000.0000 detail
@@ -1683,7 +1683,7 @@ RP/0/RP0/CPU0:C8711-2-PE#
 </code></pre>
 
 <h2 id="87-connectivity-check">8.7 Connectivity Check<a class="headerlink" href="#87-connectivity-check" title="Permanent link">&para;</a></h2>
-<p>Due to lab constraints, CE2 cannot receive ARP replies, so we will configure static MAC learning.</p>
+<p>Because of lab constraints, CE2 cannot receive ARP replies, so configure a static ARP entry on CE2.</p>
 <p>On <strong>CE1(csr1000v-ce1)</strong>:
 <div class="highlight"><pre><span></span><code>ce1#show arp
 Protocol  Address          Age (min)  Hardware Addr   Type   Interface
@@ -1708,10 +1708,10 @@ Internet  198.21.0.100            -   5254.004d.9a65  ARPA
 Internet  198.21.0.200            -   001e.e699.5dc0  ARPA   Port-channel1
 ce2#
 </code></pre></div>
-<p>Perform the ping between CEs. </p>
+<p>Ping between the CEs. </p>
 <div class="admonition warning">
 <p class="admonition-title">Note</p>
-<p>This lab is unstable because it uses External Connectors for PE-CE connectivity. Pings may sometimes fail.</p>
+<p>This lab can be unstable because it uses external connectors for PE-CE connectivity. Pings may occasionally fail.</p>
 </div>
 <div class="highlight"><pre><span></span><code>ce2#ping 198.21.0.100
 Type escape sequence to abort.
@@ -1722,8 +1722,8 @@ ce2#
 </code></pre></div>
 <h2 id="88-automated-steering">8.8 Automated Steering<a class="headerlink" href="#88-automated-steering" title="Permanent link">&para;</a></h2>
 <h3 id="881-enable-route-policy">8.8.1 Enable Route-Policy<a class="headerlink" href="#881-enable-route-policy" title="Permanent link">&para;</a></h3>
-<p>In the built-in L2VPN service model, MP-BGP-related settings are not performed as described above. Therefore, please configure the following on PE1 and PE2 to enable the route-policy.</p>
-<p>On the PE1/PE2/PE3:
+<p>The built-in L2VPN service model does not configure MP-BGP-related settings, as described above. Therefore, configure the following on PE1, PE2, and PE3 to enable the route policy.</p>
+<p>On PE1/PE2/PE3:
 <div class="highlight"><pre><span></span><code>conf t
 router bgp 65000
  neighbor-group ibgp
@@ -1733,11 +1733,11 @@ router bgp 65000
  !
  end
 </code></pre></div></p>
-<p>Go to <strong>Device Management &gt; Network Devices</strong>, then check PE1 &amp; PE2 &amp; PE3 and select <code>Sync-from device to NSO</code> from the Actions.</p>
+<p>Go to <strong>Device Management &gt; Network Devices</strong>, select PE1, PE2, and PE3, and choose <strong>Sync-from devices to NSO</strong> from <strong>Actions</strong>.</p>
 <p><img alt="dcloud" src="../img/08/25_VPLS_sync-from.png" /></p>
 <h3 id="882-confirmation-via-cli">8.8.2 Confirmation via CLI<a class="headerlink" href="#882-confirmation-via-cli" title="Permanent link">&para;</a></h3>
-<p>When checking the EVPN route information exchanged with the peer PE via BGP, you can find that Color 30 is assigned to them.</p>
-<p>On the PE1/PE2/PE3: </p>
+<p>In the EVPN route information exchanged with the peer PEs via BGP, you can see that color 30 is assigned to the routes.</p>
+<p>On PE1/PE2/PE3: </p>
 <pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show bgp l2vpn evpn
 Sun Nov  8 03:53:50.603 UTC
@@ -1775,8 +1775,8 @@ Route Distinguisher Version: 435
 <--- omitted --->
 </code></pre>
 
-<p>Confirm that the Color30 ODN policy is instantiated in a full mesh.</p>
-<p>On the PE1/PE2/PE3: </p>
+<p>Confirm that the color 30 ODN policies are instantiated in a full mesh.</p>
+<p>On PE1/PE2/PE3: </p>
 <pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show segment-routing traffic-eng policy tabular
 Sun Nov  8 04:37:30.525 UTC
@@ -1805,82 +1805,82 @@ RP/0/RP0/CPU0:C8711-1-PE#
 <p><img alt="dcloud" src="../img/08/26_VPLS_view2.png" /></p>
 </li>
 <li>
-<p>Go to <strong>Transport &gt; SRv6</strong>, then confirm SRv6 Policies <code>Color30</code> are steering the VPLS traffic. It can be seen that traffic is forwarded along a path that avoids the PE1-P4 and P5-PE3 paths where the Delay Metric is configured. It takes time for all policies to be displayed.</p>
+<p>Go to <strong>Transport &gt; SRv6</strong>, then confirm that the SRv6 policies for color 30 are steering the VPLS traffic. You can see that traffic is forwarded along paths that avoid the PE1-P4 and P5-PE3 links, where the delay metric is configured. It takes some time for all policies to be displayed.</p>
 <p><img alt="dcloud" src="../img/08/27_VPLS_view3.png" /></p>
 </li>
 </ol>
-<h2 id="89-packet-capture-option">8.9 Packet Capture (Option)<a class="headerlink" href="#89-packet-capture-option" title="Permanent link">&para;</a></h2>
-<p>We will use the packet capture feature of CML to observe the encapsulation in an IPv6 header.</p>
+<h2 id="89-packet-capture-optional">8.9 Packet Capture (Optional)<a class="headerlink" href="#89-packet-capture-optional" title="Permanent link">&para;</a></h2>
+<p>Use the packet capture feature of CML to observe the encapsulation in the IPv6 header.</p>
 <ol>
 <li>
-<p>Start ping from <code>CE1</code> to <code>CE2</code>.
-   Due to lab circumstances, Ping may not go through, but that is not a problem.</p>
+<p>Start a ping from <code>CE1</code> to <code>CE2</code>.
+   Due to lab constraints, the ping may not succeed, but this is not a problem.</p>
 <p>On CE1(csr1000v-CE1):
 <div class="highlight"><pre><span></span><code>ce1#ping 198.21.0.200 repeat 100
 </code></pre></div></p>
 </li>
 <li>
-<p>Right click the link between <code>P4</code> and <code>P5</code> and start a packet capture.</p>
+<p>Right-click the link between <code>P4</code> and <code>P5</code> and start a packet capture.</p>
 </li>
 <li>
-<p>Click the ICMP echo request from 198.21.0.100 to 198.21.0.200.</p>
+<p>Select the ICMP echo request packet from 198.21.0.100 to 198.21.0.200.</p>
 </li>
 <li>
-<p>Find the IPv6 header. The destination address contains the P4 uN and PE2 uN (fcbb:bb00:4:2::), and the SR header contains the PE3 uDT2U (ex. fcbb:bb00:3:e002::). </p>
+<p>Find the IPv6 header. The destination address contains the uN SIDs of P4 and PE2 (fcbb:bb00:4:2::), and the SR header contains the uDT2U SID of PE3 (for example, fcbb:bb00:3:e002::). </p>
 <p><img alt="dcloud" src="../img/08/28_VPLS_capture1.png" />
 <img alt="dcloud" src="../img/08/29_VPLS_capture2.png" /></p>
-<p>With the ub6-insert-reduced (Binding-SID insert reduced behavior), an SRH (Segment Routing Header) is inserted directly between the existing IPv6 header and the payload, instead of attaching a new IPv6 header to the outside. </p>
-<p>Therefore, an SR header containing the uDT2U SID is inserted into the IPv6 header in this way, and the Outer IPv6 Address contains the P4 and PE2 uN SID from the SR policy used for steering.</p>
+<p>With the ub6-insert-reduced behavior (Binding SID insert reduced), an SRH (Segment Routing Header) is inserted directly between the existing IPv6 header and the payload, instead of encapsulating the packet in a new outer IPv6 header. </p>
+<p>As a result, an SRH containing the uDT2U SID is inserted after the IPv6 header, and the destination address of the IPv6 header contains the uN SIDs of P4 and PE2 from the SR policy used for steering.</p>
 </li>
 <li>
 <p>Right click the link between <code>P4</code> and <code>PE2</code> and start a packet capture.</p>
 </li>
 <li>
-<p>Click the ICMP echo request from 198.21.0.100 to 198.21.0.200.</p>
+<p>Select the ICMP echo request packet from 198.21.0.100 to 198.21.0.200.</p>
 </li>
 <li>
-<p>Find the IPv6 header. It can be seen that Shift &amp; Forward is performed at P4, and PE2's uN is at the beginning. The SR header still contains the PE3 uDT2U (ex. fcbb:bb00:3:e002::). </p>
+<p>Find the IPv6 header. You can see that Shift &amp; Forward is performed at P4 and that the uN of PE2 is now at the beginning. The SR header still contains the uDT2U SID of PE3 (for example, fcbb:bb00:3:e002::). </p>
 <p><img alt="dcloud" src="../img/08/30_VPLS_capture3.png" /></p>
 </li>
 <li>
-<p>Right click the link between <code>PE2</code> and <code>PE3</code> and start a packet capture.</p>
+<p>Right-click the link between <code>PE2</code> and <code>PE3</code> and start a packet capture.</p>
 </li>
 <li>
-<p>Click the ICMP echo request from 198.21.0.100 to 198.21.0.200.</p>
+<p>Select the ICMP echo request packet from 198.21.0.100 to 198.21.0.200.</p>
 </li>
 <li>
-<p>It can be seen that the last uSID (uN) in the Destination Address was processed at PE2, the PE3 uDT2U in the SR header was copied to the Destination Address, and the SR header was removed.</p>
+<p>You can see that the last uSID (uN) in the destination address was processed at PE2, the uDT2U SID of PE3 in the SR header was copied to the destination address, and the SR header was removed.</p>
 <p><img alt="dcloud" src="../img/08/31_VPLS_capture4.png" /></p>
 </li>
 </ol>
 <h2 id="810-service-health">8.10 Service Health<a class="headerlink" href="#810-service-health" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Open <strong>Services &amp; Traffic Engineering &gt; VPN Services</strong>.</li>
-<li>You can confirm the helth of <code>CustC_vpls</code> is <strong>Good</strong>.</li>
+<li>Confirm that the health of <code>CustC_vpls</code> is <strong>Good</strong>.</li>
 <li>
 <p>Click <strong>Actions &gt; Assurance graph</strong></p>
 <p><img alt="dcloud" src="../img/08/32_VPLS_health1.png" /></p>
 </li>
 <li>
-<p>Drill down into this graph and check the all sub services are <code>Good</code>.</p>
+<p>Drill down into this graph and check that all subservices are <code>Good</code>.</p>
 <p><img alt="dcloud" src="../img/08/33_VPLS_health2.png" /></p>
 </li>
 <li>
-<p>Turn on <code>Show History</code> and select the time when Service Health was degraded. By doing so, you can check what symptoms were occurring at that time.</p>
-<p>In this case, even though Steering to the ODN policy was configured, these symptoms occurred because the ODN policy had not been instantiated at the initial point.</p>
+<p>Turn on <code>Show History</code> and select a time when Service Health was degraded. You can then check which symptoms occurred at that time.</p>
+<p>In this case, although steering to the ODN policy was configured, these symptoms occurred because the ODN policy had not yet been instantiated at that point.</p>
 <p><img alt="dcloud" src="../img/08/34_VPLS_health3.png" /></p>
 </li>
 </ol>
 <h2 id="811-done-when">8.11 Done when<a class="headerlink" href="#811-done-when" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>CustC_vpls</code> is up and shown as muplti-point in VPN Services.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>CustC_vpls</code> is up and shown as multi-point in VPN Services.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The SR policy is steering the VPLS traffic.</li>
 </ul>
 <h2 id="812-clean-up-rule">8.12 Clean-up rule<a class="headerlink" href="#812-clean-up-rule" title="Permanent link">&para;</a></h2>
-<p>First, delete the configuration set via the CLI, and then delete the VPWS service on the CNC side.</p>
+<p>First, delete the configuration that you applied via the CLI, and then delete the VPLS service in CNC.</p>
 <ol>
 <li>
-<p>Delete the following configuration on the PE1/PE2/PE3.</p>
+<p>Delete the following configuration on PE1, PE2, and PE3.</p>
 <div class="highlight"><pre><span></span><code>conf t
 router bgp 65000
  neighbor-group ibgp
@@ -1892,18 +1892,18 @@ commit
 </code></pre></div>
 </li>
 <li>
-<p>Go to <strong>Device Management &gt; Network Devices</strong>, then check PE1 &amp; PE2 and select <code>Sync-from device to NSO</code> from the Actions.</p>
+<p>Go to <strong>Device Management &gt; Network Devices</strong>, select PE1, PE2, and PE3, and choose <strong>Sync-from devices to NSO</strong> from <strong>Actions</strong>.</p>
 <p><img alt="dcloud" src="../img/08/25_VPLS_sync-from.png" /></p>
 </li>
 <li>
 <p>Go to <strong>Services &amp; Traffic Engineering &gt; Provisioning (NSO)</strong>, then click <strong>L2VPN-Service</strong>. </p>
 </li>
 <li>
-<p>Select <strong>Delete dry run</strong> from the Actions.</p>
+<p>Select <strong>Delete dry run</strong> from <strong>Actions</strong>.</p>
 <p><img alt="dcloud" src="../img/08/35_VPLS_delete1.png" /></p>
 </li>
 <li>
-<p>Check the config diff and click <code>Delete</code>.</p>
+<p>Check the configuration diff and click <strong>Delete</strong>.</p>
 <p><img alt="dcloud" src="../img/08/36_VPLS_delete2.png" /></p>
 </li>
 </ol>

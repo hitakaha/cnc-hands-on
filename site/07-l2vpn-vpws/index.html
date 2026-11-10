@@ -513,10 +513,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#75-vpws-provisioining" class="md-nav__link">
+  <a href="#75-vpws-provisioning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.5 VPWS Provisioining
+        7.5 VPWS Provisioning
       
     </span>
   </a>
@@ -524,15 +524,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#76-confirmation-of-l2vpn" class="md-nav__link">
+  <a href="#76-confirm-the-l2vpn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.6 Confirmation of L2VPN
+        7.6 Confirm the L2VPN
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="7.6 Confirmation of L2VPN">
+    <nav class="md-nav" aria-label="7.6 Confirm the L2VPN">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -613,10 +613,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#78-packet-capture-option" class="md-nav__link">
+  <a href="#78-packet-capture-optional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.8 Packet Capture (Option)
+        7.8 Packet Capture (Optional)
       
     </span>
   </a>
@@ -838,10 +838,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#75-vpws-provisioining" class="md-nav__link">
+  <a href="#75-vpws-provisioning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.5 VPWS Provisioining
+        7.5 VPWS Provisioning
       
     </span>
   </a>
@@ -849,15 +849,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#76-confirmation-of-l2vpn" class="md-nav__link">
+  <a href="#76-confirm-the-l2vpn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.6 Confirmation of L2VPN
+        7.6 Confirm the L2VPN
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="7.6 Confirmation of L2VPN">
+    <nav class="md-nav" aria-label="7.6 Confirm the L2VPN">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -938,10 +938,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#78-packet-capture-option" class="md-nav__link">
+  <a href="#78-packet-capture-optional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.8 Packet Capture (Option)
+        7.8 Packet Capture (Optional)
       
     </span>
   </a>
@@ -1001,7 +1001,7 @@
 <h1 id="7-l2vpn-vpws-provisioning">7. L2VPN VPWS provisioning<a class="headerlink" href="#7-l2vpn-vpws-provisioning" title="Permanent link">&para;</a></h1>
 <p><strong>Time:</strong> 60 minutes</p>
 <p><strong>Objective:</strong> Provision a point-to-point L2VPN (VPWS) from CNC.</p>
-<p>CNC 7.2 provisions IETF L2VPN network models through NSO. VPWS is a wire between two attachment circuits. </p>
+<p>CNC 7.2 provisions services based on the IETF L2VPN network model through NSO. VPWS is a point-to-point wire between two attachment circuits. </p>
 <p><img alt="dcloud" src="../img/07/01_vpws_topology.png" /></p>
 <table>
 <thead>
@@ -1013,7 +1013,7 @@
 <tbody>
 <tr>
 <td>Service name</td>
-<td><code>CustD_vpws</code></td>
+<td><code>CustB_vpws</code></td>
 </tr>
 <tr>
 <td>vpn-type</td>
@@ -1025,22 +1025,22 @@
 </tr>
 <tr>
 <td>Transport</td>
-<td>SRv6, steering to SRv6 Policy with color 10</td>
+<td>SRv6, steered to the SRv6 policy with color 10</td>
 </tr>
 </tbody>
 </table>
 <h3 id="71-pre-check-id-pools">7.1 Pre-check (ID-Pools)<a class="headerlink" href="#71-pre-check-id-pools" title="Permanent link">&para;</a></h3>
 <p>EVI IDs and Source/Target IDs can be automatically assigned from predefined pools. It is also possible to set fixed values.</p>
-<p>In this instance, we will confirm that those pools are already configured.</p>
+<p>In this lab, confirm that those pools are already configured.</p>
 <ol>
 <li>
-<p>Resource Pools (the range of assignable values) are located under <strong>Service &amp; Traffic Engineering &gt; Provisioning (NSO) &gt; Global &gt; Resource Pool</strong>.</p>
+<p>Resource pools (ranges of assignable values) are located under <strong>Service &amp; Traffic Engineering &gt; Provisioning (NSO) &gt; Global &gt; Resource Pool</strong>.</p>
 <ul>
 <li>evi-id-pool: Pool for EVI IDs</li>
 <li>evi-source-target-pool: Pool for Source/Target IDs</li>
 </ul>
 <p><img alt="dcloud" src="../img/07/02_resource-pool.png" /></p>
-<p>By clicking Edit under Actions, you can see that the following values are set for each. Please close with Cancel after confirmation.</p>
+<p>By clicking <strong>Edit</strong> under <strong>Actions</strong>, you can see that the following values are set for each pool. After confirming the values, close the dialog with <strong>Cancel</strong>.</p>
 <p><img alt="dcloud" src="../img/07/03_resource_edit.png" /></p>
 <ul>
 <li>evi-id-pool: 100-500</li>
@@ -1052,7 +1052,7 @@
 <p><img alt="dcloud" src="../img/07/05_evi-source-target-pool.png" /></p>
 </li>
 <li>
-<p>Confirm that these pools are used in the L2VPN configuration under <strong>L2VPN &gt; ID-Pools</strong>.</p>
+<p>Confirm that these pools are referenced in the L2VPN configuration under <strong>L2VPN &gt; ID-Pools</strong>.</p>
 <ul>
 <li>evi-id-pool-name: evi-id-pool</li>
 <li>evi-source-target-pool-name: evi-source-target-pool</li>
@@ -1061,7 +1061,7 @@
 </li>
 </ol>
 <h3 id="72-pre-check-mp-bgp-configuration">7.2 Pre-check (MP-BGP Configuration)<a class="headerlink" href="#72-pre-check-mp-bgp-configuration" title="Permanent link">&para;</a></h3>
-<p>MP-BGP configuration is not performed within the built-in L2VPN service model. Therefore, ensure that this configuration is set up in advance and that the BGP Neighbor is up.</p>
+<p>MP-BGP configuration is not performed by the built-in L2VPN service model. Therefore, make sure that this configuration is set up in advance and that the BGP neighbors are up.</p>
 <p><strong>PE1 (C8711-1-PE)</strong></p>
 <pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show run router bgp
@@ -1107,15 +1107,15 @@ RP/0/RP0/CPU0:C8711-1-PE#
 </code></pre>
 
 <h3 id="73-pre-configuration-ces">7.3 Pre-configuration (CEs)<a class="headerlink" href="#73-pre-configuration-ces" title="Permanent link">&para;</a></h3>
-<p>The CEs exist in <code>CML for PCE</code> (a different CML instance from the P/PE routers).
-Please open <code>CML for PCE</code> from the Firefox Bookmark Bar. </p>
+<p>The CEs are located in <code>CML for PCE</code> (a different CML instance from the one for the P/PE routers).
+Open <code>CML for PCE</code> from the Firefox bookmarks bar. </p>
 <p><img alt="dcloud" src="../img/07/07_cml1.png" /></p>
-<p>Then, select the lab <code>xrv9k-25.4.1-pce-for-CNC7.2-ipv6</code>.</p>
+<p>Then select the lab <code>xrv9k-25.4.1-pce-for-CNC7.2-ipv6</code>.</p>
 <p><img alt="dcloud" src="../img/07/08_cml2.png" /></p>
 <p>CE1 is named <code>csr1000v-ce1</code>, and CE2 is named <code>csr1000v-0</code> in the CML.</p>
 <p><img alt="dcloud" src="../img/07/09_cml3.png" /></p>
 <p><strong>CE1 (CSR1000V-CE1)</strong></p>
-<p>Confirm that <code>198.21.0.100</code> is already configured on interface <code>Gi1</code> facing PE1 on the CE1 side.</p>
+<p>Confirm that <code>198.21.0.100</code> is already configured on interface <code>Gi1</code> of CE1, which faces PE1.</p>
 <pre><code>
 ce1>en
 ce1#show run int GigabitEthernet 1
@@ -1134,7 +1134,7 @@ ce1#
 </code></pre>
 
 <p><strong>CE2 (CSR1000V-0)</strong></p>
-<p>Please clear the configuration of the interface <code>Gi1</code> on the CE2 side facing PE2, and reconfigure it with <code>198.21.0.200</code>.</p>
+<p>Clear the configuration of interface <code>Gi1</code> on CE2, which faces PE2, and reconfigure it with <code>198.21.0.200</code>.</p>
 <pre><code>
 ce2>en
 ce2#conf t
@@ -1147,9 +1147,9 @@ ce2#
 </code></pre>
 
 <h3 id="74-pre-configuration-route-policy">7.4 Pre-configuration (Route-Policy)<a class="headerlink" href="#74-pre-configuration-route-policy" title="Permanent link">&para;</a></h3>
-<p>Steer VPWS traffic to the SRv6 policy "PE1-PE2_Color10" created in Chapter 5. </p>
-<p>To do this, add a route-policy and configure MP-BGP to attach the extended community: color 10 to all EVPN advertisements.</p>
-<p>Since no Color 10 SR policy is currently configured on devices other than PE1, incoming customer packets on PE2 will be forwarded via the IGP shortest path.</p>
+<p>Steer VPWS traffic to the SRv6 policy "PE1-PE2_color10" created in chapter 5. </p>
+<p>To do this, add a route policy and configure MP-BGP to attach the color 10 extended community to all EVPN advertisements.</p>
+<p>Because no color 10 SR policy is configured on any device other than PE1, customer packets arriving at PE2 are forwarded via the IGP shortest path.</p>
 <h3 id="741-routing-policy-tag">7.4.1 Routing Policy Tag<a class="headerlink" href="#741-routing-policy-tag" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
@@ -1166,7 +1166,7 @@ ce2#
 <img alt="dcloud" src="../img/07/12_L2VPN_tag3.png" /></p>
 </li>
 <li>
-<p>Commit changes</p>
+<p>Click <strong>Commit changes</strong>.</p>
 </li>
 </ol>
 <h3 id="742-routing-policy">7.4.2 Routing Policy<a class="headerlink" href="#742-routing-policy" title="Permanent link">&para;</a></h3>
@@ -1194,10 +1194,10 @@ ce2#
 <img alt="dcloud" src="../img/07/15_L2VPN_policy3.png" /></p>
 </li>
 <li>
-<p>Commit changes</p>
+<p>Click <strong>Commit changes</strong>.</p>
 </li>
 </ol>
-<h3 id="75-vpws-provisioining">7.5 VPWS Provisioining<a class="headerlink" href="#75-vpws-provisioining" title="Permanent link">&para;</a></h3>
+<h3 id="75-vpws-provisioning">7.5 VPWS Provisioning<a class="headerlink" href="#75-vpws-provisioning" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Go to <strong>Services &amp; Traffic Engineering &gt; Provisioning (NSO)</strong>, then click <strong>L2VPN-Service</strong>.</p>
@@ -1332,24 +1332,24 @@ ce2#
 <ul>
 <li>enable <code>service-assurance</code></li>
 <li>monitoring state: enable</li>
-<li>preservation: remove (delete all histrical data when stop monitoring)</li>
+<li>preservation: remove (delete all historical data when monitoring stops)</li>
 <li>profile-name: <code>Gold_L2VPN_ConfigProfile system</code></li>
 <li>rule-name: <code>Rule-L2VPN-NM system</code></li>
 </ul>
 <p><img alt="dcloud" src="../img/07/23_L2VPN_settings7.png" /></p>
 </li>
 <li>
-<p><strong>Dry-run</strong> to confirm the configuration. </p>
+<p>Click <strong>Dry-run</strong> to confirm the configuration. </p>
 <p><img alt="dcloud" src="../img/07/24_L2VPN_dry-run1.png" /></p>
-<p>You can switch the display with <strong>Show changes</strong> on the upper right.
+<p>You can switch the display by using <strong>Show changes</strong> in the upper right.
 <img alt="dcloud" src="../img/07/25_L2VPN_dry-run2.png" /></p>
 </li>
 <li>
-<p><strong>Commit changes</strong></p>
+<p>Click <strong>Commit changes</strong>.</p>
 <p><img alt="dcloud" src="../img/07/26_L2VPN_commit.png" /></p>
 </li>
 </ol>
-<h2 id="76-confirmation-of-l2vpn">7.6 Confirmation of L2VPN<a class="headerlink" href="#76-confirmation-of-l2vpn" title="Permanent link">&para;</a></h2>
+<h2 id="76-confirm-the-l2vpn">7.6 Confirm the L2VPN<a class="headerlink" href="#76-confirm-the-l2vpn" title="Permanent link">&para;</a></h2>
 <h3 id="via-cnc-gui">via CNC GUI<a class="headerlink" href="#via-cnc-gui" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Open <strong>Services &amp; Traffic Engineering &gt; VPN Services</strong>.</li>
@@ -1359,8 +1359,8 @@ ce2#
 </li>
 </ol>
 <h3 id="via-cli">via CLI<a class="headerlink" href="#via-cli" title="Permanent link">&para;</a></h3>
-<p>On the PE1/PE2:  </p>
-<p>The uDX2 SID is assigned to <code>CustB_vpws</code>.</p>
+<p>On PE1/PE2:  </p>
+<p>Confirm that a uDX2 SID is assigned to <code>CustB_vpws</code>.</p>
 <pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show segment-routing srv6 locator srv6 sid
 Fri Nov  6 08:20:24.085 UTC
@@ -1375,7 +1375,7 @@ fcbb:bb00:1:e003::          uB6 (PSP/USD Insert.Red)  'srte_c_20_ep_2001:db8::3'
 RP/0/RP0/CPU0:C8711-1-PE#
 </code></pre>
 
-<p>The VPWS <code>CustB_vpws</code> is up.</p>
+<p>Confirm that the VPWS <code>CustB_vpws</code> is up.</p>
 <pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show l2vpn xconnect
 Fri Nov  6 08:21:20.013 UTC
@@ -1393,8 +1393,8 @@ RP/0/RP0/CPU0:C8711-1-PE#
 
 <h2 id="77-automated-steering">7.7 Automated Steering<a class="headerlink" href="#77-automated-steering" title="Permanent link">&para;</a></h2>
 <h3 id="771-enable-route-policy">7.7.1 Enable Route-Policy<a class="headerlink" href="#771-enable-route-policy" title="Permanent link">&para;</a></h3>
-<p>In the built-in L2VPN service model, MP-BGP-related settings are not performed as described above. Therefore, please configure the following on PE1 and PE2 to enable the route-policy.</p>
-<p>On the PE1 and PE2:
+<p>The built-in L2VPN service model does not configure MP-BGP-related settings, as described above. Therefore, configure the following on PE1 and PE2 to enable the route policy.</p>
+<p>On PE1 and PE2:
 <div class="highlight"><pre><span></span><code>conf t
 router bgp 65000
  neighbor-group ibgp
@@ -1404,7 +1404,7 @@ router bgp 65000
  !
  end
 </code></pre></div></p>
-<p>Go to <strong>Device Management &gt; Network Devices</strong>, then check PE1 &amp; PE2 and select <code>Sync-from device to NSO</code> from the Actions.</p>
+<p>Go to <strong>Device Management &gt; Network Devices</strong>, select PE1 and PE2, and choose <strong>Sync-from devices to NSO</strong> from <strong>Actions</strong>.</p>
 <p><img alt="dcloud" src="../img/07/30_sync-from.png" /></p>
 <h3 id="772-confirmation-via-gui">7.7.2 Confirmation via GUI<a class="headerlink" href="#772-confirmation-via-gui" title="Permanent link">&para;</a></h3>
 <ol>
@@ -1418,13 +1418,13 @@ router bgp 65000
 <p><img alt="dcloud" src="../img/07/28_L2VPN_view2.png" /></p>
 </li>
 <li>
-<p>Go to <strong>Transport &gt; SRv6</strong>, then confirm SRv6 Policy <code>PE1-PE2_Color10</code> is steering the VPWS traffic from PE1 to PE2. Since the SR policy for Color 10 is not configured on the PE2 side, traffic from PE2 to PE1 is forwarded via the IGP shortest path.</p>
+<p>Go to <strong>Transport &gt; SRv6</strong>, then confirm that SRv6 policy <code>PE1-PE2_color10</code> is steering the VPWS traffic from PE1 to PE2. Because no color 10 SR policy is configured on PE2, traffic from PE2 to PE1 is forwarded via the IGP shortest path.</p>
 <p><img alt="dcloud" src="../img/07/29_L2VPN_view3.png" /></p>
 </li>
 </ol>
 <h3 id="773-confirmation-via-cli">7.7.3 Confirmation via CLI<a class="headerlink" href="#773-confirmation-via-cli" title="Permanent link">&para;</a></h3>
-<p>When checking the EVPN route information exchanged with the peer PE via BGP, you can see Route Type 1: Ethernet Auto-Discovery (EAD) routes. You can also find that Color10 is assigned to them.</p>
-<p>On the PE1/PE2: </p>
+<p>In the EVPN route information exchanged with the peer PE via BGP, you can see Route Type 1 (Ethernet Auto-Discovery, EAD) routes. You can also see that color 10 is assigned to them.</p>
+<p>On PE1/PE2: </p>
 <pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show bgp l2vpn evpn
 Fri Nov  6 08:58:50.399 UTC
@@ -1458,7 +1458,7 @@ Processed 2 prefixes, 3 paths
 RP/0/RP0/CPU0:C8711-1-PE#
 </code></pre>
 
-<p>Perform a connectivity check between the CEs.</p>
+<p>Check connectivity between the CEs.</p>
 <p>On CE1(csr1000v-CE1):
 <div class="highlight"><pre><span></span><code>ce1#ping 198.21.0.200
 Type escape sequence to abort.
@@ -1467,71 +1467,71 @@ Sending 5, 100-byte ICMP Echos to 198.21.0.200, timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 3/13/50 ms
 ce1#
 </code></pre></div></p>
-<h2 id="78-packet-capture-option">7.8 Packet Capture (Option)<a class="headerlink" href="#78-packet-capture-option" title="Permanent link">&para;</a></h2>
-<p>We will use the packet capture feature of CML to observe the encapsulation in an IPv6 header.</p>
+<h2 id="78-packet-capture-optional">7.8 Packet Capture (Optional)<a class="headerlink" href="#78-packet-capture-optional" title="Permanent link">&para;</a></h2>
+<p>Use the packet capture feature of CML to observe the encapsulation in the IPv6 header.</p>
 <p><strong>CE1 to CE2</strong></p>
 <ol>
 <li>
-<p>Start ping from <code>CE1</code> to <code>CE2</code></p>
+<p>Start a ping from <code>CE1</code> to <code>CE2</code>.</p>
 <p>On CE1(csr1000v-CE1):
 <div class="highlight"><pre><span></span><code>ce1#ping 198.21.0.200 repeat 10000
 </code></pre></div></p>
 </li>
 <li>
-<p>Right click the link between <code>P5</code> and <code>PE3</code></p>
+<p>Right-click the link between <code>P5</code> and <code>PE3</code>.</p>
 </li>
 <li>
 <p>Start a packet capture.</p>
 </li>
 <li>
-<p>Click the ICMP echo request from 198.21.0.100 to 198.21.0.200.</p>
+<p>Select the ICMP echo request packet from 198.21.0.100 to 198.21.0.200.</p>
 </li>
 <li>
-<p>Find the IPv6 header. The destination address should be the PE3 uDN (fcbb:bb00:3) and the SR header contains the PE2 uDX2 (ex. fcbb:bb00:2:e002::). </p>
+<p>Find the IPv6 header. The destination address should be the uN SID of PE3 (fcbb:bb00:3), and the SR header should contain the uDX2 SID of PE2 (for example, fcbb:bb00:2:e002::). </p>
 <p><img alt="dcloud" src="../img/07/31_L2VPN_capture1.png" />
 <img alt="dcloud" src="../img/07/32_L2VPN_capture2.png" /></p>
 </li>
 </ol>
-<p>With the ub6-insert-reduced (Binding-SID insert reduced behavior), an SRH (Segment Routing Header) is inserted directly between the existing IPv6 header and the payload, instead of attaching a new IPv6 header to the outside. </p>
-<p>Therefore, an SR header containing the uDX2 SID is inserted into the IPv6 header in this way, and the Outer IPv6 Address contains the PE3 uN SID from the SR policy used for steering.</p>
+<p>With the ub6-insert-reduced behavior (Binding SID insert reduced), an SRH (Segment Routing Header) is inserted directly between the existing IPv6 header and the payload, instead of encapsulating the packet in a new outer IPv6 header. </p>
+<p>As a result, an SRH containing the uDX2 SID is inserted after the IPv6 header, and the destination address of the IPv6 header contains the PE3 uN SID from the SR policy used for steering.</p>
 <p><strong>CE2 to CE1</strong></p>
 <ol>
 <li>
-<p>Start ping from <code>CE2</code> to <code>CE2</code></p>
+<p>Start a ping from <code>CE2</code> to <code>CE1</code>.</p>
 <p>On CE2(csr1000v-0):
 <div class="highlight"><pre><span></span><code>ce2#ping 198.21.0.100 repeat 10000
 </code></pre></div></p>
 </li>
 <li>
-<p>Right click the link between <code>P4</code> and <code>PE2</code></p>
+<p>Right-click the link between <code>P4</code> and <code>PE2</code>.</p>
 </li>
 <li>
 <p>Start a packet capture.</p>
 </li>
 <li>
-<p>Click the ICMP echo request from 198.21.0.200 to 198.21.0.100.</p>
+<p>Select the ICMP echo request packet from 198.21.0.200 to 198.21.0.100.</p>
 </li>
 <li>
-<p>Find the IPv6 header. The destination address should be the PE1 uDX2 (ex. fcbb:bb00:1:e004::). Currently, no Color 10 policy is configured on PE2, so traffic from PE2 to PE1 follows the IGP shortest path: PE2-&gt;P4-&gt;PE1.</p>
+<p>Find the IPv6 header. The destination address should be the uDX2 SID of PE1 (for example, fcbb:bb00:1:e004::). Because no color 10 policy is configured on PE2, traffic from PE2 to PE1 follows the IGP shortest path: PE2-&gt;P4-&gt;PE1.</p>
 <p><img alt="dcloud" src="../img/07/33_L2VPN_capture3.png" /></p>
 </li>
 </ol>
 <h2 id="79-service-health">7.9 Service Health<a class="headerlink" href="#79-service-health" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Open <strong>Services &amp; Traffic Engineering &gt; VPN Services</strong>.</li>
-<li>You can confirm the helth of <code>CustB_vpws</code> is <strong>degraded</strong>.</li>
+<li>Confirm that the health of <code>CustB_vpws</code> is <strong>Degraded</strong>.</li>
 <li>
 <p>Click <strong>Actions &gt; Assurance graph</strong></p>
 <p><img alt="dcloud" src="../img/07/34_L2VPN_health1.png" /></p>
 </li>
 <li>
-<p>Drilling down into this graph leads to three symptoms.</p>
+<p>Drill down into this graph to see three symptoms.</p>
 <p><img alt="dcloud" src="../img/07/35_L2VPN_health2.png" /></p>
 <ul>
 <li><strong>Fallback LSP path from Device: C8711-2-PE to C8711-1-PE:1.1.1.1 doesn't exist.</strong></li>
 <li><strong>Fallback LSP path from Device: C8711-1-PE to C8711-2-PE:2.2.2.2 doesn't exist.</strong> </li>
 </ul>
-<p>These two are monitoring items that check reachability to the BGP Router-id of the opposite PE. In this case, this alert is occurring because the Loopback IF IPv4 address has not been learned unlike other PEs.</p>
+<p>These two are monitoring items that check reachability to the BGP router ID of the remote PE. In this case, these alerts occur because the IPv4 address of the loopback interface of the remote PE has not been learned.</p>
 <div class="highlight"><pre><span></span><code>RP/0/RP0/CPU0:C8711-1-PE#show ip route
 Fri Nov  6 05:06:12.166 UTC
 
@@ -1545,20 +1545,20 @@ RP/0/RP0/CPU0:C8711-1-PE#
 <ul>
 <li><strong>L2VPN traffic originated from this node is configured to go over SR transport, but zero eligible SR policies are detected. VpnServiceId: CustB_vpws Device: C8711-2-PE</strong></li>
 </ul>
-<p>This symptom occurs because the Color10 policy is not configured on PE2.</p>
+<p>This symptom occurs because the color 10 policy is not configured on PE2.</p>
 </li>
 </ol>
 <h2 id="710-done-when">7.10 Done when<a class="headerlink" href="#710-done-when" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>CustB_vpws</code> is up and shown as point-to-point in VPN Services.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The ping between CEs is succeeed.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The ping between the CEs succeeds.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The SR policy is steering the traffic from PE1 to PE2.</li>
 </ul>
 <h2 id="711-clean-up-rule">7.11 Clean-up rule<a class="headerlink" href="#711-clean-up-rule" title="Permanent link">&para;</a></h2>
-<p>First, delete the configuration set via the CLI, and then delete the VPWS service on the CNC side.</p>
+<p>First, delete the configuration that you applied via the CLI, and then delete the VPWS service in CNC.</p>
 <ol>
 <li>
-<p>Delete the following configuration on the PE1/PE2.</p>
+<p>Delete the following configuration on PE1 and PE2.</p>
 <div class="highlight"><pre><span></span><code>conf t
 router bgp 65000
  neighbor-group ibgp
@@ -1570,18 +1570,18 @@ end
 </code></pre></div>
 </li>
 <li>
-<p>Go to <strong>Device Management &gt; Network Devices</strong>, then check PE1 &amp; PE2 and select <code>Sync-from device to NSO</code> from the Actions.</p>
+<p>Go to <strong>Device Management &gt; Network Devices</strong>, select PE1 and PE2, and choose <strong>Sync-from devices to NSO</strong> from <strong>Actions</strong>.</p>
 <p><img alt="dcloud" src="../img/07/30_sync-from.png" /></p>
 </li>
 <li>
 <p>Go to <strong>Services &amp; Traffic Engineering &gt; Provisioning (NSO)</strong>, then click <strong>L2VPN-Service</strong>. </p>
 </li>
 <li>
-<p>Select <strong>Delete dry run</strong> from the Actions.</p>
+<p>Select <strong>Delete dry run</strong> from <strong>Actions</strong>.</p>
 <p><img alt="dcloud" src="../img/07/38_L2VPN_delete1.png" /></p>
 </li>
 <li>
-<p>Check the config diff and click <code>Delete</code>.</p>
+<p>Check the configuration diff and click <strong>Delete</strong>.</p>
 <p><img alt="dcloud" src="../img/07/39_L2VPN_delete2.png" /></p>
 </li>
 </ol>

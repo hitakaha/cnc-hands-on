@@ -453,15 +453,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#64-confirmation-of-l3vpn" class="md-nav__link">
+  <a href="#64-confirm-the-l3vpn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.4 Confirmation of L3VPN
+        6.4 Confirm the L3VPN
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6.4 Confirmation of L3VPN">
+    <nav class="md-nav" aria-label="6.4 Confirm the L3VPN">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -492,10 +492,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#65-packet-capture-option" class="md-nav__link">
+  <a href="#65-packet-capture-optional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.5 Packet Capture (Option)
+        6.5 Packet Capture (Optional)
       
     </span>
   </a>
@@ -700,15 +700,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#64-confirmation-of-l3vpn" class="md-nav__link">
+  <a href="#64-confirm-the-l3vpn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.4 Confirmation of L3VPN
+        6.4 Confirm the L3VPN
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6.4 Confirmation of L3VPN">
+    <nav class="md-nav" aria-label="6.4 Confirm the L3VPN">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -739,10 +739,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#65-packet-capture-option" class="md-nav__link">
+  <a href="#65-packet-capture-optional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.5 Packet Capture (Option)
+        6.5 Packet Capture (Optional)
       
     </span>
   </a>
@@ -823,8 +823,8 @@
 </tbody>
 </table>
 <h2 id="62-pre-check">6.2 Pre-check<a class="headerlink" href="#62-pre-check" title="Permanent link">&para;</a></h2>
-<p>MP-BGP configration is not supported by the Built-in Function Pack in CNC 7.2.<br />
-Due to CML licensing constraints (limited to 5 devices), an RR is not used in this topology. Therefore, we will verify that MP-BGP is configured between full-mesh PEs.</p>
+<p>MP-BGP configuration is not supported by the built-in function pack in CNC 7.2.<br />
+Because of CML licensing constraints (limited to 5 devices), a route reflector (RR) is not used in this topology. Therefore, verify that MP-BGP is configured in a full mesh between the PEs.</p>
 <p><img alt="dcloud" src="../img/06/01_mp-bgp.png" /></p>
 <p>On the PEs:</p>
 <pre><code>
@@ -868,7 +868,7 @@ router bgp 65000
 </code></pre>
 
 <h2 id="63-create-l3vpn-service">6.3 Create L3VPN service<a class="headerlink" href="#63-create-l3vpn-service" title="Permanent link">&para;</a></h2>
-<p>Since there are many configuration parameters, we will load a JSON file to perform the L3VPN settings.</p>
+<p>Because there are many configuration parameters, load a JSON file to configure the L3VPN settings.</p>
 <ol>
 <li>
 <p>Go to <strong>Services &amp; Traffic Engineering &gt; Provisioning (NSO)</strong>, then click <strong>L3VPN-Service</strong>.</p>
@@ -1062,14 +1062,14 @@ router bgp 65000
 <li>vpn-id: <code>CustA</code></li>
 <li>vpn-service-topology: <code>custom</code></li>
 </ul>
-<p><strong>vpn-instance-profile</strong> (common configurations for all PEs)</p>
+<p><strong>vpn-instance-profile</strong> (common configuration for all PEs)</p>
 <ul>
 <li>profile-id: default</li>
 <li>rd: 0:100:100</li>
 <li>address-family: ipv4</li>
 <li>route-target: 0:100:100</li>
 <li>route-target-type: both</li>
-<li>srv6: enable srv6 and set locator <code>srv6</code></li>
+<li>srv6: enable srv6 and set the locator to <code>srv6</code></li>
 </ul>
 <p><img alt="dcloud" src="../img/06/03_L3VPN_settings1.png" /><br />
 <img alt="dcloud" src="../img/06/04_L3VPN_settings2.png" /></p>
@@ -1122,24 +1122,24 @@ router bgp 65000
 <ul>
 <li>enable <code>service-assurance</code></li>
 <li>monitoring state: enable</li>
-<li>preservation: remove (delete all histrical data when stop monitoring)</li>
+<li>preservation: remove (delete all historical data when monitoring stops)</li>
 <li>profile-name: <code>Gold_L3VPN_ConfigProfile system</code></li>
 <li>rule-name: <code>Rule-L3VPN-NM system</code></li>
 </ul>
 <p><img alt="dcloud" src="../img/06/11_L3VPN_settings9.png" /></p>
 </li>
 <li>
-<p><strong>Dry-run</strong> to confirm the configuration. </p>
+<p>Click <strong>Dry-run</strong> to confirm the configuration. </p>
 <p><img alt="dcloud" src="../img/06/12_L3VPN_dry-run1.png" /></p>
-<p>You can switch the display with <strong>Show changes</strong> on the upper right.
+<p>You can switch the display by using <strong>Show changes</strong> in the upper right.
 <img alt="dcloud" src="../img/06/13_L3VPN_dry-run2.png" /></p>
 </li>
 <li>
-<p><strong>Commit changes</strong></p>
+<p>Click <strong>Commit changes</strong>.</p>
 <p><img alt="dcloud" src="../img/06/14_L3VPN_commit.png" /></p>
 </li>
 </ol>
-<h2 id="64-confirmation-of-l3vpn">6.4 Confirmation of L3VPN<a class="headerlink" href="#64-confirmation-of-l3vpn" title="Permanent link">&para;</a></h2>
+<h2 id="64-confirm-the-l3vpn">6.4 Confirm the L3VPN<a class="headerlink" href="#64-confirm-the-l3vpn" title="Permanent link">&para;</a></h2>
 <h3 id="via-cnc-gui">via CNC GUI<a class="headerlink" href="#via-cnc-gui" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Open <strong>Services &amp; Traffic Engineering &gt; VPN Services</strong>.</li>
@@ -1150,7 +1150,7 @@ router bgp 65000
 </ol>
 <h3 id="via-cli">via CLI<a class="headerlink" href="#via-cli" title="Permanent link">&para;</a></h3>
 <p>On the PEs:<br />
-The uDT4 SID is assigned to <code>CustA</code>.</p>
+Confirm that a uDT4 SID is assigned to <code>CustA</code>.</p>
 <pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show segment-routing srv6 locator srv6 sid
 Wed Nov  4 14:47:40.914 UTC
@@ -1165,7 +1165,7 @@ fcbb:bb00:1:e003::          uB6 (PSP/USD Insert.Red)  'srte_c_20_ep_2001:db8::3'
 RP/0/RP0/CPU0:C8711-1-PE#
 </code></pre>
 
-<p>The customer routes for the remote PEs are being learned via MP-BGP.
+<p>The customer routes of the remote PEs are learned via MP-BGP.
 <div class="highlight"><pre><span></span><code>RP/0/RP0/CPU0:C8711-1-PE#show  ip route vrf CustA
 Wed Nov  4 14:48:09.301 UTC
 
@@ -1179,7 +1179,7 @@ B    192.168.2.0/24 [200/0] via 2001:db8::2 (nexthop in vrf default), 00:11:13
 B    192.168.3.0/24 [200/0] via 2001:db8::3 (nexthop in vrf default), 00:11:13
 RP/0/RP0/CPU0:C8711-1-PE#
 </code></pre></div></p>
-<p>Looking at the CEF table from PE1 to the CE-facing interface address of PE2, it can be seen that customer packets are encapsulated with PE2's uDT4 SID.</p>
+<p>The CEF table on PE1 for the CE-facing interface address of PE2 shows that customer packets are encapsulated with the uDT4 SID of PE2.</p>
 <pre><code>RP/0/RP0/CPU0:C8711-1-PE#show cef vrf CustA 192.168.2.1
 Wed Nov  4 14:48:53.148 UTC
 192.168.2.0/24, version 3, SRv6 Headend, internal 0x5000001 0x30 (ptr 0x9e336dc8) [1], 0x0 (0x0), 0x0 (0x9f553a58)
@@ -1209,7 +1209,7 @@ Wed Nov  4 14:48:53.148 UTC
 RP/0/RP0/CPU0:C8711-1-PE#
 </code></pre>
 
-<p>Looking at the CEF table from PE1 to the CE-facing interface address of PE3, it can be seen that customer packets are encapsulated with PE3's uDT4 SID.</p>
+<p>The CEF table on PE1 for the CE-facing interface address of PE3 shows that customer packets are encapsulated with the uDT4 SID of PE3.</p>
 <pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show cef vrf CustA 192.168.3.1
 Wed Nov  4 14:49:04.777 UTC
@@ -1240,7 +1240,7 @@ Wed Nov  4 14:49:04.777 UTC
 RP/0/RP0/CPU0:C8711-1-PE#
 </code></pre>
 
-<p>Connectivity can also be checked via Ping.</p>
+<p>You can also check connectivity by using ping.</p>
 <div class="highlight"><pre><span></span><code>RP/0/RP0/CPU0:C8711-1-PE#ping vrf CustA 192.168.2.1
 Wed Nov  4 15:19:24.760 UTC
 Type escape sequence to abort.
@@ -1256,45 +1256,45 @@ Sending 5, 100-byte ICMP Echos to 192.168.3.1 timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 7/24/86 ms
 RP/0/RP0/CPU0:C8711-1-PE#
 </code></pre></div>
-<h2 id="65-packet-capture-option">6.5 Packet Capture (Option)<a class="headerlink" href="#65-packet-capture-option" title="Permanent link">&para;</a></h2>
-<p>We will use the packet capture feature of CML to observe the encapsulation in an IPv6 header.</p>
+<h2 id="65-packet-capture-optional">6.5 Packet Capture (Optional)<a class="headerlink" href="#65-packet-capture-optional" title="Permanent link">&para;</a></h2>
+<p>Use the packet capture feature of CML to observe the encapsulation in the IPv6 header.</p>
 <ol>
 <li>
-<p>Start ping to the CE-facing interface address of <code>PE2</code> at <code>PE1</code>.
+<p>On <code>PE1</code>, start a ping to the CE-facing interface address of <code>PE2</code>.
     <div class="highlight"><pre><span></span><code>RP/0/RP0/CPU0:C8711-1-PE# ping vrf CustA 192.168.2.1 count 100000
 </code></pre></div></p>
 </li>
 <li>
-<p>Right click the link between <code>P4</code> and <code>PE2</code></p>
+<p>Right-click the link between <code>P4</code> and <code>PE2</code>.</p>
 </li>
 <li>
 <p>Start a packet capture.</p>
 </li>
 <li>
-<p>Click the ICMP echo from 192.168.1.1 to 192.168.2.1.</p>
+<p>Select the ICMP echo packet from 192.168.1.1 to 192.168.2.1.</p>
 </li>
 <li>
-<p>Find the IPv6 header. The destination address should be the PE2 uDT4 (ex. fcbb:bb00:2:e002::).</p>
+<p>Find the IPv6 header. The destination address should be the uDT4 SID of PE2 (for example, fcbb:bb00:2:e002::).</p>
 <p><img alt="dcloud" src="../img/06/16_L3VPN_capture.png" /></p>
 </li>
 </ol>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The <code>CustA</code> service provisioning is completed.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The vrf ping between PEs is succeeed.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The <code>CustA</code> service is provisioned.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The VRF ping between the PEs succeeds.</li>
 </ul>
 <h2 id="clean-up">Clean up<a class="headerlink" href="#clean-up" title="Permanent link">&para;</a></h2>
-<p>Before going to the chapter 7, please delete all L3VPN services because we use the same CE-facing interfaces for L2VPN provisionings.</p>
+<p>Before proceeding to chapter 7, delete all L3VPN services, because the same CE-facing interfaces are used for L2VPN provisioning.</p>
 <ol>
 <li>
-<p>Go to <strong>Service &amp; Traffic Engineering &gt; Provisioning(NSO) &gt; L3VPN-Service</strong></p>
+<p>Go to <strong>Services &amp; Traffic Engineering &gt; Provisioning (NSO) &gt; L3VPN-Service</strong>.</p>
 </li>
 <li>
 <p>Click <strong>Actions &gt; Delete dry run</strong></p>
 <p><img alt="dcloud" src="../img/06/17_L3VPN_delete1.png" /></p>
 </li>
 <li>
-<p>Confirm the dry-run result and click <code>Delete</code></p>
+<p>Confirm the dry-run result and click <strong>Delete</strong>.</p>
 <p><img alt="dcloud" src="../img/06/18_L3VPN_delete2.png" /></p>
 </li>
 </ol>
