@@ -1,6 +1,6 @@
 # 3. Active Topology
 
-**Time:** 45 minutes.
+**Time:** 15 minutes.
 
 **Objective:** Use Crosswork Active Topology to identify where a device is located and how it is connected, then verify the same facts from the IOS-XR CLI.
 

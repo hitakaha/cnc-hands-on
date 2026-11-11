@@ -1,6 +1,6 @@
 # 1. Preparation
 
-**Time:** 50 minutes
+**Time:** 10 minutes
 
 **Objective:** Access the dCloud environment, disable maintenance mode, start the CML labs, and log in to a controller that is ready for use.
 

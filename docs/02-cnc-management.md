@@ -1,6 +1,6 @@
 # 2. CNC management
 
-**Time:** 50 minutes.
+**Time:** 15 minutes.
 
 **Objective:** Confirm that CNC 7.2 is healthy enough for topology, inventory, traffic engineering, and service provisioning. You are reading the system, not rebuilding it.
 

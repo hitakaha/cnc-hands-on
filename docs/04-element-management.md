@@ -1,6 +1,6 @@
 # 4. Element management
 
-**Time:** 50 minutes.
+**Time:** 20 minutes.
 
 
 **Objective:** Use CNC Element Management Functions to check node status, hardware inventory, configuration archive, alarms, and interface performance. Do not change any device configuration in this chapter.
