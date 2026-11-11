@@ -10,10 +10,10 @@ Each chapter has an objective, the clicks or CLI, the result you should see, and
 2. Confirm CNC, the providers, and collection are healthy.
 3. Read the topology in the UI and confirm it from XR CLI.
 4. Walk inventory, faults, configuration, and performance.
-5. Observe a PCC-initiated SR policy, then create a PCE-initiated SRv6 policy.
-6. Provision an L3VPN and steer it onto that policy.
-7. Provision a VPWS L2VPN and check its Service Health. An NSO custom template and `sync-from` are optional.
-8. Provision a VPLS L2VPN with multi-homing, steer it onto an SRv6 ODN policy, and check its Service Health.
+5. Create PCC-initiated SRv6 policies with PCE-delegated dynamic paths.
+6. Provision an L3VPN.
+7. Provision a L2VPN VPWS and check its Service Health.
+8. Provision a L2VPN VPLS with multi-homing, steer it onto an SRv6 ODN policy, and check its Service Health.
 9. Collect showtech, read collection jobs and alarms, and walk the patch screen.
 10. Optional: ask the CNC MCP assistant one inventory question.
 
