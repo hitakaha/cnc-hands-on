@@ -700,13 +700,14 @@
 In this scenario, the lab setup is as follows.</p>
 <ul>
 <li>CNC version 7.2.0 Single VM</li>
-<li>P and PE routers: C8000 on CML</li>
-<li>PCE: XRv9k</li>
+<li>P and PE routers: Cisco 8711-32FH-M (VXR) on CML (25.4.2)</li>
+<li>PCE: XRv9k on CML (25.4.1)</li>
+<li>CE routers: CSR 1000v on CML (17.03.08a)</li>
 </ul>
 <p>The P and PE routers use the Cisco 8000 hardware emulator on CML.
 For more information about the Cisco 8000 hardware emulator, refer to the following:</p>
 <p><a href="https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000-emulator/cisco8000-hardware-emulator-installation-guide.pdf">https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000-emulator/cisco8000-hardware-emulator-installation-guide.pdf</a>.</p>
-<p>XRv9k for the PCE runs in a different CML instance, which is connected to the first one by multiple external connectors.</p>
+<p>XRv9k for the PCE and CSR1000V for the CEs run in a different CML instance, which is connected to the first one by multiple external connectors.</p>
 <p>The difference between Single VM (SVM) and cluster
 There are two types of CNC deployment: Single VM (SVM) and cluster.
 In Single VM deployment, all nodes, NSO, and Crosswork Data Gateway (CDG) run in a single VM.
@@ -774,11 +775,11 @@ In that case, run "sync-from" in <strong>Device Management</strong> to synchroni
 <p><strong>Result:</strong> All devices are synced with CNC.
 You are logged in to the UI, and the controller is in normal operating mode.</p>
 <h2 id="done-when">Done when<a class="headerlink" href="#done-when" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Maintenance mode is Off.</li>
-<li>You are logged in to CNC.</li>
-<li>The CML labs are booted.</li>
-<li>All devices are synced.</li>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Maintenance mode is Off.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You are logged in to CNC.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The CML labs are booted.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> All devices are synced.</li>
 </ul>
 
 
