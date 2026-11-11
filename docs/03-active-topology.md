@@ -118,7 +118,7 @@ The PCE should list the PEs as BGP-LS and PCEP peers. That is the feed behind th
 
 ## Done when
 
-- All three lab PEs are on the map and reachable.
-- `show isis neighbors` (or the named-instance form) matches the map.
-- The core interface and SRv6 locator you recorded in CNC appear in XR CLI.
-- You know the baseline SR policy count.
+- [ ] All three lab PEs are on the map and reachable.
+- [ ] `show isis neighbors` (or the named-instance form) matches the map.
+- [ ] The core interface and SRv6 locator you recorded in CNC appear in XR CLI.
+- [ ] You know the baseline SR policy count.

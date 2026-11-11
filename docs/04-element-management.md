@@ -63,7 +63,7 @@ When automatic backup on configuration change is enabled under **Device Manageme
 
 ## 4.4 Configuration templates (read only)
 
-Device templates under Device Management are parameterized CLI scripts. They are intended for repeatable underlay or day-1 configuration. They are not the NSO L2VPN/L3VPN function-pack templates, and they are not the custom template you may attach to a VPWS in chapter 7.
+Device templates under Device Management are parameterized CLI scripts. They are intended for repeatable underlay or day-1 configuration. They are not the NSO L2VPN/L3VPN function-pack templates.
 
 1. Go to **Device Management > Configuration Templates**.
 2. Open one existing template, if any exist. Read the device types it targets and one variable it expects.
@@ -114,8 +114,8 @@ Link colors on the topology map come from interface utilization collected for Op
 
 ## Done when
 
-- You can map the generic NMS functions (node list, inventory, alerts, config archive, and utilization) to the corresponding CNC pages.
-- The headend is in Network Devices and in Network Inventory.
-- You opened an archived configuration and did not restore it.
-- You opened Alarms and Events.
-- You compared one interface counter with the topology utilization from chapter 3.
+- [ ] You can map the generic NMS functions (node list, inventory, alerts, config archive, and utilization) to the corresponding CNC pages.
+- [ ] The headend is in Network Devices and in Network Inventory.
+- [ ] You opened an archived configuration and did not restore it.
+- [ ] You opened Alarms and Events.
+- [ ] You compared one interface counter with the topology utilization from chapter 3.

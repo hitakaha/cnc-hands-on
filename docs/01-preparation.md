@@ -12,15 +12,16 @@ The lab setup
 In this scenario, the lab setup is as follows.
 
 - CNC version 7.2.0 Single VM
-- P and PE routers: C8000 on CML
-- PCE: XRv9k
+- P and PE routers: Cisco 8711-32FH-M (VXR) on CML (25.4.2)
+- PCE: XRv9k on CML (25.4.1)
+- CE routers: CSR 1000v on CML (17.03.08a)
 
 The P and PE routers use the Cisco 8000 hardware emulator on CML.
 For more information about the Cisco 8000 hardware emulator, refer to the following:
 
 [https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000-emulator/cisco8000-hardware-emulator-installation-guide.pdf](https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000-emulator/cisco8000-hardware-emulator-installation-guide.pdf).
 
-XRv9k for the PCE runs in a different CML instance, which is connected to the first one by multiple external connectors.
+XRv9k for the PCE and CSR1000V for the CEs run in a different CML instance, which is connected to the first one by multiple external connectors.
 
 The difference between Single VM (SVM) and cluster
 There are two types of CNC deployment: Single VM (SVM) and cluster.
@@ -107,7 +108,7 @@ You are logged in to the UI, and the controller is in normal operating mode.
 
 ## Done when
 
-- Maintenance mode is Off.
-- You are logged in to CNC.
-- The CML labs are booted.
-- All devices are synced.
+- [ ] Maintenance mode is Off.
+- [ ] You are logged in to CNC.
+- [ ] The CML labs are booted.
+- [ ] All devices are synced.
