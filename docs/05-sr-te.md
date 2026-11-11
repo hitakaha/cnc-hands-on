@@ -5,7 +5,7 @@
 **Objective:** Create various PCC-initiated SRv6 policies with PCE-delegated dynamic paths from CNC.
 
 !!! warning "Note"
-    Cisco 8000 does not support SRv6 policies with head-end computed dynamic paths or PCE-initiated SRv6 policies. In addition, the CNC 7.2 built-in function pack does not support explicit paths that use IPv6 addresses or SRv6 SIDs. Therefore, this hands-on focuses on PCC-initiated SRv6 policies with PCE-delegated dynamic paths.  
+    At the time of writing, Cisco 8000 platforms are yet to support SRv6 policies with head-end computed dynamic paths or PCE-initiated SRv6 policies. In addition, the CNC 7.2 built-in function pack does not support explicit paths that use IPv6 addresses or SRv6 SIDs. Therefore, this hands-on focuses on PCC-initiated SRv6 policies with PCE-delegated dynamic paths.  
     For details, see [Cisco 8000 Configuration Guide: Segment Routing over IPv6 Traffic Engineering (SRv6-TE)](https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing-v6/srv6-config-guide-cisco8000/traffic-engineering-in-ipv6-networks-using-srv6-te/srv6-te-overview.html)
 
 ## 5.1 Terminology
@@ -25,18 +25,19 @@
 SR-PCE requires topology and SRv6 locator/SID information to compute paths. It acquires this information from the routers in the SRv6 topology via BGP-LS. In this scenario, BGP-LS sessions are established with the three PEs.
 
 Open Firefox in private browsing mode and click the "CML2 for PCE" bookmark.
-Then, on the SR-PCE console:
 
-```text
+Then, on the SR-PCE console (cisco/cisco):
+
+<pre><code>
 RP/0/RP0/CPU0:pce#show bgp link-state link-state neighbors brief
 Wed Nov  4 06:02:58.271 UTC
 
 Neighbor         Spk    AS  Description                         Up/Down  NBRState
-2001:db8:1::51    0 65000                                         4d20h Established 
-2001:db8:1::52    0 65000                                         4d20h Established 
-2001:db8:1::53    0 65000                                         4d20h Established 
+2001:db8:1::51    0 65000                                         4d20h <mark>Established</mark> 
+2001:db8:1::52    0 65000                                         4d20h <mark>Established</mark>  
+2001:db8:1::53    0 65000                                         4d20h <mark>Established</mark>  
 RP/0/RP0/CPU0:pce#
-```
+</code></pre>
 
 You can check the TEDB (Topology Database) that the PCE builds from BGP-LS by using the following command.
 
@@ -77,36 +78,36 @@ PCEP handles bidirectional communication between routers and PCEs, including pat
 
 On the SR-PCE:
 
-```
+<pre><code>
 RP/0/RP0/CPU0:pce#show pce ipv6 peer 
 Wed Nov  4 06:19:07.824 UTC
 
 PCE's peer database: 
 --------------------
-Peer address: 2001:db8::1
+<mark>Peer address: 2001:db8::1</mark>
   State: Up
   Capabilities: Stateful, Segment-Routing, Update, Instantiation, SRv6, SR-P2MP
 
-Peer address: 2001:db8::2
+<mark>Peer address: 2001:db8::2</mark>
   State: Up
   Capabilities: Stateful, Segment-Routing, Update, Instantiation, SRv6, SR-P2MP
 
-Peer address: 2001:db8::3
+<mark>Peer address: 2001:db8::3</mark>
   State: Up
   Capabilities: Stateful, Segment-Routing, Update, Instantiation, SRv6, SR-P2MP
 
-Peer address: 2001:db8::4
+<mark>Peer address: 2001:db8::4</mark>
   State: Up
   Capabilities: Stateful, Segment-Routing, Update, Instantiation, SRv6, SR-P2MP
 
-Peer address: 2001:db8::5
+<mark>Peer address: 2001:db8::5</mark>
   State: Up
   Capabilities: Stateful, Segment-Routing, Update, Instantiation, SRv6, SR-P2MP
 
 RP/0/RP0/CPU0:pce#
-```
+</code></pre>
 
-PCEP sessions are established with both P routers, P4 and P5. However, this configuration is unnecessary unless P4 or P5 acts as a head-end.
+PCEP sessions are established with all the routers in the topology, including P4 & P5. However, in real world environment, depending on the network design, establishing PCEP sessions with P routers is not a best practice unless they act as head-end of SRv6-TE policies as well.
 
 Open Firefox in private browsing mode and click the "CML2 for XR" bookmark.
 On the PCC routers (PE1, PE2, PE3):
@@ -332,7 +333,7 @@ In this lab, load the JSON file prepared in advance by using the procedure below
 
 On PE1:
 
-```text
+<pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show segment-routing traffic-eng policy name srte_c_10_ep_2001:db8::2
 Wed Nov  4 10:27:57.961 UTC
 
@@ -342,7 +343,7 @@ SR-TE policy database
 Color: 10, End-point: 2001:db8::2
   Name: srte_c_10_ep_2001:db8::2
   Status:
-    Admin: up  Operational: up for 00:17:41 (since Nov  4 10:10:16.196)
+    <mark>Admin: up  Operational: up</mark> for 00:17:41 (since Nov  4 10:10:16.196)
   Candidate-paths:
     Preference: 100 (configuration) (active)
       Name: srte_c_10_ep_2001:db8::2
@@ -354,7 +355,7 @@ Color: 10, End-point: 2001:db8::2
         Protection Type: protected-preferred
         Affinity:
           exclude-any:
-          RED
+          <mark>RED</mark>
         Maximum SID Depth: 7 
       Dynamic (pce 2001:db8::6) (valid)
         Metric Type: IGP (IANA PCEP/IGP: 1/0), Path Accumulated Metric: 30 
@@ -390,13 +391,13 @@ SID                         Behavior          Identification                    
 fcbb:bb00:1::               uN (PSP/USD)      'default':1                       sidmgr              InUse  Y 
 fcbb:bb00:1:e000::          uA (PSP/USD)      [FH0/0/0/0, Link-Local]:0         isis-1              InUse  Y 
 fcbb:bb00:1:e001::          uA (PSP/USD)      [FH0/0/0/1, Link-Local]:0         isis-1              InUse  Y 
-fcbb:bb00:1:e002::          uB6 (PSP/USD Insert.Red)  'srte_c_10_ep_2001:db8::2' (10, 2001:db8::2)  xtc_srv6            InUse  Y 
+<mark>fcbb:bb00:1:e002::          uB6 (PSP/USD Insert.Red)  'srte_c_10_ep_2001:db8::2' (10, 2001:db8::2)  xtc_srv6            InUse  Y</mark>
 RP/0/RP0/CPU0:C8711-1-PE#
-```
+</code></pre>
 
 On the SR-PCE:
 
-```
+<pre><code>
 RP/0/RP0/CPU0:pce#show pce lsp detail
 Wed Nov  4 10:33:48.887 UTC
 
@@ -410,14 +411,14 @@ Interface Name: srte_c_10_ep_2001:db8::2
  LSPs:
   LSP[0]:
    source 2001:db8::1, destination 2001:db8::2, tunnel ID 2, LSP ID 2
-   State: Admin up, Operation active
+   <mark>State: Admin up, Operation active</mark>
    Setup type: SRv6
    Binding SID: fcbb:bb00:1:e002:: Behavior: uB6 (PSP/USD Insert.Red) (79)
                 LBL:32 LNL:16 FL:16 AL:0
    Maximum SID Depth: 7
    Preference: 100
    Bandwidth: requested 0 kbps, applied 0 kbps
-   Affinity: exclude-any 0x8 include-any 0x0 include-all 0x0
+   <mark>Affinity: exclude-any 0x8</mark> include-any 0x0 include-all 0x0
    Protection type: protected-preferred
    Prefix-SID algorithm: 0 (set: 0)
    PCEP information: 
@@ -458,7 +459,7 @@ Interface Name: srte_c_10_ep_2001:db8::2
      CP Name: srte_c_10_ep_2001:db8::2
   
 RP/0/RP0/CPU0:pce#
-```
+</code></pre>
 
 ## 5.5 Create PCC-initiated policy 2 (TE metric)
 
@@ -644,7 +645,7 @@ You can configure the policy using either of the following two methods.
 
 On PE1:
 
-```text
+<pre><code>
 RP/0/RP0/CPU0:C8711-1-PE#show segment-routing traffic-eng policy name srte_c_20_ep_2001:db8::3
 Wed Nov  4 11:48:48.937 UTC
 
@@ -654,7 +655,7 @@ SR-TE policy database
 Color: 20, End-point: 2001:db8::3
   Name: srte_c_20_ep_2001:db8::3
   Status:
-    Admin: up  Operational: up for 00:13:52 (since Nov  4 11:34:56.433)
+    <mark>Admin: up  Operational: up</mark> for 00:13:52 (since Nov  4 11:34:56.433)
   Candidate-paths:
     Preference: 100 (configuration) (active)
       Name: srte_c_20_ep_2001:db8::3
@@ -666,7 +667,7 @@ Color: 20, End-point: 2001:db8::3
         Protection Type: protected-preferred
         Maximum SID Depth: 7 
       Dynamic (pce 2001:db8::6) (valid)
-        Metric Type: TE (IANA PCEP/IGP: 2/2), Path Accumulated Metric: 30 
+        <mark>Metric Type: TE</mark> (IANA PCEP/IGP: 2/2), Path Accumulated Metric: 30 
           SID[0]: fcbb:bb00:2::/48 Behavior: uN (PSP/USD) (48)
                   Format: f3216
                   LBL:32 LNL:16 FL:0 AL:80
@@ -700,18 +701,18 @@ fcbb:bb00:1::               uN (PSP/USD)      'default':1                       
 fcbb:bb00:1:e000::          uA (PSP/USD)      [FH0/0/0/0, Link-Local]:0         isis-1              InUse  Y 
 fcbb:bb00:1:e001::          uA (PSP/USD)      [FH0/0/0/1, Link-Local]:0         isis-1              InUse  Y 
 fcbb:bb00:1:e002::          uB6 (PSP/USD Insert.Red)  'srte_c_10_ep_2001:db8::2' (10, 2001:db8::2)  xtc_srv6            InUse  Y 
-fcbb:bb00:1:e003::          uB6 (PSP/USD Insert.Red)  'srte_c_20_ep_2001:db8::3' (20, 2001:db8::3)  xtc_srv6            InUse  Y 
+<mark>fcbb:bb00:1:e003::          uB6 (PSP/USD Insert.Red)  'srte_c_20_ep_2001:db8::3' (20, 2001:db8::3)  xtc_srv6            InUse  Y</mark> 
 RP/0/RP0/CPU0:C8711-1-PE#
-```
+</code></pre>
 
 On the SR-PCE:
 
-```
+<pre><code>
 RP/0/RP0/CPU0:pce#show pce lsp tabular 
 Wed Nov  4 11:51:19.152 UTC
 PCC            Tunnel Name     Color Source         Destination    TunID LSPID Admin Oper  
 2001:db8::1    cfg_srte_c_10_e 10    2001:db8::1    2001:db8::2    2     2     up    active
-2001:db8::1    cfg_srte_c_20_e 20    2001:db8::1    2001:db8::3    4     2     up    active
+<mark>2001:db8::1    cfg_srte_c_20_e 20    2001:db8::1    2001:db8::3    4     2     up    active</mark>
 RP/0/RP0/CPU0:pce#
 RP/0/RP0/CPU0:pce#
 RP/0/RP0/CPU0:pce#show pce lsp detail                     
@@ -729,7 +730,7 @@ Interface Name: srte_c_20_ep_2001:db8::3
  LSPs:
   LSP[0]:
    source 2001:db8::1, destination 2001:db8::3, tunnel ID 4, LSP ID 2
-   State: Admin up, Operation active
+   <mark>State: Admin up, Operation active</mark>
    Setup type: SRv6
    Binding SID: fcbb:bb00:1:e003:: Behavior: uB6 (PSP/USD Insert.Red) (79)
                 LBL:32 LNL:16 FL:16 AL:0
@@ -746,7 +747,7 @@ Interface Name: srte_c_20_ep_2001:db8::3
    LSP is subdelegated to: None
    LSP is subdelegated over GRPC: None
    Reported path: 
-     Metric type: TE (2), Accumulated Metric 30
+     <mark>Metric type: TE (2)</mark>, Accumulated Metric 30
       SID[0]: fcbb:bb00:2:: Behavior: uN (PSP/USD) (48)
               LBL:32 LNL:16 FL:0 AL:80 Algo:0
               Address 2001:db8::2
@@ -776,7 +777,7 @@ Interface Name: srte_c_20_ep_2001:db8::3
      CP Name: srte_c_20_ep_2001:db8::3
   
 RP/0/RP0/CPU0:pce#
-```
+</code></pre>
 
 ## Done when
 

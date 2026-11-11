@@ -80,8 +80,8 @@ Backup, restore, and **Add OS patch** put the cluster into maintenance mode. Pat
 
 ## Done when
 
-- Platform Infrastructure, Optimization Engine, Active Topology, and Element Management Functions are Healthy or Running.
-- The SR-PCE provider is reachable.
-- The NSO provider is reachable.
-- A Data Gateway (or embedded collector) is Up and the XR devices are attached.
-- Collection jobs are not in a Failed state.
+- [ ] Platform Infrastructure, Optimization Engine, Active Topology, and Element Management Functions are Healthy or Running.
+- [ ] The SR-PCE provider is reachable.
+- [ ] The NSO provider is reachable.
+- [ ] A Data Gateway (or embedded collector) is Up and the XR devices are attached.
+- [ ] Collection jobs are not in a Failed state.
