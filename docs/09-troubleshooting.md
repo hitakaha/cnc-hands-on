@@ -1,6 +1,6 @@
 # 9. Troubleshooting
 
-**Time:** 45 minutes.
+**Time:** 30 minutes.
 
 **Objective:** Collect CNC showtech, read collection jobs, read alarms, and review the add-patch workflow. Whether to apply a patch is the instructor's decision, because CNC enters maintenance mode to install it.
 
