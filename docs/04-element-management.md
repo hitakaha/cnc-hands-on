@@ -106,9 +106,12 @@ Link colors on the topology map come from interface utilization collected for Op
 
 1. Go to **Device Management > Performance Policies**.
 ![dcloud](img/04/13-performance-policies.png)
-2. Open one existing policy, if any exist. Read which devices it covers, how often it polls, and which threshold raises an alarm.
-3. Return to the **Topology** and click any link. Open **History** and confirm the utilization and traffic rate.
-4. Leave the policy enable/disable switch unchanged.
+2. Click **Create new policy** and see what other policies can be created.
+![dcloud](img/04/15-others.png)
+3. Open one existing policy, if any exist. Read which devices it covers, how often it polls, and which threshold raises an alarm.
+4. Return to the **Topology** and click any link. Open **History** and confirm the utilization and traffic rate.
+![dcloud](img/04/14-perf-topology.png)
+5. Leave the policy enable/disable switch unchanged.
 
 **Result:** You know where a threshold is defined, and you can identify one live counter.
 
