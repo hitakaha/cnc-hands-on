@@ -108,7 +108,7 @@ You are logged in to the UI, and the controller is in normal operating mode.
 
 ## Done when
 
-- [ ] Maintenance mode is Off.
 - [ ] You are logged in to CNC.
+- [ ] Maintenance mode is Off.
 - [ ] The CML labs are booted.
 - [ ] All devices are synced.
