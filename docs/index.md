@@ -15,5 +15,4 @@ Each chapter has an objective, the clicks or CLI, the result you should see, and
 7. Provision a L2VPN VPWS and check its Service Health.
 8. Provision a L2VPN VPLS with multi-homing, steer it onto an SRv6 ODN policy, and check its Service Health.
 9. Collect showtech, read collection jobs and alarms, and walk the patch screen.
-10. Optional: ask the CNC MCP assistant one inventory question.
 
